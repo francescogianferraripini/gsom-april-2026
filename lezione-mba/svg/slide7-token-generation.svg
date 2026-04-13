@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 480">
+  <defs>
+    <marker id="arrowDown" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M1,1 L4,7 L7,1" fill="none" stroke="#3a3a5a" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrowDownAccent" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <path d="M2,1 L5,8 L8,1" fill="none" stroke="#00b4d8" stroke-width="1.8"/>
+    </marker>
+    <marker id="arrowUpAccent" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="180">
+      <path d="M2,1 L5,8 L8,1" fill="none" stroke="#00b4d8" stroke-width="1.8"/>
+    </marker>
+  </defs>
+
+  <style>
+    .tok { font-family: 'Courier New', 'Consolas', monospace; font-size: 14px; }
+    .old { fill: #8892a0; }
+    .new { fill: #00b4d8; font-weight: bold; }
+    .label-accent { font-family: Arial, Helvetica, sans-serif; fill: #00b4d8; }
+    .label-muted { font-family: Arial, Helvetica, sans-serif; fill: #8892a0; }
+  </style>
+
+  <!-- Row 1: "Il" -->
+  <rect x="345" y="12" width="70" height="32" rx="6" ry="6" fill="#2a2a4a"/>
+  <text x="355" y="33" class="tok new">Il</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="380" y1="46" x2="380" y2="58" stroke="#3a3a5a" stroke-width="1.5" marker-end="url(#arrowDown)"/>
+
+  <!-- Row 2: "Il gatto" -->
+  <rect x="315" y="60" width="130" height="32" rx="6" ry="6" fill="#2a2a4a"/>
+  <text x="325" y="81" class="tok"><tspan class="old">Il </tspan><tspan class="new">gatto</tspan></text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="380" y1="94" x2="380" y2="106" stroke="#3a3a5a" stroke-width="1.5" marker-end="url(#arrowDown)"/>
+
+  <!-- Row 3: "Il gatto è" -->
+  <rect x="300" y="108" width="160" height="32" rx="6" ry="6" fill="#2a2a4a"/>
+  <text x="310" y="129" class="tok"><tspan class="old">Il gatto </tspan><tspan class="new">è</tspan></text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="380" y1="142" x2="380" y2="154" stroke="#3a3a5a" stroke-width="1.5" marker-end="url(#arrowDown)"/>
+
+  <!-- Row 4: "Il gatto è sul" -->
+  <rect x="280" y="156" width="200" height="32" rx="6" ry="6" fill="#2a2a4a"/>
+  <text x="290" y="177" class="tok"><tspan class="old">Il gatto è </tspan><tspan class="new">sul</tspan></text>
+
+  <!-- Arrow 4→5 -->
+  <line x1="380" y1="190" x2="380" y2="202" stroke="#3a3a5a" stroke-width="1.5" marker-end="url(#arrowDown)"/>
+
+  <!-- Row 5: "Il gatto è sul tavolo" -->
+  <rect x="250" y="204" width="260" height="32" rx="6" ry="6" fill="#2a2a4a"/>
+  <text x="260" y="225" class="tok"><tspan class="old">Il gatto è sul </tspan><tspan class="new">tavolo</tspan></text>
+
+  <!-- Arrow 5→6 -->
+  <line x1="380" y1="238" x2="380" y2="250" stroke="#3a3a5a" stroke-width="1.5" marker-end="url(#arrowDown)"/>
+
+  <!-- Row 6: "Il gatto è sul tavolo e" -->
+  <rect x="237" y="252" width="286" height="32" rx="6" ry="6" fill="#2a2a4a"/>
+  <text x="247" y="273" class="tok"><tspan class="old">Il gatto è sul tavolo </tspan><tspan class="new">e</tspan></text>
+
+  <!-- Arrow 6→7 -->
+  <line x1="380" y1="286" x2="380" y2="298" stroke="#3a3a5a" stroke-width="1.5" marker-end="url(#arrowDown)"/>
+
+  <!-- Row 7: "Il gatto è sul tavolo e dorme" -->
+  <rect x="215" y="300" width="330" height="32" rx="6" ry="6" fill="#2a2a4a"/>
+  <text x="225" y="321" class="tok"><tspan class="old">Il gatto è sul tavolo e </tspan><tspan class="new">dorme</tspan></text>
+
+  <!-- Arrow 7→8 -->
+  <line x1="380" y1="334" x2="380" y2="346" stroke="#3a3a5a" stroke-width="1.5" marker-end="url(#arrowDown)"/>
+
+  <!-- Row 8: "Il gatto è sul tavolo e dorme." -->
+  <rect x="205" y="348" width="360" height="32" rx="6" ry="6" fill="#2a2a4a"/>
+  <text x="215" y="369" class="tok"><tspan class="old">Il gatto è sul tavolo e dorme</tspan><tspan class="new">.</tspan></text>
+  <!-- STOP badge -->
+  <rect x="470" y="354" width="50" height="20" rx="4" ry="4" fill="#00b4d8" opacity="0.18" stroke="#00b4d8" stroke-width="1"/>
+  <text x="495" y="368" font-size="10" font-weight="bold" text-anchor="middle" class="label-accent">STOP</text>
+
+  <!-- RIGHT SIDE: tall vertical arrow -->
+  <line x1="630" y1="20" x2="630" y2="372" stroke="#00b4d8" stroke-width="2" marker-start="url(#arrowUpAccent)" marker-end="url(#arrowDownAccent)"/>
+  <!-- Vertical text label -->
+  <text x="0" y="0" font-size="13" class="label-accent" text-anchor="middle" transform="translate(652, 196) rotate(90)">ogni riga = una chiamata completa al modello</text>
+
+  <!-- LEFT SIDE: vertical curly brace / bracket -->
+  <path d="M 175,16 L 165,16 L 165,188 L 155,192 L 165,196 L 165,376 L 175,376" fill="none" stroke="#8892a0" stroke-width="1.5" stroke-linejoin="round"/>
+  <!-- Vertical text label -->
+  <text x="0" y="0" font-size="12" class="label-muted" text-anchor="middle" transform="translate(140, 196) rotate(-90)">il contesto cresce di un token per volta</text>
+
+  <!-- BOTTOM: badge -->
+  <rect x="275" y="408" width="330" height="30" rx="6" ry="6" fill="#00b4d8" opacity="0.12" stroke="#00b4d8" stroke-width="1"/>
+  <text x="440" y="428" font-size="13" font-weight="bold" text-anchor="middle" class="label-accent">token di STOP &#x2192; fine generazione</text>
+</svg>

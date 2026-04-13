@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agents in action</title>
+
+  <!-- Reveal.js core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- SLIDE 0 — Apertura lezione -->
+      <section id="title" class="section-divider" data-state="is-section-divider">
+        <h1 style="margin-bottom: 8px;">Agents in action</h1>
+        <p style="font-size: 18pt; color: var(--muted-color); margin-bottom: 50px;">Francesco Gianferrari Pini — Quantyca</p>
+        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 20px; width: 90%; max-width: 1000px;">
+          <div class="roadmap-step">
+            <i class="fa-solid fa-microchip"></i>
+            <span>LLM</span>
+          </div>
+          <div class="roadmap-step">
+            <i class="fa-solid fa-comments"></i>
+            <span>Conversazionale</span>
+          </div>
+          <div class="roadmap-step">
+            <i class="fa-solid fa-lock"></i>
+            <span>Closed vs Open</span>
+          </div>
+          <div class="roadmap-step">
+            <i class="fa-solid fa-wrench"></i>
+            <span>Tool</span>
+          </div>
+          <div class="roadmap-step">
+            <i class="fa-solid fa-toolbox"></i>
+            <span>Tipi di tool</span>
+          </div>
+          <div class="roadmap-step">
+            <i class="fa-solid fa-code"></i>
+            <span>Codice</span>
+          </div>
+          <div class="roadmap-step">
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Context engineering</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 1 — LLM: il cuore degli agenti -->
+      <section id="slide-llm-cuore">
+        <h2>LLM: il cuore degli agenti</h2>
+        <div class="content">
+          <div class="highlight-box">
+            <p style="font-size: 15pt;">Un LLM è una funzione matematica che, data una sequenza di token, produce una distribuzione di probabilità sul prossimo token.</p>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 10px;">
+            <div>
+              <ul class="text-lg">
+                <li><strong>Input</strong>: una sequenza di token — le unità in cui l'LLM "vede" il testo, approssimativamente parole o frammenti di parole.</li>
+                <li><strong>Output</strong>: una distribuzione di probabilità che assegna un valore a ogni token del vocabolario (decine di migliaia di possibilità).</li>
+                <li><strong>Nessun concetto di "conversazione"</strong>: a questo livello l'LLM non sa di parlare con qualcuno. È una funzione che completa testo plausibile.</li>
+              </ul>
+            </div>
+            <div class="svg-container">
+              <img src="svg/slide1-llm-function.svg" alt="Schema LLM come funzione: input → LLM → distribuzione di probabilità">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 2 — Il pre-training di un LLM -->
+      <section id="slide-pretraining">
+        <h2>Il pre-training di un LLM</h2>
+        <div class="content">
+          <p class="text-muted" style="margin-top: 0; margin-bottom: 15px;">Come nasce questa funzione</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div>
+              <ul class="text-lg">
+                <li><strong>Pre-training</strong>: addestramento su enormi corpus di testo (web, libri, codice).</li>
+                <li><strong>Obiettivo</strong>: prevedere il prossimo token a partire dai precedenti.</li>
+                <li><strong>Scala tipica (2026)</strong>: ~15 trilioni di token in input, 400 miliardi – 1 trilione+ di parametri.</li>
+              </ul>
+              <div class="callout-box" style="margin-top: 15px;">
+                <p style="font-size: 13pt; color: var(--muted-color); font-weight: 400; font-style: italic;">Il modello base sa come completare una frase, ma non conversare in modo utile e fluente.</p>
+              </div>
+            </div>
+            <div class="svg-container">
+              <img src="svg/slide2-scale-infographic.svg" alt="Infografica comparativa di scala: dalla lettura umana al training LLM">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 2bis — Come si addestra un LLM -->
+      <section id="slide-training-loop">
+        <h2>Come si addestra un LLM</h2>
+        <div class="content" style="padding-top: 10px;">
+          <div class="svg-container" style="flex: 1;">
+            <img src="svg/slide2bis-training-loop.svg" alt="Ciclo di training: frase, maschera, predizione, confronto, aggiornamento parametri">
+          </div>
+          <p class="text-muted" style="font-size: 13pt; text-align: center; margin-top: 10px;">Miliardi di parametri partono casuali. Trilioni di micro-aggiustamenti li portano a predire il prossimo token in modo sempre più accurato.</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 3 — La portata della conoscenza -->
+      <section id="slide-conoscenza">
+        <h2>La portata della conoscenza</h2>
+        <div class="content">
+          <p class="text-muted" style="margin-top: 0; margin-bottom: 25px;">Una conseguenza del training su scala</p>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 35px; flex: 1;">
+            <div class="contrast-card">
+              <h3><i class="fa-solid fa-expand" style="margin-right: 8px;"></i>Ampiezza</h3>
+              <p class="text-xl">L'LLM ha "letto" ordini di grandezza più testo di qualunque singolo essere umano.</p>
+            </div>
+            <div class="contrast-card">
+              <h3><i class="fa-solid fa-arrow-right" style="margin-right: 8px;"></i>Implicazione</h3>
+              <p class="text-xl">Su qualsiasi dominio di conoscenza pubblica (medicina, diritto, codice, marketing, ingegneria) la baseline informativa è superiore a quella di un laureato medio nel campo.</p>
+            </div>
+          </div>
+          <div class="highlight-box" style="margin-top: 25px;">
+            <p style="font-size: 14pt;">Ogni risposta parte da un livello di informazione più alto del default atteso.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 4 — LLM: Compression through Abstraction -->
+      <section id="slide-compression">
+        <h2>LLM: Compression through Abstraction</h2>
+        <div class="content">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px;">
+            <div>
+              <div class="highlight-box">
+                <p style="font-size: 14pt;">Per far stare trilioni di token in miliardi di parametri, il modello è costretto a costruire rappresentazioni astratte — non memorizza, modella.</p>
+              </div>
+              <ul style="margin-top: 15px;">
+                <li>Non c'è spazio per memorizzare letteralmente il training set.</li>
+                <li>Il modello "impara" concetti, relazioni, regolarità del mondo.</li>
+                <li>Le capacità emergenti (ragionamento, analogia, transfer) sono sottoprodotto della compressione, non funzionalità programmate.</li>
+              </ul>
+              <blockquote style="margin-top: 20px;">
+                <p style="font-size: 14pt;">"ChatGPT è un JPEG sfocato del web, che, per comprimere, ha dovuto capire."</p>
+                <cite>— Ted Chiang, The New Yorker</cite>
+              </blockquote>
+            </div>
+            <div class="svg-container">
+              <img src="svg/slide4-compression-funnel.svg" alt="Imbuto di compressione: da trilioni di token a rappresentazioni astratte">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 5 — Conseguenze della compressione -->
+      <section id="slide-conseguenze">
+        <h2>Conseguenze della compressione</h2>
+        <div class="content">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 35px; flex: 1;">
+            <div class="contrast-card" style="border-top: 3px solid var(--primary-color);">
+              <h3><i class="fa-solid fa-check" style="color: var(--primary-color); margin-right: 8px;"></i>Dove è forte</h3>
+              <ul class="text-lg">
+                <li>Frame concettuali su qualunque dominio</li>
+                <li>Ragionamento e analogia</li>
+                <li>Trasformazione di testo (traduzione, sintesi, riformattazione)</li>
+              </ul>
+            </div>
+            <div class="contrast-card" style="border-top: 3px solid var(--secondary-color);">
+              <h3><i class="fa-solid fa-triangle-exclamation" style="color: var(--secondary-color); margin-right: 8px;"></i>Dove serve cautela</h3>
+              <ul class="text-lg">
+                <li>Fatti puntuali (date, numeri, citazioni letterali)</li>
+                <li>Conoscenza post-cutoff</li>
+                <li>Dettagli tecnici su nicchie poco rappresentate</li>
+                <li>Dati proprietari non nel training</li>
+                <li>Calcoli numerici precisi e passaggi lunghi</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout-box" style="margin-top: 20px;">
+            <p style="font-size: 13pt; color: var(--text-color); font-weight: 400;"><strong>Fidati del frame, verifica i fatti.</strong> Le allucinazioni non sono un bug morale — sono il comportamento strutturale di un compressore lossy a cui chiedi di ricostruire ciò che non ha memorizzato bene.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 6 — Il limite della context window -->
+      <section id="slide-context-window">
+        <h2>Il limite della context window</h2>
+        <div class="content">
+          <div style="background: rgba(255,255,255,0.04); border-radius: var(--box-radius); padding: 20px 25px; margin-bottom: 15px;">
+            <p style="line-height: 1.6;"><strong style="color: var(--primary-color);">Il protagonista di Memento.</strong> Un uomo colpito da amnesia anterograda — ricorda la sua vita prima dell'incidente, ma ogni nuovo ricordo svanisce in pochi minuti. Sopravvive scrivendo tutto su Polaroid e tatuaggi: tutto ciò che gli serve sapere <em>ora</em> deve essere fisicamente davanti ai suoi occhi, <em>ora</em>.</p>
+            <p style="line-height: 1.6; margin-top: 10px;">Un LLM funziona allo stesso modo. Il training è la "vita prima": conoscenza enorme, ma congelata. Tutto il resto — la conversazione in corso, i documenti caricati, i risultati dei tool — esiste per il modello solo se è dentro la finestra di contesto <em>in questo preciso istante</em>. Niente viene automaticamente ricordato tra una chiamata e l'altra.</p>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+            <div class="contrast-card">
+              <h3><i class="fa-solid fa-coins" style="margin-right: 8px;"></i>Costo</h3>
+              <p>Il meccanismo di attention è O(n²) sulla lunghezza del contesto. Raddoppiare il contesto più che raddoppia il costo di calcolo.</p>
+            </div>
+            <div class="contrast-card">
+              <h3><i class="fa-solid fa-chart-line" style="margin-right: 8px;"></i>Qualità</h3>
+              <p>Anche quando "ci sta", il modello non usa bene tutto il contesto. Tende a ricordare meglio inizio e fine, peggio il centro — <em>lost in the middle</em>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE 7 — Come l'LLM genera testo -->
+      <section id="slide-genera-testo">
+        <h2>Come l'LLM genera testo</h2>
+        <div class="content" style="padding-top: 10px;">
+          <div class="svg-container" style="flex: 1;">
+            <img src="svg/slide7-token-generation.svg" alt="Sequenza di generazione token per token: il contesto cresce ad ogni passo">
+          </div>
+          <p class="text-muted" style="font-size: 13pt; text-align: center; margin-top: 10px;">Il modello non pianifica una risposta. Produce un token alla volta. Ogni nuovo token viene appeso al contesto e il contesto completo viene rivalutato per produrre il successivo.</p>
+        </div>
+      </section>
+
+      <!-- SLIDE 8 — Cosa significa in pratica? -->
+      <section id="slide-pratica">
+        <h2>Cosa significa in pratica?</h2>
+        <div class="content" style="justify-content: center;">
+          <ul class="text-2xl" style="margin-bottom: 35px;">
+            <li style="margin-bottom: 28px;"><strong>Stesso prompt ≠ stessa risposta</strong>: il sampling è probabilistico. Il non-determinismo è strutturale, non un bug.</li>
+            <li style="margin-bottom: 28px;"><strong>Lo streaming non è UX</strong>: le parole che compaiono una per una riflettono la meccanica reale. Il modello genera mentre l'utente legge.</li>
+            <li style="margin-bottom: 28px;"><strong>Non c'è pianificazione globale</strong>: il modello non "sa dove sta andando" prima di iniziare. Ogni token è locale.</li>
+          </ul>
+          <div class="callout-box">
+            <p style="font-size: 17pt;">Questo è il primo mattoncino. I prossimi tre loop — conversazione, tool, codice — lo avvolgono uno sull'altro.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script>
+    Reveal.initialize({
+      width: 1280,
+      height: 720,
+      margin: 0,
+      controls: true,
+      progress: true,
+      slideNumber: false,
+      hash: true,
+      transition: 'slide',
+      center: false
+    });
+  </script>
+</body>
+</html>
