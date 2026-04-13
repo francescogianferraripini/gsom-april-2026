@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Presentation</title>
+
+  <!-- Reveal.js core -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Chart.js for data visualization -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <section id="title" class="section-divider" data-state="is-section-divider">
+        <h1>Test Presentation</h1>
+        <p>A quick demo of reveal.js capabilities</p>
+      </section>
+
+      <section id="slide-2">
+        <h2>What Is This?</h2>
+        <div class="content text-xl">
+          <p>This is a <strong>test presentation</strong> built with reveal.js to demonstrate:</p>
+          <ul>
+            <li>Clean typography and dark themes</li>
+            <li>Multi-column layouts</li>
+            <li>Stats and data display</li>
+            <li>Section dividers and visual variety</li>
+          </ul>
+          <blockquote>
+            <p>"The best way to test a tool is to use it."</p>
+          </blockquote>
+        </div>
+      </section>
+
+      <section id="slide-3">
+        <h2>Key Metrics</h2>
+        <div class="content">
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 10px;">
+            <div class="stat-box">
+              <p class="stat-number">42K</p>
+              <p class="stat-label">Active Users</p>
+            </div>
+            <div class="stat-box">
+              <p class="stat-number">99.9%</p>
+              <p class="stat-label">Uptime</p>
+            </div>
+            <div class="stat-box">
+              <p class="stat-number">3.2s</p>
+              <p class="stat-label">Avg Response</p>
+            </div>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-top: 25px;">
+            <div class="stat-box">
+              <p class="stat-number">18</p>
+              <p class="stat-label">Team Members</p>
+            </div>
+            <div class="stat-box">
+              <p class="stat-number">4.8<span style="font-size: 18pt;">/5</span></p>
+              <p class="stat-label">User Rating</p>
+            </div>
+            <div class="stat-box">
+              <p class="stat-number">12</p>
+              <p class="stat-label">Countries</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="divider-1" class="section-divider" data-state="is-section-divider">
+        <h1>Features</h1>
+        <p>What makes this stand out</p>
+      </section>
+
+      <section id="slide-5">
+        <h2>Two-Column Layout</h2>
+        <div class="content">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+            <div>
+              <h3><i class="fa-solid fa-bolt" style="color: var(--primary-color);"></i> Performance</h3>
+              <p>Lightning-fast rendering with optimized asset loading and lazy initialization.</p>
+              <h3 style="margin-top: 25px;"><i class="fa-solid fa-shield-halved" style="color: var(--primary-color);"></i> Security</h3>
+              <p>Built-in protection against common vulnerabilities with automatic patching.</p>
+            </div>
+            <div>
+              <h3><i class="fa-solid fa-cube" style="color: var(--primary-color);"></i> Modularity</h3>
+              <p>Plug-and-play architecture lets you swap components without touching the core.</p>
+              <h3 style="margin-top: 25px;"><i class="fa-solid fa-arrows-rotate" style="color: var(--primary-color);"></i> Reliability</h3>
+              <p>Self-healing systems with automatic failover and graceful degradation.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="slide-6">
+        <h2>Roadmap</h2>
+        <div class="content">
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;">
+            <div style="background: rgba(249,109,0,0.15); border-radius: 8px; padding: 25px; text-align: center;">
+              <p style="font-size: 14pt; color: var(--primary-color); font-weight: 600;">Q1 2026</p>
+              <p style="font-size: 18pt; font-weight: 600;">Foundation</p>
+              <p class="text-muted" style="font-size: 13pt;">Core architecture and infrastructure setup</p>
+            </div>
+            <div style="background: rgba(249,109,0,0.10); border-radius: 8px; padding: 25px; text-align: center;">
+              <p style="font-size: 14pt; color: var(--primary-color); font-weight: 600;">Q2 2026</p>
+              <p style="font-size: 18pt; font-weight: 600;">Beta Launch</p>
+              <p class="text-muted" style="font-size: 13pt;">Public beta with core feature set</p>
+            </div>
+            <div style="background: rgba(249,109,0,0.06); border-radius: 8px; padding: 25px; text-align: center;">
+              <p style="font-size: 14pt; color: var(--primary-color); font-weight: 600;">Q3 2026</p>
+              <p style="font-size: 18pt; font-weight: 600;">Scale</p>
+              <p class="text-muted" style="font-size: 13pt;">Performance optimization and growth</p>
+            </div>
+            <div style="background: rgba(249,109,0,0.03); border-radius: 8px; padding: 25px; text-align: center;">
+              <p style="font-size: 14pt; color: var(--primary-color); font-weight: 600;">Q4 2026</p>
+              <p style="font-size: 18pt; font-weight: 600;">GA Release</p>
+              <p class="text-muted" style="font-size: 13pt;">General availability with full feature parity</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="slide-7" class="section-divider" data-state="is-section-divider">
+        <h1>Thank You</h1>
+        <p>Questions? Let's discuss.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chart/plugin.js"></script>
+  <script>
+    Reveal.initialize({
+      width: 1280,
+      height: 720,
+      margin: 0,
+      controls: true,
+      progress: true,
+      slideNumber: false,
+      hash: true,
+      transition: 'slide',
+      center: false,
+      plugins: [ RevealChart ],
+      chart: {
+        defaults: Object.assign({
+          color: 'rgba(0, 0, 0, 0.8)',
+          borderColor: 'rgba(0, 0, 0, 0.8)',
+          devicePixelRatio: 2
+        }, window.location.search.includes('export') ? { animation: false } : {})
+      }
+    });
+  </script>
+</body>
+</html>
