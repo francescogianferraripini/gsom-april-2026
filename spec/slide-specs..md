@@ -4,6 +4,25 @@
 **Stato**: slide 0, 1, 2, 2bis, 3, 4, 5, 6, 7, 8 consolidate.
 **Prossima slide da definire**: Slide 9 (apertura Sezione 2).
 
+### Struttura modulare
+
+Ogni slide è un file HTML separato in `lezione-mba/slides/`. Il file `presentation.html` li carica dinamicamente via fetch in ordine.
+
+| File | Slide |
+|------|-------|
+| `slides/slide0-title.html` | Slide 0 — Apertura lezione |
+| `slides/slide1-llm-cuore.html` | Slide 1 — LLM: il cuore degli agenti |
+| `slides/slide2-pretraining.html` | Slide 2 — Il pre-training di un LLM |
+| `slides/slide2bis-training-loop.html` | Slide 2bis — Come si addestra un LLM |
+| `slides/slide3-conoscenza.html` | Slide 3 — La portata della conoscenza |
+| `slides/slide4-compression.html` | Slide 4 — LLM: Compression through Abstraction |
+| `slides/slide5-conseguenze.html` | Slide 5 — Conseguenze della compressione |
+| `slides/slide6-context-window.html` | Slide 6 — Il limite della context window |
+| `slides/slide7-genera-testo.html` | Slide 7 — Come l'LLM genera testo |
+| `slides/slide8-pratica.html` | Slide 8 — Cosa significa in pratica? |
+
+Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Per aggiungere una nuova slide: creare il file in `slides/`, aggiungerlo all'array `slideFiles` in `presentation.html`, e documentarlo qui.
+
 ---
 
 ## ✅ Slide 0 — Apertura lezione
