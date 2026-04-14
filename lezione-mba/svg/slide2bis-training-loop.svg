@@ -133,7 +133,7 @@
   <text x="550" y="215" fill="#00b4d8" font-size="13" text-anchor="middle" font-weight="600" font-style="italic">ripetuto trilioni di volte</text>
 
   <!-- ============ LOWER RIGHT: Mini Loss Chart ============ -->
-  <g transform="translate(770, 270)">
+  <g transform="translate(400, 270)">
     <!-- Chart background -->
     <rect x="0" y="0" width="300" height="200" rx="8" fill="#2a2a4a" stroke="#3a3a5a" stroke-width="1.2"/>
 

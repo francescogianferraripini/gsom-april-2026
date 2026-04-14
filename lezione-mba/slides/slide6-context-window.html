@@ -1,19 +1,26 @@
 <!-- SLIDE 6 — Il limite della context window -->
 <section id="slide-context-window">
-  <h2>Il limite della context window</h2>
-  <div class="content">
-    <div style="background: rgba(255,255,255,0.04); border-radius: var(--box-radius); padding: 20px 25px; margin-bottom: 15px;">
-      <p style="line-height: 1.6;"><strong style="color: var(--primary-color);">Il protagonista di Memento.</strong> Un uomo colpito da amnesia anterograda — ricorda la sua vita prima dell'incidente, ma ogni nuovo ricordo svanisce in pochi minuti. Sopravvive scrivendo tutto su Polaroid e tatuaggi: tutto ciò che gli serve sapere <em>ora</em> deve essere fisicamente davanti ai suoi occhi, <em>ora</em>.</p>
-      <p style="line-height: 1.6; margin-top: 10px;">Un LLM funziona allo stesso modo. Il training è la "vita prima": conoscenza enorme, ma congelata. Tutto il resto — la conversazione in corso, i documenti caricati, i risultati dei tool — esiste per il modello solo se è dentro la finestra di contesto <em>in questo preciso istante</em>. Niente viene automaticamente ricordato tra una chiamata e l'altra.</p>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
-      <div class="contrast-card">
-        <h3><i class="fa-solid fa-coins" style="margin-right: 8px;"></i>Costo</h3>
-        <p>Il meccanismo di attention è O(n²) sulla lunghezza del contesto. Raddoppiare il contesto più che raddoppia il costo di calcolo.</p>
+  <!-- Poster Memento: visibile all'inizio, scompare al click -->
+  <div class="fragment fade-out" data-fragment-index="0" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: var(--bg-color); z-index: 10;">
+    <img src="img/memento-poster.jpg" alt="Memento (2000) — Guy Pearce" style="max-height: 90%; max-width: 80%; border-radius: 8px; box-shadow: 0 8px 32px rgba(0,0,0,0.5);">
+  </div>
+  <!-- Contenuto slide: appare al click -->
+  <div class="fragment fade-in" data-fragment-index="0">
+    <h2>Il limite della context window</h2>
+    <div class="content">
+      <div style="background: rgba(255,255,255,0.04); border-radius: var(--box-radius); padding: 20px 25px; margin-bottom: 15px;">
+        <p style="line-height: 1.6;"><strong style="color: var(--primary-color);">Il protagonista di Memento.</strong> Un uomo colpito da amnesia anterograda — ricorda la sua vita prima dell'incidente, ma ogni nuovo ricordo svanisce in pochi minuti. Sopravvive scrivendo tutto su Polaroid e tatuaggi: tutto ciò che gli serve sapere <em>ora</em> deve essere fisicamente davanti ai suoi occhi, <em>ora</em>.</p>
+        <p style="line-height: 1.6; margin-top: 10px;">Un LLM funziona allo stesso modo. Il training è la "vita prima": conoscenza enorme, ma congelata. Tutto il resto — la conversazione in corso, i documenti caricati, i risultati dei tool — esiste per il modello solo se è dentro la finestra di contesto <em>in questo preciso istante</em>. Niente viene automaticamente ricordato tra una chiamata e l'altra.</p>
       </div>
-      <div class="contrast-card">
-        <h3><i class="fa-solid fa-chart-line" style="margin-right: 8px;"></i>Qualità</h3>
-        <p>Anche quando "ci sta", il modello non usa bene tutto il contesto. Tende a ricordare meglio inizio e fine, peggio il centro — <em>lost in the middle</em>.</p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+        <div class="contrast-card">
+          <h3><i class="fa-solid fa-coins" style="margin-right: 8px;"></i>Costo</h3>
+          <p>Il meccanismo di attention è O(n²) sulla lunghezza del contesto. Raddoppiare il contesto più che raddoppia il costo di calcolo.</p>
+        </div>
+        <div class="contrast-card">
+          <h3><i class="fa-solid fa-chart-line" style="margin-right: 8px;"></i>Qualità</h3>
+          <p>Anche quando "ci sta", il modello non usa bene tutto il contesto. Tende a ricordare meglio inizio e fine, peggio il centro — <em>lost in the middle</em>.</p>
+        </div>
       </div>
     </div>
   </div>

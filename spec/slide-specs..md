@@ -12,13 +12,13 @@ Ogni slide è un file HTML separato in `lezione-mba/slides/`. Il file `presentat
 |------|-------|
 | `slides/slide0-title.html` | Slide 0 — Apertura lezione |
 | `slides/slide1-llm-cuore.html` | Slide 1 — LLM: il cuore degli agenti |
-| `slides/slide2-pretraining.html` | Slide 2 — Il pre-training di un LLM |
 | `slides/slide2bis-training-loop.html` | Slide 2bis — Come si addestra un LLM |
-| `slides/slide3-conoscenza.html` | Slide 3 — La portata della conoscenza |
+| `slides/slide2-pretraining.html` | Slide 2 — Il pre-training di un LLM |
 | `slides/slide4-compression.html` | Slide 4 — LLM: Compression through Abstraction |
+| `slides/slide3-conoscenza.html` | Slide 3 — La portata della conoscenza |
 | `slides/slide5-conseguenze.html` | Slide 5 — Conseguenze della compressione |
-| `slides/slide6-context-window.html` | Slide 6 — Il limite della context window |
 | `slides/slide7-genera-testo.html` | Slide 7 — Come l'LLM genera testo |
+| `slides/slide6-context-window.html` | Slide 6 — Il limite della context window |
 | `slides/slide8-pratica.html` | Slide 8 — Cosa significa in pratica? |
 
 Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Per aggiungere una nuova slide: creare il file in `slides/`, aggiungerlo all'array `slideFiles` in `presentation.html`, e documentarlo qui.
@@ -74,35 +74,6 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 
 ---
 
-## ✅ Slide 2 — Il pre-training di un LLM
-
-**Layout**: titolo in alto, sottotitolo, 3 bullet di meccanica, nota in basso. Infografica di scala a 5 livelli occupa ~50% della slide (a destra o in basso).
-
-**Testo**:
-- Titolo: *Il pre-training di un LLM*
-- Sottotitolo: *Come nasce questa funzione*
-- 3 bullet:
-  1. **Pre-training**: addestramento su enormi corpus di testo (web, libri, codice).
-  2. **Obiettivo**: prevedere il prossimo token a partire dai precedenti.
-  3. **Scala tipica (modelli di frontiera 2026)**: ~15 trilioni di token in input, 400 miliardi – 1 trilione+ di parametri nel modello.
-- Nota in basso: *Il modello base sa come completare una frase, ma non conversare in modo utile e fluente.*
-
-**Visual**: infografica comparativa di scala a 5 livelli, barre su scala logaritmica.
-
-**Prompt per infografica SVG**:
-> Infografica a 5 righe orizzontali impilate verticalmente. Ogni riga ha: icona a sinistra, etichetta testuale, barra orizzontale in scala logaritmica, numero a destra.
-> Asse comune: scala logaritmica delle parole/token (da 10^8 a 10^14).
-> Righe (dall'alto in basso):
->   1. [icona persona che legge] — "Un lettore medio, nell'intera vita" — barra cortissima — "~200 milioni di parole"
->   2. [icona enciclopedia] — "Wikipedia, tutte le lingue" — barra più lunga — "~10 miliardi di parole"
->   3. [icona edificio biblioteca] — "Grande biblioteca universitaria (20M volumi)" — barra ancora più lunga — "~1 trilione di parole"
->   4. [icona chip/cervello, EVIDENZIATA in colore accento] — "Training di un LLM di frontiera (2026)" — barra molto più lunga — "~15 trilioni di token"
->   5. [icona mondo/web in grigio] — "Tutto il testo digitale di qualità sul web" — barra massima — "~50-100 trilioni di token (limite che ci stiamo avvicinando)"
-> La riga 4 è il focus visivo (colore accento); la riga 5 è disegnata in grigio con etichetta "frontiera dei dati disponibili".
-> Stile minimale, sans-serif, monocromatico con un colore accento solo sulla riga 4.
-
----
-
 ## ✅ Slide 2bis — Come si addestra un LLM
 
 **Layout**: titolo in alto, grande SVG centrale che occupa ~80% della slide, didascalia di 1-2 righe in basso.
@@ -136,18 +107,32 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 
 ---
 
-## ✅ Slide 3 — La portata della conoscenza
+## ✅ Slide 2 — Il pre-training di un LLM
 
-**Layout**: titolo in alto, sottotitolo, 2 blocchi paralleli (sinistra/destra) che occupano la parte centrale, nota conclusiva in basso.
+**Layout**: titolo in alto, sottotitolo, 3 bullet di meccanica, nota in basso. Infografica di scala a 5 livelli occupa ~50% della slide (a destra o in basso).
 
 **Testo**:
-- Titolo: *La portata della conoscenza*
-- Sottotitolo: *Una conseguenza del training su scala*
-- **Blocco sinistro — Ampiezza**: L'LLM ha "letto" ordini di grandezza più testo di qualunque singolo essere umano.
-- **Blocco destro — Implicazione**: Su qualsiasi dominio di conoscenza pubblica (medicina, diritto, codice, marketing, ingegneria) la baseline informativa è superiore a quella di un laureato medio nel campo.
-- Nota in basso: *Ogni risposta parte da un livello di informazione più alto del default atteso.*
+- Titolo: *Il pre-training di un LLM*
+- Sottotitolo: *Come nasce questa funzione*
+- 3 bullet:
+  1. **Pre-training**: addestramento su enormi corpus di testo (web, libri, codice).
+  2. **Obiettivo**: prevedere il prossimo token a partire dai precedenti.
+  3. **Scala tipica (modelli di frontiera 2026)**: ~15 trilioni di token in input, 400 miliardi – 1 trilione+ di parametri nel modello.
+- Nota in basso: *Alla fine del training, il modello è in grado di completare ogni frase attingendo ad ogni elemento di conoscenza, ma non necessariamente è "utile" a sostenere una conversazione o risolvere un problema.*
 
-**Visual**: nessuno. La struttura a 2 blocchi è l'elemento visivo.
+**Visual**: infografica comparativa di scala a 5 livelli, barre su scala logaritmica.
+
+**Prompt per infografica SVG**:
+> Infografica a 5 righe orizzontali impilate verticalmente. Ogni riga ha: icona a sinistra, etichetta testuale, barra orizzontale in scala logaritmica, numero a destra.
+> Asse comune: scala logaritmica delle parole/token (da 10^8 a 10^14).
+> Righe (dall'alto in basso):
+>   1. [icona persona che legge] — "Un lettore medio, nell'intera vita" — barra cortissima — "~200 milioni di parole"
+>   2. [icona enciclopedia] — "Wikipedia, tutte le lingue" — barra più lunga — "~10 miliardi di parole"
+>   3. [icona edificio biblioteca] — "Grande biblioteca universitaria (20M volumi)" — barra ancora più lunga — "~1 trilione di parole"
+>   4. [icona chip/cervello, EVIDENZIATA in colore accento] — "Training di un LLM di frontiera (2026)" — barra molto più lunga — "~15 trilioni di token"
+>   5. [icona mondo/web in grigio] — "Tutto il testo digitale di qualità sul web" — barra massima — "~50-100 trilioni di token (limite che ci stiamo avvicinando)"
+> La riga 4 è il focus visivo (colore accento); la riga 5 è disegnata in grigio con etichetta "frontiera dei dati disponibili".
+> Stile minimale, sans-serif, monocromatico con un colore accento solo sulla riga 4.
 
 ---
 
@@ -183,6 +168,21 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 
 ---
 
+## ✅ Slide 3 — La portata della conoscenza
+
+**Layout**: titolo in alto, sottotitolo, 2 blocchi paralleli (sinistra/destra) che occupano la parte centrale, nota conclusiva in basso.
+
+**Testo**:
+- Titolo: *La portata della conoscenza*
+- Sottotitolo: *Una conseguenza del training su scala*
+- **Blocco sinistro — Ampiezza**: L'LLM ha "letto" ordini di grandezza più testo di qualunque singolo essere umano.
+- **Blocco destro — Implicazione**: Su qualsiasi dominio di conoscenza pubblica (medicina, diritto, codice, marketing, ingegneria) la baseline informativa è superiore a quella di un laureato medio nel campo.
+- Nota in basso: *Indipendentemente dall'ambito di utilizzo, un modello moderno sfrutta una mole enorme di informazioni (non sempre di altissima qualità o veridicità) per dare una risposta. È certamente già una capacità "super-umana", e nasce dalla capacità di comprimere attraverso una astrazione.*
+
+**Visual**: nessuno. La struttura a 2 blocchi è l'elemento visivo.
+
+---
+
 ## ✅ Slide 5 — Conseguenze della compressione
 
 **Layout**: titolo in alto, 2 colonne contrastive al centro (sinistra/destra), regola pratica in basso come blocco evidenziato.
@@ -190,7 +190,7 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 **Testo**:
 - Titolo: *Conseguenze della compressione*
 - **Colonna sinistra — Dove è forte**:
-  - Frame concettuali su qualunque dominio
+  - Framing concettuali su qualunque dominio
   - Ragionamento e analogia
   - Trasformazione di testo (traduzione, sintesi, riformattazione)
 - **Colonna destra — Dove serve cautela**:
@@ -199,24 +199,9 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
   - Dettagli tecnici su nicchie poco rappresentate
   - Dati proprietari non nel training
   - Calcoli numerici precisi e passaggi matematici lunghi
-- Regola pratica in basso (evidenziata): *Fidati del frame, verifica i fatti. Le allucinazioni non sono un bug morale del modello — sono il comportamento strutturale di un compressore lossy a cui chiedi di ricostruire ciò che non ha memorizzato bene.*
+- Regola pratica in basso (evidenziata): *Fidati del framing, verifica i fatti. Le allucinazioni non sono un bug morale del modello — sono il comportamento strutturale di un compressore lossy a cui chiedi di ricostruire ciò che non ha memorizzato bene.*
 
 **Visual**: nessuno. Il contrasto tra le 2 colonne è l'elemento visivo.
-
----
-
-## ✅ Slide 6 — Il limite della context window
-
-**Layout**: titolo in alto, blocco analogia esteso in apertura (prosa narrativa), 2 bullet di sostanza sotto.
-
-**Testo**:
-- Titolo: *Il limite della context window*
-- Blocco analogia (apertura, in prosa): *Il protagonista di Memento. Un uomo colpito da amnesia anterograda — ricorda la sua vita prima dell'incidente, ma ogni nuovo ricordo svanisce in pochi minuti. Sopravvive scrivendo tutto su Polaroid e tatuaggi: tutto ciò che gli serve sapere ora deve essere fisicamente davanti ai suoi occhi, ora. Un LLM funziona allo stesso modo. Il training è la "vita prima": conoscenza enorme, ma congelata. Tutto il resto — la conversazione in corso, i documenti caricati, i risultati dei tool — esiste per il modello solo se è dentro la finestra di contesto in questo preciso istante. Niente viene automaticamente ricordato tra una chiamata e l'altra.*
-- 2 bullet di sostanza:
-  1. **Costo**: il meccanismo di attention è O(n²) sulla lunghezza del contesto. Raddoppiare il contesto più che raddoppia il costo di calcolo.
-  2. **Qualità**: anche quando "ci sta", il modello non usa bene tutto il contesto. Tende a ricordare meglio inizio e fine, peggio il centro — fenomeno noto come *lost in the middle*.
-
-**Visual**: nessuno.
 
 ---
 
@@ -254,6 +239,21 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 > **In fondo** — sotto l'ultima riga, piccolo badge/etichetta: *"token di STOP → fine generazione"*.
 >
 > Stile minimale, monocromatico con un solo colore accento (usato per: l'ultimo token di ogni riga, la freccia laterale destra, il badge STOP). Font sans-serif, monospace per il testo nelle righe del contesto per enfatizzare la natura "token".
+
+---
+
+## ✅ Slide 6 — Il limite della context window
+
+**Layout**: titolo in alto, blocco analogia esteso in apertura (prosa narrativa), 2 bullet di sostanza sotto.
+
+**Testo**:
+- Titolo: *Il limite della context window*
+- Blocco analogia (apertura, in prosa): *Il protagonista di Memento. Un uomo colpito da amnesia anterograda — ricorda la sua vita prima dell'incidente, ma ogni nuovo ricordo svanisce in pochi minuti. Sopravvive scrivendo tutto su Polaroid e tatuaggi: tutto ciò che gli serve sapere ora deve essere fisicamente davanti ai suoi occhi, ora. Un LLM funziona allo stesso modo. Il training è la "vita prima": conoscenza enorme, ma congelata. Tutto il resto — la conversazione in corso, i documenti caricati, i risultati dei tool — esiste per il modello solo se è dentro la finestra di contesto in questo preciso istante. Niente viene automaticamente ricordato tra una chiamata e l'altra.*
+- 2 bullet di sostanza:
+  1. **Costo**: il meccanismo di attention è O(n²) sulla lunghezza del contesto. Raddoppiare il contesto più che raddoppia il costo di calcolo.
+  2. **Qualità**: anche quando "ci sta", il modello non usa bene tutto il contesto. Tende a ricordare meglio inizio e fine, peggio il centro — fenomeno noto come *lost in the middle*.
+
+**Visual**: nessuno.
 
 ---
 
