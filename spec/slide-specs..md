@@ -1,8 +1,8 @@
 # Specifica slide consolidate — Lezione MBA Politecnico di Milano
 ## "Agents in action" — Francesco Gianferrari Pini, Quantyca
 
-**Stato**: slide 0, 1, 2, 2bis, 3, 4, 5, 6, 7, 8 consolidate.
-**Prossima slide da definire**: Slide 9 (apertura Sezione 2).
+**Stato**: slide 1–10 consolidate.
+**Prossima slide da definire**: Slide 11 (apertura Sezione 2).
 
 ### Struttura modulare
 
@@ -10,22 +10,22 @@ Ogni slide è un file HTML separato in `lezione-mba/slides/`. Il file `presentat
 
 | File | Slide |
 |------|-------|
-| `slides/slide0-title.html` | Slide 0 — Apertura lezione |
-| `slides/slide1-llm-cuore.html` | Slide 1 — LLM: il cuore degli agenti |
-| `slides/slide2bis-training-loop.html` | Slide 2bis — Come si addestra un LLM |
-| `slides/slide2-pretraining.html` | Slide 2 — Il pre-training di un LLM |
-| `slides/slide4-compression.html` | Slide 4 — LLM: Compression through Abstraction |
-| `slides/slide3-conoscenza.html` | Slide 3 — La portata della conoscenza |
-| `slides/slide5-conseguenze.html` | Slide 5 — Conseguenze della compressione |
-| `slides/slide7-genera-testo.html` | Slide 7 — Come l'LLM genera testo |
-| `slides/slide6-context-window.html` | Slide 6 — Il limite della context window |
-| `slides/slide8-pratica.html` | Slide 8 — Cosa significa in pratica? |
+| `slides/slide1-title.html` | Slide 1 — Apertura lezione |
+| `slides/slide2-llm-cuore.html` | Slide 2 — LLM: il cuore degli agenti |
+| `slides/slide3-training-loop.html` | Slide 3 — Come si addestra un LLM |
+| `slides/slide4-pretraining.html` | Slide 4 — Il pre-training di un LLM |
+| `slides/slide5-compression.html` | Slide 5 — LLM: Compression through Abstraction |
+| `slides/slide6-conoscenza.html` | Slide 6 — La portata della conoscenza |
+| `slides/slide7-conseguenze.html` | Slide 7 — Conseguenze della compressione |
+| `slides/slide8-genera-testo.html` | Slide 8 — Come l'LLM genera testo |
+| `slides/slide9-pratica.html` | Slide 9 — Cosa significa in pratica? |
+| `slides/slide10-context-window.html` | Slide 10 — Il limite della context window |
 
 Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Per aggiungere una nuova slide: creare il file in `slides/`, aggiungerlo all'array `slideFiles` in `presentation.html`, e documentarlo qui.
 
 ---
 
-## ✅ Slide 0 — Apertura lezione
+## ✅ Slide 1 — Apertura lezione
 
 **Layout**: titolo centrale grande, attribuzione in piccolo sotto il titolo, mappa delle 7 tappe in basso con icone.
 
@@ -45,7 +45,7 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 
 ---
 
-## ✅ Slide 1 — LLM: il cuore degli agenti
+## ✅ Slide 2 — LLM: il cuore degli agenti
 
 **Layout**: titolo in alto, definizione centrale evidenziata, 3 bullet estesi sotto, schema visivo in basso (o a destra della definizione).
 
@@ -74,7 +74,7 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 
 ---
 
-## ✅ Slide 2bis — Come si addestra un LLM
+## ✅ Slide 3 — Come si addestra un LLM
 
 **Layout**: titolo in alto, grande SVG centrale che occupa ~80% della slide, didascalia di 1-2 righe in basso.
 
@@ -107,7 +107,7 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 
 ---
 
-## ✅ Slide 2 — Il pre-training di un LLM
+## ✅ Slide 4 — Il pre-training di un LLM
 
 **Layout**: titolo in alto, sottotitolo, 3 bullet di meccanica, nota in basso. Infografica di scala a 5 livelli occupa ~50% della slide (a destra o in basso).
 
@@ -136,7 +136,7 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 
 ---
 
-## ✅ Slide 4 — LLM: Compression through Abstraction
+## ✅ Slide 5 — LLM: Compression through Abstraction
 
 **Layout**: titolo in alto, concetto centrale in evidenza, 3 bullet sotto, citazione in basso in stile "pull quote". Visual occupa il lato destro o la parte inferiore.
 
@@ -168,7 +168,7 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 
 ---
 
-## ✅ Slide 3 — La portata della conoscenza
+## ✅ Slide 6 — La portata della conoscenza
 
 **Layout**: titolo in alto, sottotitolo, 2 blocchi paralleli (sinistra/destra) che occupano la parte centrale, nota conclusiva in basso.
 
@@ -183,7 +183,7 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 
 ---
 
-## ✅ Slide 5 — Conseguenze della compressione
+## ✅ Slide 7 — Conseguenze della compressione
 
 **Layout**: titolo in alto, 2 colonne contrastive al centro (sinistra/destra), regola pratica in basso come blocco evidenziato.
 
@@ -205,7 +205,7 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 
 ---
 
-## ✅ Slide 7 — Come l'LLM genera testo
+## ✅ Slide 8 — Come l'LLM genera testo
 
 **Layout**: titolo in alto, grande visual narrativo al centro (~70% della slide), didascalia sotto.
 
@@ -213,12 +213,14 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 - Titolo: *Come l'LLM genera testo*
 - Didascalia (sotto il diagramma): *Il modello non pianifica una risposta. Produce un token alla volta. Ogni nuovo token viene appeso al contesto e il contesto completo viene rivalutato per produrre il successivo.*
 
-**Visual**: sequenza narrativa che mostra il contesto che cresce token dopo token, con freccia laterale che chiarisce che ogni riga è una chiamata indipendente al modello.
+**Visual**: sequenza narrativa che mostra il contesto che cresce token dopo token, con freccia laterale che chiarisce che ogni riga è una chiamata indipendente al modello. Ogni riga è divisa visivamente in due zone: il context (sfondo scuro, testo grigio chiaro) e il token appena generato (sfondo accento semitrasparente, testo accento bold). Una legenda in alto spiega i due colori.
 
 **Prompt per schema SVG**:
 > Visual narrativo verticale che mostra l'evoluzione del contesto token dopo token.
 >
-> **Colonna centrale** — una pila verticale di 7-8 righe, ognuna è un "contesto" a un certo istante. Ogni riga è un rettangolo orizzontale con testo all'interno. I token già generati sono in grigio scuro, l'ultimo token aggiunto è evidenziato in colore accento.
+> **Legenda in alto**: due riquadri con etichetta — "context (input al modello)" (sfondo scuro) e "token generato (output)" (sfondo accento).
+>
+> **Colonna centrale** — una pila verticale di 7-8 righe, ognuna è un "contesto" a un certo istante. Ogni riga è composta da due rettangoli adiacenti: uno scuro per il context e uno con sfondo accento semitrasparente per il token appena generato. I token del context sono in grigio chiaro, il nuovo token è in colore accento bold.
 >
 > Sequenza delle righe (dall'alto verso il basso):
 >   1. `Il`                          (token nuovo: "Il")
@@ -242,22 +244,7 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 
 ---
 
-## ✅ Slide 6 — Il limite della context window
-
-**Layout**: titolo in alto, blocco analogia esteso in apertura (prosa narrativa), 2 bullet di sostanza sotto.
-
-**Testo**:
-- Titolo: *Il limite della context window*
-- Blocco analogia (apertura, in prosa): *Il protagonista di Memento. Un uomo colpito da amnesia anterograda — ricorda la sua vita prima dell'incidente, ma ogni nuovo ricordo svanisce in pochi minuti. Sopravvive scrivendo tutto su Polaroid e tatuaggi: tutto ciò che gli serve sapere ora deve essere fisicamente davanti ai suoi occhi, ora. Un LLM funziona allo stesso modo. Il training è la "vita prima": conoscenza enorme, ma congelata. Tutto il resto — la conversazione in corso, i documenti caricati, i risultati dei tool — esiste per il modello solo se è dentro la finestra di contesto in questo preciso istante. Niente viene automaticamente ricordato tra una chiamata e l'altra.*
-- 2 bullet di sostanza:
-  1. **Costo**: il meccanismo di attention è O(n²) sulla lunghezza del contesto. Raddoppiare il contesto più che raddoppia il costo di calcolo.
-  2. **Qualità**: anche quando "ci sta", il modello non usa bene tutto il contesto. Tende a ricordare meglio inizio e fine, peggio il centro — fenomeno noto come *lost in the middle*.
-
-**Visual**: nessuno.
-
----
-
-## ✅ Slide 8 — Cosa significa in pratica?
+## ✅ Slide 9 — Cosa significa in pratica?
 
 **Layout**: titolo in alto, 3 bullet al centro, seed narrativo in chiusura evidenziato.
 
@@ -270,4 +257,20 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 - Seed narrativo (in chiusura, evidenziato): *Questo è il primo mattoncino. I prossimi tre loop — conversazione, tool, codice — lo avvolgono uno sull'altro.*
 
 **Visual**: nessuno.
+
+---
+
+## ✅ Slide 10 — Il limite della context window
+
+**Layout**: titolo in alto, blocco analogia esteso in apertura (prosa narrativa), 2 bullet di sostanza sotto.
+
+**Testo**:
+- Titolo: *Il limite della context window*
+- Blocco analogia (apertura, in prosa): *Il protagonista di Memento. Un uomo colpito da amnesia anterograda — ricorda la sua vita prima dell'incidente, ma ogni nuovo ricordo svanisce in pochi minuti. Sopravvive scrivendo tutto su Polaroid e tatuaggi: tutto ciò che gli serve sapere ora deve essere fisicamente davanti ai suoi occhi, ora. Un LLM funziona allo stesso modo. Il training è la "vita prima": conoscenza enorme, ma congelata. Tutto il resto — la conversazione in corso, i documenti caricati, i risultati dei tool — esiste per il modello solo se è dentro la finestra di contesto in questo preciso istante. Niente viene automaticamente ricordato tra una chiamata e l'altra.*
+- 2 bullet di sostanza:
+  1. **Costo**: il meccanismo di attention è O(n²) sulla lunghezza del contesto. Raddoppiare il contesto più che raddoppia il costo di calcolo.
+  2. **Qualità**: anche quando "ci sta", il modello non usa bene tutto il contesto. Tende a ricordare meglio inizio e fine, peggio il centro — fenomeno noto come *lost in the middle*.
+
+**Visual**: nessuno.
+
 
