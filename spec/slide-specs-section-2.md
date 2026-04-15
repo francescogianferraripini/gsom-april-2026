@@ -2,8 +2,15 @@
 ## Lezione MBA Politecnico di Milano — "Agents in action"
 ### Francesco Gianferrari Pini, Quantyca
 
-**Stato**: slide 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 consolidate.
+**Stato**: slide 9, 10, 11, 12, 13, 14, 15, 16, 17, 18 consolidate. Separatore sezione 2 aggiunto.
 **Prossima slide da definire**: Slide 19 (Sezione 3 — Closed vs Open).
+
+---
+
+## Separatore — Sezione 2: Conversazionale
+
+**File**: `slides/slide-div-sec2.html`
+**Layout**: section-divider centrato. Titolo "Conversazionale", sottotitolo "Dalla funzione all'agente", roadmap 7 tappe con sezione 2 evidenziata e le altre attenuate.
 
 ---
 
@@ -116,7 +123,70 @@
 
 ---
 
-## ✅ Slide 11 — Il turno zero: il system prompt
+## ✅ Slide 11 — Perché serve un secondo addestramento
+
+**Layout**: titolo in alto, visual centrale con confronto a 2 colonne (modello base vs modello RLHF), conclusione compatta in basso evidenziata.
+
+**Testo**:
+- Titolo: *Perché serve un secondo addestramento*
+- Conclusione in basso (evidenziata): *Da «cosa è probabile» a «cosa serve rispondere».*
+
+**Visual**: confronto a 2 colonne — stesso prompt, modello base (pre-trained) vs modello RLHF.
+
+**Prompt per schema SVG**:
+> Diagramma orizzontale a 2 colonne gemelle, separate da linea verticale sottile. In cima, centrato sopra entrambe le colonne, un unico box di prompt condiviso.
+>
+> **Box prompt condiviso (in alto, centrato)**: rettangolo etichettato *Prompt dell'utente* con testo: *"Come posso aumentare le vendite?"*. Dal box partono due frecce divergenti, una verso la colonna sinistra, una verso la destra.
+>
+> **Colonna sinistra — "Modello base (solo pre-training)"**:
+>   - Etichetta colonna in alto, con piccola icona chip grigia.
+>   - Sotto il prompt, un box "completamento" (font monospace, sfondo leggermente grigio) che contiene una risposta tipica da completamento statistico non allineato:
+>     *"Come posso aumentare le vendite? E quante persone lavorano nella tua azienda? Il settore è B2B o B2C? In quale mercato geografico operate? Negli ultimi anni la domanda è cresciuta o..."*
+>   - Sotto il box, piccola label in italico: *"Il modello continua la frase come farebbe un testo sul web — con altre domande, non con una risposta."*
+>
+> **Colonna destra — "Modello RLHF"**:
+>   - Etichetta colonna in alto, con piccola icona chip in colore accento.
+>   - Sotto il prompt, un box "risposta" (font sans-serif, sfondo chiaro) che contiene una risposta strutturata e utile:
+>     *"Per aumentare le vendite puoi agire su tre leve principali: 1) acquisire nuovi clienti (marketing, partnership); 2) aumentare il valore medio per cliente (upselling, bundle); 3) migliorare la retention (CRM, customer success). Vuoi che approfondiamo una di queste?"*
+>   - Sotto il box, piccola label in italico: *"Il modello riconosce una domanda e fornisce una risposta utile, strutturata, orientata all'azione."*
+>
+> **Stile**: le due colonne sono visivamente simmetriche per struttura, ma contrastano nettamente nel contenuto. Colonna sinistra in scala di grigi, colonna destra con tocchi di colore accento (icona, bordo del box risposta). Font sans-serif ovunque tranne il completamento del modello base, che è in monospace per suggerire "output grezzo, non formattato per l'utente".
+
+---
+
+## ✅ Slide 12 — Il secondo addestramento: RLHF
+
+**Layout**: titolo in alto, mini-schema visivo del ciclo RLHF nella parte superiore (~35% della slide), 3 insight strategici al centro, conclusione evidenziata in basso.
+
+**Testo**:
+- Titolo: *Il secondo addestramento: RLHF*
+- Meccanica (didascalia sotto il mini-schema): *Varianti operative: RLHF (feedback umano), RLAIF (feedback da altri AI), Constitutional AI (Anthropic), DPO. Cambiano i dettagli; il principio — premiare le risposte desiderabili, penalizzare le altre — è lo stesso.*
+- **3 insight strategici**:
+  1. La personalità dei diversi modelli (Claude, GPT, Gemini) non è emergente — è scolpita in post-training con valori diversi.
+  2. I limiti di comportamento non sono quasi mai limiti di capacità — sono scelte di policy del provider.
+  3. Chi fornisce feedback plasma l'AI. Implicazioni etiche, geopolitiche, di business.
+- Conclusione in basso (evidenziata): *Il modello che si usa non è "l'AI". È una particolare AI addestrata con particolari valori da particolari persone.*
+
+**Visual**: mini-schema del ciclo RLHF (3-4 step).
+
+**Prompt per schema SVG**:
+> Diagramma orizzontale del ciclo RLHF, compatto (occupa ~35% della slide, nella parte superiore). 4 step connessi da frecce in sequenza, con una freccia di ritorno dall'ultimo al primo per chiudere il ciclo.
+>
+> **Step 1 — "Prompt"**: rettangolo con testo esempio: *"Come posso aumentare le vendite?"*
+>
+> **Step 2 — "Il modello produce 2 risposte candidate"**: rettangolo centrale etichettato "Modello" con due frecce che escono, una verso un box "Risposta A" (testo breve esemplificativo: *"Per aumentare le vendite, lavora su acquisizione, upsell e retention..."*), una verso un box "Risposta B" (testo breve alternativo: *"Dipende. Quali sono i tuoi attuali canali di vendita?"*).
+>
+> **Step 3 — "Un giudice sceglie la migliore"**: icona di persona (o persona + chip, a suggerire "umano o AI") con pollice verso l'alto davanti a una delle due risposte. Label sotto: *"umano, AI, o principi costituzionali"*.
+>
+> **Step 4 — "Il modello viene aggiornato"**: rettangolo "Modello" con piccole manopole al suo interno leggermente ruotate (richiamo a Slide 2bis), colore accento a enfatizzare l'aggiornamento. Label sotto: *"rinforza il comportamento preferito"*.
+>
+> **Freccia di ritorno** dal blocco dello step 4 al prompt dello step 1, con etichetta in piccolo: *"ripetuto su milioni di esempi"*.
+>
+> Stile minimale, monocromatico con un colore accento solo su: il pollice verso l'alto dello step 3, le manopole aggiornate dello step 4, la freccia di ritorno. Font sans-serif.
+
+---
+
+## ✅ Slide 13 — Il turno zero: il system prompt
 
 **Layout**: titolo in alto, definizione in evidenza, 3 bullet al centro, mini-confronto visivo a 2 box sul lato o in basso, implicazione finale evidenziata in chiusura.
 
@@ -149,69 +219,6 @@
 > Il contrasto visivo tra le due colonne deve essere netto: stile delle risposte completamente diverso nonostante l'input user sia identico e il modello sia lo stesso.
 >
 > Stile minimale, sans-serif per chat, monospace per i system prompt. Un colore accento tenue solo sui due box "System prompt" per evidenziarli come elementi di controllo.
-
----
-
-## ✅ Slide 12 — Perché serve un secondo addestramento
-
-**Layout**: titolo in alto, visual centrale con confronto a 2 colonne (modello base vs modello RLHF), conclusione compatta in basso evidenziata.
-
-**Testo**:
-- Titolo: *Perché serve un secondo addestramento*
-- Conclusione in basso (evidenziata): *Da «cosa è probabile» a «cosa serve rispondere».*
-
-**Visual**: confronto a 2 colonne — stesso prompt, modello base (pre-trained) vs modello RLHF.
-
-**Prompt per schema SVG**:
-> Diagramma orizzontale a 2 colonne gemelle, separate da linea verticale sottile. In cima, centrato sopra entrambe le colonne, un unico box di prompt condiviso.
->
-> **Box prompt condiviso (in alto, centrato)**: rettangolo etichettato *Prompt dell'utente* con testo: *"Come posso aumentare le vendite?"*. Dal box partono due frecce divergenti, una verso la colonna sinistra, una verso la destra.
->
-> **Colonna sinistra — "Modello base (solo pre-training)"**:
->   - Etichetta colonna in alto, con piccola icona chip grigia.
->   - Sotto il prompt, un box "completamento" (font monospace, sfondo leggermente grigio) che contiene una risposta tipica da completamento statistico non allineato:
->     *"Come posso aumentare le vendite? E quante persone lavorano nella tua azienda? Il settore è B2B o B2C? In quale mercato geografico operate? Negli ultimi anni la domanda è cresciuta o..."*
->   - Sotto il box, piccola label in italico: *"Il modello continua la frase come farebbe un testo sul web — con altre domande, non con una risposta."*
->
-> **Colonna destra — "Modello RLHF"**:
->   - Etichetta colonna in alto, con piccola icona chip in colore accento.
->   - Sotto il prompt, un box "risposta" (font sans-serif, sfondo chiaro) che contiene una risposta strutturata e utile:
->     *"Per aumentare le vendite puoi agire su tre leve principali: 1) acquisire nuovi clienti (marketing, partnership); 2) aumentare il valore medio per cliente (upselling, bundle); 3) migliorare la retention (CRM, customer success). Vuoi che approfondiamo una di queste?"*
->   - Sotto il box, piccola label in italico: *"Il modello riconosce una domanda e fornisce una risposta utile, strutturata, orientata all'azione."*
->
-> **Stile**: le due colonne sono visivamente simmetriche per struttura, ma contrastano nettamente nel contenuto. Colonna sinistra in scala di grigi, colonna destra con tocchi di colore accento (icona, bordo del box risposta). Font sans-serif ovunque tranne il completamento del modello base, che è in monospace per suggerire "output grezzo, non formattato per l'utente".
-
----
-
-## ✅ Slide 13 — Il secondo addestramento: RLHF
-
-**Layout**: titolo in alto, mini-schema visivo del ciclo RLHF nella parte superiore (~35% della slide), 3 insight strategici al centro, conclusione evidenziata in basso.
-
-**Testo**:
-- Titolo: *Il secondo addestramento: RLHF*
-- Meccanica (didascalia sotto il mini-schema): *Varianti operative: RLHF (feedback umano), RLAIF (feedback da altri AI), Constitutional AI (Anthropic), DPO. Cambiano i dettagli; il principio — premiare le risposte desiderabili, penalizzare le altre — è lo stesso.*
-- **3 insight strategici**:
-  1. La personalità dei diversi modelli (Claude, GPT, Gemini) non è emergente — è scolpita in post-training con valori diversi.
-  2. I limiti di comportamento non sono quasi mai limiti di capacità — sono scelte di policy del provider.
-  3. Chi fornisce feedback plasma l'AI. Implicazioni etiche, geopolitiche, di business.
-- Conclusione in basso (evidenziata): *Il modello che si usa non è "l'AI". È una particolare AI addestrata con particolari valori da particolari persone.*
-
-**Visual**: mini-schema del ciclo RLHF (3-4 step).
-
-**Prompt per schema SVG**:
-> Diagramma orizzontale del ciclo RLHF, compatto (occupa ~35% della slide, nella parte superiore). 4 step connessi da frecce in sequenza, con una freccia di ritorno dall'ultimo al primo per chiudere il ciclo.
->
-> **Step 1 — "Prompt"**: rettangolo con testo esempio: *"Come posso aumentare le vendite?"*
->
-> **Step 2 — "Il modello produce 2 risposte candidate"**: rettangolo centrale etichettato "Modello" con due frecce che escono, una verso un box "Risposta A" (testo breve esemplificativo: *"Per aumentare le vendite, lavora su acquisizione, upsell e retention..."*), una verso un box "Risposta B" (testo breve alternativo: *"Dipende. Quali sono i tuoi attuali canali di vendita?"*).
->
-> **Step 3 — "Un giudice sceglie la migliore"**: icona di persona (o persona + chip, a suggerire "umano o AI") con pollice verso l'alto davanti a una delle due risposte. Label sotto: *"umano, AI, o principi costituzionali"*.
->
-> **Step 4 — "Il modello viene aggiornato"**: rettangolo "Modello" con piccole manopole al suo interno leggermente ruotate (richiamo a Slide 2bis), colore accento a enfatizzare l'aggiornamento. Label sotto: *"rinforza il comportamento preferito"*.
->
-> **Freccia di ritorno** dal blocco dello step 4 al prompt dello step 1, con etichetta in piccolo: *"ripetuto su milioni di esempi"*.
->
-> Stile minimale, monocromatico con un colore accento solo su: il pollice verso l'alto dello step 3, le manopole aggiornate dello step 4, la freccia di ritorno. Font sans-serif.
 
 ---
 

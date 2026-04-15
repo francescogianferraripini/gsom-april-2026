@@ -5,8 +5,8 @@
     <marker id="arrowX" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
       <path d="M0,0 L8,3 L0,6" fill="none" stroke="#2a2a4a" stroke-width="1.5"/>
     </marker>
-    <marker id="arrowY" markerWidth="6" markerHeight="8" refX="3" refY="0" orient="auto">
-      <path d="M0,8 L3,0 L6,8" fill="none" stroke="#2a2a4a" stroke-width="1.5"/>
+    <marker id="arrowY" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#2a2a4a" stroke-width="1.5"/>
     </marker>
   </defs>
 

@@ -2,11 +2,11 @@
   <title>Qualita effettiva vs dimensione del contesto</title>
 
   <defs>
-    <marker id="arrow-down-blue" markerWidth="8" markerHeight="8" refX="4" refY="0" orient="auto">
-      <path d="M2,0 L4,6 L6,0" fill="none" stroke="#00b4d8" stroke-width="1.2"/>
+    <marker id="arrow-down-blue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#00b4d8" stroke-width="1.2"/>
     </marker>
-    <marker id="arrow-down-red" markerWidth="8" markerHeight="8" refX="4" refY="0" orient="auto">
-      <path d="M2,0 L4,6 L6,0" fill="none" stroke="#e77f67" stroke-width="1.2"/>
+    <marker id="arrow-down-red" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#e77f67" stroke-width="1.2"/>
     </marker>
   </defs>
 

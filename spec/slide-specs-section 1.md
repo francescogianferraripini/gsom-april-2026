@@ -10,13 +10,14 @@ Ogni slide è un file HTML separato in `lezione-mba/slides/`. Il file `presentat
 | File | Slide |
 |------|-------|
 | `slides/slide1-title.html` | Slide 1 — Apertura lezione |
+| `slides/slide-div-sec1.html` | Separatore — Sezione 1: LLM |
 | `slides/slide2-llm-cuore.html` | Slide 2 — LLM: il cuore degli agenti |
 | `slides/slide3-training-loop.html` | Slide 3 — Come si addestra un LLM |
 | `slides/slide4-pretraining.html` | Slide 4 — Il pre-training di un LLM |
 | `slides/slide5-compression.html` | Slide 5 — LLM: Compression through Abstraction |
 | `slides/slide6-conoscenza.html` | Slide 6 — La portata della conoscenza |
 | `slides/slide7-conseguenze.html` | Slide 7 — Conseguenze della compressione |
-| `slides/slide8-genera-testo.html` | Slide 8 — Come l'LLM genera testo |
+| `slides/slide8-genera-testo.html` | Slide 8 — Loop 1/4: Come l'LLM genera testo |
 | `slides/slide9-pratica.html` | Slide 9 — Cosa significa in pratica? |
 | `slides/slide10-context-window.html` | Slide 10 — Il limite della context window |
 
@@ -204,12 +205,12 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 
 ---
 
-## ✅ Slide 8 — Come l'LLM genera testo
+## ✅ Slide 8 — Loop 1/4: Come l'LLM genera testo
 
 **Layout**: titolo in alto, grande visual narrativo al centro (~70% della slide), didascalia sotto.
 
 **Testo**:
-- Titolo: *Come l'LLM genera testo*
+- Titolo: *Loop 1/4: Come l'LLM genera testo*
 - Didascalia (sotto il diagramma): *Il modello non pianifica una risposta. Produce un token alla volta. Ogni nuovo token viene appeso al contesto e il contesto completo viene rivalutato per produrre il successivo.*
 
 **Visual**: sequenza narrativa che mostra il contesto che cresce token dopo token, con freccia laterale che chiarisce che ogni riga è una chiamata indipendente al modello. Ogni riga è divisa visivamente in due zone: il context (sfondo scuro, testo grigio chiaro) e il token appena generato (sfondo accento semitrasparente, testo accento bold). Una legenda in alto spiega i due colori.
@@ -233,13 +234,16 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 >
 > Tra ogni riga e la successiva, una piccola freccia verticale verso il basso.
 >
-> **A destra della pila** — una lunga freccia verticale grande che attraversa tutte le righe, con etichetta in verticale: *"ogni riga = una chiamata completa al modello"*.
+> **A destra della pila** — diagramma del loop con 4 passi numerati (①–④):
+> - ① box "contesto" → ② box "LLM" → ③ box "token" → ④ freccia tratteggiata accent che torna a ① ("appeso al contesto")
+> - Titolo sopra: *"ogni riga = una chiamata al modello:"*
+> - Footer sotto: *"↻ si ripete fino al token di STOP"*
 >
 > **A sinistra della pila** — etichetta verticale più piccola con una graffa che abbraccia tutte le righe: *"il contesto cresce di un token per volta"*.
 >
 > **In fondo** — sotto l'ultima riga, piccolo badge/etichetta: *"token di STOP → fine generazione"*.
 >
-> Stile minimale, monocromatico con un solo colore accento (usato per: l'ultimo token di ogni riga, la freccia laterale destra, il badge STOP). Font sans-serif, monospace per il testo nelle righe del contesto per enfatizzare la natura "token".
+> Stile minimale, monocromatico con un solo colore accento (usato per: l'ultimo token di ogni riga, il diagramma loop a destra, il badge STOP). Font sans-serif, monospace per il testo nelle righe del contesto per enfatizzare la natura "token".
 
 ---
 

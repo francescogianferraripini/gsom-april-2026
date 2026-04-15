@@ -1,13 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 490">
   <defs>
-    <marker id="arrowDown" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
-      <path d="M1,1 L4,7 L7,1" fill="none" stroke="#3a3a5a" stroke-width="1.5"/>
+    <!-- Standard arrow, muted (inter-row connectors) -->
+    <marker id="arrowDown" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#3a3a5a" stroke-width="1.5"/>
     </marker>
-    <marker id="arrowDownAccent" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
-      <path d="M2,1 L5,8 L8,1" fill="none" stroke="#00b4d8" stroke-width="1.8"/>
+    <!-- Standard arrow, accent (cycle diagram) -->
+    <marker id="arrowAccent" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#00b4d8" stroke-width="1.8"/>
     </marker>
-    <marker id="arrowUpAccent" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="180">
-      <path d="M2,1 L5,8 L8,1" fill="none" stroke="#00b4d8" stroke-width="1.8"/>
+    <!-- Standard arrow, muted (cycle diagram input) -->
+    <marker id="arrowMuted" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#8892a0" stroke-width="1.5"/>
     </marker>
   </defs>
 
@@ -27,15 +30,9 @@
 
   <!-- ═══════════════════════════════════════════
        Rows: centered at x=380, charW=8.4, pad=10
-       rectW = chars*8.4 + 20
-       rectX = 380 - rectW/2
-       textX = rectX + 10
-       hlX   = textX + ctxChars*8.4 - 2
-       hlW   = newChars*8.4 + 6
        ═══════════════════════════════════════════ -->
 
-  <!-- Row 1: "Il" — 2 chars, 0 ctx, 2 new -->
-  <!-- rectW=37, rectX=362, textX=372 -->
+  <!-- Row 1: "Il" -->
   <rect x="362" y="28" width="37" height="32" rx="6" ry="6" fill="#2a2a4a"/>
   <rect x="368" y="30" width="25" height="28" rx="4" ry="4" fill="#00b4d8" opacity="0.22"/>
   <text x="372" y="49" class="tok gen">Il</text>
@@ -43,8 +40,7 @@
   <!-- Arrow 1→2 -->
   <line x1="380" y1="62" x2="380" y2="74" stroke="#3a3a5a" stroke-width="1.5" marker-end="url(#arrowDown)"/>
 
-  <!-- Row 2: "Il gatto" — 8 chars, 3 ctx, 5 new -->
-  <!-- rectW=87, rectX=337, textX=347 -->
+  <!-- Row 2: "Il gatto" -->
   <rect x="337" y="76" width="87" height="32" rx="6" ry="6" fill="#2a2a4a"/>
   <rect x="370" y="78" width="50" height="28" rx="4" ry="4" fill="#00b4d8" opacity="0.22"/>
   <text x="347" y="97" class="tok"><tspan class="ctx">Il </tspan><tspan class="gen">gatto</tspan></text>
@@ -52,8 +48,7 @@
   <!-- Arrow 2→3 -->
   <line x1="380" y1="110" x2="380" y2="122" stroke="#3a3a5a" stroke-width="1.5" marker-end="url(#arrowDown)"/>
 
-  <!-- Row 3: "Il gatto è" — 10 chars, 9 ctx, 1 new -->
-  <!-- rectW=104, rectX=328, textX=338 -->
+  <!-- Row 3: "Il gatto è" -->
   <rect x="328" y="124" width="104" height="32" rx="6" ry="6" fill="#2a2a4a"/>
   <rect x="411" y="126" width="17" height="28" rx="4" ry="4" fill="#00b4d8" opacity="0.22"/>
   <text x="338" y="145" class="tok"><tspan class="ctx">Il gatto </tspan><tspan class="gen">è</tspan></text>
@@ -61,8 +56,7 @@
   <!-- Arrow 3→4 -->
   <line x1="380" y1="158" x2="380" y2="170" stroke="#3a3a5a" stroke-width="1.5" marker-end="url(#arrowDown)"/>
 
-  <!-- Row 4: "Il gatto è sul" — 14 chars, 11 ctx, 3 new -->
-  <!-- rectW=138, rectX=311, textX=321 -->
+  <!-- Row 4: "Il gatto è sul" -->
   <rect x="311" y="172" width="138" height="32" rx="6" ry="6" fill="#2a2a4a"/>
   <rect x="411" y="174" width="31" height="28" rx="4" ry="4" fill="#00b4d8" opacity="0.22"/>
   <text x="321" y="193" class="tok"><tspan class="ctx">Il gatto è </tspan><tspan class="gen">sul</tspan></text>
@@ -70,8 +64,7 @@
   <!-- Arrow 4→5 -->
   <line x1="380" y1="206" x2="380" y2="218" stroke="#3a3a5a" stroke-width="1.5" marker-end="url(#arrowDown)"/>
 
-  <!-- Row 5: "Il gatto è sul tavolo" — 21 chars, 15 ctx, 6 new -->
-  <!-- rectW=196, rectX=282, textX=292 -->
+  <!-- Row 5: "Il gatto è sul tavolo" -->
   <rect x="282" y="220" width="196" height="32" rx="6" ry="6" fill="#2a2a4a"/>
   <rect x="416" y="222" width="56" height="28" rx="4" ry="4" fill="#00b4d8" opacity="0.22"/>
   <text x="292" y="241" class="tok"><tspan class="ctx">Il gatto è sul </tspan><tspan class="gen">tavolo</tspan></text>
@@ -79,8 +72,7 @@
   <!-- Arrow 5→6 -->
   <line x1="380" y1="254" x2="380" y2="266" stroke="#3a3a5a" stroke-width="1.5" marker-end="url(#arrowDown)"/>
 
-  <!-- Row 6: "Il gatto è sul tavolo e" — 23 chars, 22 ctx, 1 new -->
-  <!-- rectW=213, rectX=274, textX=284 -->
+  <!-- Row 6: "Il gatto è sul tavolo e" -->
   <rect x="274" y="268" width="213" height="32" rx="6" ry="6" fill="#2a2a4a"/>
   <rect x="466" y="270" width="17" height="28" rx="4" ry="4" fill="#00b4d8" opacity="0.22"/>
   <text x="284" y="289" class="tok"><tspan class="ctx">Il gatto è sul tavolo </tspan><tspan class="gen">e</tspan></text>
@@ -88,8 +80,7 @@
   <!-- Arrow 6→7 -->
   <line x1="380" y1="302" x2="380" y2="314" stroke="#3a3a5a" stroke-width="1.5" marker-end="url(#arrowDown)"/>
 
-  <!-- Row 7: "Il gatto è sul tavolo e dorme" — 29 chars, 24 ctx, 5 new -->
-  <!-- rectW=264, rectX=248, textX=258 -->
+  <!-- Row 7: "Il gatto è sul tavolo e dorme" -->
   <rect x="248" y="316" width="264" height="32" rx="6" ry="6" fill="#2a2a4a"/>
   <rect x="457" y="318" width="48" height="28" rx="4" ry="4" fill="#00b4d8" opacity="0.22"/>
   <text x="258" y="337" class="tok"><tspan class="ctx">Il gatto è sul tavolo e </tspan><tspan class="gen">dorme</tspan></text>
@@ -97,8 +88,7 @@
   <!-- Arrow 7→8 -->
   <line x1="380" y1="350" x2="380" y2="362" stroke="#3a3a5a" stroke-width="1.5" marker-end="url(#arrowDown)"/>
 
-  <!-- Row 8: "Il gatto è sul tavolo e dorme." — 30 chars, 29 ctx, 1 new -->
-  <!-- rectW=272, rectX=244, textX=254 -->
+  <!-- Row 8: "Il gatto è sul tavolo e dorme." -->
   <rect x="244" y="364" width="272" height="32" rx="6" ry="6" fill="#2a2a4a"/>
   <rect x="495" y="366" width="17" height="28" rx="4" ry="4" fill="#00b4d8" opacity="0.22"/>
   <text x="254" y="385" class="tok"><tspan class="ctx">Il gatto è sul tavolo e dorme</tspan><tspan class="gen">.</tspan></text>
@@ -106,15 +96,49 @@
   <rect x="522" y="370" width="50" height="20" rx="4" ry="4" fill="#00b4d8" opacity="0.18" stroke="#00b4d8" stroke-width="1"/>
   <text x="547" y="384" font-size="10" font-weight="bold" text-anchor="middle" class="label-accent">STOP</text>
 
-  <!-- RIGHT SIDE: tall vertical arrow -->
-  <line x1="660" y1="36" x2="660" y2="388" stroke="#00b4d8" stroke-width="2" marker-start="url(#arrowUpAccent)" marker-end="url(#arrowDownAccent)"/>
-  <text x="0" y="0" font-size="13" class="label-accent" text-anchor="middle" transform="translate(682, 212) rotate(90)">ogni riga = una chiamata completa al modello</text>
-
   <!-- LEFT SIDE: vertical curly brace -->
   <path d="M 215,32 L 205,32 L 205,200 L 195,208 L 205,216 L 205,392 L 215,392" fill="none" stroke="#8892a0" stroke-width="1.5" stroke-linejoin="round"/>
   <text x="0" y="0" font-size="12" class="label-muted" text-anchor="middle" transform="translate(180, 212) rotate(-90)">il contesto cresce di un token per volta</text>
 
-  <!-- BOTTOM: badge -->
+  <!-- BOTTOM: STOP label -->
   <rect x="275" y="420" width="330" height="30" rx="6" ry="6" fill="#00b4d8" opacity="0.12" stroke="#00b4d8" stroke-width="1"/>
   <text x="440" y="440" font-size="13" font-weight="bold" text-anchor="middle" class="label-accent">token di STOP &#x2192; fine generazione</text>
+
+  <!-- ── RIGHT SIDE: LOOP CYCLE DIAGRAM ── -->
+
+  <!-- Separator -->
+  <line x1="572" y1="20" x2="572" y2="406" stroke="#2a2a4a" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- Title -->
+  <text x="800" y="118" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#8892a0" text-anchor="middle" font-style="italic">ogni riga = una chiamata al modello:</text>
+
+  <!-- ① Contesto box -->
+  <text x="654" y="148" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#8892a0">①</text>
+  <rect x="650" y="152" width="110" height="38" rx="6" fill="#242442" stroke="#3a3a5a" stroke-width="1.5"/>
+  <text x="705" y="176" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#c8cdd5" text-anchor="middle">contesto</text>
+
+  <!-- Arrow: contesto → LLM -->
+  <line x1="760" y1="171" x2="836" y2="171" stroke="#8892a0" stroke-width="1.5" marker-end="url(#arrowMuted)"/>
+  <text x="798" y="165" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#8892a0" text-anchor="middle">input</text>
+
+  <!-- ② LLM box -->
+  <text x="840" y="148" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#8892a0">②</text>
+  <rect x="836" y="152" width="90" height="38" rx="6" fill="#242442" stroke="#00b4d8" stroke-width="1.5"/>
+  <text x="881" y="176" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="bold" fill="#00b4d8" text-anchor="middle">LLM</text>
+
+  <!-- Arrow: LLM → token (downward) -->
+  <line x1="881" y1="190" x2="881" y2="232" stroke="#00b4d8" stroke-width="1.5" marker-end="url(#arrowAccent)"/>
+  <text x="908" y="216" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#00b4d8">1 token</text>
+
+  <!-- ③ Token box -->
+  <text x="840" y="228" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#8892a0">③</text>
+  <rect x="836" y="232" width="90" height="28" rx="4" fill="#00b4d8" opacity="0.18" stroke="#00b4d8" stroke-width="1"/>
+  <text x="881" y="251" font-family="Arial, Helvetica, sans-serif" font-size="12" font-weight="bold" fill="#00b4d8" text-anchor="middle">token</text>
+
+  <!-- ④ Return arrow: token left → down-around → into contesto from left -->
+  <path d="M 836,246 L 618,246 L 618,171 L 650,171" fill="none" stroke="#00b4d8" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arrowAccent)"/>
+  <text x="727" y="264" font-family="Arial, Helvetica, sans-serif" font-size="10" fill="#00b4d8" text-anchor="middle">④ appeso al contesto</text>
+
+  <!-- Loop footer -->
+  <text x="800" y="310" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#8892a0" text-anchor="middle" font-style="italic">&#x21BB;  si ripete fino al token di STOP</text>
 </svg>

@@ -4,8 +4,8 @@
     <marker id="arrow-right" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
       <path d="M0,0 L8,3 L0,6" fill="#2a2a4a"/>
     </marker>
-    <marker id="arrow-left-accent" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
-      <path d="M8,0 L0,3 L8,6" fill="#00b4d8"/>
+    <marker id="arrow-left-accent" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#00b4d8"/>
     </marker>
   </defs>
 
