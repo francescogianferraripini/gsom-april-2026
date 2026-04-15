@@ -1,8 +1,7 @@
 # Specifica slide consolidate — Lezione MBA Politecnico di Milano
 ## "Agents in action" — Francesco Gianferrari Pini, Quantyca
 
-**Stato**: slide 1–10 consolidate.
-**Prossima slide da definire**: Slide 11 (apertura Sezione 2).
+**Stato**: slide 1–10 consolidate. Sezione 2 (slide 11–20) implementata — vedi `spec/slide-specs-section-2.md`.
 
 ### Struttura modulare
 

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 420">
+  <title>Ciclo conversazionale con traiettoria esterna</title>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#2a2a4a"/>
+    </marker>
+    <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6 Z" fill="#00b4d8"/>
+    </marker>
+    <marker id="arrow-muted" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <path d="M0,0 L7,2.5 L0,5 Z" fill="#8892a0"/>
+    </marker>
+  </defs>
+
+  <!-- Node 1: Utente scrive — top center -->
+  <g id="node1">
+    <rect x="395" y="30" width="170" height="60" rx="8" fill="#242442" stroke="#2a2a4a" stroke-width="1.5"/>
+    <text x="480" y="55" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#e8e8e8">Utente scrive</text>
+    <text x="480" y="72" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#8892a0">nuovo messaggio</text>
+  </g>
+
+  <!-- Node 2: Client costruisce contesto — upper right -->
+  <g id="node2">
+    <rect x="698" y="78" width="170" height="70" rx="8" fill="#242442" stroke="#2a2a4a" stroke-width="1.5"/>
+    <text x="783" y="103" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#e8e8e8">Client costruisce</text>
+    <text x="783" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#e8e8e8">contesto</text>
+    <text x="783" y="136" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#8892a0">system + storico + input</text>
+  </g>
+
+  <!-- Node 3: Modello genera risposta — lower right (accent) -->
+  <g id="node3">
+    <rect x="645" y="310" width="170" height="60" rx="8" fill="#1e3a42" stroke="#00b4d8" stroke-width="1.5"/>
+    <text x="730" y="336" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#e8e8e8">Modello genera</text>
+    <text x="730" y="352" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#e8e8e8">risposta</text>
+  </g>
+
+  <!-- Node 4: Client appende allo storico — lower left -->
+  <g id="node4">
+    <rect x="145" y="310" width="170" height="60" rx="8" fill="#242442" stroke="#2a2a4a" stroke-width="1.5"/>
+    <text x="230" y="333" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#e8e8e8">Client appende</text>
+    <text x="230" y="348" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#e8e8e8">allo storico</text>
+    <text x="230" y="363" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#8892a0">storico aggiornato</text>
+  </g>
+
+  <!-- Node 5: Utente legge risposta — upper left -->
+  <g id="node5">
+    <rect x="92" y="83" width="170" height="60" rx="8" fill="#242442" stroke="#2a2a4a" stroke-width="1.5"/>
+    <text x="177" y="108" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="600" fill="#e8e8e8">Utente legge risposta</text>
+    <text x="177" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#8892a0">risposta ricevuta</text>
+  </g>
+
+  <!-- Arrow 1→2: top center to upper right -->
+  <line x1="565" y1="60" x2="698" y2="100" stroke="#2a2a4a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Arrow 2→3: upper right to lower right -->
+  <line x1="820" y1="148" x2="790" y2="310" stroke="#2a2a4a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Arrow 3→4: lower right to lower left -->
+  <line x1="645" y1="340" x2="315" y2="340" stroke="#2a2a4a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Arrow 4→5: lower left to upper left -->
+  <line x1="180" y1="310" x2="170" y2="143" stroke="#2a2a4a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Arrow 5→1: closing the loop — accent, thick -->
+  <path d="M220,83 Q240,40 395,45" stroke="#00b4d8" stroke-width="3" fill="none" marker-end="url(#arrow-accent)"/>
+
+  <!-- Label on closing arrow -->
+  <text x="305" y="32" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#00b4d8" font-style="italic">ad ogni giro il contesto cresce</text>
+
+  <!-- Center: stacked context boxes -->
+  <g id="center-context" transform="translate(480, 200)">
+    <rect x="-32" y="-22" width="64" height="44" rx="4" fill="none" stroke="#1a3042" stroke-width="1.5"/>
+    <rect x="-24" y="-16" width="48" height="32" rx="3" fill="none" stroke="#00b4d859" stroke-width="1.5"/>
+    <rect x="-16" y="-10" width="32" height="20" rx="2" fill="none" stroke="#00b4d8" stroke-width="1.5"/>
+    <text x="0" y="38" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#8892a0">contesto</text>
+  </g>
+
+  <!-- External: Traiettoria branch -->
+  <g id="traiettoria">
+    <!-- Dashed arrow from node 3 area going right -->
+    <path d="M815,335 L880,280 L910,220" stroke="#8892a0" stroke-width="1.5" stroke-dasharray="5,4" fill="none" marker-end="url(#arrow-muted)"/>
+
+    <!-- Traiettoria box -->
+    <rect x="870" y="160" width="130" height="40" rx="8" fill="#242442" stroke="#00b4d8" stroke-width="1.5" stroke-dasharray="5,3"/>
+    <text x="935" y="185" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#e8e8e8">Traiettoria</text>
+
+    <!-- Branch lines down -->
+    <line x1="910" y1="200" x2="890" y2="240" stroke="#8892a0" stroke-width="1" stroke-dasharray="3,3"/>
+    <line x1="960" y1="200" x2="980" y2="240" stroke="#8892a0" stroke-width="1" stroke-dasharray="3,3"/>
+
+    <!-- Branch A: success -->
+    <rect x="840" y="242" width="110" height="32" rx="6" fill="#242442" stroke="#00b4d8" stroke-width="1"/>
+    <text x="895" y="263" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#00b4d8">&#x2713; risolto / utile</text>
+
+    <!-- Branch B: failure -->
+    <rect x="940" y="242" width="110" height="32" rx="6" fill="#242442" stroke="#e77f67" stroke-width="1"/>
+    <text x="995" y="263" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#e77f67">&#x2717; non risolto</text>
+
+    <!-- Footnote -->
+    <text x="945" y="298" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10" fill="#8892a0">&#x2192; carburante per il prossimo training</text>
+  </g>
+</svg>

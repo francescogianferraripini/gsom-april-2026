@@ -1,0 +1,23 @@
+<!-- SLIDE 11 — Il primo agente: la chat -->
+<section id="slide-primo-agente">
+  <h2>Il primo agente: la chat</h2>
+  <div class="content">
+    <div class="highlight-box" style="margin-bottom: 20px;">
+      <p style="font-size: 18pt;">Dalla <em>next token prediction</em> alla conversazione</p>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 35px; flex: 1;">
+      <div class="contrast-card">
+        <h3 style="color: var(--muted-color);">Prima — modello base</h3>
+        <p class="text-lg">Completa testo plausibile. Data una sequenza, produce la continuazione statisticamente più probabile. Non sa di parlare con qualcuno, non distingue una domanda da un frammento di articolo, non segue istruzioni.</p>
+      </div>
+      <div class="contrast-card" style="border-top: 3px solid var(--primary-color);">
+        <h3>Dopo — agente conversazionale</h3>
+        <p class="text-lg">Risponde a un interlocutore, segue istruzioni, mantiene un ruolo, rispetta vincoli di tono e comportamento.</p>
+      </div>
+    </div>
+    <div style="background: rgba(255,255,255,0.04); border-radius: var(--box-radius); padding: 18px 22px; margin-top: 20px;">
+      <p style="font-size: 14pt;"><strong>Come si ottiene</strong>: un secondo giro di addestramento sopra il pre-training — <em>instruction tuning</em> e <em>RLHF</em> — che insegna al modello non <em>cosa è probabile</em>, ma <em>cosa è utile</em> rispondere. Più un'interfaccia che struttura lo scambio in turni.</p>
+    </div>
+  </div>
+  <p class="footnote">Novembre 2022, ChatGPT. Non un nuovo modello — GPT-3 esisteva dal 2020. Un nuovo modo di addestrarlo a conversare.</p>
+</section>

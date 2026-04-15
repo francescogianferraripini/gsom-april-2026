@@ -1,0 +1,24 @@
+<!-- SLIDE 18 — L'API è stateless: cosa significa davvero -->
+<section id="slide-api-stateless">
+  <h2>L'API è stateless: cosa significa davvero</h2>
+  <div class="content">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; flex: 1;">
+      <div>
+        <ul class="text-lg" style="margin-bottom: 18px;">
+          <li>L'API non conserva stato tra chiamate.</li>
+          <li>Ad ogni nuovo turno, il contesto completo (system + storico + nuovo input) viene inviato da capo al modello.</li>
+          <li>Il contesto cresce linearmente con la conversazione.</li>
+        </ul>
+        <div class="highlight-box">
+          <p style="font-size: 13pt; font-weight: 400;"><strong>KV cache</strong>: trucco ingegneristico che memorizza le rappresentazioni (key/value) dei token già processati. Ad ogni turno il provider riusa il lavoro già fatto e processa solo i token nuovi. Senza KV cache, i costi crescerebbero quadraticamente.</p>
+        </div>
+      </div>
+      <div class="svg-container">
+        <img src="svg/slide18-cost-curves.svg" alt="Grafico: costo per turno — 3 curve: utente, provider teorico, provider con KV cache">
+      </div>
+    </div>
+    <div class="callout-box" style="margin-top: 15px;">
+      <p style="font-size: 14pt;">Il costo per turno e la qualità della risposta dipendono dalla dimensione cumulativa del contesto, non dalla singola domanda.</p>
+    </div>
+  </div>
+</section>
