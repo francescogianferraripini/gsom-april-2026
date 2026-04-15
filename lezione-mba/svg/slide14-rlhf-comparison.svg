@@ -7,33 +7,33 @@
   </defs>
 
   <!-- Shared prompt box -->
-  <text x="570" y="18" text-anchor="middle" fill="#8892a0" font-family="Arial, sans-serif" font-size="13">Prompt dell'utente</text>
-  <rect x="350" y="26" width="440" height="42" rx="8" fill="#242442" stroke="#2a2a4a" stroke-width="1.5"/>
-  <text x="570" y="52" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="16">Come posso aumentare le vendite?</text>
+  <text x="570" y="18" text-anchor="middle" fill="#838383" font-family="Arial, sans-serif" font-size="13">Prompt dell'utente</text>
+  <rect x="350" y="26" width="440" height="42" rx="8" fill="#f5f5f5" stroke="#dddddd" stroke-width="1.5"/>
+  <text x="570" y="52" text-anchor="middle" fill="#1a1a1a" font-family="Arial, sans-serif" font-size="16">Come posso aumentare le vendite?</text>
 
   <!-- Arrow left (to base model) -->
-  <path d="M460,68 L460,82 Q460,92 450,92 L310,92 L310,108" fill="none" stroke="#4a4a6a" stroke-width="1.5" stroke-linecap="round"/>
-  <polygon points="305,106 310,116 315,106" fill="#4a4a6a"/>
+  <path d="M460,68 L460,82 Q460,92 450,92 L310,92 L310,108" fill="none" stroke="#dddddd" stroke-width="1.5" stroke-linecap="round"/>
+  <polygon points="305,106 310,116 315,106" fill="#e5e5e5"/>
 
   <!-- Arrow right (to RLHF) -->
-  <path d="M680,68 L680,82 Q680,92 690,92 L830,92 L830,108" fill="none" stroke="#00b4d8" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
-  <polygon points="825,106 830,116 835,106" fill="#00b4d8" opacity="0.6"/>
+  <path d="M680,68 L680,82 Q680,92 690,92 L830,92 L830,108" fill="none" stroke="#a1245a" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <polygon points="825,106 830,116 835,106" fill="#a1245a" opacity="0.6"/>
 
   <!-- Vertical divider -->
-  <line x1="570" y1="110" x2="570" y2="370" stroke="#2a2a4a" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="570" y1="110" x2="570" y2="370" stroke="#dddddd" stroke-width="1" stroke-dasharray="4,4"/>
 
   <!-- LEFT COLUMN — Base model -->
   <g id="base-model">
     <!-- Header -->
-    <circle cx="100" cy="128" r="8" fill="none" stroke="#6a7a8a" stroke-width="1.5"/>
-    <text x="100" y="132" text-anchor="middle" fill="#6a7a8a" font-family="Arial, sans-serif" font-size="9" font-weight="bold">B</text>
-    <text x="116" y="132" fill="#8892a0" font-family="Arial, sans-serif" font-size="13">Modello base (solo pre-training)</text>
+    <circle cx="100" cy="128" r="8" fill="none" stroke="#aaaaaa" stroke-width="1.5"/>
+    <text x="100" y="132" text-anchor="middle" fill="#888888" font-family="Arial, sans-serif" font-size="9" font-weight="bold">B</text>
+    <text x="116" y="132" fill="#838383" font-family="Arial, sans-serif" font-size="13">Modello base (solo pre-training)</text>
 
     <!-- Response box -->
-    <rect x="40" y="148" width="490" height="140" rx="6" fill="#1e1e2e" stroke="#2a2a4a" stroke-width="1"/>
+    <rect x="40" y="148" width="490" height="140" rx="6" fill="#f7f7f7" stroke="#dddddd" stroke-width="1"/>
 
     <!-- Monospace response text -->
-    <text fill="#6a7a8a" font-family="'Courier New', monospace" font-size="12">
+    <text fill="#888888" font-family="'Courier New', monospace" font-size="12">
       <tspan x="56" y="172">Come posso aumentare le vendite?</tspan>
       <tspan x="56" y="192">E quante persone lavorano nella tua</tspan>
       <tspan x="56" y="212">azienda? Il settore è B2B o B2C? In quale</tspan>
@@ -41,10 +41,10 @@
       <tspan x="56" y="252">anni la domanda è cresciuta o...</tspan>
     </text>
     <!-- Blinking cursor effect -->
-    <rect x="305" y="242" width="7" height="14" rx="1" fill="#6a7a8a" opacity="0.5"/>
+    <rect x="305" y="242" width="7" height="14" rx="1" fill="#888888" opacity="0.5"/>
 
     <!-- Italic explanation -->
-    <text x="40" y="310" fill="#8892a0" font-family="Arial, sans-serif" font-size="11" font-style="italic">
+    <text x="40" y="310" fill="#838383" font-family="Arial, sans-serif" font-size="11" font-style="italic">
       <tspan x="40" dy="0">Il modello continua la frase come un testo sul web</tspan>
       <tspan x="40" dy="16">— con altre domande, non con una risposta.</tspan>
     </text>
@@ -53,15 +53,15 @@
   <!-- RIGHT COLUMN — RLHF model -->
   <g id="rlhf-model">
     <!-- Header -->
-    <circle cx="620" cy="128" r="8" fill="none" stroke="#00b4d8" stroke-width="1.5"/>
-    <text x="620" y="132" text-anchor="middle" fill="#00b4d8" font-family="Arial, sans-serif" font-size="9" font-weight="bold">R</text>
-    <text x="636" y="132" fill="#e8e8e8" font-family="Arial, sans-serif" font-size="13">Modello RLHF</text>
+    <circle cx="620" cy="128" r="8" fill="none" stroke="#a1245a" stroke-width="1.5"/>
+    <text x="620" y="132" text-anchor="middle" fill="#a1245a" font-family="Arial, sans-serif" font-size="9" font-weight="bold">R</text>
+    <text x="636" y="132" fill="#1a1a1a" font-family="Arial, sans-serif" font-size="13">Modello RLHF</text>
 
     <!-- Response box with accent border -->
-    <rect x="610" y="148" width="490" height="140" rx="6" fill="#1e3a42" stroke="#00b4d8" stroke-width="1" stroke-opacity="0.4"/>
+    <rect x="610" y="148" width="490" height="140" rx="6" fill="#f5f5f5" stroke="#a1245a" stroke-width="1" stroke-opacity="0.4"/>
 
     <!-- Sans-serif response text -->
-    <text fill="#e8e8e8" font-family="Arial, sans-serif" font-size="12">
+    <text fill="#1a1a1a" font-family="Arial, sans-serif" font-size="12">
       <tspan x="626" y="172">Per aumentare le vendite puoi agire su tre</tspan>
       <tspan x="626" y="192">leve: 1) acquisire nuovi clienti (marketing,</tspan>
       <tspan x="626" y="212">partnership); 2) aumentare il valore medio</tspan>
@@ -71,7 +71,7 @@
     </text>
 
     <!-- Italic explanation -->
-    <text x="610" y="310" fill="#8892a0" font-family="Arial, sans-serif" font-size="11" font-style="italic">
+    <text x="610" y="310" fill="#838383" font-family="Arial, sans-serif" font-size="11" font-style="italic">
       <tspan x="610" dy="0">Il modello riconosce una domanda e fornisce una risposta</tspan>
       <tspan x="610" dy="16">utile, strutturata, orientata all'azione.</tspan>
     </text>

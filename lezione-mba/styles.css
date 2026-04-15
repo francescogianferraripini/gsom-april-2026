@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
 :root {
-  --background-color: #1a1a2e;
-  --section-divider-bg: #16213e;
+  --background-color: #ffffff;
+  --section-divider-bg: #161719;
 
-  --heading-font: "Inter", Helvetica, sans-serif;
-  --body-font: "Inter", Helvetica, sans-serif;
+  --heading-font: "Poppins", Helvetica, sans-serif;
+  --body-font: "Poppins", Helvetica, sans-serif;
   --mono-font: "JetBrains Mono", monospace;
   --base-font-size: 32px;
   --text-size: 16pt;
@@ -14,11 +14,11 @@
   --h3-size: 22pt;
   --footnote-size: 11pt;
 
-  --primary-color: #00b4d8;
-  --secondary-color: #e77f67;
-  --text-color: #e8e8e8;
-  --muted-color: #8892a0;
-  --line-color: #2a2a4a;
+  --primary-color: #a1245a;
+  --secondary-color: #1ab197;
+  --text-color: #1a1a1a;
+  --muted-color: #838383;
+  --line-color: #e0e0e0;
 
   --slide-padding: 60px;
   --slide-padding-top: 40px;
@@ -38,7 +38,7 @@
 .reveal strong,
 .reveal b {
   font-weight: 600;
-  color: #ffffff;
+  color: #000000;
 }
 
 .reveal-viewport {
@@ -57,7 +57,7 @@
 .reveal h6 {
   font-family: var(--heading-font);
   text-transform: none;
-  color: #ffffff;
+  color: #161719;
   font-weight: 600;
   line-height: 1.2;
 }
@@ -172,11 +172,12 @@
 .reveal .slides section.section-divider h1 {
   font-size: 56pt;
   text-align: center;
+  color: #ffffff;
 }
 
 .reveal .slides section.section-divider p {
   font-size: 20pt;
-  color: var(--muted-color);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 /* ===========================================
@@ -223,7 +224,7 @@
 
 /* Highlighted definition box */
 .highlight-box {
-  background: rgba(0, 180, 216, 0.1);
+  background: rgba(161, 36, 90, 0.08);
   border-left: 4px solid var(--primary-color);
   padding: 18px 22px;
   border-radius: 0 var(--box-radius) var(--box-radius) 0;
@@ -232,13 +233,13 @@
 
 .highlight-box p {
   margin: 0;
-  color: #ffffff;
+  color: #161719;
   font-weight: 500;
 }
 
 /* Seed / callout box */
 .callout-box {
-  background: rgba(231, 127, 103, 0.12);
+  background: rgba(26, 177, 151, 0.1);
   border-left: 4px solid var(--secondary-color);
   padding: 18px 22px;
   border-radius: 0 var(--box-radius) var(--box-radius) 0;
@@ -273,7 +274,7 @@
 
 /* Column card for contrast slides */
 .contrast-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(0, 0, 0, 0.04);
   border-radius: var(--box-radius);
   padding: 25px;
 }

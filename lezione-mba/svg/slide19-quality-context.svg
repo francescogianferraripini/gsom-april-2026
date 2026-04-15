@@ -3,77 +3,77 @@
 
   <defs>
     <marker id="arrow-down-blue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#00b4d8" stroke-width="1.2"/>
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#a1245a" stroke-width="1.2"/>
     </marker>
     <marker id="arrow-down-red" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#e77f67" stroke-width="1.2"/>
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#1ab197" stroke-width="1.2"/>
     </marker>
   </defs>
 
   <!-- Background -->
-  <rect width="1140" height="320" fill="#1a1a2e"/>
+  <rect width="1140" height="320" fill="#f2f2f2"/>
 
   <!-- Background zones -->
-  <rect x="80" y="20" width="200" height="250" fill="#00b4d8" opacity="0.06"/>
-  <rect x="480" y="20" width="600" height="250" fill="#e77f67" opacity="0.06"/>
+  <rect x="80" y="20" width="200" height="250" fill="#a1245a" opacity="0.06"/>
+  <rect x="480" y="20" width="600" height="250" fill="#1ab197" opacity="0.06"/>
 
   <!-- Zone labels -->
-  <text x="100" y="35" font-family="Arial, sans-serif" font-size="11" fill="#00b4d8" opacity="0.7">sweet spot</text>
-  <text x="500" y="35" font-family="Arial, sans-serif" font-size="11" fill="#e77f67" opacity="0.7">degrado</text>
+  <text x="100" y="35" font-family="Arial, sans-serif" font-size="11" fill="#a1245a" opacity="0.7">sweet spot</text>
+  <text x="500" y="35" font-family="Arial, sans-serif" font-size="11" fill="#1ab197" opacity="0.7">degrado</text>
 
   <!-- Grid line -->
-  <line x1="80" y1="145" x2="1080" y2="145" stroke="#2a2a4a" stroke-width="1"/>
+  <line x1="80" y1="145" x2="1080" y2="145" stroke="#dddddd" stroke-width="1"/>
 
   <!-- Axes -->
-  <line x1="80" y1="270" x2="1080" y2="270" stroke="#2a2a4a" stroke-width="1.5"/>
-  <line x1="80" y1="270" x2="80" y2="20" stroke="#2a2a4a" stroke-width="1.5"/>
+  <line x1="80" y1="270" x2="1080" y2="270" stroke="#dddddd" stroke-width="1.5"/>
+  <line x1="80" y1="270" x2="80" y2="20" stroke="#dddddd" stroke-width="1.5"/>
 
   <!-- X-axis ticks and labels -->
-  <g font-family="Arial, sans-serif" font-size="10" fill="#8892a0" text-anchor="middle">
-    <line x1="80" y1="270" x2="80" y2="275" stroke="#8892a0" stroke-width="1"/>
+  <g font-family="Arial, sans-serif" font-size="10" fill="#838383" text-anchor="middle">
+    <line x1="80" y1="270" x2="80" y2="275" stroke="#838383" stroke-width="1"/>
     <text x="80" y="288">0</text>
-    <line x1="280" y1="270" x2="280" y2="275" stroke="#8892a0" stroke-width="1"/>
+    <line x1="280" y1="270" x2="280" y2="275" stroke="#838383" stroke-width="1"/>
     <text x="280" y="288">100k</text>
-    <line x1="480" y1="270" x2="480" y2="275" stroke="#8892a0" stroke-width="1"/>
+    <line x1="480" y1="270" x2="480" y2="275" stroke="#838383" stroke-width="1"/>
     <text x="480" y="288">200k</text>
-    <line x1="680" y1="270" x2="680" y2="275" stroke="#8892a0" stroke-width="1"/>
+    <line x1="680" y1="270" x2="680" y2="275" stroke="#838383" stroke-width="1"/>
     <text x="680" y="288">300k</text>
-    <line x1="880" y1="270" x2="880" y2="275" stroke="#8892a0" stroke-width="1"/>
+    <line x1="880" y1="270" x2="880" y2="275" stroke="#838383" stroke-width="1"/>
     <text x="880" y="288">400k</text>
-    <line x1="1080" y1="270" x2="1080" y2="275" stroke="#8892a0" stroke-width="1"/>
+    <line x1="1080" y1="270" x2="1080" y2="275" stroke="#838383" stroke-width="1"/>
     <text x="1080" y="288">500k</text>
   </g>
 
   <!-- X-axis label -->
-  <text x="580" y="308" font-family="Arial, sans-serif" font-size="12" fill="#8892a0" text-anchor="middle">Dimensione del contesto (token)</text>
+  <text x="580" y="308" font-family="Arial, sans-serif" font-size="12" fill="#838383" text-anchor="middle">Dimensione del contesto (token)</text>
 
   <!-- Y-axis label -->
-  <text x="30" y="145" font-family="Arial, sans-serif" font-size="12" fill="#8892a0" text-anchor="middle" transform="rotate(-90, 30, 145)">Valore relativo</text>
+  <text x="30" y="145" font-family="Arial, sans-serif" font-size="12" fill="#838383" text-anchor="middle" transform="rotate(-90, 30, 145)">Valore relativo</text>
 
   <!-- Gray background curves -->
   <!-- Gray linear 1 -->
-  <line x1="80" y1="265" x2="1080" y2="170" stroke="#3a3a5a" stroke-width="1" fill="none"/>
+  <line x1="80" y1="265" x2="1080" y2="170" stroke="#dddddd" stroke-width="1" fill="none"/>
   <!-- Gray dashed quadratic 2 -->
-  <path d="M80,265 C280,230 480,210 680,140 S900,60 1080,25" stroke="#3a3a5a" stroke-width="1" fill="none" stroke-dasharray="5,3"/>
+  <path d="M80,265 C280,230 480,210 680,140 S900,60 1080,25" stroke="#dddddd" stroke-width="1" fill="none" stroke-dasharray="5,3"/>
   <!-- Gray linear 3 (flattest) -->
-  <line x1="80" y1="265" x2="1080" y2="220" stroke="#3a3a5a" stroke-width="1" fill="none"/>
+  <line x1="80" y1="265" x2="1080" y2="220" stroke="#dddddd" stroke-width="1" fill="none"/>
 
   <!-- Quality curve (main) -->
-  <path d="M80,250 C120,180 140,130 150,120 C180,70 220,52 250,50 C300,48 350,52 380,55 C420,62 450,72 480,80 C560,105 620,120 680,130 C760,148 820,158 880,165 C950,178 1020,192 1080,200" stroke="#00b4d8" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M80,250 C120,180 140,130 150,120 C180,70 220,52 250,50 C300,48 350,52 380,55 C420,62 450,72 480,80 C560,105 620,120 680,130 C760,148 820,158 880,165 C950,178 1020,192 1080,200" stroke="#a1245a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 
   <!-- Annotation: peak arrow -->
-  <line x1="250" y1="30" x2="250" y2="44" stroke="#00b4d8" stroke-width="1.2" marker-end="url(#arrow-down-blue)"/>
-  <text x="250" y="25" font-family="Arial, sans-serif" font-size="11" fill="#00b4d8" text-anchor="middle">picco di qualit&#224;</text>
+  <line x1="250" y1="30" x2="250" y2="44" stroke="#a1245a" stroke-width="1.2" marker-end="url(#arrow-down-blue)"/>
+  <text x="250" y="25" font-family="Arial, sans-serif" font-size="11" fill="#a1245a" text-anchor="middle">picco di qualit&#224;</text>
 
   <!-- Annotation: lost in the middle -->
-  <line x1="780" y1="128" x2="780" y2="142" stroke="#e77f67" stroke-width="1.2" marker-end="url(#arrow-down-red)"/>
-  <text x="780" y="123" font-family="Arial, sans-serif" font-size="11" fill="#e77f67" text-anchor="middle">lost in the middle</text>
+  <line x1="780" y1="128" x2="780" y2="142" stroke="#1ab197" stroke-width="1.2" marker-end="url(#arrow-down-red)"/>
+  <text x="780" y="123" font-family="Arial, sans-serif" font-size="11" fill="#1ab197" text-anchor="middle">lost in the middle</text>
 
   <!-- Legend -->
   <g transform="translate(850, 20)">
-    <line x1="0" y1="5" x2="25" y2="5" stroke="#00b4d8" stroke-width="3"/>
-    <text x="30" y="9" font-family="Arial, sans-serif" font-size="11" fill="#e8e8e8" font-weight="bold">Qualit&#224; effettiva</text>
-    <line x1="0" y1="22" x2="25" y2="22" stroke="#3a3a5a" stroke-width="1"/>
-    <text x="30" y="26" font-family="Arial, sans-serif" font-size="11" fill="#e8e8e8">Costi (vedi slide prec.)</text>
+    <line x1="0" y1="5" x2="25" y2="5" stroke="#a1245a" stroke-width="3"/>
+    <text x="30" y="9" font-family="Arial, sans-serif" font-size="11" fill="#1a1a1a" font-weight="bold">Qualit&#224; effettiva</text>
+    <line x1="0" y1="22" x2="25" y2="22" stroke="#dddddd" stroke-width="1"/>
+    <text x="30" y="26" font-family="Arial, sans-serif" font-size="11" fill="#1a1a1a">Costi (vedi slide prec.)</text>
   </g>
 </svg>

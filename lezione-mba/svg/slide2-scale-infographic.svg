@@ -1,12 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 400">
   <defs>
     <linearGradient id="accentGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#00b4d8" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#00b4d8" stop-opacity="0.5"/>
+      <stop offset="0%" stop-color="#a1245a" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#a1245a" stop-opacity="0.5"/>
     </linearGradient>
     <linearGradient id="defaultGrad" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#3a3a5a" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#3a3a5a" stop-opacity="0.5"/>
+      <stop offset="0%" stop-color="#2c2828" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#2c2828" stop-opacity="0.5"/>
     </linearGradient>
     <linearGradient id="dimGrad" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0%" stop-color="#2a2a3a" stop-opacity="0.9"/>
@@ -15,120 +15,120 @@
   </defs>
 
   <style>
-    text { font-family: 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
+    text { font-family: 'Poppins', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
   </style>
 
   <!-- Row 1: Lettore medio — log10(2e8)=8.3 → bar width = ((8.3-8.3)/5.58)*350 ≈ 0 → min 18 -->
   <g transform="translate(0, 30)">
     <!-- Person icon -->
-    <circle cx="22" cy="18" r="6" fill="none" stroke="#8892a0" stroke-width="1.5"/>
-    <path d="M12,38 Q12,28 22,28 Q32,28 32,38" fill="none" stroke="#8892a0" stroke-width="1.5"/>
+    <circle cx="22" cy="18" r="6" fill="none" stroke="#838383" stroke-width="1.5"/>
+    <path d="M12,38 Q12,28 22,28 Q32,28 32,38" fill="none" stroke="#838383" stroke-width="1.5"/>
     <!-- Label -->
-    <text x="46" y="22" fill="#e8e8e8" font-size="11" font-weight="500">Lettore medio, intera vita</text>
+    <text x="46" y="22" fill="#1a1a1a" font-size="11" font-weight="500">Lettore medio, intera vita</text>
     <!-- Bar -->
     <rect x="46" y="32" width="18" height="14" rx="3" fill="url(#defaultGrad)"/>
     <!-- Value -->
-    <text x="72" y="43" fill="#8892a0" font-size="10">~200M parole</text>
+    <text x="72" y="43" fill="#838383" font-size="10">~200M parole</text>
   </g>
 
   <!-- Row 2: Wikipedia — log10(1e10)=10 → ((10-8.3)/5.58)*350 ≈ 107 -->
   <g transform="translate(0, 100)">
     <!-- Book/encyclopedia icon -->
-    <rect x="12" y="10" width="20" height="26" rx="2" fill="none" stroke="#8892a0" stroke-width="1.5"/>
-    <line x1="22" y1="10" x2="22" y2="36" stroke="#8892a0" stroke-width="1"/>
-    <line x1="16" y1="17" x2="20" y2="17" stroke="#8892a0" stroke-width="0.8"/>
-    <line x1="16" y1="22" x2="20" y2="22" stroke="#8892a0" stroke-width="0.8"/>
-    <line x1="16" y1="27" x2="20" y2="27" stroke="#8892a0" stroke-width="0.8"/>
+    <rect x="12" y="10" width="20" height="26" rx="2" fill="none" stroke="#838383" stroke-width="1.5"/>
+    <line x1="22" y1="10" x2="22" y2="36" stroke="#838383" stroke-width="1"/>
+    <line x1="16" y1="17" x2="20" y2="17" stroke="#838383" stroke-width="0.8"/>
+    <line x1="16" y1="22" x2="20" y2="22" stroke="#838383" stroke-width="0.8"/>
+    <line x1="16" y1="27" x2="20" y2="27" stroke="#838383" stroke-width="0.8"/>
     <!-- Label -->
-    <text x="46" y="22" fill="#e8e8e8" font-size="11" font-weight="500">Wikipedia, tutte le lingue</text>
+    <text x="46" y="22" fill="#1a1a1a" font-size="11" font-weight="500">Wikipedia, tutte le lingue</text>
     <!-- Bar -->
     <rect x="46" y="32" width="107" height="14" rx="3" fill="url(#defaultGrad)"/>
     <!-- Value -->
-    <text x="161" y="43" fill="#8892a0" font-size="10">~10 miliardi</text>
+    <text x="161" y="43" fill="#838383" font-size="10">~10 miliardi</text>
   </g>
 
   <!-- Row 3: Grande biblioteca — log10(1e12)=12 → ((12-8.3)/5.58)*350 ≈ 232 -->
   <g transform="translate(0, 170)">
     <!-- Building icon -->
-    <rect x="14" y="16" width="16" height="20" rx="1" fill="none" stroke="#8892a0" stroke-width="1.5"/>
-    <polygon points="22,8 36,16 8,16" fill="none" stroke="#8892a0" stroke-width="1.5"/>
-    <rect x="19" y="26" width="6" height="10" fill="none" stroke="#8892a0" stroke-width="1"/>
-    <rect x="15" y="19" width="3" height="3" fill="#8892a0" opacity="0.5"/>
-    <rect x="26" y="19" width="3" height="3" fill="#8892a0" opacity="0.5"/>
+    <rect x="14" y="16" width="16" height="20" rx="1" fill="none" stroke="#838383" stroke-width="1.5"/>
+    <polygon points="22,8 36,16 8,16" fill="none" stroke="#838383" stroke-width="1.5"/>
+    <rect x="19" y="26" width="6" height="10" fill="none" stroke="#838383" stroke-width="1"/>
+    <rect x="15" y="19" width="3" height="3" fill="#838383" opacity="0.5"/>
+    <rect x="26" y="19" width="3" height="3" fill="#838383" opacity="0.5"/>
     <!-- Label -->
-    <text x="46" y="22" fill="#e8e8e8" font-size="11" font-weight="500">Grande biblioteca (20M volumi)</text>
+    <text x="46" y="22" fill="#1a1a1a" font-size="11" font-weight="500">Grande biblioteca (20M volumi)</text>
     <!-- Bar -->
     <rect x="46" y="32" width="232" height="14" rx="3" fill="url(#defaultGrad)"/>
     <!-- Value -->
-    <text x="286" y="43" fill="#8892a0" font-size="10">~1 trilione</text>
+    <text x="286" y="43" fill="#838383" font-size="10">~1 trilione</text>
   </g>
 
   <!-- Row 4: Training LLM — ACCENT — log10(1.5e13)=13.176 → ((13.176-8.3)/5.58)*350 ≈ 306 -->
   <g transform="translate(0, 240)">
     <!-- Chip/brain icon in accent -->
-    <rect x="11" y="10" width="22" height="22" rx="3" fill="none" stroke="#00b4d8" stroke-width="1.8"/>
+    <rect x="11" y="10" width="22" height="22" rx="3" fill="none" stroke="#a1245a" stroke-width="1.8"/>
     <!-- Chip pins -->
-    <line x1="16" y1="8" x2="16" y2="10" stroke="#00b4d8" stroke-width="1.5"/>
-    <line x1="22" y1="8" x2="22" y2="10" stroke="#00b4d8" stroke-width="1.5"/>
-    <line x1="28" y1="8" x2="28" y2="10" stroke="#00b4d8" stroke-width="1.5"/>
-    <line x1="16" y1="32" x2="16" y2="34" stroke="#00b4d8" stroke-width="1.5"/>
-    <line x1="22" y1="32" x2="22" y2="34" stroke="#00b4d8" stroke-width="1.5"/>
-    <line x1="28" y1="32" x2="28" y2="34" stroke="#00b4d8" stroke-width="1.5"/>
-    <line x1="9" y1="16" x2="11" y2="16" stroke="#00b4d8" stroke-width="1.5"/>
-    <line x1="9" y1="21" x2="11" y2="21" stroke="#00b4d8" stroke-width="1.5"/>
-    <line x1="9" y1="26" x2="11" y2="26" stroke="#00b4d8" stroke-width="1.5"/>
-    <line x1="33" y1="16" x2="35" y2="16" stroke="#00b4d8" stroke-width="1.5"/>
-    <line x1="33" y1="21" x2="35" y2="21" stroke="#00b4d8" stroke-width="1.5"/>
-    <line x1="33" y1="26" x2="35" y2="26" stroke="#00b4d8" stroke-width="1.5"/>
+    <line x1="16" y1="8" x2="16" y2="10" stroke="#a1245a" stroke-width="1.5"/>
+    <line x1="22" y1="8" x2="22" y2="10" stroke="#a1245a" stroke-width="1.5"/>
+    <line x1="28" y1="8" x2="28" y2="10" stroke="#a1245a" stroke-width="1.5"/>
+    <line x1="16" y1="32" x2="16" y2="34" stroke="#a1245a" stroke-width="1.5"/>
+    <line x1="22" y1="32" x2="22" y2="34" stroke="#a1245a" stroke-width="1.5"/>
+    <line x1="28" y1="32" x2="28" y2="34" stroke="#a1245a" stroke-width="1.5"/>
+    <line x1="9" y1="16" x2="11" y2="16" stroke="#a1245a" stroke-width="1.5"/>
+    <line x1="9" y1="21" x2="11" y2="21" stroke="#a1245a" stroke-width="1.5"/>
+    <line x1="9" y1="26" x2="11" y2="26" stroke="#a1245a" stroke-width="1.5"/>
+    <line x1="33" y1="16" x2="35" y2="16" stroke="#a1245a" stroke-width="1.5"/>
+    <line x1="33" y1="21" x2="35" y2="21" stroke="#a1245a" stroke-width="1.5"/>
+    <line x1="33" y1="26" x2="35" y2="26" stroke="#a1245a" stroke-width="1.5"/>
     <!-- Brain circuit lines inside chip -->
-    <circle cx="18" cy="17" r="1.5" fill="#00b4d8" opacity="0.7"/>
-    <circle cx="26" cy="25" r="1.5" fill="#00b4d8" opacity="0.7"/>
-    <path d="M18,17 Q22,17 22,21 Q22,25 26,25" fill="none" stroke="#00b4d8" stroke-width="0.8" opacity="0.6"/>
-    <circle cx="26" cy="17" r="1" fill="#00b4d8" opacity="0.5"/>
-    <circle cx="18" cy="25" r="1" fill="#00b4d8" opacity="0.5"/>
+    <circle cx="18" cy="17" r="1.5" fill="#a1245a" opacity="0.7"/>
+    <circle cx="26" cy="25" r="1.5" fill="#a1245a" opacity="0.7"/>
+    <path d="M18,17 Q22,17 22,21 Q22,25 26,25" fill="none" stroke="#a1245a" stroke-width="0.8" opacity="0.6"/>
+    <circle cx="26" cy="17" r="1" fill="#a1245a" opacity="0.5"/>
+    <circle cx="18" cy="25" r="1" fill="#a1245a" opacity="0.5"/>
     <!-- Subtle glow -->
-    <rect x="11" y="10" width="22" height="22" rx="3" fill="none" stroke="#00b4d8" stroke-width="0.5" opacity="0.3" filter="url(#none)"/>
+    <rect x="11" y="10" width="22" height="22" rx="3" fill="none" stroke="#a1245a" stroke-width="0.5" opacity="0.3" filter="url(#none)"/>
     <!-- Label -->
-    <text x="46" y="22" fill="#00b4d8" font-size="11.5" font-weight="700">Training LLM frontiera (2026)</text>
+    <text x="46" y="22" fill="#a1245a" font-size="11.5" font-weight="700">Training LLM frontiera (2026)</text>
     <!-- Bar -->
     <rect x="46" y="32" width="306" height="16" rx="3" fill="url(#accentGrad)"/>
     <!-- Accent glow line on bar -->
-    <rect x="46" y="32" width="306" height="1" rx="0.5" fill="#00b4d8" opacity="0.6"/>
+    <rect x="46" y="32" width="306" height="1" rx="0.5" fill="#a1245a" opacity="0.6"/>
     <!-- Value -->
-    <text x="360" y="44" fill="#00b4d8" font-size="11" font-weight="600">~15 trilioni</text>
+    <text x="360" y="44" fill="#a1245a" font-size="11" font-weight="600">~15 trilioni</text>
   </g>
 
   <!-- Row 5: Tutto il testo digitale — DIM — log10(7.5e13)=13.875 → ((13.875-8.3)/5.58)*350 ≈ 350 -->
   <g transform="translate(0, 316)">
     <!-- Globe icon in gray -->
-    <circle cx="22" cy="21" r="11" fill="none" stroke="#555" stroke-width="1.3"/>
-    <ellipse cx="22" cy="21" rx="5" ry="11" fill="none" stroke="#555" stroke-width="0.8"/>
-    <line x1="11" y1="21" x2="33" y2="21" stroke="#555" stroke-width="0.8"/>
-    <path d="M13,14 Q22,17 31,14" fill="none" stroke="#555" stroke-width="0.7"/>
-    <path d="M13,28 Q22,25 31,28" fill="none" stroke="#555" stroke-width="0.7"/>
+    <circle cx="22" cy="21" r="11" fill="none" stroke="#bbbbbb" stroke-width="1.3"/>
+    <ellipse cx="22" cy="21" rx="5" ry="11" fill="none" stroke="#bbbbbb" stroke-width="0.8"/>
+    <line x1="11" y1="21" x2="33" y2="21" stroke="#bbbbbb" stroke-width="0.8"/>
+    <path d="M13,14 Q22,17 31,14" fill="none" stroke="#bbbbbb" stroke-width="0.7"/>
+    <path d="M13,28 Q22,25 31,28" fill="none" stroke="#bbbbbb" stroke-width="0.7"/>
     <!-- Label -->
-    <text x="46" y="18" fill="#666" font-size="10.5" font-weight="500">Tutto il testo digitale di qualità</text>
+    <text x="46" y="18" fill="#bbbbbb" font-size="10.5" font-weight="500">Tutto il testo digitale di qualità</text>
     <!-- "frontiera dati" sub-label -->
-    <text x="46" y="30" fill="#555" font-size="8.5" font-style="italic">frontiera dati</text>
+    <text x="46" y="30" fill="#bbbbbb" font-size="8.5" font-style="italic">frontiera dati</text>
     <!-- Bar -->
     <rect x="46" y="36" width="350" height="14" rx="3" fill="url(#dimGrad)"/>
     <!-- Dashed end to suggest estimate range -->
     <rect x="346" y="36" width="50" height="14" rx="3" fill="url(#dimGrad)" opacity="0.4"/>
     <!-- Value -->
-    <text x="404" y="47" fill="#555" font-size="10">~50-100 trilioni</text>
+    <text x="404" y="47" fill="#bbbbbb" font-size="10">~50-100 trilioni</text>
   </g>
 
   <!-- Scale reference line at bottom -->
   <g transform="translate(46, 378)">
-    <line x1="0" y1="0" x2="350" y2="0" stroke="#333" stroke-width="0.5"/>
-    <text x="0" y="12" fill="#555" font-size="7">10⁸</text>
-    <text x="107" y="12" fill="#555" font-size="7">10¹⁰</text>
-    <text x="232" y="12" fill="#555" font-size="7">10¹²</text>
-    <text x="340" y="12" fill="#555" font-size="7">10¹⁴</text>
+    <line x1="0" y1="0" x2="350" y2="0" stroke="#cccccc" stroke-width="0.5"/>
+    <text x="0" y="12" fill="#bbbbbb" font-size="7">10⁸</text>
+    <text x="107" y="12" fill="#bbbbbb" font-size="7">10¹⁰</text>
+    <text x="232" y="12" fill="#bbbbbb" font-size="7">10¹²</text>
+    <text x="340" y="12" fill="#bbbbbb" font-size="7">10¹⁴</text>
     <!-- Tick marks -->
-    <line x1="0" y1="-2" x2="0" y2="3" stroke="#555" stroke-width="0.5"/>
-    <line x1="107" y1="-2" x2="107" y2="3" stroke="#555" stroke-width="0.5"/>
-    <line x1="232" y1="-2" x2="232" y2="3" stroke="#555" stroke-width="0.5"/>
-    <line x1="350" y1="-2" x2="350" y2="3" stroke="#555" stroke-width="0.5"/>
+    <line x1="0" y1="-2" x2="0" y2="3" stroke="#bbbbbb" stroke-width="0.5"/>
+    <line x1="107" y1="-2" x2="107" y2="3" stroke="#bbbbbb" stroke-width="0.5"/>
+    <line x1="232" y1="-2" x2="232" y2="3" stroke="#bbbbbb" stroke-width="0.5"/>
+    <line x1="350" y1="-2" x2="350" y2="3" stroke="#bbbbbb" stroke-width="0.5"/>
   </g>
 </svg>

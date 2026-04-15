@@ -10,17 +10,17 @@
   </defs>
 
   <!-- Column headers -->
-  <text x="140" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#e8e8e8" text-anchor="middle">Agente A</text>
-  <text x="420" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#e8e8e8" text-anchor="middle">Agente B</text>
+  <text x="140" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Agente A</text>
+  <text x="420" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1a1a1a" text-anchor="middle">Agente B</text>
 
   <!-- Vertical divider -->
-  <line x1="280" y1="8" x2="280" y2="408" stroke="#2a2a4a" stroke-width="1"/>
+  <line x1="280" y1="8" x2="280" y2="408" stroke="#dddddd" stroke-width="1"/>
 
   <!-- ===================== LEFT COLUMN — Agente A ===================== -->
 
   <!-- System prompt box -->
-  <rect x="12" y="32" width="252" height="120" rx="6" ry="6" fill="#0d2a35" stroke="#00b4d8" stroke-width="1.2" stroke-dasharray="5,3"/>
-  <text x="20" y="46" font-family="monospace" font-size="10" fill="#00b4d8">system prompt</text>
+  <rect x="12" y="32" width="252" height="120" rx="6" ry="6" fill="#fafafa" stroke="#a1245a" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <text x="20" y="46" font-family="monospace" font-size="10" fill="#a1245a">system prompt</text>
   <text font-family="monospace" font-size="10.5" fill="#a8d8ea">
     <tspan x="20" dy="0" y="62">Sei un pirata del XVII secolo.</tspan>
     <tspan x="20" dy="14">Parli con accento marinaresco,</tspan>
@@ -29,16 +29,16 @@
   </text>
 
   <!-- User bubble (right-aligned) -->
-  <rect x="62" y="166" width="202" height="36" rx="10" ry="10" fill="#2a2a4a"/>
-  <text font-family="sans-serif" font-size="11" fill="#e8e8e8">
+  <rect x="62" y="166" width="202" height="36" rx="10" ry="10" fill="#f0f0f0"/>
+  <text font-family="sans-serif" font-size="11" fill="#1a1a1a">
     <tspan x="74" y="181">Dammi un consiglio per un</tspan>
     <tspan x="74" dy="14">colloquio.</tspan>
   </text>
 
   <!-- Assistant bubble (left-aligned, accent left border) -->
-  <rect x="12" y="216" width="252" height="100" rx="10" ry="10" fill="#1e3a42"/>
-  <rect x="12" y="220" width="3" height="92" rx="1" fill="#00b4d8"/>
-  <text font-family="sans-serif" font-size="11" fill="#e8e8e8">
+  <rect x="12" y="216" width="252" height="100" rx="10" ry="10" fill="#f5f5f5"/>
+  <rect x="12" y="220" width="3" height="92" rx="1" fill="#a1245a"/>
+  <text font-family="sans-serif" font-size="11" fill="#1a1a1a">
     <tspan x="24" y="234">Arr, mozzo! Issa alta la bandiera</tspan>
     <tspan x="24" dy="15">della tua esperienza! Parla a</tspan>
     <tspan x="24" dy="15">voce ferma, come il capitano</tspan>
@@ -48,8 +48,8 @@
   <!-- ===================== RIGHT COLUMN — Agente B ===================== -->
 
   <!-- System prompt box -->
-  <rect x="296" y="32" width="252" height="120" rx="6" ry="6" fill="#0d2a35" stroke="#00b4d8" stroke-width="1.2" stroke-dasharray="5,3"/>
-  <text x="304" y="46" font-family="monospace" font-size="10" fill="#00b4d8">system prompt</text>
+  <rect x="296" y="32" width="252" height="120" rx="6" ry="6" fill="#fafafa" stroke="#a1245a" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <text x="304" y="46" font-family="monospace" font-size="10" fill="#a1245a">system prompt</text>
   <text font-family="monospace" font-size="10.5" fill="#a8d8ea">
     <tspan x="304" dy="0" y="62">Sei un avvocato d'affari.</tspan>
     <tspan x="304" dy="14">Parli in modo formale e</tspan>
@@ -58,16 +58,16 @@
   </text>
 
   <!-- User bubble (right-aligned) -->
-  <rect x="346" y="166" width="202" height="36" rx="10" ry="10" fill="#2a2a4a"/>
-  <text font-family="sans-serif" font-size="11" fill="#e8e8e8">
+  <rect x="346" y="166" width="202" height="36" rx="10" ry="10" fill="#f0f0f0"/>
+  <text font-family="sans-serif" font-size="11" fill="#1a1a1a">
     <tspan x="358" y="181">Dammi un consiglio per un</tspan>
     <tspan x="358" dy="14">colloquio.</tspan>
   </text>
 
   <!-- Assistant bubble (left-aligned, accent left border) -->
-  <rect x="296" y="216" width="252" height="100" rx="10" ry="10" fill="#1e3a42"/>
-  <rect x="296" y="220" width="3" height="92" rx="1" fill="#00b4d8"/>
-  <text font-family="sans-serif" font-size="11" fill="#e8e8e8">
+  <rect x="296" y="216" width="252" height="100" rx="10" ry="10" fill="#f5f5f5"/>
+  <rect x="296" y="220" width="3" height="92" rx="1" fill="#a1245a"/>
+  <text font-family="sans-serif" font-size="11" fill="#1a1a1a">
     <tspan x="308" y="234">Premesso che dipende dal ruolo:</tspan>
     <tspan x="308" dy="15">1) studia il contesto aziendale,</tspan>
     <tspan x="308" dy="15">2) struttura risposte su evidenze,</tspan>
@@ -78,11 +78,11 @@
   <!-- ===================== BOTTOM LABEL ===================== -->
 
   <!-- Chip icon (simple square) -->
-  <rect x="172" y="420" width="14" height="14" rx="2" ry="2" fill="none" stroke="#8892a0" stroke-width="1"/>
-  <line x1="176" y1="420" x2="176" y2="434" stroke="#8892a0" stroke-width="0.5"/>
-  <line x1="183" y1="420" x2="183" y2="434" stroke="#8892a0" stroke-width="0.5"/>
-  <line x1="172" y1="425" x2="186" y2="425" stroke="#8892a0" stroke-width="0.5"/>
-  <line x1="172" y1="429" x2="186" y2="429" stroke="#8892a0" stroke-width="0.5"/>
+  <rect x="172" y="420" width="14" height="14" rx="2" ry="2" fill="none" stroke="#838383" stroke-width="1"/>
+  <line x1="176" y1="420" x2="176" y2="434" stroke="#838383" stroke-width="0.5"/>
+  <line x1="183" y1="420" x2="183" y2="434" stroke="#838383" stroke-width="0.5"/>
+  <line x1="172" y1="425" x2="186" y2="425" stroke="#838383" stroke-width="0.5"/>
+  <line x1="172" y1="429" x2="186" y2="429" stroke="#838383" stroke-width="0.5"/>
 
-  <text x="194" y="432" font-family="sans-serif" font-size="12" fill="#8892a0">Stesso modello sottostante</text>
+  <text x="194" y="432" font-family="sans-serif" font-size="12" fill="#838383">Stesso modello sottostante</text>
 </svg>

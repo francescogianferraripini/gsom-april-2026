@@ -7,71 +7,71 @@
   </defs>
 
   <!-- Background -->
-  <rect width="1140" height="430" fill="#1a1a2e" rx="4"/>
+  <rect width="1140" height="430" fill="#f2f2f2" rx="4"/>
 
   <!-- Column headers -->
-  <text x="265" y="30" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#8892a0" letter-spacing="1.5" text-decoration="none" font-weight="600">COSA VEDE L'UTENTE</text>
-  <text x="870" y="30" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#8892a0" letter-spacing="1.5" font-weight="600">COSA RICEVE L'API A QUESTO TURNO</text>
+  <text x="265" y="30" text-anchor="middle" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="13" fill="#838383" letter-spacing="1.5" text-decoration="none" font-weight="600">COSA VEDE L'UTENTE</text>
+  <text x="870" y="30" text-anchor="middle" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="13" fill="#838383" letter-spacing="1.5" font-weight="600">COSA RICEVE L'API A QUESTO TURNO</text>
 
   <!-- Vertical divider -->
-  <line x1="565" y1="12" x2="565" y2="418" stroke="#2a2a4a" stroke-width="1.5"/>
+  <line x1="565" y1="12" x2="565" y2="418" stroke="#dddddd" stroke-width="1.5"/>
 
   <!-- Arrow: left to right -->
   <g transform="translate(530, 210)">
-    <line x1="0" y1="0" x2="50" y2="0" stroke="#8892a0" stroke-width="1" stroke-dasharray="3,2"/>
-    <polygon points="50,-4 58,0 50,4" fill="#8892a0"/>
-    <text x="29" y="-8" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#8892a0" font-style="italic">trasformazione</text>
-    <text x="29" y="14" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#8892a0" font-style="italic">nascosta</text>
+    <line x1="0" y1="0" x2="50" y2="0" stroke="#838383" stroke-width="1" stroke-dasharray="3,2"/>
+    <polygon points="50,-4 58,0 50,4" fill="#838383"/>
+    <text x="29" y="-8" text-anchor="middle" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="10" fill="#838383" font-style="italic">trasformazione</text>
+    <text x="29" y="14" text-anchor="middle" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="10" fill="#838383" font-style="italic">nascosta</text>
   </g>
 
   <!-- ==================== LEFT COLUMN: Chat UI ==================== -->
   <g id="chat-ui">
     <!-- User bubble: right-aligned -->
     <g transform="translate(0, 70)">
-      <rect x="280" y="0" width="230" height="38" rx="12" fill="#2a2a4a"/>
-      <text x="295" y="16" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#8892a0">User</text>
-      <text x="295" y="30" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#e8e8e8">Ciao, chi sei?</text>
+      <rect x="280" y="0" width="230" height="38" rx="12" fill="#f0f0f0"/>
+      <text x="295" y="16" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="10" fill="#838383">User</text>
+      <text x="295" y="30" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="13" fill="#1a1a1a">Ciao, chi sei?</text>
     </g>
 
     <!-- Assistant bubble: left-aligned -->
     <g transform="translate(0, 130)">
-      <rect x="30" y="0" width="380" height="38" rx="12" fill="#1e3a42"/>
-      <line x1="30" y1="4" x2="30" y2="34" stroke="#00b4d8" stroke-width="3" stroke-linecap="round"/>
-      <text x="45" y="16" font-family="'Segoe UI', Arial, sans-serif" font-size="10" fill="#8892a0">AI</text>
-      <text x="45" y="30" font-family="'Segoe UI', Arial, sans-serif" font-size="13" fill="#e8e8e8">Sono un assistente AI. In cosa posso aiutarti?</text>
+      <rect x="30" y="0" width="380" height="38" rx="12" fill="#f5f5f5"/>
+      <line x1="30" y1="4" x2="30" y2="34" stroke="#a1245a" stroke-width="3" stroke-linecap="round"/>
+      <text x="45" y="16" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="10" fill="#838383">AI</text>
+      <text x="45" y="30" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="13" fill="#1a1a1a">Sono un assistente AI. In cosa posso aiutarti?</text>
     </g>
 
     <!-- Input field -->
     <g transform="translate(0, 370)">
-      <rect x="30" y="0" width="490" height="36" rx="18" fill="none" stroke="#2a2a4a" stroke-width="1.5"/>
-      <text x="52" y="22" font-family="'Segoe UI', Arial, sans-serif" font-size="12" fill="#8892a0" font-style="italic">Scrivi un messaggio...</text>
-      <line x1="46" y1="12" x2="46" y2="26" stroke="#00b4d8" stroke-width="1.5" opacity="0.7"/>
+      <rect x="30" y="0" width="490" height="36" rx="18" fill="none" stroke="#dddddd" stroke-width="1.5"/>
+      <text x="52" y="22" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="12" fill="#838383" font-style="italic">Scrivi un messaggio...</text>
+      <line x1="46" y1="12" x2="46" y2="26" stroke="#a1245a" stroke-width="1.5" opacity="0.7"/>
     </g>
   </g>
 
   <!-- ==================== RIGHT COLUMN: API Block ==================== -->
   <g id="api-block">
     <!-- Dashed border -->
-    <rect x="615" y="50" width="490" height="120" rx="6" fill="none" stroke="#00b4d8" stroke-width="1.2" stroke-dasharray="6,3"/>
+    <rect x="615" y="50" width="490" height="120" rx="6" fill="none" stroke="#a1245a" stroke-width="1.2" stroke-dasharray="6,3"/>
 
     <!-- Vertical label on right edge -->
-    <text transform="translate(1120, 170) rotate(-90)" text-anchor="middle" font-family="'Segoe UI', Arial, sans-serif" font-size="11" fill="#00b4d8" font-style="italic">rispedito integralmente ogni turno</text>
+    <text transform="translate(1120, 170) rotate(-90)" text-anchor="middle" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="11" fill="#a1245a" font-style="italic">rispedito integralmente ogni turno</text>
 
     <!-- API lines -->
     <g font-family="'Courier New', monospace" font-size="13">
       <!-- Line 1: system -->
       <text x="630" y="80">
-        <tspan fill="#8892a0">[system]</tspan>
+        <tspan fill="#838383">[system]</tspan>
         <tspan fill="#a8d8ea"> Sei un assistente utile...</tspan>
       </text>
       <!-- Line 2: user -->
       <text x="630" y="105">
-        <tspan fill="#e8e8e8">[user]</tspan>
+        <tspan fill="#1a1a1a">[user]</tspan>
         <tspan fill="#a8d8ea"> Ciao, chi sei?</tspan>
       </text>
       <!-- Line 3: assistant -->
       <text x="630" y="130">
-        <tspan fill="#00b4d8">[assistant]</tspan>
+        <tspan fill="#a1245a">[assistant]</tspan>
         <tspan fill="#a8d8ea"> Sono un assistente AI. In cosa posso aiutarti?</tspan>
       </text>
     </g>
