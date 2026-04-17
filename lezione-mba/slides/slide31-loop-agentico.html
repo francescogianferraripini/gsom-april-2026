@@ -1,0 +1,14 @@
+<!-- SLIDE 31 — Il loop agentico con tool -->
+<section id="slide-loop-agentico">
+  <h2>Il loop agentico con tool</h2>
+  <p style="font-size: 13pt; color: var(--muted-color); margin: 0;">Terzo loop — l'agente decide cosa fare</p>
+  <div class="content" style="gap: 10px;">
+    <div class="svg-container" style="flex: 1;">
+      <img src="svg/slide31-loop-agentico.svg" alt="Diagramma: biforcazione — rispondi o emetti tool call (loop)">
+    </div>
+    <p style="font-size: 11pt; line-height: 1.5; margin: 0;">Ad ogni turno il modello decide: rispondere all'utente, o emettere una tool call. Può emettere tool call multiple in sequenza prima di rispondere. Il numero di cicli non è predeterminato — lo decide il modello a runtime.</p>
+    <div class="callout-box" style="padding: 8px 14px; margin: 0;">
+      <p style="font-size: 11pt; margin: 0;">Limiti obbligatori in produzione: un tetto al numero di tool call per turno, un timeout per singola esecuzione, un budget di token per sessione. Senza, l'agente può entrare in cicli infiniti.</p>
+    </div>
+  </div>
+</section>

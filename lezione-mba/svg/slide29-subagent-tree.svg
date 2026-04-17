@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320">
+  <title>Parent agent spawning three sub-agents with tools</title>
+  <style>
+    text { font-family: 'Poppins', sans-serif; }
+  </style>
+  <defs>
+    <marker id="arrow-down" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#a1245a"/>
+    </marker>
+    <marker id="arrow-up" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+      <path d="M8,0 L0,3 L8,6" fill="#1ab197"/>
+    </marker>
+  </defs>
+
+  <!-- Parent agent -->
+  <g id="parent">
+    <rect x="325" y="10" width="250" height="70" rx="6" fill="none" stroke="#a1245a" stroke-width="1.8"/>
+    <text x="450" y="32" text-anchor="middle" font-size="14" font-weight="600" fill="#2a2a2a">Agente padre</text>
+    <!-- Clean context box (sparse) -->
+    <rect x="375" y="40" width="150" height="30" rx="3" fill="#f7f0f3" stroke="#a1245a" stroke-width="0.8"/>
+    <line x1="385" y1="49" x2="475" y2="49" stroke="#c8a0b0" stroke-width="0.8"/>
+    <line x1="385" y1="56" x2="445" y2="56" stroke="#c8a0b0" stroke-width="0.8"/>
+    <line x1="385" y1="63" x2="460" y2="63" stroke="#c8a0b0" stroke-width="0.8"/>
+    <text x="450" y="78" text-anchor="middle" font-size="9" fill="#838383" font-style="italic">contesto pulito</text>
+  </g>
+
+  <!-- Spawn arrows (down, solid, berry) -->
+  <line x1="380" y1="86" x2="152" y2="153" stroke="#a1245a" stroke-width="1.4" marker-end="url(#arrow-down)"/>
+  <text x="248" y="112" text-anchor="middle" font-size="10" fill="#a1245a" font-weight="500">spawn</text>
+
+  <line x1="450" y1="86" x2="450" y2="153" stroke="#a1245a" stroke-width="1.4" marker-end="url(#arrow-down)"/>
+  <text x="465" y="126" text-anchor="start" font-size="10" fill="#a1245a" font-weight="500">spawn</text>
+
+  <line x1="520" y1="86" x2="748" y2="153" stroke="#a1245a" stroke-width="1.4" marker-end="url(#arrow-down)"/>
+  <text x="652" y="112" text-anchor="middle" font-size="10" fill="#a1245a" font-weight="500">spawn</text>
+
+  <!-- Sintesi arrows (up, dashed, teal) -->
+  <line x1="130" y1="153" x2="372" y2="86" stroke="#1ab197" stroke-width="1.4" marker-end="url(#arrow-up)" stroke-dasharray="5,3"/>
+  <text x="232" y="130" text-anchor="middle" font-size="10" fill="#1ab197" font-weight="500">sintesi</text>
+
+  <line x1="435" y1="153" x2="435" y2="86" stroke="#1ab197" stroke-width="1.4" marker-end="url(#arrow-up)" stroke-dasharray="5,3"/>
+  <text x="420" y="126" text-anchor="end" font-size="10" fill="#1ab197" font-weight="500">sintesi</text>
+
+  <line x1="770" y1="153" x2="528" y2="86" stroke="#1ab197" stroke-width="1.4" marker-end="url(#arrow-up)" stroke-dasharray="5,3"/>
+  <text x="668" y="130" text-anchor="middle" font-size="10" fill="#1ab197" font-weight="500">sintesi</text>
+
+  <!-- Sub-agent 1 -->
+  <g id="sub1">
+    <rect x="50" y="158" width="200" height="80" rx="6" fill="none" stroke="#a1245a" stroke-width="1.8"/>
+    <text x="150" y="178" text-anchor="middle" font-size="13" font-weight="600" fill="#2a2a2a">Sub-agent 1</text>
+    <!-- Dense context box -->
+    <rect x="75" y="186" width="150" height="42" rx="3" fill="#f7f0f3" stroke="#a1245a" stroke-width="0.8"/>
+    <line x1="83" y1="192" x2="195" y2="192" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="83" y1="197" x2="215" y2="197" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="83" y1="202" x2="185" y2="202" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="83" y1="207" x2="218" y2="207" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="83" y1="212" x2="190" y2="212" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="83" y1="217" x2="205" y2="217" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="83" y1="222" x2="175" y2="222" stroke="#c8a0b0" stroke-width="0.7"/>
+    <!-- Tool: magnifying glass icon -->
+    <line x1="150" y1="238" x2="150" y2="248" stroke="#838383" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="150" cy="262" r="14" fill="none" stroke="#838383" stroke-width="1.2"/>
+    <circle cx="147" cy="259" r="6" fill="none" stroke="#838383" stroke-width="1.1"/>
+    <line x1="151.5" y1="263.5" x2="157" y2="269" stroke="#838383" stroke-width="1.2" stroke-linecap="round"/>
+    <text x="150" y="292" text-anchor="middle" font-size="10" fill="#838383">web search</text>
+  </g>
+
+  <!-- Sub-agent 2 -->
+  <g id="sub2">
+    <rect x="350" y="158" width="200" height="80" rx="6" fill="none" stroke="#a1245a" stroke-width="1.8"/>
+    <text x="450" y="178" text-anchor="middle" font-size="13" font-weight="600" fill="#2a2a2a">Sub-agent 2</text>
+    <!-- Dense context box -->
+    <rect x="375" y="186" width="150" height="42" rx="3" fill="#f7f0f3" stroke="#a1245a" stroke-width="0.8"/>
+    <line x1="383" y1="192" x2="495" y2="192" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="383" y1="197" x2="515" y2="197" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="383" y1="202" x2="485" y2="202" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="383" y1="207" x2="518" y2="207" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="383" y1="212" x2="490" y2="212" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="383" y1="217" x2="505" y2="217" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="383" y1="222" x2="475" y2="222" stroke="#c8a0b0" stroke-width="0.7"/>
+    <!-- Tool: document/file icon -->
+    <line x1="450" y1="238" x2="450" y2="248" stroke="#838383" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="450" cy="262" r="14" fill="none" stroke="#838383" stroke-width="1.2"/>
+    <path d="M443,255 L443,270 L457,270 L457,259 L453,255 Z" fill="none" stroke="#838383" stroke-width="1" stroke-linejoin="round"/>
+    <line x1="453" y1="255" x2="453" y2="259" stroke="#838383" stroke-width="0.8"/>
+    <line x1="453" y1="259" x2="457" y2="259" stroke="#838383" stroke-width="0.8"/>
+    <text x="450" y="292" text-anchor="middle" font-size="10" fill="#838383">file read</text>
+  </g>
+
+  <!-- Sub-agent 3 -->
+  <g id="sub3">
+    <rect x="650" y="158" width="200" height="80" rx="6" fill="none" stroke="#a1245a" stroke-width="1.8"/>
+    <text x="750" y="178" text-anchor="middle" font-size="13" font-weight="600" fill="#2a2a2a">Sub-agent 3</text>
+    <!-- Dense context box -->
+    <rect x="675" y="186" width="150" height="42" rx="3" fill="#f7f0f3" stroke="#a1245a" stroke-width="0.8"/>
+    <line x1="683" y1="192" x2="795" y2="192" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="683" y1="197" x2="815" y2="197" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="683" y1="202" x2="785" y2="202" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="683" y1="207" x2="818" y2="207" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="683" y1="212" x2="790" y2="212" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="683" y1="217" x2="805" y2="217" stroke="#c8a0b0" stroke-width="0.7"/>
+    <line x1="683" y1="222" x2="775" y2="222" stroke="#c8a0b0" stroke-width="0.7"/>
+    <!-- Tool: database/cylinder icon -->
+    <line x1="750" y1="238" x2="750" y2="248" stroke="#838383" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="750" cy="262" r="14" fill="none" stroke="#838383" stroke-width="1.2"/>
+    <ellipse cx="750" cy="257" rx="7" ry="2.5" fill="none" stroke="#838383" stroke-width="0.9"/>
+    <line x1="743" y1="257" x2="743" y2="267" stroke="#838383" stroke-width="0.9"/>
+    <line x1="757" y1="257" x2="757" y2="267" stroke="#838383" stroke-width="0.9"/>
+    <ellipse cx="750" cy="267" rx="7" ry="2.5" fill="none" stroke="#838383" stroke-width="0.9"/>
+    <text x="750" y="292" text-anchor="middle" font-size="10" fill="#838383">query DB</text>
+  </g>
+</svg>

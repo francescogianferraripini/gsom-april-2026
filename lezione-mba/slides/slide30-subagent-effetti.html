@@ -1,0 +1,29 @@
+<!-- SLIDE 30 — I sub-agent non sono gratis -->
+<section id="slide-subagent-effetti">
+  <h2>I sub-agent non sono gratis</h2>
+  <div class="content" style="gap: 12px;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+      <div class="contrast-card" style="padding: 14px;">
+        <p style="font-size: 12pt; margin: 0;"><i class="fa-solid fa-filter" style="color: var(--primary-color); margin-right: 6px;"></i><strong>Perdita di informazione</strong></p>
+        <p style="font-size: 11pt; margin: 4px 0 0 0; color: var(--muted-color);">Il padre vede solo ciò che il figlio sceglie di riportare. Dettagli scartati nella sintesi sono irrecuperabili.</p>
+      </div>
+      <div class="contrast-card" style="padding: 14px;">
+        <p style="font-size: 12pt; margin: 0;"><i class="fa-solid fa-sitemap" style="color: var(--primary-color); margin-right: 6px;"></i><strong>Debugging complesso</strong></p>
+        <p style="font-size: 11pt; margin: 4px 0 0 0; color: var(--muted-color);">Le tracce diventano alberi, spesso non completamente persistiti. Errori difficili da riprodurre.</p>
+      </div>
+      <div class="contrast-card" style="padding: 14px;">
+        <p style="font-size: 12pt; margin: 0;"><i class="fa-solid fa-dominoes" style="color: var(--primary-color); margin-right: 6px;"></i><strong>Errori composti silenziosi</strong></p>
+        <p style="font-size: 11pt; margin: 4px 0 0 0; color: var(--muted-color);">Un figlio che sbaglia produce una sintesi "ragionevole" che il padre usa come base. L'errore si nasconde negli handoff.</p>
+      </div>
+      <div class="contrast-card" style="padding: 14px;">
+        <p style="font-size: 12pt; margin: 0;"><i class="fa-solid fa-arrow-turn-down" style="color: var(--primary-color); margin-right: 6px;"></i><strong>Prompt injection</strong></p>
+        <p style="font-size: 11pt; margin: 4px 0 0 0; color: var(--muted-color);">Un sub-agent con accesso web può essere manipolato da contenuti esterni e contaminare la sintesi.</p>
+      </div>
+    </div>
+    <ul style="font-size: 11pt; margin: 0;">
+      <li>Sub-agent vincono su task esplorativi, parallelizzabili, o con contesti specializzati. Perdono dove la tracciabilità è critica.</li>
+      <li>Se devi spiegare cosa ha fatto l'agente passo per passo — audit, compliance, debug — il pattern sub-agent rende tutto più difficile.</li>
+      <li>Sul costo: misurare, non assumere. A volte un sub-agent costa meno perché il padre non paga il result grezzo.</li>
+    </ul>
+  </div>
+</section>

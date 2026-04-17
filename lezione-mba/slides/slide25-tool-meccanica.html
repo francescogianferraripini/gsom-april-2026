@@ -1,0 +1,18 @@
+<!-- SLIDE 25 — La meccanica del tool call -->
+<section id="slide-tool-meccanica">
+  <h2>La meccanica del tool call</h2>
+  <div class="content" style="gap: 0; padding-top: 10px;">
+    <div style="display: grid; grid-template-columns: 3fr 1fr; gap: 20px; flex: 1; align-items: center; min-height: 0;">
+      <div style="min-height: 0; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+        <img src="svg/slide25-tool-call.svg" alt="Diagramma: User → Harness → Model → CRM con 8 frecce numerate" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+      </div>
+      <div>
+        <ul style="font-size: 9pt; margin: 0; line-height: 1.4;">
+          <li>Il modello non ha eseguito nulla — ha emesso una richiesta strutturata, e l'<strong>harness</strong> ha fatto il lavoro.</li>
+          <li style="margin-top: 10px;">Ogni tool call aggiunge almeno <strong>due round-trip</strong>. Su task complessi, latenza e costo si moltiplicano.</li>
+          <li style="margin-top: 10px;">Il modello sceglie il tool leggendo le <strong>descrizioni nel system prompt</strong>. Descrizione ambigua = scelta sbagliata.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

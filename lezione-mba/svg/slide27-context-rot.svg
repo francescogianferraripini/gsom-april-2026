@@ -1,0 +1,199 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 280">
+  <title>Context growth comparison: pure conversation vs conversation with tools</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap');
+    text { font-family: 'Poppins', sans-serif; }
+  </style>
+  <defs>
+    <clipPath id="clipLeft">
+      <rect x="80" y="40" width="360" height="200"/>
+    </clipPath>
+    <clipPath id="clipRight">
+      <rect x="560" y="40" width="360" height="200"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="280" fill="white"/>
+
+  <!-- ==================== LEFT GRAPH ==================== -->
+  <g id="left-graph">
+    <!-- Title -->
+    <text x="260" y="24" text-anchor="middle" font-size="13" font-weight="600" fill="#333">Conversazione pura</text>
+
+    <!-- Y axis -->
+    <line x1="80" y1="40" x2="80" y2="240" stroke="#ccc" stroke-width="1"/>
+    <!-- X axis -->
+    <line x1="80" y1="240" x2="440" y2="240" stroke="#ccc" stroke-width="1"/>
+
+    <!-- Y grid lines and labels -->
+    <line x1="80" y1="240" x2="440" y2="240" stroke="#eee" stroke-width="0.5"/>
+    <text x="74" y="244" text-anchor="end" font-size="8" fill="#838383">0</text>
+
+    <line x1="80" y1="200" x2="440" y2="200" stroke="#eee" stroke-width="0.5"/>
+    <text x="74" y="204" text-anchor="end" font-size="8" fill="#838383">10k</text>
+
+    <line x1="80" y1="160" x2="440" y2="160" stroke="#eee" stroke-width="0.5"/>
+    <text x="74" y="164" text-anchor="end" font-size="8" fill="#838383">20k</text>
+
+    <line x1="80" y1="120" x2="440" y2="120" stroke="#eee" stroke-width="0.5"/>
+    <text x="74" y="124" text-anchor="end" font-size="8" fill="#838383">30k</text>
+
+    <line x1="80" y1="80" x2="440" y2="80" stroke="#eee" stroke-width="0.5"/>
+    <text x="74" y="84" text-anchor="end" font-size="8" fill="#838383">40k</text>
+
+    <line x1="80" y1="40" x2="440" y2="40" stroke="#eee" stroke-width="0.5"/>
+    <text x="74" y="44" text-anchor="end" font-size="8" fill="#838383">50k</text>
+
+    <!-- X tick labels -->
+    <text x="80" y="254" text-anchor="middle" font-size="8" fill="#838383">0</text>
+    <text x="170" y="254" text-anchor="middle" font-size="8" fill="#838383">5</text>
+    <text x="260" y="254" text-anchor="middle" font-size="8" fill="#838383">10</text>
+    <text x="350" y="254" text-anchor="middle" font-size="8" fill="#838383">15</text>
+    <text x="440" y="254" text-anchor="middle" font-size="8" fill="#838383">20</text>
+
+    <!-- Axis labels -->
+    <text x="260" y="270" text-anchor="middle" font-size="9" fill="#838383">Turni</text>
+    <text x="18" y="140" text-anchor="middle" font-size="9" fill="#838383" transform="rotate(-90, 18, 140)">Token nel contesto</text>
+
+    <!-- Fill under curve - gentle linear rise to ~5k at turn 20 -->
+    <!-- 5k tokens = 200 * (5/50) = 20px from bottom, so y=220 at x=440 -->
+    <polygon points="80,240 98,239 116,238 134,237 152,236 170,235 188,234 206,233 224,232 242,231 260,230 278,229 296,228 314,227 332,226 350,225 368,224 386,223 404,222 422,221 440,220 440,240"
+      fill="#d0d0d0" opacity="0.35"/>
+
+    <!-- Line curve -->
+    <polyline points="80,240 98,239 116,238 134,237 152,236 170,235 188,234 206,233 224,232 242,231 260,230 278,229 296,228 314,227 332,226 350,225 368,224 386,223 404,222 422,221 440,220"
+      fill="none" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- ==================== RIGHT GRAPH ==================== -->
+  <g id="right-graph">
+    <!-- Title -->
+    <text x="740" y="24" text-anchor="middle" font-size="13" font-weight="600" fill="#333">Conversazione con tool</text>
+
+    <!-- Y axis -->
+    <line x1="560" y1="40" x2="560" y2="240" stroke="#ccc" stroke-width="1"/>
+    <!-- X axis -->
+    <line x1="560" y1="240" x2="920" y2="240" stroke="#ccc" stroke-width="1"/>
+
+    <!-- Y grid lines and labels -->
+    <text x="554" y="244" text-anchor="end" font-size="8" fill="#838383">0</text>
+
+    <line x1="560" y1="200" x2="920" y2="200" stroke="#eee" stroke-width="0.5"/>
+    <text x="554" y="204" text-anchor="end" font-size="8" fill="#838383">10k</text>
+
+    <line x1="560" y1="160" x2="920" y2="160" stroke="#eee" stroke-width="0.5"/>
+    <text x="554" y="164" text-anchor="end" font-size="8" fill="#838383">20k</text>
+
+    <line x1="560" y1="120" x2="920" y2="120" stroke="#eee" stroke-width="0.5"/>
+    <text x="554" y="124" text-anchor="end" font-size="8" fill="#838383">30k</text>
+
+    <line x1="560" y1="80" x2="920" y2="80" stroke="#eee" stroke-width="0.5"/>
+    <text x="554" y="84" text-anchor="end" font-size="8" fill="#838383">40k</text>
+
+    <line x1="560" y1="40" x2="920" y2="40" stroke="#eee" stroke-width="0.5"/>
+    <text x="554" y="44" text-anchor="end" font-size="8" fill="#838383">50k</text>
+
+    <!-- X tick labels -->
+    <text x="560" y="254" text-anchor="middle" font-size="8" fill="#838383">0</text>
+    <text x="650" y="254" text-anchor="middle" font-size="8" fill="#838383">5</text>
+    <text x="740" y="254" text-anchor="middle" font-size="8" fill="#838383">10</text>
+    <text x="830" y="254" text-anchor="middle" font-size="8" fill="#838383">15</text>
+    <text x="920" y="254" text-anchor="middle" font-size="8" fill="#838383">20</text>
+
+    <!-- Axis labels -->
+    <text x="740" y="270" text-anchor="middle" font-size="9" fill="#838383">Turni</text>
+
+    <!-- Staircase fill
+         Each step: 18px per turn on X axis (360px / 20 turns)
+         Y: 0=240, 50k=40 => 4px per 1k tokens
+
+         Staircase pattern (turn, tokens):
+         0: 0      -> y=240
+         1: 500    -> y=238    (user msg)
+         2: 1000   -> y=236    (assistant msg)
+         3: 8000   -> y=208    (tool result jump! +7k)
+         4: 9000   -> y=204
+         5: 9500   -> y=202
+         6: 16000  -> y=176    (tool result jump! +6.5k)
+         7: 17000  -> y=172
+         8: 17500  -> y=170
+         9: 24000  -> y=144    (tool result jump!)
+         10: 25000 -> y=140
+         11: 25500 -> y=138
+         12: 32000 -> y=112    (tool result jump!)
+         13: 33000 -> y=108
+         14: 33500 -> y=106
+         15: 39000 -> y=84     (tool result jump!)
+         16: 40000 -> y=80
+         17: 40500 -> y=78
+         18: 46000 -> y=56     (tool result jump!)
+         19: 47000 -> y=52
+         20: 48000 -> y=48
+    -->
+
+    <!-- Initial fixed cost: tool definitions (~2k tokens) — horizontal band -->
+    <rect x="560" y="232" width="360" height="8" fill="#a1245a" opacity="0.08"/>
+    <line x1="560" y1="232" x2="920" y2="232" stroke="#a1245a" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.5"/>
+    <text x="565" y="250" font-size="7" fill="#a1245a" font-weight="500" opacity="0.85">↑ costo fisso: tool definitions nel system prompt</text>
+
+    <!-- Fill under staircase -->
+    <polygon points="
+      560,232
+      578,232 578,230
+      596,230 596,228
+      614,228 614,200
+      632,200 632,196
+      650,196 650,194
+      668,194 668,168
+      686,168 686,164
+      704,164 704,162
+      722,162 722,136
+      740,136 740,132
+      758,132 758,130
+      776,130 776,104
+      794,104 794,100
+      812,100 812,98
+      830,98 830,76
+      848,76 848,72
+      866,72 866,70
+      884,70 884,48
+      902,48 902,44
+      920,44 920,240"
+      fill="#a1245a" opacity="0.12"/>
+
+    <!-- Staircase line -->
+    <polyline points="
+      560,232
+      578,232 578,230
+      596,230 596,228
+      614,228 614,200
+      632,200 632,196
+      650,196 650,194
+      668,194 668,168
+      686,168 686,164
+      704,164 704,162
+      722,162 722,136
+      740,136 740,132
+      758,132 758,130
+      776,130 776,104
+      794,104 794,100
+      812,100 812,98
+      830,98 830,76
+      848,76 848,72
+      866,72 866,70
+      884,70 884,48
+      902,48 902,44
+      920,44"
+      fill="none" stroke="#a1245a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Tool result annotations on first two jumps -->
+    <!-- Jump 1: at turn 3, x=614, jumps from y=228 to y=200 -->
+    <line x1="614" y1="214" x2="634" y2="207" stroke="#a1245a" stroke-width="0.7" opacity="0.6"/>
+    <text x="636" y="206" font-size="7" fill="#a1245a" font-weight="400" opacity="0.85">tool result</text>
+
+    <!-- Jump 2: at turn 6, x=668, jumps from y=194 to y=168 -->
+    <line x1="668" y1="181" x2="688" y2="174" stroke="#a1245a" stroke-width="0.7" opacity="0.6"/>
+    <text x="690" y="173" font-size="7" fill="#a1245a" font-weight="400" opacity="0.85">tool result</text>
+  </g>
+</svg>

@@ -1,0 +1,18 @@
+<!-- SLIDE 27 — I tool accelerano il context rot -->
+<section id="slide-context-rot">
+  <h2>I tool accelerano il context rot</h2>
+  <div class="content" style="gap: 8px;">
+    <div class="svg-container" style="flex: 0 0 auto; max-height: 260px;">
+      <img src="svg/slide27-context-rot.svg" alt="Due grafici: conversazione pura (lineare) vs con tool (a scalini)">
+    </div>
+    <div class="highlight-box" style="padding: 10px 14px; margin: 0;">
+      <p style="font-size: 11pt; margin: 0; font-weight: 400;">I tool sono la risposta al limite più evidente del modello da solo: non sa quello che non sa, e non può agire nel mondo. Ma ogni tool call deposita nel contesto il suo risultato — e lì resta per tutta la sessione.</p>
+    </div>
+    <ul style="font-size: 11pt; margin: 0;">
+      <li>Esporre all'agente solo i tool strettamente necessari. Ogni definizione paga un costo fisso anche se il tool non viene mai chiamato.</li>
+      <li>Dimensionare i tool result. Un tool che restituisce 50k token grezzo non è un tool ben progettato — è un carico.</li>
+      <li>Preferire tool ben definiti a tool generici. Un tool che fa una cosa sola viene scelto con più precisione.</li>
+    </ul>
+    <p style="font-size: 11pt; color: var(--muted-color); margin: 0;">La prossima tecnica — i sub-agent — è un modo per non pagare questo costo.</p>
+  </div>
+</section>

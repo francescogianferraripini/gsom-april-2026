@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 420">
+  <title>Parent-child agent delegation pattern showing clean context delegation and synthesized response</title>
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap');
+      text { font-family: 'Poppins', sans-serif; }
+    </style>
+  </defs>
+
+  <!-- Parent agent box -->
+  <rect x="40" y="20" width="220" height="120" rx="8" ry="8" fill="none" stroke="#a1245a" stroke-width="2"/>
+  <text x="150" y="52" text-anchor="middle" font-size="15" font-weight="600" fill="#333">Agente padre</text>
+
+  <!-- Clean inner box -->
+  <rect x="70" y="65" width="160" height="55" rx="5" ry="5" fill="#fafafa" stroke="#ccc" stroke-width="1"/>
+  <!-- Few clean lines -->
+  <line x1="82" y1="82" x2="180" y2="82" stroke="#ddd" stroke-width="1.5"/>
+  <line x1="82" y1="94" x2="155" y2="94" stroke="#ddd" stroke-width="1.5"/>
+  <!-- Label -->
+  <text x="135" y="112" text-anchor="middle" font-size="9" fill="#888">contesto pulito</text>
+  <text x="193" y="112" text-anchor="middle" font-size="10" fill="#1ab197" font-weight="600">&#x2713;</text>
+
+  <!-- Down arrow -->
+  <line x1="115" y1="140" x2="115" y2="250" stroke="#a1245a" stroke-width="1.5"/>
+  <polygon points="115,258 110,248 120,248" fill="#a1245a"/>
+  <text x="108" y="200" text-anchor="end" font-size="10" fill="#666">delega task</text>
+
+  <!-- Up arrow -->
+  <line x1="185" y1="258" x2="185" y2="148" stroke="#a1245a" stroke-width="1.5"/>
+  <polygon points="185,140 180,150 190,150" fill="#a1245a"/>
+  <text x="192" y="200" text-anchor="start" font-size="10" fill="#666">restituisce sintesi</text>
+
+  <!-- Sub-agent box -->
+  <rect x="40" y="266" width="220" height="130" rx="8" ry="8" fill="none" stroke="#a1245a" stroke-width="2"/>
+  <text x="150" y="298" text-anchor="middle" font-size="15" font-weight="600" fill="#333">Sub-agent</text>
+
+  <!-- Cluttered inner box -->
+  <rect x="70" y="310" width="160" height="60" rx="5" ry="5" fill="#f5f5f5" stroke="#ccc" stroke-width="1"/>
+  <!-- Many dense lines -->
+  <line x1="80" y1="322" x2="215" y2="322" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="80" y1="329" x2="200" y2="329" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="80" y1="336" x2="218" y2="336" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="80" y1="343" x2="190" y2="343" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="80" y1="350" x2="210" y2="350" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="80" y1="357" x2="195" y2="357" stroke="#ccc" stroke-width="1.2"/>
+  <!-- Label -->
+  <text x="150" y="380" text-anchor="middle" font-size="9" fill="#888">contesto isolato</text>
+</svg>

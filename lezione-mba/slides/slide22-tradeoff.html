@@ -1,0 +1,55 @@
+<!-- SLIDE 22 — Trade-off decisionale: quando closed, quando open -->
+<section id="slide-tradeoff">
+  <h2>Trade-off decisionale: quando closed, quando open</h2>
+  <div class="content" style="gap: 6px; padding-top: 10px;">
+    <table style="width: 100%; border-collapse: collapse; font-size: 11pt; margin-bottom: 2px;">
+      <thead>
+        <tr>
+          <th style="text-align: left; padding: 4px 8px; border-bottom: 2px solid var(--primary-color); font-weight: 600; color: var(--primary-color);">Dimensione</th>
+          <th style="text-align: left; padding: 4px 8px; border-bottom: 2px solid var(--primary-color); font-weight: 600; color: var(--primary-color);">Closed</th>
+          <th style="text-align: left; padding: 4px 8px; border-bottom: 2px solid var(--primary-color); font-weight: 600; color: var(--primary-color);">Open</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 3px 8px; border-bottom: 1px solid var(--line-color); font-weight: 600;">Qualità di frontiera</td>
+          <td style="padding: 3px 8px; border-bottom: 1px solid var(--line-color);">In testa oggi</td>
+          <td style="padding: 3px 8px; border-bottom: 1px solid var(--line-color);">A 6-12 mesi, ma il gap si chiude</td>
+        </tr>
+        <tr>
+          <td style="padding: 3px 8px; border-bottom: 1px solid var(--line-color); font-weight: 600;">Costo a scala</td>
+          <td style="padding: 3px 8px; border-bottom: 1px solid var(--line-color);">Pay-per-token, lineare con l'uso</td>
+          <td style="padding: 3px 8px; border-bottom: 1px solid var(--line-color);">Infrastruttura fissa, marginale ~zero</td>
+        </tr>
+        <tr>
+          <td style="padding: 3px 8px; border-bottom: 1px solid var(--line-color); font-weight: 600;">Privacy / data residency</td>
+          <td style="padding: 3px 8px; border-bottom: 1px solid var(--line-color);">Dati al provider (tranne enterprise)</td>
+          <td style="padding: 3px 8px; border-bottom: 1px solid var(--line-color);">Totalmente in casa, sovrano</td>
+        </tr>
+        <tr>
+          <td style="padding: 3px 8px; border-bottom: 1px solid var(--line-color); font-weight: 600;">Customization</td>
+          <td style="padding: 3px 8px; border-bottom: 1px solid var(--line-color);">Fine-tuning limitato, no accesso ai pesi</td>
+          <td style="padding: 3px 8px; border-bottom: 1px solid var(--line-color);">Fine-tuning completo, quantizzazione, RAG</td>
+        </tr>
+        <tr>
+          <td style="padding: 3px 8px; border-bottom: 1px solid var(--line-color); font-weight: 600;">Effort di adozione</td>
+          <td style="padding: 3px 8px; border-bottom: 1px solid var(--line-color);">Zero infrastruttura</td>
+          <td style="padding: 3px 8px; border-bottom: 1px solid var(--line-color);">Richiede GPU, MLOps, competenze</td>
+        </tr>
+        <tr>
+          <td style="padding: 3px 8px; font-weight: 600;">Geopolitica / compliance</td>
+          <td style="padding: 3px 8px;">Dipendenza da vendor USA o Cina</td>
+          <td style="padding: 3px 8px;">Sovranità, compatibilità AI Act europeo</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="highlight-box" style="padding: 8px 12px; margin: 0;">
+      <p style="font-size: 10pt; margin: 0; font-weight: 400;">Con closed: paghi il token <strong>e</strong> regali le traiettorie. Con open: paghi l'infrastruttura, le traiettorie restano tue.</p>
+    </div>
+    <div style="background: rgba(26, 177, 151, 0.06); border: 1px solid var(--secondary-color); border-radius: var(--box-radius); padding: 8px 12px; margin: 0;">
+      <p style="font-size: 9pt; margin: 0 0 2px 0; font-weight: 600; color: var(--secondary-color); text-transform: uppercase; letter-spacing: 0.1em;">Aggiornamento 2026</p>
+      <p style="font-size: 10pt; margin: 0; line-height: 1.35;">Modelli open-weight da ~30B parametri (es. Gemma 4) raggiungono qualità comparabile a closed di classe Sonnet 4.5 su molti task, eseguibili su singola GPU consumer. Il ritardo rispetto alla frontiera rimane reale: ~6 mesi.</p>
+    </div>
+    <p style="font-size: 11pt; color: var(--text-color); margin: 2px 0 0 0; font-weight: 500; text-align: center;">Closed per sperimentare velocemente, open per scalare volumi, privacy, customization. La scelta è per use case, non ideologica.</p>
+  </div>
+</section>
