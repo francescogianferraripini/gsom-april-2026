@@ -113,7 +113,7 @@
 **Layout**: titolo in alto, layout a 2 colonne — testo a sinistra (~60%), schema minimale padre/figlio a destra (~40%).
 
 **Testo** (colonna sinistra):
-- Titolo: *Sub-agent: delegare il lavoro sporco*
+- Titolo: *Sub-agent: delegare per gestire meglio il contesto*
 - Apertura (una riga): *Il problema: ogni tool result rimane nel contesto per tutta la sessione — e satura.*
 - Analogia: *Il manager di progetto non legge personalmente i 200 documenti del due diligence. Chiede a un collaboratore di farlo — e di tornare con un executive summary di due pagine. Il manager mantiene il suo contesto strategico pulito. Il collaboratore si sporca le mani.*
 - Pattern: *Il pattern sub-agent funziona esattamente così: un agente figlio riceve un task delegato, lavora con il proprio contesto isolato, e restituisce al padre solo il risultato sintetizzato. Il contesto del padre non viene mai contaminato dal processo.*
@@ -134,16 +134,16 @@
 
 **Testo**:
 - Titolo: *Come funziona il pattern sub-agent*
-- 4 benefici (ordine: isolamento → parallelizzazione → specializzazione → contenimento errori):
-  - **Isolamento del contesto** — il padre vede solo il risultato finale, non il processo
-  - **Parallelizzazione** — più sub-agent lavorano simultaneamente su rami diversi
-  - **Specializzazione** — ogni sub-agent può avere system prompt, tool e capacità propri
-  - **Contenimento errori** — un fallimento nel figlio non corrompe il contesto del padre
-- 4 esempi reali (3 prodotti + 1 scenario business):
-  - **Claude Code** — sub-agent per esplorare grandi codebase senza saturare il contesto principale
-  - **Deep Research** (Claude / Perplexity / GPT) — sub-agent paralleli su fonti diverse
-  - **Devin** — sub-agent specializzati per implementazione, test, review
-  - **Due diligence su fornitore** — sub-agent paralleli su dati finanziari, referenze, copertura stampa, conformità normativa; il padre integra i report senza aver letto nulla di grezzo
+- 5 benefici (ordine: risparmio token → isolamento → parallelizzazione → specializzazione → contenimento errori), testo 13pt (override via `--text-size` sul container, header colonne a 15pt):
+  - **Risparmio token** *(evidenziato in colore secondary/teal)* — il padre non reitera sul contesto dei figli
+  - **Isolamento** — padre vede solo il risultato
+  - **Parallelizzazione** — più figli in contemporanea
+  - **Specializzazione** — prompt e tool propri
+  - **Contenimento errori** — fallimento figlio non intacca il padre
+- 3 esempi reali, stesso font:
+  - **Claude Code** — esplorazione codebase
+  - **Deep Research** — fonti parallele
+  - **OpenClaw** — agente generalista multi-sub-agent
 
 **Visual** — prompt per schema SVG:
 > Diagramma gerarchico. In alto al centro: rettangolo "Agente padre" con contesto visualizzato come box pulito (poche righe ordinate). Da questo partono 3 frecce verso il basso etichettate "spawn", che raggiungono 3 rettangoli "Sub-agent 1", "Sub-agent 2", "Sub-agent 3", ognuno con il proprio contesto visualizzato come box più affollato (più righe, più denso). Ogni sub-agent ha a sua volta una freccia verso un mini-tool con etichetta (es. "web search", "file read", "query DB"). Dai 3 sub-agent, frecce verso l'alto tornano al padre con etichetta "sintesi". Contrasto visivo chiaro: contesto padre pulito, contesti figli affollati.
@@ -170,21 +170,21 @@
 
 ---
 
-## ✅ Slide 29 — Il loop agentico con tool
+## ✅ Slide 29 — Il loop agentico con tool (evoluzione del loop conversazionale)
 
-**Layout**: titolo + sottotitolo in alto, diagramma con biforcazione (~55% della slide), didascalia sotto il diagramma, bullet operativo in fondo.
+**Layout**: titolo + sottotitolo in alto, diagramma pentagonale (riusa il layout della slide 22) con sub-ciclo tool sul nodo Modello (~55%), didascalia, bullet operativo in fondo.
 
 **Testo**:
 - Titolo: *Il loop agentico con tool*
-- Sottotitolo: *Terzo loop — l'agente decide cosa fare*
-- Didascalia sotto il diagramma: *Ad ogni turno il modello decide: rispondere all'utente, o emettere una tool call. Può emettere tool call multiple in sequenza prima di rispondere. Il numero di cicli non è predeterminato — lo decide il modello a runtime, non il design del sistema.*
-- Bullet operativo: *Limiti obbligatori in produzione: un tetto al numero di tool call per turno, un timeout per singola esecuzione, un budget di token per sessione. Senza questi limiti, un agente può entrare in cicli infiniti o consumare interamente il budget senza produrre risultato.*
+- Sottotitolo: *Stesso loop conversazionale, con un sub-ciclo tool dentro al turno del modello*
+- Didascalia: *Il loop esterno è identico a prima. Cambia solo il nodo Modello: invece di rispondere subito, può emettere una tool call, attendere il risultato, e re-iterare N volte prima di chiudere il turno. Il numero di cicli interni non è predeterminato — lo decide il modello a runtime.*
+- Bullet operativo: *Limiti obbligatori in produzione: un tetto al numero di tool call per turno, un timeout per singola esecuzione, un budget di token per sessione. Senza, l'agente può entrare in cicli infiniti.*
 
-**Visual** — prompt per schema SVG:
-> Diagramma con biforcazione. Punto di ingresso: "User input". Freccia verso nodo "Modello decide". Dal nodo due rami:
-> - Ramo A (verso destra): etichetta "Rispondi all'utente" → nodo "Fine"
-> - Ramo B (verso il basso): etichetta "Emetti tool call" → nodo "Harness esegue tool" → nodo "Tool result nel contesto" → freccia che torna a "Modello decide" (loop)
-> La freccia di ritorno del loop è etichettata "N volte". Enfasi visiva sulla possibilità di cicli multipli prima di prendere il ramo A. Stile minimale.
+**Visual** — schema SVG (deve essere un'evoluzione visiva del loop conversazionale della slide 22):
+> Riusa esattamente il pentagono della slide 22 (5 nodi: Utente scrive → Client costruisce contesto → Modello decide → Client appende allo storico → Utente legge risposta → back), con identici stili, colori, posizioni e la freccia di chiusura accent "ad ogni giro il contesto cresce". Stesso box "contesto" crescente al centro.
+> Il nodo "Modello" (accent primary/berry) prende un sottotitolo "risponde o chiama tool".
+> **Novità**: a destra del pentagono, un sub-ciclo in colore secondary/teal: dal Modello → "Harness esegue tool" (bordo teal) → "Tool result nel contesto" (bordo teal) → freccia di ritorno (tratteggiata teal) verso Modello, etichettata "N volte". Caption sotto: "sub-ciclo tool (interno al turno)".
+> L'intento visivo: lo spettatore deve riconoscere il pentagono noto e capire a colpo d'occhio che l'unica vera novità è il loop teal interno al nodo Modello.
 
 ---
 

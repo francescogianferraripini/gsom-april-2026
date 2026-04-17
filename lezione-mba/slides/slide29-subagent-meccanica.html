@@ -5,23 +5,23 @@
     <div class="svg-container" style="flex: 0 0 auto; max-height: 280px;">
       <img src="svg/slide29-subagent-tree.svg" alt="Diagramma gerarchico: agente padre con 3 sub-agent">
     </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 11pt;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; --text-size: 13pt;">
       <div>
-        <p style="margin: 0 0 6px 0; font-weight: 600; color: var(--primary-color);">Benefici</p>
-        <ul style="margin: 0; font-size: 11pt;">
-          <li><strong>Isolamento</strong> — il padre vede solo il risultato finale</li>
-          <li><strong>Parallelizzazione</strong> — più sub-agent lavorano simultaneamente</li>
-          <li><strong>Specializzazione</strong> — system prompt, tool e capacità propri</li>
-          <li><strong>Contenimento errori</strong> — un fallimento nel figlio non corrompe il padre</li>
+        <p style="margin: 0 0 6px 0; font-weight: 600; color: var(--primary-color); font-size: 15pt;">Benefici</p>
+        <ul style="margin: 0;">
+          <li style="color: var(--secondary-color);"><strong>Risparmio token</strong> — il padre non reitera sul contesto dei figli</li>
+          <li><strong>Isolamento</strong> — padre vede solo il risultato</li>
+          <li><strong>Parallelizzazione</strong> — più figli in contemporanea</li>
+          <li><strong>Specializzazione</strong> — prompt e tool propri</li>
+          <li><strong>Contenimento errori</strong> — fallimento figlio non intacca il padre</li>
         </ul>
       </div>
       <div>
-        <p style="margin: 0 0 6px 0; font-weight: 600; color: var(--primary-color);">Esempi reali</p>
-        <ul style="margin: 0; font-size: 11pt;">
-          <li><strong>Claude Code</strong> — sub-agent per esplorare grandi codebase</li>
-          <li><strong>Deep Research</strong> — sub-agent paralleli su fonti diverse</li>
-          <li><strong>Devin</strong> — sub-agent per implementazione, test, review</li>
-          <li><strong>Due diligence</strong> — sub-agent paralleli su dati finanziari, stampa, compliance</li>
+        <p style="margin: 0 0 6px 0; font-weight: 600; color: var(--primary-color); font-size: 15pt;">Esempi reali</p>
+        <ul style="margin: 0;">
+          <li><strong>Claude Code</strong> — esplorazione codebase</li>
+          <li><strong>Deep Research</strong> — fonti parallele</li>
+          <li><strong>OpenClaw</strong> — agente generalista multi-sub-agent</li>
         </ul>
       </div>
     </div>
