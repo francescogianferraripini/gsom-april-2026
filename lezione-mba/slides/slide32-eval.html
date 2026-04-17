@@ -1,28 +1,36 @@
-<!-- SLIDE 32 — Eval: la differenza tra prodotto e demo -->
+<!-- SLIDE 32 — Eval: misurare la qualità di un sistema agentico -->
 <section id="slide-eval">
-  <h2>Eval: la differenza tra prodotto e demo</h2>
+  <h2>Eval: misurare la qualità di un sistema agentico</h2>
   <div class="content" style="gap: 10px;">
     <div class="highlight-box" style="padding: 10px 14px; margin: 0;">
-      <p style="font-size: 12pt; margin: 0;">Suite di test per sistemi agentici. Concettualmente analoga ai test automatici del software — ma con tre differenze fondamentali che cambiano tutto.</p>
+      <p style="font-size: 12pt; margin: 0;">Suite di test per sistemi agentici. Analoga ai test automatici del software, con tre differenze rilevanti.</p>
     </div>
     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;">
       <div class="contrast-card" style="padding: 14px;">
         <h3 style="font-size: 12pt; margin: 0 0 6px 0;">Output non binari</h3>
-        <p style="font-size: 10pt; margin: 0; line-height: 1.4;">Un test software passa o fallisce. Una risposta di un agente può essere corretta, parziale, giusta nel contenuto ma sbagliata nel tono. Si usano modelli come giudici — <em>LLM-as-judge</em>.</p>
+        <p style="font-size: 10pt; margin: 0; line-height: 1.4;">Una risposta può essere corretta, parziale, o giusta nel contenuto ma non nel tono. Si usano spesso altri modelli come giudici (LLM-as-judge).</p>
       </div>
       <div class="contrast-card" style="padding: 14px;">
         <h3 style="font-size: 12pt; margin: 0 0 6px 0;">Non deterministici</h3>
-        <p style="font-size: 10pt; margin: 0; line-height: 1.4;">Lo stesso input non produce lo stesso output. Il sampling è probabilistico. Ogni test va eseguito N volte — si misura una distribuzione, non un singolo risultato.</p>
+        <p style="font-size: 10pt; margin: 0; line-height: 1.4;">Lo stesso input non produce sempre lo stesso output. Ogni test si esegue N volte e si osserva una distribuzione.</p>
       </div>
       <div class="contrast-card" style="padding: 14px;">
-        <h3 style="font-size: 12pt; margin: 0 0 6px 0;">Dataset costoso</h3>
-        <p style="font-size: 10pt; margin: 0; line-height: 1.4;">Non si genera automaticamente. Serve raccogliere casi reali, edge case, tentativi di prompt injection. È un artefatto che si cura nel tempo.</p>
+        <h3 style="font-size: 12pt; margin: 0 0 6px 0;">Dataset da curare</h3>
+        <p style="font-size: 10pt; margin: 0; line-height: 1.4;">Non si genera automaticamente: serve raccogliere casi reali, edge case ed esempi avversari. È un artefatto che cresce nel tempo.</p>
+      </div>
+    </div>
+    <div style="position: relative; height: 210px;">
+      <div class="fragment fade-out" data-fragment-index="1" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
+        <img src="svg/slide32-eval-loop-1.svg" alt="Eval artigianale: umano crea test set, umano valuta output" style="max-width: 100%; max-height: 100%;">
+      </div>
+      <div class="fragment fade-in" data-fragment-index="1" style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;">
+        <img src="svg/slide32-eval-loop-2.svg" alt="Eval scalato: umano per seed e validazione, LLM espande, judge agent ottimizzato fa scoring" style="max-width: 100%; max-height: 100%;">
       </div>
     </div>
     <ul style="font-size: 11pt; margin: 0;">
-      <li>Ogni modifica al system prompt, aggiunta di tool, riconfigurazione di sub-agent va validata contro l'eval suite.</li>
-      <li>I progetti agentici seri spendono più tempo a costruire eval che a scrivere prompt.</li>
-      <li>Quando un fornitore dice <em>"abbiamo migliorato il prompt"</em> — la domanda è: <em>"Lo dite perché avete visto esempi che vi piacciono, o perché la vostra eval suite mostra un miglioramento misurabile?"</em></li>
+      <li>Utili per validare modifiche al system prompt, nuovi tool o riconfigurazioni di sub-agent.</li>
+      <li>Su progetti agentici la costruzione dell'eval occupa una parte significativa del lavoro.</li>
+      <li>Quando si parla di "prompt migliorato", conviene chiedere su quale eval suite è stata misurata la differenza.</li>
     </ul>
   </div>
 </section>

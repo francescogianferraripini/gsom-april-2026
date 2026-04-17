@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 340">
+  <title>Eval loop scalato: LLM espande il dataset, judge agent ottimizzato fa lo scoring</title>
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&amp;display=swap');
+      text { font-family: 'Poppins', sans-serif; }
+    </style>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#838383"/>
+    </marker>
+    <marker id="arrow-secondary" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#1ab197"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="26" text-anchor="middle" font-size="15" font-weight="600" fill="#1a1a1a">Eval scalato — umano per il seed, LLM per volume e scoring</text>
+
+  <!-- =========================================== -->
+  <!-- COLUMN 1: Test set pipeline (stack)         -->
+  <!-- =========================================== -->
+  <rect x="30" y="50" width="260" height="240" rx="10" fill="#fafafa" stroke="#dddddd" stroke-width="1.5"/>
+  <text x="160" y="72" text-anchor="middle" font-size="12" font-weight="600" fill="#1a1a1a">Test set</text>
+
+  <!-- 1a: Umano seed -->
+  <rect x="50" y="86" width="220" height="48" rx="6" fill="#ffffff" stroke="#dddddd" stroke-width="1.2"/>
+  <text x="70" y="117" font-size="16">👤</text>
+  <text x="96" y="107" font-size="12" font-weight="600" fill="#1a1a1a">Umano: seed</text>
+  <text x="96" y="122" font-size="10.5" fill="#838383">pochi esempi curati</text>
+
+  <line x1="160" y1="134" x2="160" y2="150" stroke="#838383" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- 1b: LLM espande -->
+  <rect x="50" y="154" width="220" height="48" rx="6" fill="#ffffff" stroke="#1ab197" stroke-width="1.2"/>
+  <text x="70" y="185" font-size="16">🤖</text>
+  <text x="96" y="175" font-size="12" font-weight="600" fill="#1a1a1a">LLM: espande</text>
+  <text x="96" y="190" font-size="10.5" fill="#838383">genera nuovi casi</text>
+
+  <line x1="160" y1="202" x2="160" y2="218" stroke="#838383" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- 1c: Umano valida -->
+  <rect x="50" y="222" width="220" height="48" rx="6" fill="#ffffff" stroke="#dddddd" stroke-width="1.2"/>
+  <text x="70" y="253" font-size="16">👤</text>
+  <text x="96" y="243" font-size="12" font-weight="600" fill="#1a1a1a">Umano: valida campione</text>
+  <text x="96" y="258" font-size="10.5" fill="#838383">gold standard</text>
+
+  <!-- =========================================== -->
+  <!-- COLUMN 2: Agente sotto test                  -->
+  <!-- =========================================== -->
+  <line x1="290" y1="170" x2="370" y2="170" stroke="#838383" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="370" y="140" width="200" height="80" rx="10" fill="#f5f5f5" stroke="#a1245a" stroke-width="2"/>
+  <text x="470" y="170" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a1a">Agente sotto test</text>
+  <text x="470" y="190" text-anchor="middle" font-size="11" fill="#838383">produce output</text>
+
+  <!-- Arrow to Judge -->
+  <line x1="570" y1="170" x2="660" y2="170" stroke="#838383" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="615" y="162" text-anchor="middle" font-size="10.5" fill="#838383">output</text>
+
+  <!-- =========================================== -->
+  <!-- COLUMN 3: Judge agent                        -->
+  <!-- =========================================== -->
+  <rect x="660" y="130" width="210" height="100" rx="10" fill="#f7f7f7" stroke="#1ab197" stroke-width="1.8"/>
+  <text x="765" y="158" text-anchor="middle" font-size="18">🤖</text>
+  <text x="765" y="180" text-anchor="middle" font-size="13" font-weight="600" fill="#1a1a1a">Judge agent</text>
+  <text x="765" y="196" text-anchor="middle" font-size="11" fill="#838383">scoring automatico</text>
+  <text x="765" y="214" text-anchor="middle" font-size="10.5" fill="#1ab197" font-style="italic">ottimizzato sui validati</text>
+
+  <!-- Optimize arrow: from validated sub-box (~270, 246) curving down-right to Judge bottom -->
+  <path d="M270,246 C450,315 650,315 765,232" fill="none" stroke="#1ab197" stroke-width="1.5" stroke-dasharray="6,4" marker-end="url(#arrow-secondary)"/>
+  <text x="500" y="325" text-anchor="middle" font-size="11" fill="#1ab197" font-weight="600" font-style="italic">ottimizza il judge</text>
+</svg>

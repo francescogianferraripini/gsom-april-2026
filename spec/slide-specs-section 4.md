@@ -190,21 +190,24 @@
 
 ## ✅ Slide 30 — Eval
 
-**Layout**: titolo in alto, definizione, 3 peculiarità discorsive, 3 implicazioni strategiche. Nessun visual.
+**Layout**: titolo in alto, definizione, 3 peculiarità in card, 3 implicazioni. Nessun visual. Tono descrittivo, non enfatico.
 
 **Testo**:
-- Titolo: *Eval: la differenza tra prodotto e demo*
-- Definizione: *Suite di test per sistemi agentici. Concettualmente analoga ai test automatici del software — ma con tre differenze fondamentali che cambiano tutto.*
-- 3 peculiarità (discorsive):
-  - *Prima: gli output non sono binari. Un test software passa o fallisce. Una risposta di un agente può essere corretta, parzialmente corretta, corretta nel contenuto ma sbagliata nel tono, o corretta oggi e sbagliata domani dopo una modifica al system prompt. Si usano modelli come giudici di altri modelli — LLM-as-judge — per valutare dimensioni qualitative che non si possono ridurre a vero/falso.*
-  - *Seconda: lo stesso input non produce lo stesso output. Il sampling è probabilistico per costruzione. Ogni test va eseguito N volte, e si misura una distribuzione di successo — non un singolo risultato.*
-  - *Terza: il dataset di test richiede lavoro umano serio. Non si genera automaticamente. Serve raccogliere casi reali, costruire edge case, includere tentativi di prompt injection, esempi ambigui. È un artefatto che si cura nel tempo, non si crea una volta.*
-- 3 implicazioni strategiche:
-  - Ogni modifica al system prompt, aggiunta di tool, riconfigurazione di sub-agent va validata contro l'eval suite. Senza, si procede per sensazione — e le sensazioni sugli LLM sono sistematicamente fuorvianti
-  - I progetti agentici seri spendono più tempo a costruire e curare eval che a scrivere prompt
-  - Quando un fornitore AI dice *"abbiamo migliorato il prompt"*, la domanda è: *"Lo dite perché avete visto esempi che vi piacciono, o perché la vostra eval suite mostra un miglioramento misurabile?"*
+- Titolo: *Eval: misurare la qualità di un sistema agentico*
+- Definizione: *Suite di test per sistemi agentici. Analoga ai test automatici del software, con tre differenze rilevanti.*
+- 3 peculiarità (card concise):
+  - **Output non binari** — una risposta può essere corretta, parziale, o giusta nel contenuto ma non nel tono. Si usano spesso altri modelli come giudici (LLM-as-judge).
+  - **Non deterministici** — lo stesso input non produce sempre lo stesso output. Ogni test si esegue N volte e si osserva una distribuzione.
+  - **Dataset da curare** — non si genera automaticamente: serve raccogliere casi reali, edge case ed esempi avversari. È un artefatto che cresce nel tempo.
+- 3 implicazioni:
+  - Utili per validare modifiche al system prompt, nuovi tool o riconfigurazioni di sub-agent.
+  - Su progetti agentici la costruzione dell'eval occupa una parte significativa del lavoro.
+  - Quando si parla di "prompt migliorato", conviene chiedere su quale eval suite è stata misurata la differenza.
 
-**Visual**: nessuno. Slide parlata, il testo discorsivo è la forza.
+**Visual**: due SVG (loop artigianale → loop scalato) in un blocco fragment con swap alla pressione successiva (`fade-out` + `fade-in` stesso `data-fragment-index`), inseriti tra le card e i bullet:
+1. **slide32-eval-loop-1.svg** — *Eval artigianale*: 3 box in riga (👤 Umano crea test set → Agente sotto test → 👤 Umano valuta), freccia di loopback tratteggiata accent berry con etichetta "iterazione manuale — non scala".
+2. **slide32-eval-loop-2.svg** — *Eval scalato*: colonna sinistra con stack (👤 seed → 🤖 LLM espande → 👤 valida campione), centro Agente sotto test (accent berry), destra 🤖 Judge agent (bordo teal) "ottimizzato sui validati"; arco tratteggiato teal dal sottocampione validato al Judge con etichetta "ottimizza il judge". Nessun loopback: l'intervento umano è front-loaded.
+Entrambi viewBox ~900×300–340, font Poppins, palette accent berry + secondary teal + muted gray come nel resto della presentazione.
 
 ---
 
