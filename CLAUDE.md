@@ -13,7 +13,7 @@ cd lezione-mba
 python server.py   # serves on http://localhost:8000/presentation.html
 ```
 
-`server.py` is a no-cache HTTP server — always serves fresh files. Open `presentation.html` in a browser.
+`server.py` is a no-cache HTTP server — always serves fresh files. Open `presentation.html` in a browser. The repo-root `index.html` is just a meta-refresh redirect to `lezione-mba/presentation.html`; it is not an alternate entry point.
 
 ## Architecture
 
@@ -25,7 +25,7 @@ The presentation is fully static HTML + reveal.js (loaded from CDN). No build st
 - `lezione-mba/styles.css` — all custom CSS; dark theme with CSS variables
 - `lezione-mba/img/` — images (e.g., Memento poster)
 
-**Slide loading order** is controlled by the `slideFiles` array in `presentation.html`. Slides render in array order regardless of file names. Section-divider files (`slide-div-sec1.html`, `slide-div-sec2.html`) are interspersed in this array and do not carry a slide number in their filename.
+**Slide loading order** is controlled by the `slideFiles` array in `presentation.html`. Slides render in array order regardless of file names — the array may re-order slides relative to their numeric filenames (e.g. `slide14` and `slide15` currently precede `slide13`). Section-divider files (`slide-div-sec1.html` … `slide-div-sec4.html`) are interspersed in this array and do not carry a slide number in their filename.
 
 **External dependencies** (CDN, no install needed):
 - reveal.js 5.1.0
@@ -40,11 +40,14 @@ The presentation is fully static HTML + reveal.js (loaded from CDN). No build st
 
 ## Spec files
 
-The slide spec lives in `spec/`:
-- `spec/slide-specs-section 1.md` — slides 1–10 (Section 1: LLM fundamentals)
-- `spec/slide-specs-section-2.md` — slides 11–20+ (Section 2: conversational agents)
+The slide spec lives in `spec/`, one file per section. Filenames contain a **space before the number** — quote them when passing to shell tools:
+- `spec/slide-specs-section 1.md` — Section 1: LLM fundamentals
+- `spec/slide-specs-section 2.md` — Section 2: conversational agents
+- `spec/slide-specs-section 3.md` — Section 3: closed vs open models
+- `spec/slide-specs-section 4.md` — Section 4: tools, context, sub-agents, agentic loop
+- `spec/slide-specs-section 5.md` — Section 5: tool types catalog (API tools, MCP, browser use, code execution, Deep Research)
 
-**Always update the spec and `presentation.html` together** — they are the single source of truth for slide content and order. Slides are numbered from 1.
+**Always update the spec and `presentation.html` together** — they are the single source of truth for slide content and order. Slides are numbered from 1. When editing a slide, also update the matching entry in the relevant `spec/slide-specs-section N.md`.
 
 ## Slide conventions
 
