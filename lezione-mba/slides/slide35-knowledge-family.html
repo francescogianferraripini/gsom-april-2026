@@ -1,0 +1,45 @@
+<!-- SLIDE 32 — La famiglia della conoscenza: 3 pattern -->
+<section id="slide-knowledge-family">
+  <h2>La famiglia della conoscenza — 3 pattern</h2>
+  <div class="content" style="gap: 10px; padding-top: 6px;">
+    <p style="font-size: 12pt; color: var(--muted-color); margin: 0;">Tre modi per accedere a conoscenza non nel training.</p>
+
+    <!-- Mini staircase SVG -->
+    <div class="svg-container" style="flex: 0 0 auto; max-height: 130px;">
+      <img src="svg/slide35-knowledge-scale.svg" alt="Mini-scala a 3 gradini: RAG, Search-as-a-tool, Deep Research in ordine crescente di sofisticazione">
+    </div>
+
+    <!-- 3 blocks in row -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px;">
+      <div class="contrast-card" style="padding: 12px 14px;">
+        <p style="font-size: 8.5pt; color: var(--muted-color); font-style: italic; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 2px 0;">pattern architetturale</p>
+        <h3 style="font-size: 13pt; margin: 0 0 6px 0;">RAG</h3>
+        <ul style="font-size: 10pt; margin: 0; line-height: 1.4;">
+          <li style="margin-bottom: 4px;">Un retriever estrae i chunk rilevanti <strong>prima</strong> della generazione</li>
+          <li style="margin-bottom: 4px;">I chunk vengono iniettati nel contesto; la risposta è ancorata alla conoscenza proprietaria</li>
+          <li>Il modello non decide <em>se</em> cercare — la ricerca avviene sempre</li>
+        </ul>
+      </div>
+      <div class="contrast-card" style="padding: 12px 14px;">
+        <p style="font-size: 8.5pt; color: var(--muted-color); font-style: italic; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 2px 0;">tool</p>
+        <h3 style="font-size: 13pt; margin: 0 0 6px 0;">Search-as-a-tool</h3>
+        <ul style="font-size: 10pt; margin: 0; line-height: 1.4;">
+          <li style="margin-bottom: 4px;">La ricerca diventa una tool call: il modello decide <strong>quando, cosa, come</strong> cercare</li>
+          <li style="margin-bottom: 4px;">Abilita l'iterazione: cercare, leggere, raffinare, ricercare</li>
+          <li>Risolve il knowledge cutoff in modo dinamico</li>
+        </ul>
+      </div>
+      <div class="contrast-card" style="padding: 12px 14px; background: rgba(161,36,90,0.07);">
+        <p style="font-size: 8.5pt; color: var(--primary-color); font-style: italic; text-transform: uppercase; letter-spacing: 0.08em; margin: 0 0 2px 0;">sistema agentico</p>
+        <h3 style="font-size: 13pt; margin: 0 0 6px 0; color: var(--primary-color);">Deep Research</h3>
+        <ul style="font-size: 10pt; margin: 0; line-height: 1.4;">
+          <li style="margin-bottom: 4px;">Pianificazione, sub-agent paralleli, loop di steering, sintesi finale con citazioni</li>
+          <li style="margin-bottom: 4px;">Combina RAG e search orchestrati in multi-fase</li>
+          <li><em>Dettaglio nella prossima slide</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="font-size: 11pt; color: var(--text-color); margin: 6px 0 0 0; line-height: 1.4;">Quando un fornitore propone un prodotto AI per l'azienda: <strong>come conosce i nostri dati?</strong> RAG su quale base, aggiornata come, con quali policy di accesso?</p>
+  </div>
+</section>

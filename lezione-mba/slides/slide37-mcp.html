@@ -1,0 +1,38 @@
+<!-- SLIDE 34 — MCP: il protocollo standard per i tool -->
+<section id="slide-mcp">
+  <h2>MCP — il protocollo standard per i tool</h2>
+  <div class="content" style="gap: 7px; padding-top: 2px;">
+    <p style="font-size: 11pt; color: var(--text-color); margin: 0; font-style: italic;">MCP sta ai tool come <strong style="font-style: normal;">USB</strong> sta ai dispositivi. Un connettore standard, non un nuovo dispositivo.</p>
+
+    <!-- 3-step diagram -->
+    <div class="svg-container" style="flex: 0 0 auto; max-height: 180px;">
+      <img src="svg/slide37-mcp.svg" alt="MCP: 3 step — discovery via list_tools, schema restituito, iniezione delle tool definition nel system prompt">
+    </div>
+
+    <!-- 2 blocks A and B side by side -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+      <div class="contrast-card" style="padding: 8px 11px;">
+        <h3 style="font-size: 10.5pt; margin: 0 0 3px 0;">Cos'è (e cosa non è)</h3>
+        <ul style="font-size: 9pt; margin: 0; line-height: 1.35;">
+          <li style="margin-bottom: 2px;"><strong>Non</strong> è un nuovo tipo di tool, né cambia la meccanica del tool call</li>
+          <li style="margin-bottom: 2px;"><strong>È</strong> un protocollo che standardizza <em>discovery</em> ("quali tool offri?") e <em>invocazione</em> (formato uniforme)</li>
+          <li>Dopo il discovery, le tool definition finiscono nel <strong>system prompt</strong> e restano lì per tutta la sessione</li>
+        </ul>
+      </div>
+      <div class="contrast-card" style="padding: 8px 11px;">
+        <h3 style="font-size: 10.5pt; margin: 0 0 3px 0;">Perché conta</h3>
+        <ul style="font-size: 9pt; margin: 0; line-height: 1.35;">
+          <li style="margin-bottom: 2px;">Riduce il vendor lock-in: stessa integrazione su qualunque agente compatibile</li>
+          <li style="margin-bottom: 2px;">Centinaia di server pubblici: GitHub, Linear, Notion, Gmail, DB — layer degli <strong>app-store per agenti</strong></li>
+          <li><em>Se un'integrazione AI proprietaria non espone MCP, è vendor lock-in.</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Block C: trabocchetto -->
+    <div style="background: rgba(161,36,90,0.06); border: 1px solid var(--primary-color); border-radius: var(--box-radius); padding: 6px 12px;">
+      <p style="font-size: 9pt; margin: 0 0 1px 0; font-weight: 600; color: var(--primary-color); text-transform: uppercase; letter-spacing: 0.1em;"><i class="fa-solid fa-triangle-exclamation"></i>&nbsp; Il trabocchetto</p>
+      <p style="font-size: 10pt; margin: 0; line-height: 1.35;">Ogni server MCP connesso paga token nel contesto: le tool definition sono <strong>sempre</strong> nel system prompt. Connetterne 10 "nel caso servissero" può saturare metà del contesto prima che l'agente inizi a lavorare. Quando un prodotto dichiara "supporta 50 MCP", chiedere quali si attivano <em>di default</em>.</p>
+    </div>
+  </div>
+</section>

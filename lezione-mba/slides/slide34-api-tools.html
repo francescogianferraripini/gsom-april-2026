@@ -1,0 +1,62 @@
+<!-- SLIDE 31 — API tools: l'archetipo -->
+<section id="slide-api-tools">
+  <h2>API tools — l'archetipo</h2>
+  <div class="content" style="gap: 12px; padding-top: 8px;">
+    <p style="font-size: 12pt; margin: 0; color: var(--text-color);">Qualunque <strong>endpoint HTTP</strong> diventa una capacità dell'agente definendo lo schema della sua API: nome, descrizione, parametri, autenticazione.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1.25fr; gap: 20px; align-items: start;">
+      <!-- Left: examples table -->
+      <div>
+        <h3 style="font-size: 12pt; margin: 0 0 6px 0;">Esempi aziendali</h3>
+        <table style="width: 100%; border-collapse: collapse; font-size: 10pt;">
+          <thead>
+            <tr>
+              <th style="text-align: left; padding: 4px 6px; border-bottom: 2px solid var(--primary-color); font-weight: 600; color: var(--primary-color);">Sistema</th>
+              <th style="text-align: left; padding: 4px 6px; border-bottom: 2px solid var(--primary-color); font-weight: 600; color: var(--primary-color);">Operazione tipica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 3px 6px; border-bottom: 1px solid var(--line-color); font-weight: 600;">CRM</td>
+              <td style="padding: 3px 6px; border-bottom: 1px solid var(--line-color);">Lookup cliente, update record</td>
+            </tr>
+            <tr>
+              <td style="padding: 3px 6px; border-bottom: 1px solid var(--line-color); font-weight: 600;">DB relazionale</td>
+              <td style="padding: 3px 6px; border-bottom: 1px solid var(--line-color);">Query su dati operativi</td>
+            </tr>
+            <tr>
+              <td style="padding: 3px 6px; border-bottom: 1px solid var(--line-color); font-weight: 600;">Ticketing</td>
+              <td style="padding: 3px 6px; border-bottom: 1px solid var(--line-color);">Apertura ticket, stato</td>
+            </tr>
+            <tr>
+              <td style="padding: 3px 6px; border-bottom: 1px solid var(--line-color); font-weight: 600;">Email transazionale</td>
+              <td style="padding: 3px 6px; border-bottom: 1px solid var(--line-color);">Notifiche, comunicazioni</td>
+            </tr>
+            <tr>
+              <td style="padding: 3px 6px; border-bottom: 1px solid var(--line-color); font-weight: 600;">ERP</td>
+              <td style="padding: 3px 6px; border-bottom: 1px solid var(--line-color);">Ordini, inventario</td>
+            </tr>
+            <tr>
+              <td style="padding: 3px 6px; font-weight: 600;">Pagamenti (Stripe)</td>
+              <td style="padding: 3px 6px;">Charge, refund, subscription</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Right: annotated JSON -->
+      <div>
+        <h3 style="font-size: 12pt; margin: 0 0 6px 0;">Anatomia di una tool definition</h3>
+        <div class="svg-container" style="max-height: 300px;">
+          <img src="svg/slide34-tool-definition.svg" alt="Snippet JSON di una tool definition con annotazioni laterali su name, description, input_schema">
+        </div>
+      </div>
+    </div>
+
+    <!-- Security callout -->
+    <div style="background: rgba(161,36,90,0.06); border: 1px solid var(--primary-color); border-radius: var(--box-radius); padding: 8px 14px; margin-top: 4px;">
+      <p style="font-size: 10pt; margin: 0 0 2px 0; font-weight: 600; color: var(--primary-color); text-transform: uppercase; letter-spacing: 0.1em;"><i class="fa-solid fa-shield-halved"></i>&nbsp; Principio di minimo privilegio</p>
+      <p style="font-size: 11pt; margin: 0; line-height: 1.4;">Un tool read-only sul CRM è diverso da un tool che sposta denaro. Esporre all'agente <strong>solo</strong> i tool strettamente necessari al task, con scope il più ristretto possibile.</p>
+    </div>
+  </div>
+</section>

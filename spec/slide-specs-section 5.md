@@ -207,9 +207,8 @@ L'autenticazione non è nello schema inviato al modello — è gestita dall'harn
   - Dopo il discovery, le tool definition scelte finiscono nel **system prompt** dell'agente e restano lì per tutta la sessione.
 
 - **Blocco B — Perché conta**
-  - Riduce il vendor lock-in: la stessa integrazione funziona con qualunque agente compatibile
-  - Accelera l'ecosistema: centinaia di server MCP pubblici già disponibili (GitHub, Linear, Notion, Gmail, DB)
-  - È il layer su cui si stanno costruendo gli app-store per agenti
+  - Riduce il vendor lock-in: stessa integrazione su qualunque agente compatibile
+  - Centinaia di server pubblici già disponibili (GitHub, Linear, Notion, Gmail, DB) — layer su cui si stanno costruendo gli **app-store per agenti**
   - *Se un'integrazione AI proprietaria non espone MCP, è vendor lock-in.*
 
 - **Blocco C — Il trabocchetto**

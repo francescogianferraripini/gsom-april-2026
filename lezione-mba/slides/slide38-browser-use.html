@@ -1,0 +1,48 @@
+<!-- SLIDE 35 — Browser use: l'agente pilota un browser -->
+<section id="slide-browser-use">
+  <h2>Browser use — l'agente pilota un browser</h2>
+  <div class="content" style="gap: 12px; padding-top: 6px;">
+    <p style="font-size: 12pt; margin: 0;">L'agente riceve <strong>screenshot</strong> della pagina e produce <strong>azioni</strong>: click, scroll, scrittura in form, navigazione.</p>
+
+    <!-- Product tags row -->
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 9.5pt;">
+      <span style="background: rgba(0,0,0,0.05); padding: 3px 10px; border-radius: 12px; color: var(--text-color);">Claude Computer Use <span style="color: var(--muted-color);">(Anthropic)</span></span>
+      <span style="background: rgba(0,0,0,0.05); padding: 3px 10px; border-radius: 12px; color: var(--text-color);">Browser Use <span style="color: var(--muted-color);">(open source)</span></span>
+      <span style="background: rgba(0,0,0,0.05); padding: 3px 10px; border-radius: 12px; color: var(--text-color);">OpenAI Operator</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1.1fr; gap: 18px; align-items: start;">
+      <!-- Left: 2 columns contrastive -->
+      <div>
+        <table style="width: 100%; border-collapse: collapse; font-size: 10pt;">
+          <thead>
+            <tr>
+              <th style="text-align: left; padding: 4px 6px; border-bottom: 2px solid var(--primary-color); font-weight: 600; color: var(--primary-color); width: 50%;">Quando serve</th>
+              <th style="text-align: left; padding: 4px 6px; border-bottom: 2px solid var(--primary-color); font-weight: 600; color: var(--primary-color);">Caveat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 4px 6px; border-bottom: 1px solid var(--line-color); vertical-align: top;">SaaS legacy senza API</td>
+              <td style="padding: 4px 6px; border-bottom: 1px solid var(--line-color); vertical-align: top;"><strong>Lento</strong> — ogni azione è un round-trip con screenshot</td>
+            </tr>
+            <tr>
+              <td style="padding: 4px 6px; border-bottom: 1px solid var(--line-color); vertical-align: top;">Sistemi interni senza interfaccia programmatica</td>
+              <td style="padding: 4px 6px; border-bottom: 1px solid var(--line-color); vertical-align: top;"><strong>Costoso</strong> — gli screenshot come input consumano molti token</td>
+            </tr>
+            <tr>
+              <td style="padding: 4px 6px; border-bottom: 1px solid var(--line-color); vertical-align: top;">Web automation su siti senza endpoint</td>
+              <td style="padding: 4px 6px; border-bottom: 1px solid var(--line-color); vertical-align: top;"><strong>Opaco</strong> — azioni viste, non strutturate, difficili da auditare</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size: 10.5pt; font-style: italic; color: var(--text-color); margin: 12px 0 0 0; line-height: 1.4;">Scelta di <strong style="font-style: normal;">ultima istanza</strong>, non di prima — sblocca il long tail delle automazioni aziendali.</p>
+      </div>
+
+      <!-- Right: SVG -->
+      <div class="svg-container" style="max-height: 360px;">
+        <img src="svg/slide38-browser-form.svg" alt="Form 'Nuovo ticket' parzialmente compilato con 4 annotazioni delle azioni dell'agente: click, type, click dropdown, select Alta">
+      </div>
+    </div>
+  </div>
+</section>
