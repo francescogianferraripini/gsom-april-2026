@@ -1,31 +1,24 @@
 <!-- SLIDE 42 — Il quarto loop: con verifica deterministica -->
 <section id="slide-quarto-loop">
-  <h2>Il quarto loop — con verifica deterministica</h2>
-  <div class="content" style="gap: 10px; padding-top: 4px;">
+  <h2>Loop 4/4: con verifica deterministica</h2>
+  <p style="font-size: 11pt; color: var(--muted-color); margin: 0;">
+    1° <strong style="color: var(--text-color); font-weight: 500;">atomico</strong> (token) · 2° <strong style="color: var(--text-color); font-weight: 500;">conversazionale</strong> (turno) · 3° <strong style="color: var(--text-color); font-weight: 500;">con tool</strong> (azione) · 4° <strong style="color: var(--primary-color); font-weight: 600;">con codice</strong> (verifica)
+  </p>
+  <div class="content" style="gap: 10px;">
 
-    <p style="font-size: 10.5pt; color: var(--muted-color); margin: 0; line-height: 1.5;">
-      1° <strong style="color: var(--text-color);">atomico</strong> (token) · 2° <strong style="color: var(--text-color);">conversazionale</strong> (turno) · 3° <strong style="color: var(--text-color);">con tool</strong> (azione) · 4° <strong style="color: var(--primary-color);">con codice</strong> (verifica)
-    </p>
+    <div class="svg-container" style="flex: 1;">
+      <img src="svg/slide44-quarto-loop.svg" alt="Loop a 4 nodi (task → scrivi codice → esegui in sandbox → verifica) con feedback deterministico accentato che ritorna a 'scrivi codice' quando fail, e uscita 'pass → done'">
+    </div>
 
-    <div style="display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 18px; align-items: center; flex: 1; min-height: 0;">
-
-      <!-- SVG -->
-      <div class="svg-container" style="min-height: 0;">
-        <img src="svg/slide44-quarto-loop.svg" alt="Loop circolare a 4 nodi: task → scrivi codice → esegui in sandbox → verifica; fail torna a scrivi codice, pass esce. Feedback deterministico in colore accento.">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+      <div style="background: rgba(0,0,0,0.035); border-radius: var(--box-radius); padding: 10px 14px;">
+        <p style="margin: 0 0 3px 0; font-size: 9.5pt; font-weight: 600; color: var(--primary-color); text-transform: uppercase; letter-spacing: 0.08em;">A runtime</p>
+        <p style="font-size: 10.5pt; margin: 0; line-height: 1.45;">L'agente <strong>si corregge da solo</strong>. L'output del test rientra nel contesto come <strong>segnale netto</strong>: più tentativi, convergenza al codice che funziona.</p>
       </div>
-
-      <!-- Two text blocks -->
-      <div style="display: flex; flex-direction: column; gap: 12px;">
-        <div style="background: rgba(0,0,0,0.035); border-radius: var(--box-radius); padding: 12px 16px;">
-          <p style="margin: 0 0 4px 0; font-size: 9.5pt; font-weight: 600; color: var(--primary-color); text-transform: uppercase; letter-spacing: 0.08em;">A runtime</p>
-          <p style="font-size: 11pt; margin: 0; line-height: 1.45;">L'agente <strong>si corregge da solo</strong>. L'output del test rientra nel contesto come <strong>segnale netto</strong>: più tentativi, convergenza al codice che funziona.</p>
-        </div>
-        <div style="background: rgba(161,36,90,0.06); border: 1px solid var(--primary-color); border-radius: var(--box-radius); padding: 12px 16px;">
-          <p style="margin: 0 0 4px 0; font-size: 9.5pt; font-weight: 600; color: var(--primary-color); text-transform: uppercase; letter-spacing: 0.08em;">In training</p>
-          <p style="font-size: 11pt; margin: 0; line-height: 1.45;">Lo stesso loop è il cuore del <strong>RL sul codice</strong>. Il provider fa generare codice su milioni di task con test, esegue, usa <strong>pass/fail come reward</strong>. Segnale netto = riaddestramento efficace. Gli LLM migliorano nel codice più rapidamente che in domini con feedback ambiguo.</p>
-        </div>
+      <div style="background: rgba(161,36,90,0.06); border: 1px solid var(--primary-color); border-radius: var(--box-radius); padding: 10px 14px;">
+        <p style="margin: 0 0 3px 0; font-size: 9.5pt; font-weight: 600; color: var(--primary-color); text-transform: uppercase; letter-spacing: 0.08em;">In training</p>
+        <p style="font-size: 10.5pt; margin: 0; line-height: 1.45;">Lo stesso loop è il cuore del <strong>RL sul codice</strong>: pass/fail come <strong>reward</strong>. Segnale netto = riaddestramento efficace. Gli LLM migliorano nel codice più rapidamente che in domini con feedback ambiguo.</p>
       </div>
-
     </div>
 
   </div>

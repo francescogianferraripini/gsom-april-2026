@@ -170,12 +170,12 @@
 
 ---
 
-## ✅ Slide 29 — Il loop agentico con tool (evoluzione del loop conversazionale)
+## ✅ Slide 29 — Loop 3/4: l'agente con tool (evoluzione del loop conversazionale)
 
 **Layout**: titolo + sottotitolo in alto, diagramma pentagonale (riusa il layout della slide 22) con sub-ciclo tool sul nodo Modello (~55%), didascalia, bullet operativo in fondo.
 
 **Testo**:
-- Titolo: *Il loop agentico con tool*
+- Titolo: *Loop 3/4: l'agente con tool*
 - Sottotitolo: *Stesso loop conversazionale, con un sub-ciclo tool dentro al turno del modello*
 - Didascalia: *Il loop esterno è identico a prima. Cambia solo il nodo Modello: invece di rispondere subito, può emettere una tool call, attendere il risultato, e re-iterare N volte prima di chiudere il turno. Il numero di cicli interni non è predeterminato — lo decide il modello a runtime.*
 - Bullet operativo: *Limiti obbligatori in produzione: un tetto al numero di tool call per turno, un timeout per singola esecuzione, un budget di token per sessione. Senza, l'agente può entrare in cicli infiniti.*

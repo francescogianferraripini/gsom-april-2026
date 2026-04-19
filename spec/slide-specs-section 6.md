@@ -81,12 +81,12 @@ Slide incluse: 38–43.
 
 ---
 
-## Slide 42 — Il quarto loop — con verifica deterministica
+## Slide 42 — Loop 4/4: con verifica deterministica
 
 **Layout**: titolo + sottotitolo piccolo + SVG + 2 blocchi testuali.
 
 **Testo**
-- **Titolo**: *Il quarto loop — con verifica deterministica*
+- **Titolo**: *Loop 4/4: con verifica deterministica*
 - **Sottotitolo (piccolo, in alto)**: *1° atomico (token) · 2° conversazionale (turno) · 3° con tool (azione) · 4° con codice (verifica)*
 - **Blocchi (sotto il visual)**:
   - **A runtime** — *L'agente si corregge da solo. L'output del test rientra nel contesto come segnale netto: più tentativi, convergenza al codice che funziona.*
@@ -130,7 +130,7 @@ Slide incluse: 38–43.
 | 39 | Code as tool vs code as product | Tabella 2 righe | `slide41-code-tool-vs-product.html` |
 | 40 | Code as tool — il pattern operativo | SVG: flow a 6 step (step 2–5 racchiusi in "invisibile all'utente") | `slide42-code-as-tool-pattern.html` + `svg/slide42-code-as-tool-flow.svg` |
 | 41 | Code as product — coding agent e affidabilità | SVG: contratto umano-agente via test | `slide43-code-as-product.html` + `svg/slide43-code-as-product.svg` |
-| 42 | Il quarto loop — con verifica deterministica | SVG: loop circolare a 4 nodi | `slide44-quarto-loop.html` + `svg/slide44-quarto-loop.svg` |
+| 42 | Loop 4/4: con verifica deterministica | SVG: loop circolare a 4 nodi | `slide44-quarto-loop.html` + `svg/slide44-quarto-loop.svg` |
 | 43 | La verificabilità come predittore di automazione | Tabella contrastiva colorata | `slide45-verificabilita-automazione.html` |
 
 Divider di sezione (transizione con sfondo scuro, non numerato nel brief): `slide-div-sec6.html`.

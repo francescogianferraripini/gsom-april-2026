@@ -112,6 +112,6 @@
   </g>
 
   <!-- =============== FAIL LOOP back to Agent (zone 2) =============== -->
-  <path d="M905 160 Q905 290 455 290 Q455 290 455 155" fill="none" stroke="#a1245a" stroke-width="2" marker-end="url(#cp-arr-fail)"/>
-  <text x="680" y="282" text-anchor="middle" class="fail-label">fail → l'agente itera</text>
+  <path d="M 905 160 C 905 320, 455 320, 455 155" fill="none" stroke="#a1245a" stroke-width="2" marker-end="url(#cp-arr-fail)"/>
+  <text x="680" y="312" text-anchor="middle" class="fail-label">fail → l'agente itera</text>
 </svg>

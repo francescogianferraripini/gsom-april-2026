@@ -1,72 +1,79 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 520">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 420">
   <title>Quarto loop: task → scrivi codice → esegui in sandbox → verifica; fail torna a scrivi codice, pass esce</title>
+
   <defs>
-    <style>
-      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&amp;display=swap');
-      text { font-family: 'Poppins', sans-serif; }
-      .node-label { font-size: 13px; fill: #1a1a1a; font-weight: 600; }
-      .node-sub { font-size: 10px; fill: #838383; }
-      .feedback-label { font-size: 12px; fill: #a1245a; font-weight: 600; font-style: italic; }
-      .pass-label { font-size: 12px; fill: #1ab197; font-weight: 600; letter-spacing: 0.05em; }
-      .fail-label { font-size: 11px; fill: #a1245a; font-weight: 600; font-style: italic; }
-    </style>
-    <marker id="ql-arr" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
-      <path d="M0,0 L7,2.5 L0,5" fill="#1a1a1a"/>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#838383"/>
     </marker>
-    <marker id="ql-arr-fail" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-      <path d="M0,0 L8,3 L0,6" fill="#a1245a"/>
+    <marker id="arrow-accent" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto">
+      <path d="M0,0 L12,4 L0,8 Z" fill="#a1245a"/>
     </marker>
-    <marker id="ql-arr-pass" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-      <path d="M0,0 L8,3 L0,6" fill="#1ab197"/>
+    <marker id="arrow-secondary" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#1ab197"/>
     </marker>
   </defs>
 
-  <rect width="820" height="520" fill="#ffffff"/>
+  <!-- ============================================ -->
+  <!-- 4-NODE LOOP (diamond, centered at 570,210)   -->
+  <!--   1: top     (570, 70)  — Task / intenzione  -->
+  <!--   2: right   (790, 210) — Scrivi codice      -->
+  <!--   3: bottom  (570, 350) — Esegui in sandbox  -->
+  <!--   4: left    (350, 210) — Verifica (ACCENT)  -->
+  <!-- ============================================ -->
 
-  <!-- Node 1 (top) — Task / intenzione -->
-  <g>
-    <rect x="310" y="30" width="200" height="72" rx="10" fill="#fafafa" stroke="#1a1a1a" stroke-width="1.5"/>
-    <text x="410" y="62" text-anchor="middle" class="node-label">1 · Task / intenzione</text>
-    <text x="410" y="82" text-anchor="middle" class="node-sub">cosa l'agente vuole ottenere</text>
+  <!-- Node 1: Task / intenzione — top -->
+  <g id="node1">
+    <rect x="470" y="42" width="200" height="56" rx="8" fill="#f7f7f7" stroke="#dddddd" stroke-width="1.5"/>
+    <text x="570" y="65" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1a1a1a">Task / intenzione</text>
+    <text x="570" y="83" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" fill="#838383">cosa vuole ottenere</text>
   </g>
 
-  <!-- Node 2 (right) — Scrivi codice -->
-  <g>
-    <rect x="580" y="214" width="200" height="72" rx="10" fill="#fafafa" stroke="#1a1a1a" stroke-width="1.5"/>
-    <text x="680" y="246" text-anchor="middle" class="node-label">2 · Scrivi codice</text>
-    <text x="680" y="266" text-anchor="middle" class="node-sub">Python, SQL, shell…</text>
+  <!-- Node 2: Scrivi codice — right -->
+  <g id="node2">
+    <rect x="690" y="182" width="200" height="56" rx="8" fill="#f7f7f7" stroke="#dddddd" stroke-width="1.5"/>
+    <text x="790" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1a1a1a">Scrivi codice</text>
+    <text x="790" y="223" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" fill="#838383">Python, SQL, shell…</text>
   </g>
 
-  <!-- Node 3 (bottom) — Esegui in sandbox -->
-  <g>
-    <rect x="310" y="398" width="200" height="72" rx="10" fill="#fafafa" stroke="#1a1a1a" stroke-width="1.5"/>
-    <text x="410" y="430" text-anchor="middle" class="node-label">3 · Esegui in sandbox</text>
-    <text x="410" y="450" text-anchor="middle" class="node-sub">ambiente isolato</text>
+  <!-- Node 3: Esegui in sandbox — bottom -->
+  <g id="node3">
+    <rect x="470" y="322" width="200" height="56" rx="8" fill="#f7f7f7" stroke="#dddddd" stroke-width="1.5"/>
+    <text x="570" y="345" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1a1a1a">Esegui in sandbox</text>
+    <text x="570" y="363" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" fill="#838383">ambiente isolato</text>
   </g>
 
-  <!-- Node 4 (left) — Verifica (ACCENT) -->
-  <g>
-    <rect x="40" y="214" width="200" height="72" rx="10" fill="rgba(161,36,90,0.05)" stroke="#a1245a" stroke-width="2"/>
-    <text x="140" y="246" text-anchor="middle" class="node-label">4 · Verifica</text>
-    <text x="140" y="266" text-anchor="middle" class="node-sub">test passati? output corretto?</text>
+  <!-- Node 4: Verifica — left (ACCENT) -->
+  <g id="node4">
+    <rect x="250" y="182" width="200" height="56" rx="8" fill="#f5f5f5" stroke="#a1245a" stroke-width="2"/>
+    <text x="350" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1a1a1a">Verifica</text>
+    <text x="350" y="223" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" fill="#a1245a" opacity="0.75">test passati?</text>
   </g>
 
-  <!-- Arrow 1 -> 2 (top right curve) -->
-  <path d="M510 82 Q625 95 650 210" fill="none" stroke="#1a1a1a" stroke-width="1.6" marker-end="url(#ql-arr)"/>
+  <!-- ============================================ -->
+  <!-- FORWARD ARROWS (clockwise)                   -->
+  <!-- ============================================ -->
 
-  <!-- Arrow 2 -> 3 (bottom right curve) -->
-  <path d="M650 286 Q625 400 510 420" fill="none" stroke="#1a1a1a" stroke-width="1.6" marker-end="url(#ql-arr)"/>
+  <!-- 1→2: top to right -->
+  <line x1="660" y1="98" x2="710" y2="182" stroke="#838383" stroke-width="2" marker-end="url(#arrow)"/>
 
-  <!-- Arrow 3 -> 4 (bottom left curve) -->
-  <path d="M310 420 Q195 400 170 290" fill="none" stroke="#1a1a1a" stroke-width="1.6" marker-end="url(#ql-arr)"/>
+  <!-- 2→3: right to bottom -->
+  <line x1="720" y1="238" x2="660" y2="322" stroke="#838383" stroke-width="2" marker-end="url(#arrow)"/>
 
-  <!-- FAIL: Arrow 4 -> 2 (horizontal through middle) — ACCENT -->
-  <line x1="240" y1="250" x2="578" y2="250" stroke="#a1245a" stroke-width="2.2" marker-end="url(#ql-arr-fail)"/>
-  <text x="410" y="242" text-anchor="middle" class="feedback-label">feedback deterministico</text>
-  <text x="410" y="270" text-anchor="middle" class="fail-label">fail</text>
+  <!-- 3→4: bottom to left -->
+  <line x1="480" y1="322" x2="420" y2="238" stroke="#838383" stroke-width="2" marker-end="url(#arrow)"/>
 
-  <!-- PASS: Arrow 4 -> end (exits top-left) -->
-  <path d="M140 214 Q140 140 60 100" fill="none" stroke="#1ab197" stroke-width="2" marker-end="url(#ql-arr-pass)"/>
-  <text x="40" y="80" text-anchor="start" class="pass-label">pass → done</text>
+  <!-- ============================================ -->
+  <!-- FAIL FEEDBACK: node4 → node2 across middle   -->
+  <!-- Thick, accent, with label — the "close the   -->
+  <!-- loop" arrow, analogous to slide20 5→1        -->
+  <!-- ============================================ -->
+  <line x1="450" y1="205" x2="690" y2="205" stroke="#a1245a" stroke-width="3" marker-end="url(#arrow-accent)"/>
+  <text x="570" y="198" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11.5" fill="#a1245a" font-style="italic">feedback deterministico</text>
+  <text x="570" y="223" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" fill="#a1245a" opacity="0.75">fail → l'agente itera</text>
 
+  <!-- ============================================ -->
+  <!-- PASS EXIT: node4 → off-left                  -->
+  <!-- ============================================ -->
+  <line x1="250" y1="210" x2="110" y2="210" stroke="#1ab197" stroke-width="2.5" marker-end="url(#arrow-secondary)"/>
+  <text x="180" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11.5" fill="#1ab197" font-weight="600">pass → done</text>
 </svg>
