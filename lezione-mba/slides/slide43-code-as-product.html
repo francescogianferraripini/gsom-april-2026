@@ -1,0 +1,41 @@
+<!-- SLIDE 41 — Code as product: coding agent e affidabilità -->
+<section id="slide-code-as-product">
+  <h2>Code as product — coding agent e affidabilità</h2>
+  <div class="content" style="gap: 10px; padding-top: 6px;">
+
+    <!-- Product tags row -->
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 9.5pt;">
+      <span style="background: rgba(0,0,0,0.05); padding: 3px 10px; border-radius: 12px; color: var(--text-color);">Claude Code</span>
+      <span style="background: rgba(0,0,0,0.05); padding: 3px 10px; border-radius: 12px; color: var(--text-color);">Cursor</span>
+      <span style="background: rgba(0,0,0,0.05); padding: 3px 10px; border-radius: 12px; color: var(--text-color);">GitHub Copilot</span>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: stretch;">
+
+      <!-- Scala block -->
+      <div style="background: rgba(0,0,0,0.035); border-radius: var(--box-radius); padding: 10px 14px;">
+        <p style="margin: 0 0 4px 0; font-size: 9.5pt; font-weight: 600; color: var(--primary-color); text-transform: uppercase; letter-spacing: 0.08em;">Scala</p>
+        <p style="font-size: 10.5pt; margin: 0; line-height: 1.45;">Stesso pattern del code as tool (<em>scrivi-esegui-verifica</em>), moltiplicato per un progetto reale: <strong>molti file, dipendenze, test suite, git, pull request</strong>. Rientrano in gioco <strong>sub-agent</strong> (esplorare codebase) e <strong>skill</strong> (codificare convenzioni di progetto).</p>
+      </div>
+
+      <!-- TDD block -->
+      <div style="background: rgba(161,36,90,0.06); border: 1px solid var(--primary-color); border-radius: var(--box-radius); padding: 10px 14px;">
+        <p style="margin: 0 0 6px 0; font-size: 9.5pt; font-weight: 600; color: var(--primary-color); text-transform: uppercase; letter-spacing: 0.08em;">TDD come meccanismo di affidabilità</p>
+        <ul style="margin: 0; padding: 0; font-size: 10.5pt;">
+          <li style="padding-left: 18px; margin-bottom: 4px; line-height: 1.4;">Si specifica il comportamento atteso come test <em>prima</em> di generare il codice.</li>
+          <li style="padding-left: 18px; margin-bottom: 4px; line-height: 1.4;">Il test è <strong>contratto</strong>: l'agente sa quando ha finito.</li>
+          <li style="padding-left: 18px; margin-bottom: 0; line-height: 1.4;">Il test è <strong>feedback loop deterministico</strong>: l'agente sa se è sulla strada giusta.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- SVG diagram -->
+    <div class="svg-container" style="flex: 1; min-height: 0;">
+      <img src="svg/slide43-code-as-product.svg" alt="3 zone: umano definisce test/spec, agente scrive codice, test runner verifica con loop di fail che torna all'agente">
+    </div>
+
+    <p style="font-size: 10.5pt; color: var(--text-color); margin: 0; text-align: center; font-style: italic;">Il ruolo umano si sposta su <strong style="font-style: normal;">definizione del contratto</strong> e <strong style="font-style: normal;">supervisione</strong>.</p>
+
+  </div>
+</section>

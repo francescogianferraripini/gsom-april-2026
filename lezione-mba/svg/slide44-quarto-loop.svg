@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 520">
+  <title>Quarto loop: task → scrivi codice → esegui in sandbox → verifica; fail torna a scrivi codice, pass esce</title>
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&amp;display=swap');
+      text { font-family: 'Poppins', sans-serif; }
+      .node-label { font-size: 13px; fill: #1a1a1a; font-weight: 600; }
+      .node-sub { font-size: 10px; fill: #838383; }
+      .feedback-label { font-size: 12px; fill: #a1245a; font-weight: 600; font-style: italic; }
+      .pass-label { font-size: 12px; fill: #1ab197; font-weight: 600; letter-spacing: 0.05em; }
+      .fail-label { font-size: 11px; fill: #a1245a; font-weight: 600; font-style: italic; }
+    </style>
+    <marker id="ql-arr" markerWidth="7" markerHeight="5" refX="7" refY="2.5" orient="auto">
+      <path d="M0,0 L7,2.5 L0,5" fill="#1a1a1a"/>
+    </marker>
+    <marker id="ql-arr-fail" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#a1245a"/>
+    </marker>
+    <marker id="ql-arr-pass" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#1ab197"/>
+    </marker>
+  </defs>
+
+  <rect width="820" height="520" fill="#ffffff"/>
+
+  <!-- Node 1 (top) — Task / intenzione -->
+  <g>
+    <rect x="310" y="30" width="200" height="72" rx="10" fill="#fafafa" stroke="#1a1a1a" stroke-width="1.5"/>
+    <text x="410" y="62" text-anchor="middle" class="node-label">1 · Task / intenzione</text>
+    <text x="410" y="82" text-anchor="middle" class="node-sub">cosa l'agente vuole ottenere</text>
+  </g>
+
+  <!-- Node 2 (right) — Scrivi codice -->
+  <g>
+    <rect x="580" y="214" width="200" height="72" rx="10" fill="#fafafa" stroke="#1a1a1a" stroke-width="1.5"/>
+    <text x="680" y="246" text-anchor="middle" class="node-label">2 · Scrivi codice</text>
+    <text x="680" y="266" text-anchor="middle" class="node-sub">Python, SQL, shell…</text>
+  </g>
+
+  <!-- Node 3 (bottom) — Esegui in sandbox -->
+  <g>
+    <rect x="310" y="398" width="200" height="72" rx="10" fill="#fafafa" stroke="#1a1a1a" stroke-width="1.5"/>
+    <text x="410" y="430" text-anchor="middle" class="node-label">3 · Esegui in sandbox</text>
+    <text x="410" y="450" text-anchor="middle" class="node-sub">ambiente isolato</text>
+  </g>
+
+  <!-- Node 4 (left) — Verifica (ACCENT) -->
+  <g>
+    <rect x="40" y="214" width="200" height="72" rx="10" fill="rgba(161,36,90,0.05)" stroke="#a1245a" stroke-width="2"/>
+    <text x="140" y="246" text-anchor="middle" class="node-label">4 · Verifica</text>
+    <text x="140" y="266" text-anchor="middle" class="node-sub">test passati? output corretto?</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 (top right curve) -->
+  <path d="M510 82 Q625 95 650 210" fill="none" stroke="#1a1a1a" stroke-width="1.6" marker-end="url(#ql-arr)"/>
+
+  <!-- Arrow 2 -> 3 (bottom right curve) -->
+  <path d="M650 286 Q625 400 510 420" fill="none" stroke="#1a1a1a" stroke-width="1.6" marker-end="url(#ql-arr)"/>
+
+  <!-- Arrow 3 -> 4 (bottom left curve) -->
+  <path d="M310 420 Q195 400 170 290" fill="none" stroke="#1a1a1a" stroke-width="1.6" marker-end="url(#ql-arr)"/>
+
+  <!-- FAIL: Arrow 4 -> 2 (horizontal through middle) — ACCENT -->
+  <line x1="240" y1="250" x2="578" y2="250" stroke="#a1245a" stroke-width="2.2" marker-end="url(#ql-arr-fail)"/>
+  <text x="410" y="242" text-anchor="middle" class="feedback-label">feedback deterministico</text>
+  <text x="410" y="270" text-anchor="middle" class="fail-label">fail</text>
+
+  <!-- PASS: Arrow 4 -> end (exits top-left) -->
+  <path d="M140 214 Q140 140 60 100" fill="none" stroke="#1ab197" stroke-width="2" marker-end="url(#ql-arr-pass)"/>
+  <text x="40" y="80" text-anchor="start" class="pass-label">pass → done</text>
+
+</svg>
