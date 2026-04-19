@@ -1,0 +1,44 @@
+<!-- SLIDE 52 — Sandboxes: confini espliciti per l'esecuzione -->
+<section id="slide-sandboxes">
+  <h2>Sandboxes — confini espliciti per l'esecuzione</h2>
+  <div class="content" style="gap: 12px; padding-top: 8px;">
+
+    <p style="font-size: 12pt; margin: 0; line-height: 1.5;">Ambiente isolato in cui l'agente esegue codice, bash, tool che manipolano il mondo — con <strong>confini tecnici verificabili</strong>.</p>
+
+    <table style="width: 100%; border-collapse: collapse; font-size: 11.5pt;">
+      <thead>
+        <tr>
+          <th style="text-align: left; padding: 8px 12px; border-bottom: 2px solid var(--primary-color); font-weight: 600; color: var(--primary-color); width: 32%;">Confine</th>
+          <th style="text-align: left; padding: 8px 12px; border-bottom: 2px solid var(--primary-color); font-weight: 600; color: var(--primary-color);">Perché conta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 7px 12px; border-bottom: 1px solid var(--line-color); font-weight: 600;">Filesystem limitato</td>
+          <td style="padding: 7px 12px; border-bottom: 1px solid var(--line-color);">L'agente accede solo alle cartelle di lavoro designate</td>
+        </tr>
+        <tr>
+          <td style="padding: 7px 12px; border-bottom: 1px solid var(--line-color); font-weight: 600;">Rete limitata</td>
+          <td style="padding: 7px 12px; border-bottom: 1px solid var(--line-color);">Solo endpoint autorizzati — no exfiltration, no lateral movement</td>
+        </tr>
+        <tr>
+          <td style="padding: 7px 12px; border-bottom: 1px solid var(--line-color); font-weight: 600;">Credenziali limitate</td>
+          <td style="padding: 7px 12px; border-bottom: 1px solid var(--line-color);">Minimo privilegio — l'agente non ha più accesso di quanto serve</td>
+        </tr>
+        <tr>
+          <td style="padding: 7px 12px; border-bottom: 1px solid var(--line-color); font-weight: 600;">Tempo limitato</td>
+          <td style="padding: 7px 12px; border-bottom: 1px solid var(--line-color);">Ogni esecuzione scade — previene loop infiniti e consumo silenzioso</td>
+        </tr>
+        <tr>
+          <td style="padding: 7px 12px; font-weight: 600;">Risorse limitate</td>
+          <td style="padding: 7px 12px;">CPU, memoria, disco espliciti — previene denial-of-service accidentale</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="background: rgba(161,36,90,0.06); border: 1px solid var(--primary-color); border-radius: var(--box-radius); padding: 10px 14px;">
+      <p style="font-size: 11pt; margin: 0; line-height: 1.5;">Sandbox è alla sicurezza degli agenti quello che il <strong>container</strong> è al deployment del software. <strong>Nessun agente serio gira senza.</strong></p>
+    </div>
+
+  </div>
+</section>

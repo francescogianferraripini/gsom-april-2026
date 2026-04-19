@@ -1,0 +1,30 @@
+<!-- SLIDE 46 — Compaction e pruning: gestire il contesto che cresce -->
+<section id="slide-compaction-pruning">
+  <h2>Compaction e pruning — gestire il contesto che cresce</h2>
+  <div class="content" style="gap: 14px; padding-top: 10px;">
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div class="contrast-card" style="padding: 14px 18px;">
+        <h3 style="font-size: 16pt; margin: 0 0 8px 0;">Pruning</h3>
+        <ul style="font-size: 11.5pt; margin: 0;">
+          <li><strong>Definizione</strong> — tagliare parti del contesto non più rilevanti (tool result vecchi, turni obsoleti)</li>
+          <li><strong>Policy</strong> — quali informazioni sono sicure da dimenticare?</li>
+          <li><strong>Rischio</strong> — dimenticare qualcosa che serviva</li>
+        </ul>
+      </div>
+      <div class="contrast-card" style="padding: 14px 18px;">
+        <h3 style="font-size: 16pt; margin: 0 0 8px 0;">Compaction</h3>
+        <ul style="font-size: 11.5pt; margin: 0;">
+          <li><strong>Definizione</strong> — sostituire parti del contesto con una loro sintesi</li>
+          <li><strong>Policy</strong> — tipicamente un sub-agent riassume gli ultimi N turni e la sintesi rimpiazza gli originali</li>
+          <li><strong>Rischio</strong> — la sintesi perde dettagli che emergeranno come importanti più avanti</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background: rgba(161,36,90,0.06); border: 1px solid var(--primary-color); border-radius: var(--box-radius); padding: 10px 14px;">
+      <p style="font-size: 11pt; margin: 0; line-height: 1.5;">Entrambe sono <strong>lossy</strong>: si perde informazione in cambio di spazio. La scelta di cosa comprimere o buttare è una delle decisioni più delicate di un agente in produzione. <strong>Non esiste policy universale</strong> — dipende dal task.</p>
+    </div>
+
+  </div>
+</section>

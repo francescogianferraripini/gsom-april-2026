@@ -1,0 +1,31 @@
+<!-- SLIDE 54 — Memoria: meccanica e rischi -->
+<section id="slide-memoria-meccanica">
+  <h2>Memoria — meccanica e rischi</h2>
+  <div class="content" style="gap: 10px; padding-top: 4px;">
+
+    <div class="svg-container" style="flex: 0 0 auto; max-height: 230px;">
+      <img src="svg/slide56-memoria-ciclo.svg" alt="Due sessioni nel tempo con archivio persistente al centro: estrazione fatti dalla sessione 1, iniezione nel contesto della sessione 2">
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1.3fr; gap: 14px; font-size: 10.5pt;">
+      <div class="contrast-card" style="padding: 10px 12px;">
+        <h3 style="font-size: 11pt; margin: 0 0 5px 0;">3 fasi operative</h3>
+        <ul style="margin: 0; font-size: 10pt;">
+          <li style="margin-bottom: 4px;"><strong>Estrazione</strong> — un sub-agent scorre la conversazione ed estrae fatti memorizzabili (<em>"l'utente preferisce risposte brevi"</em>)</li>
+          <li style="margin-bottom: 4px;"><strong>Gestione</strong> — i fatti vengono organizzati, deduplicati, aggiornati quando cambiano</li>
+          <li><strong>Recupero</strong> — al turno successivo, i fatti rilevanti vengono iniettati nel contesto</li>
+        </ul>
+      </div>
+      <div style="background: rgba(161,36,90,0.06); border: 1px solid var(--primary-color); border-radius: var(--box-radius); padding: 10px 12px;">
+        <h3 style="font-size: 11pt; margin: 0 0 5px 0; color: var(--primary-color);">4 rischi</h3>
+        <ul style="margin: 0; font-size: 10pt;">
+          <li style="margin-bottom: 3px;"><strong>Memoria obsoleta</strong> — salva un fatto che cambia nel tempo, non si aggiorna da sé</li>
+          <li style="margin-bottom: 3px;"><strong>Privacy</strong> — cosa viene salvato, per quanto, con quale consenso (GDPR)</li>
+          <li style="margin-bottom: 3px;"><strong>Cross-contamination</strong> — memoria di una conversazione influenza un'altra dove non dovrebbe</li>
+          <li><strong>Gaslight da memoria</strong> — l'agente <em>"ricorda"</em> cose false iniettate in passato da utente o attaccante</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>

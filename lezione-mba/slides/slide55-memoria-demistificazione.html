@@ -1,0 +1,21 @@
+<!-- SLIDE 53 — Memoria: demistificazione -->
+<section id="slide-memoria-demistificazione">
+  <h2>Memoria — demistificazione</h2>
+  <div class="content" style="gap: 14px; padding-top: 10px;">
+
+    <p style="font-size: 13pt; margin: 0; line-height: 1.55; font-style: italic;">"Memoria" è un termine abusato. Suggerisce che il modello <strong style="font-style: normal;">ricordi</strong> nel senso umano. Non è così.</p>
+
+    <ul style="font-size: 12pt; margin: 0;">
+      <li>Il modello è <strong>stateless</strong> — nessuna memoria tra chiamate (richiamo slide 10)</li>
+      <li>La "memoria" è un <strong>sistema esterno</strong> gestito dall'harness</li>
+      <li>L'harness decide <strong>cosa salvare</strong> fuori dal contesto corrente (fatti sull'utente, preferenze, sintesi di conversazioni passate)</li>
+      <li>Lo salva in <strong>archivio persistente</strong> (DB, vector store, file)</li>
+      <li>Al turno successivo, l'harness <strong>recupera i fatti rilevanti</strong> e li inietta nel contesto</li>
+    </ul>
+
+    <div class="highlight-box" style="padding: 12px 16px; margin: 0;">
+      <p style="font-size: 12pt; margin: 0; line-height: 1.5;">Memoria dell'agente = <strong>RAG sulle sue stesse conversazioni passate</strong>. Non è che il modello <em>"si ricorda di voi"</em> — è che l'harness ha archiviato fatti su di voi e ve li re-inietta nel contesto quando parlate di nuovo.</p>
+    </div>
+
+  </div>
+</section>

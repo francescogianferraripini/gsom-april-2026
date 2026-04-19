@@ -1,0 +1,22 @@
+<!-- SLIDE 45 — Harness: chi fa davvero le cose -->
+<section id="slide-harness">
+  <h2>Harness — chi fa davvero le cose</h2>
+  <div class="content" style="gap: 12px; padding-top: 8px;">
+
+    <p style="font-size: 12pt; margin: 0; line-height: 1.55;">Il <strong>software che circonda il modello</strong> e gestisce tutto ciò che non è pura generazione di testo.</p>
+
+    <ul style="font-size: 11.5pt; margin: 0;">
+      <li><strong>Costruisce e mantiene il contesto</strong> — assembla system prompt, storico turni, tool definition, tool result a ogni chiamata API</li>
+      <li><strong>Esegue i tool quando il modello li richiama</strong> — intercetta la richiesta strutturata e la traduce in chiamata reale</li>
+      <li><strong>Applica policy di sicurezza e autorizzazione</strong> — decide quali azioni sono permesse in base al contesto e all'utente</li>
+      <li><strong>Orchestra i sub-agent</strong> — lancia agenti figli, raccoglie le sintesi, le restituisce al padre</li>
+      <li><strong>Gestisce lo stato persistente</strong> — memoria, sessioni, contesti tra conversazioni diverse</li>
+      <li><strong>Fornisce osservabilità</strong> — log, tracce, metriche per debugging e monitoring in produzione</li>
+    </ul>
+
+    <div style="background: rgba(161,36,90,0.06); border: 1px solid var(--primary-color); border-radius: var(--box-radius); padding: 10px 14px;">
+      <p style="font-size: 11pt; margin: 0; line-height: 1.5;">Quando si dice <em>"Claude ha fatto X"</em>, Claude ha <strong>deciso</strong> X e l'harness ha <strong>eseguito</strong> X. Il confine è sottile ma cruciale — quasi tutta la sicurezza, l'affidabilità, la qualità di un agente in produzione vivono nell'harness.</p>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 460">
+  <title>Mattoncini: strati concentrici dei 4 loop con barra trasversale di context engineering</title>
+  <style>
+    text { font-family: 'Poppins', sans-serif; }
+  </style>
+
+  <!-- ================================ -->
+  <!-- LAYER 4 — outermost: code loop   -->
+  <!-- ================================ -->
+  <rect x="50" y="30" width="880" height="400" rx="14" fill="#fafafa" stroke="#c8a0b0" stroke-width="1.5"/>
+  <text x="70" y="52" font-size="11" fill="#a1245a" font-weight="600" letter-spacing="1">LOOP 4 · CON CODICE</text>
+  <text x="70" y="68" font-size="10.5" fill="#838383">scrivi · esegui · verifica &#160;·&#160; TDD · sandbox · verificabilità</text>
+
+  <!-- ================================ -->
+  <!-- LAYER 3 — tool loop              -->
+  <!-- ================================ -->
+  <rect x="110" y="95" width="760" height="300" rx="12" fill="#f5f5f5" stroke="#b88a9a" stroke-width="1.5"/>
+  <text x="130" y="117" font-size="11" fill="#a1245a" font-weight="600" letter-spacing="1">LOOP 3 · CON TOOL</text>
+  <text x="130" y="133" font-size="10.5" fill="#838383">decidi · agisci · osserva &#160;·&#160; sub-agent · eval · MCP</text>
+
+  <!-- ================================ -->
+  <!-- LAYER 2 — conversational loop    -->
+  <!-- ================================ -->
+  <rect x="180" y="160" width="620" height="200" rx="10" fill="#eeeeee" stroke="#a87585" stroke-width="1.5"/>
+  <text x="200" y="182" font-size="11" fill="#a1245a" font-weight="600" letter-spacing="1">LOOP 2 · CONVERSAZIONALE</text>
+  <text x="200" y="198" font-size="10.5" fill="#838383">turno per turno &#160;·&#160; system prompt · statelessness</text>
+
+  <!-- ================================ -->
+  <!-- LAYER 1 — atomic loop (center)   -->
+  <!-- ================================ -->
+  <rect x="280" y="228" width="420" height="95" rx="8" fill="#f5e1ea" stroke="#a1245a" stroke-width="2"/>
+  <text x="490" y="260" text-anchor="middle" font-size="13" fill="#a1245a" font-weight="700" letter-spacing="1">LOOP 1 · ATOMICO</text>
+  <text x="490" y="285" text-anchor="middle" font-size="11" fill="#1a1a1a">token per token</text>
+  <text x="490" y="305" text-anchor="middle" font-size="10" fill="#838383" font-style="italic">il cuore del modello</text>
+
+  <!-- ================================ -->
+  <!-- TRANSVERSAL BAR — context eng.   -->
+  <!-- ================================ -->
+  <rect x="960" y="30" width="100" height="400" rx="10" fill="#a1245a"/>
+
+  <!-- Header -->
+  <text x="1010" y="60" text-anchor="middle" font-size="10.5" fill="#ffffff" font-weight="700" letter-spacing="1.5">CONTEXT</text>
+  <text x="1010" y="76" text-anchor="middle" font-size="10.5" fill="#ffffff" font-weight="700" letter-spacing="1.5">ENGINEERING</text>
+
+  <!-- Divider -->
+  <line x1="980" y1="92" x2="1040" y2="92" stroke="#ffffff" stroke-width="0.6" opacity="0.5"/>
+
+  <!-- Bullet list vertical -->
+  <g font-size="10" fill="#ffffff" text-anchor="middle">
+    <text x="1010" y="118">harness</text>
+    <text x="1010" y="148">pruning</text>
+    <text x="1010" y="178">compaction</text>
+    <text x="1010" y="208">skill</text>
+    <text x="1010" y="238">modellazione</text>
+    <text x="1010" y="250" font-size="8.5" opacity="0.85">conoscenza</text>
+    <text x="1010" y="280">sandbox</text>
+    <text x="1010" y="310">memoria</text>
+  </g>
+
+  <!-- Dotted reach lines showing the bar crosses every layer -->
+  <line x1="938" y1="50" x2="960" y2="50" stroke="#a1245a" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="938" y1="150" x2="960" y2="150" stroke="#a1245a" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="938" y1="250" x2="960" y2="250" stroke="#a1245a" stroke-width="1" stroke-dasharray="2,2"/>
+  <line x1="938" y1="350" x2="960" y2="350" stroke="#a1245a" stroke-width="1" stroke-dasharray="2,2"/>
+
+  <!-- Footnote inside bar -->
+  <text x="1010" y="400" text-anchor="middle" font-size="9" fill="#ffffff" opacity="0.75" font-style="italic">attraversa</text>
+  <text x="1010" y="412" text-anchor="middle" font-size="9" fill="#ffffff" opacity="0.75" font-style="italic">ogni livello</text>
+
+  <!-- Caption bottom -->
+  <text x="490" y="450" text-anchor="middle" font-size="11" fill="#1a1a1a" font-style="italic">Quattro loop impilati. Una disciplina che li attraversa tutti.</text>
+</svg>

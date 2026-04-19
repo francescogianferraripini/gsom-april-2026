@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 320">
+  <title>Skill pattern: struttura directory a sinistra, meccanica in 3 passi a destra</title>
+  <style>
+    text { font-family: 'Poppins', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+  </style>
+  <defs>
+    <marker id="arrow-s50" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#838383"/>
+    </marker>
+    <marker id="arrow-s50-accent" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <!-- ================================ -->
+  <!-- LEFT: DIRECTORY TREE             -->
+  <!-- ================================ -->
+  <g id="tree">
+    <text x="40" y="30" font-size="11" font-weight="600" fill="#a1245a" letter-spacing="1">DIRECTORY SKILL</text>
+
+    <!-- root folder -->
+    <g transform="translate(40,50)">
+      <rect x="0" y="0" width="16" height="12" rx="1.5" fill="#f5e1ea" stroke="#a1245a" stroke-width="1"/>
+      <text class="mono" x="24" y="10" font-size="12" fill="#1a1a1a">skills/</text>
+    </g>
+
+    <!-- sub-folder prodotti-pricing -->
+    <line x1="48" y1="68" x2="48" y2="86" stroke="#c8a0b0" stroke-width="0.8"/>
+    <line x1="48" y1="86" x2="62" y2="86" stroke="#c8a0b0" stroke-width="0.8"/>
+    <g transform="translate(62,80)">
+      <rect x="0" y="0" width="16" height="12" rx="1.5" fill="#f5e1ea" stroke="#a1245a" stroke-width="1"/>
+      <text class="mono" x="24" y="10" font-size="12" fill="#1a1a1a">prodotti-pricing/</text>
+    </g>
+
+    <!-- SKILL.md (accent) -->
+    <line x1="70" y1="98" x2="70" y2="120" stroke="#c8a0b0" stroke-width="0.8"/>
+    <line x1="70" y1="120" x2="84" y2="120" stroke="#c8a0b0" stroke-width="0.8"/>
+    <g transform="translate(84,114)">
+      <rect x="0" y="0" width="14" height="13" rx="1.5" fill="#a1245a" stroke="#a1245a" stroke-width="1"/>
+      <text x="7" y="10" font-size="8.5" text-anchor="middle" fill="#ffffff" font-weight="600">MD</text>
+      <text class="mono" x="22" y="10" font-size="12" fill="#a1245a" font-weight="600">SKILL.md</text>
+    </g>
+    <!-- annotation on SKILL.md -->
+    <line x1="195" y1="122" x2="230" y2="122" stroke="#a1245a" stroke-width="0.8"/>
+    <text x="236" y="119" font-size="10" fill="#a1245a" font-weight="500">sempre visibile al modello</text>
+    <text x="236" y="131" font-size="9.5" fill="#838383" font-style="italic">1 riga di descrizione</text>
+
+    <!-- listino/ -->
+    <line x1="70" y1="134" x2="70" y2="154" stroke="#c8a0b0" stroke-width="0.8"/>
+    <line x1="70" y1="154" x2="84" y2="154" stroke="#c8a0b0" stroke-width="0.8"/>
+    <g transform="translate(84,148)">
+      <rect x="0" y="0" width="14" height="11" rx="1.5" fill="#ededed" stroke="#bbbbbb" stroke-width="0.8"/>
+      <text class="mono" x="22" y="10" font-size="12" fill="#555555">listino/</text>
+    </g>
+
+    <!-- regole/ -->
+    <line x1="70" y1="160" x2="70" y2="180" stroke="#c8a0b0" stroke-width="0.8"/>
+    <line x1="70" y1="180" x2="84" y2="180" stroke="#c8a0b0" stroke-width="0.8"/>
+    <g transform="translate(84,174)">
+      <rect x="0" y="0" width="14" height="11" rx="1.5" fill="#ededed" stroke="#bbbbbb" stroke-width="0.8"/>
+      <text class="mono" x="22" y="10" font-size="12" fill="#555555">regole/</text>
+    </g>
+
+    <!-- esempi/ -->
+    <line x1="70" y1="186" x2="70" y2="206" stroke="#c8a0b0" stroke-width="0.8"/>
+    <line x1="70" y1="206" x2="84" y2="206" stroke="#c8a0b0" stroke-width="0.8"/>
+    <g transform="translate(84,200)">
+      <rect x="0" y="0" width="14" height="11" rx="1.5" fill="#ededed" stroke="#bbbbbb" stroke-width="0.8"/>
+      <text class="mono" x="22" y="10" font-size="12" fill="#555555">esempi/</text>
+    </g>
+
+    <!-- annotation on rest of directory -->
+    <path d="M 200 175 L 240 175" stroke="#838383" stroke-width="0.8" stroke-dasharray="3,2"/>
+    <text x="246" y="172" font-size="10" fill="#555555" font-weight="500">caricato on-demand</text>
+    <text x="246" y="184" font-size="9.5" fill="#838383" font-style="italic">solo se la skill serve</text>
+  </g>
+
+  <!-- separator -->
+  <line x1="480" y1="20" x2="480" y2="300" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- ================================ -->
+  <!-- RIGHT: 3-STEP MECHANICS          -->
+  <!-- ================================ -->
+  <g id="mechanics">
+    <text x="520" y="30" font-size="11" font-weight="600" fill="#a1245a" letter-spacing="1">MECCANICA</text>
+
+    <!-- Step 1 -->
+    <g id="step1">
+      <circle cx="540" cy="70" r="14" fill="#a1245a"/>
+      <text x="540" y="75" text-anchor="middle" font-size="12" font-weight="600" fill="#ffffff">1</text>
+      <rect x="566" y="50" width="400" height="40" rx="6" fill="#f7f7f7" stroke="#dddddd" stroke-width="1"/>
+      <text x="580" y="68" font-size="12" font-weight="600" fill="#1a1a1a">Il modello vede solo la descrizione minima</text>
+      <text x="580" y="83" font-size="10.5" fill="#838383">una riga nel system prompt — nessun contenuto caricato</text>
+    </g>
+
+    <!-- arrow 1→2 -->
+    <line x1="540" y1="90" x2="540" y2="130" stroke="#838383" stroke-width="1.5" marker-end="url(#arrow-s50)"/>
+
+    <!-- Step 2 -->
+    <g id="step2">
+      <circle cx="540" cy="150" r="14" fill="#a1245a"/>
+      <text x="540" y="155" text-anchor="middle" font-size="12" font-weight="600" fill="#ffffff">2</text>
+      <rect x="566" y="130" width="400" height="40" rx="6" fill="#f7f7f7" stroke="#dddddd" stroke-width="1"/>
+      <text x="580" y="148" font-size="12" font-weight="600" fill="#1a1a1a">Decide che la skill serve, richiede il caricamento</text>
+      <text x="580" y="163" font-size="10.5" fill="#838383">il modello stesso sceglie, in base al task in corso</text>
+    </g>
+
+    <!-- arrow 2→3 -->
+    <line x1="540" y1="170" x2="540" y2="210" stroke="#a1245a" stroke-width="2" marker-end="url(#arrow-s50-accent)"/>
+
+    <!-- Step 3 -->
+    <g id="step3">
+      <circle cx="540" cy="230" r="14" fill="#a1245a"/>
+      <text x="540" y="235" text-anchor="middle" font-size="12" font-weight="600" fill="#ffffff">3</text>
+      <rect x="566" y="210" width="400" height="50" rx="6" fill="#f5e1ea" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="580" y="228" font-size="12" font-weight="600" fill="#1a1a1a">L'harness carica SKILL.md nel contesto</text>
+      <text x="580" y="243" font-size="10.5" fill="#838383">e da lì l'agente può navigare il resto della directory</text>
+      <text x="580" y="256" font-size="10" fill="#a1245a" font-style="italic">→ pagamento del costo deferito al momento utile</text>
+    </g>
+  </g>
+</svg>
