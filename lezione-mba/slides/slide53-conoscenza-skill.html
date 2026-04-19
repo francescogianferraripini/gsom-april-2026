@@ -1,23 +1,27 @@
-<!-- SLIDE 51 — Modellazione della conoscenza 3/3: operativizzazione come skill -->
-<section id="slide-conoscenza-skill">
-  <h2>Modellazione della conoscenza <span style="color: var(--muted-color); font-weight: 400;">— 3/3 · operativizzazione come skill</span></h2>
-  <div class="content" style="gap: 12px; padding-top: 8px;">
+<!-- SLIDE 51 — Modellazione della conoscenza 3/3: contesto per gli agenti -->
+<section id="slide-conoscenza-agenti">
+  <h2>Modellazione della conoscenza <span style="color: var(--muted-color); font-weight: 400;">— 3/3 · contesto per gli agenti</span></h2>
+  <div class="content" style="gap: 10px; padding-top: 4px;">
 
-    <p style="font-size: 12pt; margin: 0; line-height: 1.5;"><strong>Pattern</strong> — ogni dominio di conoscenza dell'azienda diventa una skill navigabile.</p>
+    <p style="font-size: 11.5pt; margin: 0; line-height: 1.5;"><strong>L'EKG è il contesto comune</strong> che più agenti AI condividono per migliorare ricerca, interrogazione dei dati e supporto agli utenti nell'estrazione di insight.</p>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; font-size: 11pt;">
-      <div><strong style="color: var(--primary-color);">Politiche HR</strong> — come sono organizzate le policy, come si cercano, come si citano</div>
-      <div><strong style="color: var(--primary-color);">Prodotti e pricing</strong> — indice dei prodotti, tariffe, regole di sconto</div>
-      <div><strong style="color: var(--primary-color);">Architettura tecnologica</strong> — stack, convenzioni, pattern adottati</div>
-      <div><strong style="color: var(--primary-color);">Clienti strategici</strong> — chi sono, chi li segue, cosa ci comprano</div>
+    <div class="svg-container" style="min-height: 0; flex: 0 0 auto;">
+      <img src="svg/slide51-ekg-agenti.svg" alt="Ciclo retrieval / learning tra agenti AI e Enterprise Knowledge Graph" style="max-width: 95%; max-height: 280px; object-fit: contain;"/>
     </div>
 
-    <div class="highlight-box" style="padding: 10px 14px; margin: 0;">
-      <p style="font-size: 11.5pt; margin: 0; line-height: 1.5;">La skill <strong>non è</strong> la conoscenza — è la <strong>mappa alla conoscenza</strong>. La conoscenza vera sta nei sistemi (DB, wiki, documenti); la skill insegna all'agente come orientarsi.</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; font-size: 11pt;">
+      <div><strong style="color: var(--primary-color);">Retrieval</strong> — gli agenti consultano il grafo per recuperare contesto di dominio affidabile e ancorare le risposte a dati reali.</div>
+      <div><strong style="color: var(--primary-color);">Learning</strong> — gli agenti contribuiscono a estendere il grafo, persistendo nuova conoscenza appresa da esperti o da contenuti non strutturati.</div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; font-size: 10.5pt;">
+      <div><strong>Riuso dei dati</strong> — Data Product modulari, ricomponibili per più casi d'uso</div>
+      <div><strong>Semantica condivisa</strong> — ambiguità ridotte fra unità di business</div>
+      <div><strong>Gap business ↔ IT</strong> — linguaggi avvicinati, cultura dei dati diffusa</div>
     </div>
 
     <div style="background: rgba(161,36,90,0.06); border: 1px solid var(--primary-color); border-radius: var(--box-radius); padding: 10px 14px;">
-      <p style="font-size: 11pt; margin: 0; line-height: 1.5;">Se il prossimo progetto AI parte con <em>"prendiamo i PDF e mettiamoli in un vector store"</em>, <strong>fermarsi</strong>. Partire da: quali sono i domini di conoscenza dell'azienda, chi ne è owner, qual è il semantic layer, come descriveremmo a un nuovo dipendente <em>"dove si trova cosa"</em>. Quella descrizione è la prima skill.</p>
+      <p style="font-size: 10.5pt; margin: 0; line-height: 1.5;">L'EKG è la forma aziendale della <strong>skill</strong>: mappa navigabile ai domini di conoscenza, collegata a dati reali e governata. Se il prossimo progetto AI parte con <em>"prendiamo i PDF e mettiamoli in un vector store"</em>, <strong>fermarsi</strong> — partire dai domini, dall'ontologia, dai data product che li espongono.</p>
     </div>
 
   </div>

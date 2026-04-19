@@ -108,67 +108,90 @@ Entrambe sono lossy — si perde informazione in cambio di spazio. La scelta di 
 
 ---
 
-## Slide 49 — Modellazione della conoscenza — 1: il problema
+## Slide 49 — Modellazione della conoscenza — 1: dai dati all'architettura informativa
 
-**Layout:** Titolo + lista bullet + conclusione
+**Layout:** Titolo + due colonne (SVG piramide a sinistra, testo a destra) + riquadro con bordo
 
-**Titolo:** Modellazione della conoscenza — 1: il problema
+**Titolo:** Modellazione della conoscenza — 1: dai dati all'architettura informativa
 
-**Corpo:** 4 problemi pratici in bullet:
+**Riga introduttiva:** I dati grezzi non bastano. Per essere riutilizzabili — da utenti e da agenti — devono essere arricchiti di contesto e semantica di dominio, altrimenti tecnicamente l'informazione c'è ma praticamente non è azionabile.
 
-- I documenti parlano gergo interno (sigle, codici prodotto, nomenclature) che l'agente non interpreta senza contesto
-- Sono scritti per umani con conoscenze implicite dell'azienda
-- Sono contraddittori tra loro (documento 2022 dice X, 2024 dice Y, nessuno ha ritirato il primo)
-- Hanno granularità sbagliata: troppo lunghi per stare nel contesto, troppo sconnessi per essere utili in frammenti
+**Colonna sinistra — Visual SVG:** Piramide a 4 livelli (DIKW-style) con annotazioni laterali.
 
-**Conclusione:** Dare i documenti all'agente è come assumere un dipendente e dargli l'archivio senza onboarding. Tecnicamente l'informazione c'è. Praticamente non è utilizzabile.
+*Prompt per SVG:*
+> Piramide a 4 strati orizzontali, dal basso verso l'alto: `DATA` (base, larga, pallido), `INFORMATION`, `KNOWLEDGE`, `INTELLIGENCE` (apice, colore accento). Su ogni transizione tra strati, etichetta a sinistra con freccia curva che punta verso lo strato superiore: tra Data e Information → "Context"; tra Information e Knowledge → "Semantics"; tra Knowledge e Intelligence → "Actions". Sulla destra, una freccia verticale grande che attraversa la piramide dal basso all'alto con tre tacche "+": ogni tacca all'altezza di una transizione è etichettata con ciò che viene sommato — in basso "METADATA", al centro "RELATIONS", in alto "ALGORITHMS". Stile minimale, monocromatico con colore accento, coerente con il resto delle slide.
 
-**Visual:** Nessuno.
+**Colonna destra — testo:** I quattro livelli, ciascuno aggiunge contesto al precedente:
+
+- **Dati** — asset fisici grezzi (tabelle, file, topic, bucket, contenuti non strutturati)
+- **+ Metadati → Informazione** — i dati diventano comprensibili a livello base
+- **+ Relazioni → Conoscenza** — semantica di dominio: concetti, attributi, relazioni esplicite
+- **+ Algoritmi → Intelligenza** — traduzione degli insight in decisioni e azioni di business
+
+**Riquadro con bordo:**
+L'AI aumenta efficienza, produttività e soddisfazione degli utenti solo se i dati sono completi, affidabili e interpretabili. L'architettura informativa precede logicamente l'adozione dell'AI — anche se in pratica si fanno in parallelo, perché l'AI è l'occasione per farla finalmente.
+
+**Visual:** SVG piramide DIKW (descritto sopra).
 
 ---
 
-## Slide 50 — Modellazione della conoscenza — 2: i cinque elementi
+## Slide 50 — Modellazione della conoscenza — 2: l'Enterprise Knowledge Graph
 
-**Layout:** Titolo + lista bullet + riquadro con bordo
+**Layout:** Titolo + definizione + due colonne (SVG struttura EKG a sinistra, testo a destra) + riquadro con bordo
 
-**Titolo:** Modellazione della conoscenza — 2: i cinque elementi
+**Titolo:** Modellazione della conoscenza — 2: l'Enterprise Knowledge Graph
 
-**Corpo:** 5 bullet con label in grassetto + 1 riga di spiegazione:
+**Definizione:** Un Enterprise Knowledge Graph (EKG) virtuale è il modo elegante di rappresentare l'architettura informativa: collega la conoscenza semantica di dominio ai dati presenti in piattaforma e ai metadati di contesto.
 
-- **Semantic layer condiviso:** Definizioni esplicite e univoche dei concetti chiave ("cliente attivo", "fatturato", "chiuso vinto") — un contratto semantico che vale per agenti e per umani
-- **Ontologia delle entità e relazioni:** Quali sono le entità del dominio, come si relazionano, chi ha autorità su cosa
-- **Documentazione pensata per agenti:** Versioni strutturate, granulari, pulite dai riferimenti impliciti — a volte riscrittura di documenti esistenti, a volte creazione ex novo
-- **Freschezza e ownership:** Ogni pezzo di conoscenza ha un responsabile, una data di aggiornamento, un criterio di obsolescenza
-- **Policy di accesso:** Chi (quale agente, per quale utente) può vedere cosa — non è dettaglio tecnico, è requisito di compliance
+**Colonna sinistra — Visual SVG:** Trapezio a tre strati che rappresenta la struttura dell'EKG.
+
+*Prompt per SVG:*
+> Trapezio verticale con base larga in basso e lato superiore più stretto, diviso in tre strati orizzontali (tonalità progressivamente più scure dal basso all'alto). Strato superiore — "ENTERPRISE ONTOLOGY": un piccolo grafo con 3-4 nodi circolari collegati da archi (concetti e relazioni). Strato intermedio — "DATA PRODUCTS": due esagoni affiancati. Etichetta laterale sinistra con freccia verso il grafo: "Semantic Linking" (a segnalare il collegamento verticale tra data product e ontologia). Strato inferiore — "PHYSICAL DATA ASSETS": a sinistra icone di file/documenti con label "UNSTRUCTURED", a destra icone di tabelle/cilindri DB con label "STRUCTURED", collegate da linee tratteggiate agli esagoni dei Data Product sopra. Cornice esterna del trapezio con etichetta "ENTERPRISE KNOWLEDGE GRAPH". Stile minimale, monocromatico con colore accento.
+
+**Colonna destra — testo:** Tre elementi costitutivi dell'EKG, label in grassetto + 1-2 righe:
+
+- **Ontologia aziendale** — modello concettuale a grafo interpretabile da umani e applicazioni. Esprime il dominio in termini di *concetti* (Cliente, Prodotto, Ordine), *attributi* (Stato del cliente, Descrizione del prodotto) e *relazioni* semantiche (Prodotto "comprato da" Cliente). Più espressiva del Business Glossary tradizionale.
+- **Data Product** — unità di modularizzazione, ownership e deployment. Ognuno ha un Data Product Owner, un ciclo di vita indipendente, interfacce esplicite governate da data contract. Registrati nel Data Product Catalog, accessibili via Data Product Marketplace.
+- **Asset fisici + Semantic Linking** — tabelle, viste, topic, bucket, contenuti non strutturati. I metadati tracciano il collegamento semantico (lineage verticale) tra ogni asset — fino al singolo campo — e i concetti dell'ontologia. Abilita interoperabilità tra strutturati e non strutturati.
 
 **Riquadro con bordo:**
-Costruire la knowledge base per agenti è un progetto di data e information architecture, non di AI. Precede logicamente l'adozione dell'AI, anche se in pratica si fa in parallelo perché l'AI è l'occasione per farlo finalmente.
+I quattro pilastri: conoscenza di dominio come patrimonio differenziante · collegamento esplicito semantica ↔ dati · interoperabilità strutturati/non strutturati · approccio strategico, incrementale, orientato al valore. Costruire un EKG è un progetto di data e information architecture, non di AI.
 
-**Visual:** Nessuno.
+**Visual:** SVG trapezio EKG a tre strati (descritto sopra).
 
 ---
 
-## Slide 51 — Modellazione della conoscenza — 3: l'operativizzazione come skill
+## Slide 51 — Modellazione della conoscenza — 3: il Knowledge Graph come contesto per gli agenti
 
-**Layout:** Titolo + pattern + lista bullet esempi + concetto chiave + riquadro con bordo
+**Layout:** Titolo + concetto chiave + SVG (sopra) + due colonne retrieval/learning + lista bullet vantaggi + riquadro con bordo
 
-**Titolo:** Modellazione della conoscenza — 3: l'operativizzazione come skill
+**Titolo:** Modellazione della conoscenza — 3: il Knowledge Graph come contesto per gli agenti
 
-**Pattern:** Ogni dominio di conoscenza dell'azienda diventa una skill navigabile.
+**Concetto chiave:** L'Enterprise Knowledge Graph è il contesto comune che più agenti AI condividono per migliorare ricerca, interrogazione dei dati e supporto agli utenti nell'estrazione di insight.
 
-**4 esempi di skill aziendali:**
+**Visual SVG:** Ciclo virtuoso EKG ↔ agenti.
 
-- **Politiche HR:** Come sono organizzate le policy, come si cercano, come si citano
-- **Prodotti e pricing:** Indice dei prodotti, tariffe, regole di sconto
-- **Architettura tecnologica:** Stack, convenzioni, pattern adottati
-- **Clienti strategici:** Chi sono, chi li segue, cosa ci comprano
+*Prompt per SVG:*
+> Diagramma orizzontale in due blocchi verticali. In alto, una fila di 4-5 triangoli identici che rappresentano agenti AI (ognuno con una piccola fumetto/chat bubble al centro con scritta "AI"). In basso, il trapezio "ENTERPRISE KNOWLEDGE GRAPH" con i tre strati già descritti (ontology in alto, data products al centro, physical assets in basso) — stesso stile della slide 50 ma più schematico. Tra agenti e EKG, due frecce verticali affiancate: una freccia in su etichettata "RETRIEVAL" (dall'EKG verso gli agenti), una freccia in giù etichettata "LEARNING" (dagli agenti verso l'EKG). Le due frecce evidenziano il ciclo bidirezionale. Stile minimale, monocromatico con colore accento.
 
-**Concetto chiave:** La skill non è la conoscenza, è la mappa alla conoscenza. La conoscenza vera sta nei sistemi (DB, wiki, documenti); la skill insegna all'agente come orientarsi.
+**Due colonne — ciclo EKG ↔ agenti:**
+
+**Colonna sinistra — Retrieval:**
+Gli agenti consultano il grafo per recuperare contesto di dominio affidabile (concetti, relazioni, data product rilevanti) e produrre risposte pertinenti, ancorate a dati reali e non a congetture.
+
+**Colonna destra — Learning:**
+Gli agenti contribuiscono a estendere l'architettura: persistono nel Knowledge Graph nuovi elementi di conoscenza, informazioni o dati appresi nelle conversazioni con gli esperti di dominio o estratti da contenuti non strutturati già presenti in azienda.
+
+**Tre vantaggi operativi:**
+
+- **Riuso dei dati** — design modulare dei Data Product collegati all'ontologia: si ricompongono per più casi d'uso, riducendo i costi nel medio-lungo periodo
+- **Semantica di dominio condivisa** — la formalizzazione riduce ambiguità e frizioni fra unità di business
+- **Gap business ↔ IT ridotto** — il linguaggio del business si avvicina alla terminologia IT, diffondendo cultura dei dati
 
 **Riquadro con bordo:**
-Se il prossimo progetto AI parte con "prendiamo i PDF e mettiamoli in un vector store", fermarsi. Partire da: quali sono i domini di conoscenza dell'azienda, chi ne è owner, qual è il semantic layer, come descriveremmo a un nuovo dipendente "dove si trova cosa". Quella descrizione è la prima skill.
+L'EKG è la forma aziendale di ciò che, nel pattern agente, abbiamo chiamato skill: una mappa navigabile ai domini di conoscenza, collegata a dati reali e governata. Se il prossimo progetto AI parte con "prendiamo i PDF e mettiamoli in un vector store", fermarsi. Partire da: quali sono i domini di conoscenza, chi ne è owner, qual è l'ontologia, quali data product li espongono.
 
-**Visual:** Nessuno.
+**Visual:** SVG ciclo retrieval/learning tra agenti AI e EKG (descritto sopra).
 
 ---
 
@@ -318,9 +341,9 @@ Da domani, quando si parlerà di AI agentica, si sentiranno suonare dei concetti
 | 46 | Compaction e pruning | Nessuno |
 | 47 | Progressive disclosure | Tabella MCP vs Skill |
 | 48 | Skill — il pattern tecnico | SVG: directory + meccanica (unico) |
-| 49 | Modellazione conoscenza — 1 | Nessuno |
-| 50 | Modellazione conoscenza — 2 | Nessuno |
-| 51 | Modellazione conoscenza — 3 | Nessuno |
+| 49 | Modellazione conoscenza — 1: piramide architettura informativa | SVG: piramide DIKW (Data → Information → Knowledge → Intelligence) |
+| 50 | Modellazione conoscenza — 2: Enterprise Knowledge Graph | SVG: trapezio EKG a tre strati (ontology / data products / physical assets) |
+| 51 | Modellazione conoscenza — 3: contesto per gli agenti | SVG: ciclo retrieval/learning tra agenti AI e EKG |
 | 52 | Sandboxes | Tabella confini |
 | 53 | Memoria — demistificazione | Nessuno |
 | 54 | Memoria — meccanica e rischi | SVG: ciclo memoria due sessioni |

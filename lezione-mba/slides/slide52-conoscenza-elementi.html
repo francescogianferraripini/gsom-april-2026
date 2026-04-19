@@ -1,18 +1,23 @@
-<!-- SLIDE 50 — Modellazione della conoscenza 2/3: i cinque elementi -->
-<section id="slide-conoscenza-elementi">
-  <h2>Modellazione della conoscenza <span style="color: var(--muted-color); font-weight: 400;">— 2/3 · i cinque elementi</span></h2>
-  <div class="content" style="gap: 12px; padding-top: 8px;">
+<!-- SLIDE 50 — Modellazione della conoscenza 2/3: l'Enterprise Knowledge Graph -->
+<section id="slide-conoscenza-ekg">
+  <h2>Modellazione della conoscenza <span style="color: var(--muted-color); font-weight: 400;">— 2/3 · Enterprise Knowledge Graph</span></h2>
+  <div class="content" style="gap: 12px; padding-top: 6px;">
 
-    <ul style="font-size: 11.5pt; margin: 0;">
-      <li><strong>Semantic layer condiviso</strong> — definizioni esplicite e univoche dei concetti chiave (<em>"cliente attivo"</em>, <em>"fatturato"</em>, <em>"chiuso vinto"</em>): un contratto semantico che vale per agenti e per umani</li>
-      <li><strong>Ontologia delle entità e relazioni</strong> — quali sono le entità del dominio, come si relazionano, chi ha autorità su cosa</li>
-      <li><strong>Documentazione pensata per agenti</strong> — versioni strutturate, granulari, pulite dai riferimenti impliciti: a volte riscrittura di documenti esistenti, a volte creazione ex novo</li>
-      <li><strong>Freschezza e ownership</strong> — ogni pezzo di conoscenza ha un responsabile, una data di aggiornamento, un criterio di obsolescenza</li>
-      <li><strong>Policy di accesso</strong> — chi (quale agente, per quale utente) può vedere cosa: non è dettaglio tecnico, è requisito di compliance</li>
-    </ul>
+    <p style="font-size: 11.5pt; margin: 0; line-height: 1.5;">Un <strong>Enterprise Knowledge Graph</strong> virtuale collega la conoscenza semantica di dominio ai dati in piattaforma e ai metadati di contesto: un contesto condiviso per più agenti AI.</p>
 
-    <div style="background: rgba(161,36,90,0.06); border: 1px solid var(--primary-color); border-radius: var(--box-radius); padding: 10px 14px;">
-      <p style="font-size: 11pt; margin: 0; line-height: 1.5;">Costruire la knowledge base per agenti è un <strong>progetto di data e information architecture</strong>, non di AI. Precede logicamente l'adozione dell'AI — anche se in pratica si fa in parallelo, perché l'AI è l'occasione per farlo finalmente.</p>
+    <div style="display: grid; grid-template-columns: 0.95fr 1fr; gap: 22px; align-items: center;">
+      <div class="svg-container" style="min-height: 0;">
+        <img src="svg/slide50-ekg-trapezoid.svg" alt="Struttura a tre strati dell'Enterprise Knowledge Graph" style="max-width: 100%; max-height: 360px; object-fit: contain;"/>
+      </div>
+      <ul style="font-size: 11pt; margin: 0;">
+        <li><strong>Ontologia aziendale</strong> — modello a grafo: <em>concetti</em> (Cliente, Prodotto, Ordine), <em>attributi</em>, <em>relazioni</em> (Prodotto "comprato da" Cliente). Più espressiva del Business Glossary.</li>
+        <li><strong>Data Product</strong> — unità di modularizzazione, ownership, deployment. Owner, ciclo di vita, data contract. Registrati nel Data Product Catalog, accessibili via Marketplace.</li>
+        <li><strong>Asset fisici + Semantic Linking</strong> — tabelle, topic, bucket, contenuti non strutturati. I metadati tracciano il collegamento verticale tra ogni asset e i concetti dell'ontologia.</li>
+      </ul>
+    </div>
+
+    <div class="highlight-box" style="padding: 10px 14px; margin: 0;">
+      <p style="font-size: 11pt; margin: 0; line-height: 1.5;">Quattro pilastri: <strong>conoscenza di dominio</strong> come patrimonio differenziante · collegamento esplicito semantica ↔ dati · <strong>interoperabilità</strong> strutturati/non strutturati · approccio strategico e orientato al valore. Costruire un EKG è <strong>data & information architecture</strong>, non AI.</p>
     </div>
 
   </div>

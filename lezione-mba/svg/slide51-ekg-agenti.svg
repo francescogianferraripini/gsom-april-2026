@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 520">
+  <title>EKG come contesto condiviso per gli agenti — ciclo retrieval e learning</title>
+  <style>
+    text { font-family: 'Poppins', sans-serif; }
+  </style>
+  <defs>
+    <marker id="arrow-rl" markerUnits="userSpaceOnUse" markerWidth="28" markerHeight="22" refX="26" refY="11" orient="auto">
+      <path d="M0,0 L28,11 L0,22 Z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <!-- ================================ -->
+  <!-- TOP: AGENTS ROW                  -->
+  <!-- ================================ -->
+  <g id="agents">
+    <g transform="translate(280,30)">
+      <polygon points="0,80 40,0 80,80" fill="#a1245a"/>
+      <circle cx="40" cy="48" r="16" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="40" y="53" text-anchor="middle" font-size="13" font-weight="700" fill="#a1245a">AI</text>
+    </g>
+    <g transform="translate(410,30)">
+      <polygon points="0,80 40,0 80,80" fill="#a1245a"/>
+      <circle cx="40" cy="48" r="16" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="40" y="53" text-anchor="middle" font-size="13" font-weight="700" fill="#a1245a">AI</text>
+    </g>
+    <g transform="translate(540,30)">
+      <polygon points="0,80 40,0 80,80" fill="#a1245a"/>
+      <circle cx="40" cy="48" r="16" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="40" y="53" text-anchor="middle" font-size="13" font-weight="700" fill="#a1245a">AI</text>
+    </g>
+    <g transform="translate(670,30)">
+      <polygon points="0,80 40,0 80,80" fill="#a1245a"/>
+      <circle cx="40" cy="48" r="16" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="40" y="53" text-anchor="middle" font-size="13" font-weight="700" fill="#a1245a">AI</text>
+    </g>
+    <g transform="translate(800,30)">
+      <polygon points="0,80 40,0 80,80" fill="#a1245a"/>
+      <circle cx="40" cy="48" r="16" fill="#ffffff" stroke="#a1245a" stroke-width="1.5"/>
+      <text x="40" y="53" text-anchor="middle" font-size="13" font-weight="700" fill="#a1245a">AI</text>
+    </g>
+  </g>
+
+  <!-- ================================ -->
+  <!-- MIDDLE: RETRIEVAL / LEARNING     -->
+  <!-- ================================ -->
+  <!-- Retrieval arrow (upward) -->
+  <path d="M 450 230 L 450 145" stroke="#a1245a" stroke-width="5" fill="none" marker-end="url(#arrow-rl)"/>
+  <text x="450" y="260" text-anchor="middle" font-size="17" font-weight="700" fill="#a1245a" letter-spacing="2.5">RETRIEVAL</text>
+
+  <!-- Learning arrow (downward) -->
+  <path d="M 710 135 L 710 222" stroke="#a1245a" stroke-width="5" fill="none" marker-end="url(#arrow-rl)"/>
+  <text x="710" y="260" text-anchor="middle" font-size="17" font-weight="700" fill="#a1245a" letter-spacing="2.5">LEARNING</text>
+
+  <!-- ================================ -->
+  <!-- BOTTOM: EKG TRAPEZOID            -->
+  <!-- ================================ -->
+  <text x="580" y="295" text-anchor="middle" font-size="15" font-weight="700" fill="#a1245a" letter-spacing="2.5">ENTERPRISE KNOWLEDGE GRAPH</text>
+
+  <!-- Layer 1: Ontology (top) -->
+  <polygon points="420,308 740,308 770,378 390,378" fill="#a1245a" stroke="#7f1845" stroke-width="1"/>
+  <text x="580" y="332" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff" letter-spacing="1.8">ENTERPRISE ONTOLOGY</text>
+  <g id="ekg-mini-graph">
+    <line x1="540" y1="354" x2="600" y2="358" stroke="#ffffff" stroke-width="1.4" opacity="0.85"/>
+    <line x1="540" y1="354" x2="580" y2="372" stroke="#ffffff" stroke-width="1.4" opacity="0.85"/>
+    <line x1="600" y1="358" x2="580" y2="372" stroke="#ffffff" stroke-width="1.4" opacity="0.85"/>
+    <circle cx="540" cy="354" r="6" fill="#ffffff" stroke="#7f1845" stroke-width="1"/>
+    <circle cx="600" cy="358" r="6" fill="#ffffff" stroke="#7f1845" stroke-width="1"/>
+    <circle cx="580" cy="372" r="5" fill="#ffffff" stroke="#7f1845" stroke-width="1"/>
+  </g>
+
+  <!-- Layer 2: Data Products (middle) -->
+  <polygon points="390,378 770,378 800,442 360,442" fill="#c85d8a" stroke="#9c3f66" stroke-width="1"/>
+  <text x="580" y="400" text-anchor="middle" font-size="12" font-weight="700" fill="#ffffff" letter-spacing="1.8">DATA PRODUCTS</text>
+  <polygon points="505,414 540,414 558,430 540,446 505,446 487,430" fill="#ffffff" stroke="#9c3f66" stroke-width="1.2"/>
+  <polygon points="615,414 650,414 668,430 650,446 615,446 597,430" fill="#ffffff" stroke="#9c3f66" stroke-width="1.2"/>
+
+  <!-- Layer 3: Physical Data Assets (bottom) -->
+  <polygon points="360,442 800,442 830,510 330,510" fill="#fae0ec" stroke="#d8a8bc" stroke-width="1"/>
+  <text x="580" y="478" text-anchor="middle" font-size="11" font-weight="700" fill="#a1245a" letter-spacing="1.8">PHYSICAL DATA ASSETS</text>
+
+  <!-- Unstructured icons (left of label) -->
+  <rect x="410" y="460" width="16" height="20" fill="#ffffff" stroke="#a1245a" stroke-width="0.9"/>
+  <line x1="413" y1="465" x2="423" y2="465" stroke="#a1245a" stroke-width="0.6"/>
+  <line x1="413" y1="470" x2="423" y2="470" stroke="#a1245a" stroke-width="0.6"/>
+  <line x1="413" y1="475" x2="420" y2="475" stroke="#a1245a" stroke-width="0.6"/>
+  <rect x="430" y="463" width="16" height="20" fill="#ffffff" stroke="#a1245a" stroke-width="0.9"/>
+  <line x1="433" y1="468" x2="443" y2="468" stroke="#a1245a" stroke-width="0.6"/>
+  <line x1="433" y1="473" x2="443" y2="473" stroke="#a1245a" stroke-width="0.6"/>
+
+  <!-- Structured icons (right of label) -->
+  <g transform="translate(710,460)">
+    <ellipse cx="9" cy="0" rx="9" ry="3" fill="#ffffff" stroke="#a1245a" stroke-width="0.9"/>
+    <path d="M 0 0 L 0 20 A 9 3 0 0 0 18 20 L 18 0" fill="#ffffff" stroke="#a1245a" stroke-width="0.9"/>
+    <ellipse cx="9" cy="6" rx="9" ry="3" fill="none" stroke="#a1245a" stroke-width="0.5"/>
+    <ellipse cx="9" cy="13" rx="9" ry="3" fill="none" stroke="#a1245a" stroke-width="0.5"/>
+  </g>
+  <g transform="translate(735,463)">
+    <ellipse cx="9" cy="0" rx="9" ry="3" fill="#ffffff" stroke="#a1245a" stroke-width="0.9"/>
+    <path d="M 0 0 L 0 20 A 9 3 0 0 0 18 20 L 18 0" fill="#ffffff" stroke="#a1245a" stroke-width="0.9"/>
+    <ellipse cx="9" cy="6" rx="9" ry="3" fill="none" stroke="#a1245a" stroke-width="0.5"/>
+    <ellipse cx="9" cy="13" rx="9" ry="3" fill="none" stroke="#a1245a" stroke-width="0.5"/>
+  </g>
+</svg>

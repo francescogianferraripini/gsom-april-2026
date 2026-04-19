@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 500">
+  <title>Piramide dell'architettura informativa — dai dati all'intelligenza</title>
+  <style>
+    text { font-family: 'Poppins', sans-serif; }
+  </style>
+  <defs>
+    <marker id="arrow-pyr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <!-- PYRAMID LAYERS (bottom to top) -->
+  <!-- DATA -->
+  <polygon points="250,440 650,440 600,340 300,340" fill="#fae0ec" stroke="#d8a8bc" stroke-width="1"/>
+  <text x="450" y="398" text-anchor="middle" font-size="18" font-weight="700" fill="#a1245a" letter-spacing="2">DATA</text>
+
+  <!-- INFORMATION -->
+  <polygon points="300,340 600,340 550,240 350,240" fill="#e8a6c3" stroke="#b86a8e" stroke-width="1"/>
+  <text x="450" y="298" text-anchor="middle" font-size="16" font-weight="700" fill="#ffffff" letter-spacing="2">INFORMATION</text>
+
+  <!-- KNOWLEDGE -->
+  <polygon points="350,240 550,240 500,140 400,140" fill="#c85d8a" stroke="#9c3f66" stroke-width="1"/>
+  <text x="450" y="198" text-anchor="middle" font-size="14" font-weight="700" fill="#ffffff" letter-spacing="2">KNOWLEDGE</text>
+
+  <!-- INTELLIGENCE (apex) -->
+  <polygon points="400,140 500,140 450,40" fill="#a1245a" stroke="#7f1845" stroke-width="1"/>
+  <text x="450" y="122" text-anchor="middle" font-size="9" font-weight="700" fill="#ffffff" letter-spacing="0.5">INTELLIGENCE</text>
+
+  <!-- LEFT LABELS + CURVED ARROWS -->
+  <!-- Context → INFORMATION -->
+  <text x="60" y="385" font-size="15" fill="#a1245a" font-weight="500">Context</text>
+  <path d="M 145 380 Q 220 380 275 325" fill="none" stroke="#a1245a" stroke-width="1.8" marker-end="url(#arrow-pyr)"/>
+
+  <!-- Semantics → KNOWLEDGE -->
+  <text x="50" y="285" font-size="15" fill="#a1245a" font-weight="500">Semantics</text>
+  <path d="M 145 280 Q 230 280 320 225" fill="none" stroke="#a1245a" stroke-width="1.8" marker-end="url(#arrow-pyr)"/>
+
+  <!-- Actions → INTELLIGENCE -->
+  <text x="70" y="185" font-size="15" fill="#a1245a" font-weight="500">Actions</text>
+  <path d="M 145 180 Q 250 180 375 125" fill="none" stroke="#a1245a" stroke-width="1.8" marker-end="url(#arrow-pyr)"/>
+
+  <!-- RIGHT SIDE UP ARROW WITH + NODES -->
+  <!-- Arrow shaft -->
+  <line x1="720" y1="420" x2="720" y2="95" stroke="#c8c8c8" stroke-width="26" stroke-linecap="butt"/>
+  <!-- Arrow head -->
+  <polygon points="693,100 720,55 747,100" fill="#c8c8c8"/>
+
+  <!-- + node + label: METADATA (DATA → INFORMATION) -->
+  <circle cx="720" cy="340" r="12" fill="#ffffff" stroke="#888888" stroke-width="1.5"/>
+  <text x="720" y="345" text-anchor="middle" font-size="15" font-weight="600" fill="#888888">+</text>
+  <text x="745" y="344" font-size="13" fill="#a1245a" font-weight="600" letter-spacing="1.2">METADATA</text>
+
+  <!-- + node + label: RELATIONS (INFORMATION → KNOWLEDGE) -->
+  <circle cx="720" cy="240" r="12" fill="#ffffff" stroke="#888888" stroke-width="1.5"/>
+  <text x="720" y="245" text-anchor="middle" font-size="15" font-weight="600" fill="#888888">+</text>
+  <text x="745" y="244" font-size="13" fill="#a1245a" font-weight="600" letter-spacing="1.2">RELATIONS</text>
+
+  <!-- + node + label: ALGORITHMS (KNOWLEDGE → INTELLIGENCE) -->
+  <circle cx="720" cy="140" r="12" fill="#ffffff" stroke="#888888" stroke-width="1.5"/>
+  <text x="720" y="145" text-anchor="middle" font-size="15" font-weight="600" fill="#888888">+</text>
+  <text x="745" y="144" font-size="13" fill="#a1245a" font-weight="600" letter-spacing="1.2">ALGORITHMS</text>
+</svg>

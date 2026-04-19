@@ -70,3 +70,11 @@ Key CSS variables:
 ```
 
 - SVG diagrams are monochromatic with a single accent color (`--primary-color: #00b4d8`); avoid multiple accent colors in a single SVG
+
+## Visual verification with Playwright
+
+Playwright is installed locally (Python 1.58, CLI 1.59 via `npx`). Use it to verify slide rendering instead of relying on HTML diffs alone — layout/overflow bugs only show up in a real browser.
+
+Typical flow: start `python server.py` in `lezione-mba/`, then drive a headless Chromium via `python -c "from playwright.sync_api import ...; ..."` to navigate to `http://localhost:8000/presentation.html#/<slide-index>` and take a screenshot. Read the screenshot back to check layout, overflow, SVG alignment, etc.
+
+Use it after non-trivial slide edits or CSS changes before declaring the task done.
