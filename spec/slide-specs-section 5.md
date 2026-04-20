@@ -13,11 +13,16 @@
 | 31 | *API tools — l'archetipo* | tabella esempi + snippet tool definition annotato + callout sicurezza |
 | 32 | *La famiglia della conoscenza — 3 pattern* | mini-scala a 3 gradini (pattern / tool / sistema agentico) |
 | 33 | *Anatomia di Deep Research* | diagramma 4 fasi con loop di ritorno F3→F2 |
-| 34 | *MCP — il protocollo standard per i tool* | sequenza a 3 step, system prompt che si riempie |
-| 35 | *Browser use — l'agente pilota un browser* | form "Nuovo ticket" in compilazione |
-| 36 | *Bash / code execution — il tool universale* | nessuno |
+| 34 | *Modellazione della conoscenza — 1/3: dai dati all'architettura informativa* | piramide DIKW |
+| 35 | *Modellazione della conoscenza — 2/3: l'Enterprise Knowledge Graph* | trapezio EKG a tre strati |
+| 36 | *Modellazione della conoscenza — 3/3: il Knowledge Graph come contesto per gli agenti* | ciclo retrieval/learning tra agenti e EKG |
+| 37 | *MCP — il protocollo standard per i tool* | sequenza a 3 step, system prompt che si riempie |
+| 38 | *Browser use — l'agente pilota un browser* | form "Nuovo ticket" in compilazione |
+| 39 | *Bash / code execution — il tool universale* | nessuno |
 
 **Nota numerazione**: la slide di apertura della Sezione 5 è nuova rispetto al brief originale (che partiva direttamente dalla Slide 31). È etichettata "5.0" in attesa della rinumerazione complessiva della lezione.
+
+**Nota posizionamento delle slide 34–36**: le tre slide di modellazione della conoscenza erano originariamente in Sezione 7 (come pratiche di context engineering). Spostate qui come *abilitatore* della famiglia della conoscenza (RAG / search-as-a-tool / Deep Research): senza architettura informativa a monte, quei pattern non producono risposte affidabili.
 
 ---
 
@@ -25,10 +30,11 @@
 
 Pattern emergenti da mantenere coerenti in fase di rendering:
 
-- **Callout sicurezza**: stesso trattamento grafico in Slide 31 e Slide 36 (bordo/sfondo distintivo)
-- **Flussi sequenziali numerati**: Slide 33 (4 fasi) e Slide 34 (3 step) condividono la grammatica visiva
-- **Tabelle compatte**: Slide 31 e Slide 35 usano tabelle come elemento portante
-- **Blocchi paralleli con etichetta forte**: Slide 36 (3 proprietà) usa uno stile a cartellini riconoscibile
+- **Callout sicurezza**: stesso trattamento grafico in Slide 31 e Slide 39 (bordo/sfondo distintivo)
+- **Flussi sequenziali numerati**: Slide 33 (4 fasi) e Slide 37 (3 step) condividono la grammatica visiva
+- **Tabelle compatte**: Slide 31 e Slide 38 usano tabelle come elemento portante
+- **Blocchi paralleli con etichetta forte**: Slide 39 (3 proprietà) usa uno stile a cartellini riconoscibile
+- **Slide 34–36**: trittico "Modellazione della conoscenza" con narrativa continua (piramide → EKG → ciclo agenti); titoli segmentati `1/3 · 2/3 · 3/3` per far percepire la sequenza
 
 ---
 
@@ -186,7 +192,102 @@ L'autenticazione non è nello schema inviato al modello — è gestita dall'harn
 
 ---
 
-## Slide 34 — MCP (Model Context Protocol)
+## Slide 34 — Modellazione della conoscenza — 1/3: dai dati all'architettura informativa
+
+**Layout:** Titolo + due colonne (SVG piramide a sinistra, testo a destra) + riquadro con bordo
+
+**Titolo:** Modellazione della conoscenza — 1/3: dai dati all'architettura informativa
+
+**Riga introduttiva:** I dati grezzi non bastano. Per essere riutilizzabili — da utenti e da agenti — devono essere arricchiti di contesto e semantica di dominio, altrimenti tecnicamente l'informazione c'è ma praticamente non è azionabile.
+
+**Colonna sinistra — Visual SVG:** Piramide a 4 livelli (DIKW-style) con annotazioni laterali.
+
+*Prompt per SVG:*
+> Piramide a 4 strati orizzontali, dal basso verso l'alto: `DATA` (base, larga, pallido), `INFORMATION`, `KNOWLEDGE`, `INTELLIGENCE` (apice, colore accento). Su ogni transizione tra strati, etichetta a sinistra con freccia curva che punta verso lo strato superiore: tra Data e Information → "Context"; tra Information e Knowledge → "Semantics"; tra Knowledge e Intelligence → "Actions". Sulla destra, una freccia verticale grande che attraversa la piramide dal basso all'alto con tre tacche "+": ogni tacca all'altezza di una transizione è etichettata con ciò che viene sommato — in basso "METADATA", al centro "RELATIONS", in alto "ALGORITHMS". Stile minimale, monocromatico con colore accento, coerente con il resto delle slide.
+
+**Colonna destra — testo:** I quattro livelli, ciascuno aggiunge contesto al precedente:
+
+- **Dati** — asset fisici grezzi (tabelle, file, topic, bucket, contenuti non strutturati)
+- **+ Metadati → Informazione** — i dati diventano comprensibili a livello base
+- **+ Relazioni → Conoscenza** — semantica di dominio: concetti, attributi, relazioni esplicite
+- **+ Algoritmi → Intelligenza** — traduzione degli insight in decisioni e azioni di business
+
+**Riquadro con bordo:**
+L'AI aumenta efficienza, produttività e soddisfazione degli utenti solo se i dati sono completi, affidabili e interpretabili. L'architettura informativa precede logicamente l'adozione dell'AI — anche se in pratica si fanno in parallelo, perché l'AI è l'occasione per farla finalmente.
+
+**Visual:** SVG piramide DIKW (descritto sopra).
+
+**File:** `slides/slide51-conoscenza-problema.html` + `svg/slide49-piramide-ia.svg`
+
+---
+
+## Slide 35 — Modellazione della conoscenza — 2/3: l'Enterprise Knowledge Graph
+
+**Layout:** Titolo + definizione + due colonne (SVG struttura EKG a sinistra, testo a destra) + riquadro con bordo
+
+**Titolo:** Modellazione della conoscenza — 2/3: l'Enterprise Knowledge Graph
+
+**Definizione:** Un Enterprise Knowledge Graph (EKG) virtuale è il modo elegante di rappresentare l'architettura informativa: collega la conoscenza semantica di dominio ai dati presenti in piattaforma e ai metadati di contesto.
+
+**Colonna sinistra — Visual SVG:** Trapezio a tre strati che rappresenta la struttura dell'EKG.
+
+*Prompt per SVG:*
+> Trapezio verticale con base larga in basso e lato superiore più stretto, diviso in tre strati orizzontali (tonalità progressivamente più scure dal basso all'alto). Strato superiore — "ENTERPRISE ONTOLOGY": un piccolo grafo con 3-4 nodi circolari collegati da archi (concetti e relazioni). Strato intermedio — "DATA PRODUCTS": due esagoni affiancati. Etichetta laterale sinistra con freccia verso il grafo: "Semantic Linking" (a segnalare il collegamento verticale tra data product e ontologia). Strato inferiore — "PHYSICAL DATA ASSETS": a sinistra icone di file/documenti con label "UNSTRUCTURED", a destra icone di tabelle/cilindri DB con label "STRUCTURED", collegate da linee tratteggiate agli esagoni dei Data Product sopra. Cornice esterna del trapezio con etichetta "ENTERPRISE KNOWLEDGE GRAPH". Stile minimale, monocromatico con colore accento.
+
+**Colonna destra — testo:** Tre elementi costitutivi dell'EKG, label in grassetto + 1-2 righe:
+
+- **Ontologia aziendale** — modello concettuale a grafo interpretabile da umani e applicazioni. Esprime il dominio in termini di *concetti* (Cliente, Prodotto, Ordine), *attributi* (Stato del cliente, Descrizione del prodotto) e *relazioni* semantiche (Prodotto "comprato da" Cliente). Più espressiva del Business Glossary tradizionale.
+- **Data Product** — unità di modularizzazione, ownership e deployment. Ognuno ha un Data Product Owner, un ciclo di vita indipendente, interfacce esplicite governate da data contract. Registrati nel Data Product Catalog, accessibili via Data Product Marketplace.
+- **Asset fisici + Semantic Linking** — tabelle, viste, topic, bucket, contenuti non strutturati. I metadati tracciano il collegamento semantico (lineage verticale) tra ogni asset — fino al singolo campo — e i concetti dell'ontologia. Abilita interoperabilità tra strutturati e non strutturati.
+
+**Riquadro con bordo:**
+I quattro pilastri: conoscenza di dominio come patrimonio differenziante · collegamento esplicito semantica ↔ dati · interoperabilità strutturati/non strutturati · approccio strategico, incrementale, orientato al valore. Costruire un EKG è un progetto di data e information architecture, non di AI.
+
+**Visual:** SVG trapezio EKG a tre strati (descritto sopra).
+
+**File:** `slides/slide52-conoscenza-elementi.html` + `svg/slide50-ekg-trapezoid.svg`
+
+---
+
+## Slide 36 — Modellazione della conoscenza — 3/3: il Knowledge Graph come contesto per gli agenti
+
+**Layout:** Titolo + concetto chiave + SVG (sopra) + due colonne retrieval/learning + lista bullet vantaggi + riquadro con bordo
+
+**Titolo:** Modellazione della conoscenza — 3/3: il Knowledge Graph come contesto per gli agenti
+
+**Concetto chiave:** L'Enterprise Knowledge Graph è il contesto comune che più agenti AI condividono per migliorare ricerca, interrogazione dei dati e supporto agli utenti nell'estrazione di insight.
+
+**Visual SVG:** Ciclo virtuoso EKG ↔ agenti.
+
+*Prompt per SVG:*
+> Diagramma orizzontale in due blocchi verticali. In alto, una fila di 4-5 triangoli identici che rappresentano agenti AI (ognuno con una piccola fumetto/chat bubble al centro con scritta "AI"). In basso, il trapezio "ENTERPRISE KNOWLEDGE GRAPH" con i tre strati già descritti (ontology in alto, data products al centro, physical assets in basso) — stesso stile della slide 35 ma più schematico. Tra agenti e EKG, due frecce verticali affiancate: una freccia in su etichettata "RETRIEVAL" (dall'EKG verso gli agenti), una freccia in giù etichettata "LEARNING" (dagli agenti verso l'EKG). Le due frecce evidenziano il ciclo bidirezionale. Stile minimale, monocromatico con colore accento.
+
+**Due colonne — ciclo EKG ↔ agenti:**
+
+**Colonna sinistra — Retrieval:**
+Gli agenti consultano il grafo per recuperare contesto di dominio affidabile (concetti, relazioni, data product rilevanti) e produrre risposte pertinenti, ancorate a dati reali e non a congetture.
+
+**Colonna destra — Learning:**
+Gli agenti contribuiscono a estendere l'architettura: persistono nel Knowledge Graph nuovi elementi di conoscenza, informazioni o dati appresi nelle conversazioni con gli esperti di dominio o estratti da contenuti non strutturati già presenti in azienda.
+
+**Tre vantaggi operativi:**
+
+- **Riuso dei dati** — design modulare dei Data Product collegati all'ontologia: si ricompongono per più casi d'uso, riducendo i costi nel medio-lungo periodo
+- **Semantica di dominio condivisa** — la formalizzazione riduce ambiguità e frizioni fra unità di business
+- **Gap business ↔ IT ridotto** — il linguaggio del business si avvicina alla terminologia IT, diffondendo cultura dei dati
+
+**Riquadro con bordo:**
+L'EKG è la forma aziendale della *skill* — una mappa navigabile ai domini di conoscenza, collegata a dati reali e governata. Il pattern "skill" verrà ripreso formalmente in Sezione 7. Se il prossimo progetto AI parte con "prendiamo i PDF e mettiamoli in un vector store", fermarsi. Partire da: quali sono i domini di conoscenza, chi ne è owner, qual è l'ontologia, quali data product li espongono.
+
+**Visual:** SVG ciclo retrieval/learning tra agenti AI e EKG (descritto sopra).
+
+**File:** `slides/slide53-conoscenza-skill.html` + `svg/slide51-ekg-agenti.svg`
+
+**Nota**: il richiamo esplicito alla *skill* è un forward reference a Sezione 7. Resta comunque comprensibile al primo passaggio (skill = pacchetto di conoscenza caricabile on-demand, intuizione leggibile dal contesto).
+
+---
+
+## Slide 37 — MCP (Model Context Protocol)
 
 **Layout**: titolo + sottotitolo/analogia + 3 blocchi narrativi (A/B/C) + visual orizzontale a 3 step.
 
@@ -228,7 +329,7 @@ L'autenticazione non è nello schema inviato al modello — è gestita dall'harn
 
 ---
 
-## Slide 35 — Browser use
+## Slide 38 — Browser use
 
 **Layout**: titolo + definizione + riga prodotti + 2 colonne contrastive + visual form.
 
@@ -275,7 +376,7 @@ L'autenticazione non è nello schema inviato al modello — è gestita dall'harn
 
 ---
 
-## Slide 36 — Bash / code execution
+## Slide 39 — Bash / code execution
 
 **Layout**: titolo + sottotitolo + 3 proprietà a blocchi paralleli + callout sicurezza.
 
@@ -315,14 +416,16 @@ Decisioni prese durante l'intervista che si discostano o integrano il brief orig
 
 3. **Slide 33 — focus sulla dinamica, non sul test informed user**: il brief conteneva anche un caveat su costo/latenza e un "test dei 4 punti" per valutare i fornitori. Entrambi rimossi dalla slide per asciutezza visiva; il docente li darà a voce.
 
-4. **Slide 34 — aggiunta esplicita dell'iniezione nel system prompt**: il brief non chiariva dove vanno a finire le tool definition dopo il discovery MCP. Esplicitato in testo e nel visual per creare continuità con la Slide 31 (dove si vede *com'è fatta* una tool definition).
+4. **Slide 34–36 — trittico modellazione della conoscenza spostato in Sezione 5**: le 3 slide erano in Sezione 7 come pratiche di context engineering. Spostate qui come *abilitatore* della famiglia della conoscenza (Slide 32) e di Deep Research (Slide 33): senza architettura informativa a monte, RAG / search-as-a-tool / Deep Research non producono risposte affidabili. Il richiamo a *skill* nel recap di Slide 36 resta come forward reference a Sezione 7 (accettabile: skill è leggibile intuitivamente come "pacchetto di conoscenza caricabile on-demand").
 
-5. **Slide 34 — tagline spostata**: la frase "Se un'integrazione AI proprietaria non espone MCP, è vendor lock-in" è stata spostata dalla posizione di take-home autonomo a bullet finale del Blocco B.
+5. **Slide 37 — aggiunta esplicita dell'iniezione nel system prompt**: il brief non chiariva dove vanno a finire le tool definition dopo il discovery MCP. Esplicitato in testo e nel visual per creare continuità con la Slide 31 (dove si vede *com'è fatta* una tool definition).
 
-6. **Slide 35 — 3 caveat invece di 4**: rimosso il caveat "Fragile" (l'UI cambia e l'agente si rompe). Rinominata la colonna dei limiti in "Caveat" (più neutro del "Perché costa caro" proposto inizialmente).
+6. **Slide 37 — tagline spostata**: la frase "Se un'integrazione AI proprietaria non espone MCP, è vendor lock-in" è stata spostata dalla posizione di take-home autonomo a bullet finale del Blocco B.
 
-7. **Slide 35 — take-home integrato, non frase-bandiera**: il messaggio "scelta di ultima istanza, non di prima" è integrato come bullet finale in corsivo dentro la colonna "Quando serve", invece che isolato in fondo alla slide.
+7. **Slide 38 — 3 caveat invece di 4**: rimosso il caveat "Fragile" (l'UI cambia e l'agente si rompe). Rinominata la colonna dei limiti in "Caveat" (più neutro del "Perché costa caro" proposto inizialmente).
 
-8. **Slide 36 — etichetta "Componibile" invece di "Substrato"**: la terza proprietà è stata rinominata per essere più attiva e meno accademica. Lega anche al tono generale della lezione (mattoncini, composizione).
+8. **Slide 38 — take-home integrato, non frase-bandiera**: il messaggio "scelta di ultima istanza, non di prima" è integrato come bullet finale in corsivo dentro la colonna "Quando serve", invece che isolato in fondo alla slide.
 
-9. **Slide 36 — nessun rimando esplicito a Sez. 6/7**: il brief suggeriva "→ Sez. 6" e "→ Sez. 7" come ponti visivi. Rimossi per pulizia; i rimandi restano impliciti nel testo delle proprietà.
+9. **Slide 39 — etichetta "Componibile" invece di "Substrato"**: la terza proprietà è stata rinominata per essere più attiva e meno accademica. Lega anche al tono generale della lezione (mattoncini, composizione).
+
+10. **Slide 39 — nessun rimando esplicito a Sez. 6/7**: il brief suggeriva "→ Sez. 6" e "→ Sez. 7" come ponti visivi. Rimossi per pulizia; i rimandi restano impliciti nel testo delle proprietà.
