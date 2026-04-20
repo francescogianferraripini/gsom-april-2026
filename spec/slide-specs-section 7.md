@@ -10,7 +10,7 @@
 
 | # | Titolo | Visual |
 |---|---|---|
-| 44 | *Context engineering* (opener) | nessuno |
+| 44 | *Context engineering* (opener) | SVG convergenza 4 pratiche → banner CE, dentro frame harness |
 | 45 | *Harness — chi fa davvero le cose* | nessuno |
 | 46 | *Context engineering come disciplina* | griglia 4 leve |
 | 47 | *Compaction e pruning* | nessuno (2 card contrast) |
@@ -26,16 +26,18 @@
 
 ## Slide 44 — Context engineering (opener)
 
-**Layout**: titolo + 2 sottotitoli (pattern coerente con gli opener di Sez. 4, 5, 6).
+**Layout**: titolo + 1 riga di lead + SVG "converge-under-umbrella".
 
 **Testo**:
 - **Titolo**: *Context engineering*
-- **Sottotitolo 1**: *System prompt, scelta dei tool, sub-agent, skill: li abbiamo costruiti uno a uno. Manca il nome che li lega.*
-- **Sottotitolo 2**: *Il contesto del modello è un artefatto ingegneristico — cosa entra, quando, per quanto tempo. Il modello è stateless; tutto il resto è progettazione.*
+- **Lead**: *System prompt, scelta dei tool, sub-agent, skill: li abbiamo costruiti uno a uno. Manca il nome che li lega.*
 
-**Visual**: nessuno.
+**Visual SVG**: *slide46-ce-opener.svg*
 
-**Rationale**: allinea l'opener al pattern delle altre sezioni. Il ricapitolo di cose già viste diventa mezza riga invece di una lista.
+*Prompt SVG*:
+> 4 piccoli box in alto (*system prompt · tool · sub-agent · skill*) con frecce che convergono verso il basso su una banner ampia con accent color e scritta **CONTEXT ENGINEERING — il nome che li lega**. Tutto racchiuso in un frame esterno tratteggiato etichettato **HARNESS · il software che esegue** (tag piccolo posizionato in alto a sinistra del frame). Sotto la banner, una riga in grigio muted: *"una disciplina · cosa entra nel contesto, quando, per quanto tempo"*. Dal fondo del frame harness, freccia accent in uscita verso un rettangolo **CONTESTO** (sfondo light accent), e da lì freccia grigia verso **Modello**. Stile minimale, monocromatico con accent #a1245a.
+
+**Rationale**: allinea l'opener al pattern delle altre sezioni (bridge frame), e illustra direttamente il messaggio della slide — le 4 pratiche già viste convergono sotto un nome, e l'harness è il software che le esegue per produrre il contesto.
 
 ---
 
@@ -269,7 +271,7 @@
 
 | Slide | Titolo | Visual | File SVG |
 |---|---|---|---|
-| 44 | Context engineering | nessuno | — |
+| 44 | Context engineering | SVG convergenza | `slide46-ce-opener.svg` |
 | 45 | Harness | nessuno | — |
 | 46 | CE come disciplina | griglia 4 leve | — |
 | 47 | Compaction e pruning | 2 card contrast | — |

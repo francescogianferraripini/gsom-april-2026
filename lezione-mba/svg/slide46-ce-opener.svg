@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 440" preserveAspectRatio="xMidYMid meet">
+  <title>Context engineering è il nome che lega system prompt, tool, sub-agent, skill — il tutto eseguito dall'harness, produce il contesto che va nel modello</title>
+
+  <defs>
+    <marker id="ar-g" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L9,3.5 L0,7 Z" fill="#838383"/>
+    </marker>
+    <marker id="ar-a" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L11,4 L0,8 Z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <style>
+    .ttl     { font-family: 'Poppins', sans-serif; font-size: 13px; fill: #1a1a1a; font-weight: 600; }
+    .lbl     { font-family: system-ui, sans-serif; font-size: 12.5px; fill: #1a1a1a; font-weight: 500; }
+    .mut     { font-family: system-ui, sans-serif; font-size: 11px; fill: #838383; }
+    .bnr     { font-family: 'Poppins', sans-serif; font-size: 19px; fill: #ffffff; font-weight: 700; letter-spacing: 2.2px; }
+    .bnrsub  { font-family: 'Poppins', sans-serif; font-size: 11px; fill: #ffffff; opacity: 0.85; font-style: italic; }
+    .hrnTag  { font-family: 'Poppins', sans-serif; font-size: 10.5px; fill: #a1245a; font-weight: 700; letter-spacing: 1.8px; }
+    .hrnSub  { font-family: system-ui, sans-serif; font-size: 10.5px; fill: #838383; font-style: italic; }
+  </style>
+
+  <!-- ============================================ -->
+  <!-- HARNESS — outer frame (software che esegue)  -->
+  <!-- ============================================ -->
+  <rect x="30" y="18" width="1040" height="290" rx="14" fill="#fafafa" stroke="#a1245a" stroke-width="1.6" stroke-dasharray="6,4"/>
+  <rect x="50" y="4" width="220" height="28" rx="6" fill="#ffffff" stroke="#a1245a" stroke-width="1.4"/>
+  <text x="75" y="23" class="hrnTag">HARNESS</text>
+  <text x="155" y="22" class="hrnSub">· il software che esegue</text>
+
+  <!-- ============================================ -->
+  <!-- 4 PRACTICES (top row, inside harness frame)  -->
+  <!-- ============================================ -->
+  <g id="practices">
+    <rect x="80"  y="58" width="180" height="42" rx="8" fill="#ffffff" stroke="#dddddd" stroke-width="1.4"/>
+    <text x="170" y="84" text-anchor="middle" class="lbl">system prompt</text>
+
+    <rect x="290" y="58" width="180" height="42" rx="8" fill="#ffffff" stroke="#dddddd" stroke-width="1.4"/>
+    <text x="380" y="84" text-anchor="middle" class="lbl">tool</text>
+
+    <rect x="500" y="58" width="180" height="42" rx="8" fill="#ffffff" stroke="#dddddd" stroke-width="1.4"/>
+    <text x="590" y="84" text-anchor="middle" class="lbl">sub-agent</text>
+
+    <rect x="710" y="58" width="180" height="42" rx="8" fill="#ffffff" stroke="#dddddd" stroke-width="1.4"/>
+    <text x="800" y="84" text-anchor="middle" class="lbl">skill</text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- CONVERGING ARROWS (4 practices → banner)     -->
+  <!-- ============================================ -->
+  <g stroke="#838383" stroke-width="1.6" fill="none">
+    <line x1="170" y1="100" x2="480" y2="155" marker-end="url(#ar-g)"/>
+    <line x1="380" y1="100" x2="520" y2="155" marker-end="url(#ar-g)"/>
+    <line x1="590" y1="100" x2="560" y2="155" marker-end="url(#ar-g)"/>
+    <line x1="800" y1="100" x2="610" y2="155" marker-end="url(#ar-g)"/>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- BANNER — CONTEXT ENGINEERING                 -->
+  <!-- ============================================ -->
+  <rect x="220" y="160" width="660" height="58" rx="10" fill="#a1245a"/>
+  <text x="550" y="189" text-anchor="middle" class="bnr">CONTEXT ENGINEERING</text>
+  <text x="550" y="207" text-anchor="middle" class="bnrsub">il nome che li lega</text>
+
+  <!-- Note under banner, still inside harness frame -->
+  <text x="550" y="260" text-anchor="middle" class="mut">una disciplina · cosa entra nel contesto, quando, per quanto tempo</text>
+
+  <!-- ============================================ -->
+  <!-- Arrow harness → contesto                     -->
+  <!-- ============================================ -->
+  <line x1="550" y1="308" x2="550" y2="340" stroke="#a1245a" stroke-width="2.2" marker-end="url(#ar-a)"/>
+
+  <!-- ============================================ -->
+  <!-- CONTESTO — output                            -->
+  <!-- ============================================ -->
+  <rect x="430" y="340" width="240" height="40" rx="7" fill="#f5e1ea" stroke="#a1245a" stroke-width="1.8"/>
+  <text x="550" y="365" text-anchor="middle" class="ttl">CONTESTO</text>
+
+  <!-- Arrow contesto → modello -->
+  <line x1="550" y1="380" x2="550" y2="398" stroke="#838383" stroke-width="1.6" marker-end="url(#ar-g)"/>
+
+  <!-- ============================================ -->
+  <!-- MODELLO                                       -->
+  <!-- ============================================ -->
+  <rect x="460" y="400" width="180" height="30" rx="6" fill="#ffffff" stroke="#dddddd" stroke-width="1.4"/>
+  <text x="550" y="420" text-anchor="middle" class="lbl">Modello</text>
+
+</svg>
