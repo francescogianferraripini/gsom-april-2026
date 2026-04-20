@@ -1,0 +1,51 @@
+<!-- SLIDE 48 — Progressive disclosure: il pattern skill (merge 47+48) -->
+<section id="slide-progressive-disclosure-skill">
+  <h2>Progressive disclosure — il pattern skill</h2>
+  <div class="content" style="gap: 8px; padding-top: 4px;">
+
+    <table style="width: 100%; border-collapse: collapse; font-size: 10.5pt;">
+      <thead>
+        <tr>
+          <th style="text-align: left; padding: 5px 10px; border-bottom: 2px solid var(--primary-color); font-weight: 600; color: var(--primary-color); width: 22%;"></th>
+          <th style="text-align: left; padding: 5px 10px; border-bottom: 2px solid var(--primary-color); font-weight: 600; color: var(--primary-color); width: 39%;">MCP</th>
+          <th style="text-align: left; padding: 5px 10px; border-bottom: 2px solid var(--primary-color); font-weight: 600; color: var(--primary-color); width: 39%;">Skill</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 4px 10px; border-bottom: 1px solid var(--line-color); font-weight: 600;">Tool definition</td>
+          <td style="padding: 4px 10px; border-bottom: 1px solid var(--line-color);"><strong>Sempre</strong> in contesto</td>
+          <td style="padding: 4px 10px; border-bottom: 1px solid var(--line-color);"><strong>Descrizione minima</strong> in contesto</td>
+        </tr>
+        <tr>
+          <td style="padding: 4px 10px; border-bottom: 1px solid var(--line-color); font-weight: 600;">Costo</td>
+          <td style="padding: 4px 10px; border-bottom: 1px solid var(--line-color);">Fisso all'inizio della sessione</td>
+          <td style="padding: 4px 10px; border-bottom: 1px solid var(--line-color);">Pagato <strong>solo se</strong> la skill viene caricata</td>
+        </tr>
+        <tr>
+          <td style="padding: 4px 10px; font-weight: 600;">Efficienza</td>
+          <td style="padding: 4px 10px;">Inefficiente se pochi tool servono davvero</td>
+          <td style="padding: 4px 10px;">Carica <strong>solo il necessario</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="font-size: 10.5pt; margin: 0; line-height: 1.4;"><strong>Skill</strong>: una <strong>directory</strong> con documentazione, istruzioni, esempi, eventuali script. <span style="font-family: var(--mono-font); font-size: 10pt;">SKILL.md</span> spiega al modello cosa offre e come usarla.</p>
+
+    <div class="svg-container" style="flex: 1; max-height: 200px;">
+      <img src="svg/slide50-skill-pattern.svg" alt="Struttura directory di una skill a sinistra, meccanica in 3 passi a destra">
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 9.5pt;">
+      <div style="background: rgba(0,0,0,0.035); border-radius: var(--box-radius); padding: 6px 10px;">
+        <p style="margin: 0 0 2px 0; font-weight: 600; color: var(--primary-color); font-size: 8pt; text-transform: uppercase; letter-spacing: 0.08em;">Esempio</p>
+        <p style="margin: 0; line-height: 1.35;">Skill <em>"prodotti e pricing"</em>: <span style="font-family: var(--mono-font);">SKILL.md</span>, listino, regole di sconto, riferimenti a tool.</p>
+      </div>
+      <div style="background: rgba(0,0,0,0.035); border-radius: var(--box-radius); padding: 6px 10px;">
+        <p style="margin: 0 0 2px 0; font-weight: 600; color: var(--primary-color); font-size: 8pt; text-transform: uppercase; letter-spacing: 0.08em;">Meccanica</p>
+        <p style="margin: 0; line-height: 1.35;">In Claude Code il meccanismo è il tool <span style="font-family: var(--mono-font);">bash</span>: il modello esplora la directory e legge i file.</p>
+      </div>
+    </div>
+
+  </div>
+</section>

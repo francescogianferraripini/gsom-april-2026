@@ -1,21 +1,13 @@
-<!-- SLIDE 44 — Context engineering -->
+<!-- SLIDE 44 — Context engineering (opener Sezione 7) -->
 <section id="slide-context-engineering">
   <h2>Context engineering</h2>
-  <div class="content" style="gap: 14px; padding-top: 12px;">
+  <div class="content" style="gap: 30px; justify-content: center;">
 
-    <p style="font-size: 13pt; margin: 0; line-height: 1.55;">Progettare, costruire e governare ciò che entra ed esce dal contesto del modello, a ogni chiamata. Non è un'attività nuova della sezione 7 — è quasi tutto ciò che abbiamo già visto, chiamato col suo nome.</p>
-
-    <ul style="font-size: 13pt; margin: 0;">
-      <li>Il <strong>system prompt</strong> che definisce l'agente</li>
-      <li>La scelta di quali <strong>tool</strong> esporre</li>
-      <li>I <strong>sub-agent</strong> per isolare lavoro sporco</li>
-      <li>Il caveat MCP — <em>non connetterli tutti</em></li>
-      <li>La <strong>sintesi dei tool result</strong> prima di rientrare nel contesto</li>
-    </ul>
-
-    <div class="highlight-box" style="padding: 12px 16px; margin: 0;">
-      <p style="font-size: 12pt; margin: 0; line-height: 1.5;">Ogni scelta fatta finora era context engineering. Da qui in poi aggiungiamo gli elementi che ancora mancano — e diamo un nome ai pattern ricorrenti.</p>
+    <div class="highlight-box" style="padding: 22px 28px;">
+      <p style="font-size: 18pt; line-height: 1.45; margin: 0;">System prompt, scelta dei tool, sub-agent, skill: li abbiamo costruiti uno a uno. <strong>Manca il nome che li lega.</strong></p>
     </div>
+
+    <p style="font-size: 14pt; color: var(--muted-color); margin: 0; line-height: 1.5;">Il contesto del modello è un <strong style="color: var(--text-color);">artefatto ingegneristico</strong> — cosa entra, quando, per quanto tempo. Il modello è stateless; tutto il resto è progettazione.</p>
 
   </div>
 </section>
