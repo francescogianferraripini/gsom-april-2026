@@ -10,7 +10,7 @@ Ogni slide è un file HTML separato in `lezione-mba/slides/`. Il file `presentat
 | File | Slide |
 |------|-------|
 | `slides/slide1-title.html` | Slide 1 — Apertura lezione |
-| `slides/slide-div-sec1.html` | Separatore — Sezione 1: LLM |
+| `slides/slide-div-sec1.html` | Separatore — Sezione 1: Capire l'LLM |
 | `slides/slide2-llm-cuore.html` | Slide 2 — LLM: il cuore degli agenti |
 | `slides/slide3-training-loop.html` | Slide 3 — Come si addestra un LLM |
 | `slides/slide4-pretraining.html` | Slide 4 — Il pre-training di un LLM |
@@ -33,13 +33,13 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 - Titolo: *Agents in action*
 - Attribuzione (piccola): *Francesco Gianferrari Pini — Quantyca*
 - Mappa 7 tappe (piccole, in basso, con icona sopra l'etichetta):
-  1. LLM — icona chip/cervello stilizzato
-  2. Conversazionale — icona bolla di chat
-  3. Closed vs Open — icona lucchetto vs lucchetto aperto
-  4. Tool — icona chiave inglese
-  5. Tipi di tool — icona set di strumenti / griglia
-  6. Codice — icona parentesi graffe `{ }`
-  7. Context engineering — icona blocchi impilati / layer
+  1. Capire l'LLM — icona chip/cervello stilizzato
+  2. Conversare — icona bolla di chat
+  3. Scegliere il modello — icona lucchetto vs lucchetto aperto
+  4. Agire — icona chiave inglese
+  5. Estendere l'agente — icona set di strumenti / griglia
+  6. Programmare — icona parentesi graffe `{ }`
+  7. Progettare il contesto — icona blocchi impilati / layer
 
 **Visual**: nessun diagramma aggiuntivo; la mappa icone-tappe È l'elemento visivo.
 

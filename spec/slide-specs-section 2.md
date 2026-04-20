@@ -7,10 +7,10 @@
 
 ---
 
-## Separatore — Sezione 2: Conversazionale
+## Separatore — Sezione 2: Conversare
 
 **File**: `slides/slide-div-sec2.html`
-**Layout**: section-divider centrato. Titolo "Conversazionale", sottotitolo "Dalla funzione all'agente", roadmap 7 tappe con sezione 2 evidenziata e le altre attenuate.
+**Layout**: section-divider centrato. Titolo "Conversare", sottotitolo "Come un modello impara a dialogare", roadmap 7 tappe con sezione 2 evidenziata e le altre attenuate.
 
 ---
 
