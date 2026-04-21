@@ -230,11 +230,11 @@
 
 ## Slide 54 — I quattro loop in un colpo d'occhio
 
-**Layout**: titolo + SVG 4 mini-loop in riga + 1 riga di chiusura.
+**Layout**: titolo + SVG 4 mini-loop in riga, rivelati progressivamente (fragment reveal.js: 1 click = 1 loop).
 
 **Testo**:
 - **Titolo**: *I quattro loop in un colpo d'occhio*
-- **Visual SVG**: 4 mini-schemi affiancati, stessa altezza, separati da frecce sottili di progressione
+- **Visual SVG**: 4 mini-schemi affiancati, stessa altezza, separati da frecce sottili di progressione. SVG inlined nel file HTML della slide con 4 `<g class="fragment fade-in">` (uno per ogni loop, con freccia connettiva inclusa dal loop 2 in poi).
 
 *Prompt SVG*:
 > Quattro mini-schemi affiancati in orizzontale, stessa altezza, separati da frecce sottili di progressione. Ogni riquadro ha: numero del loop (1/4 … 4/4), titolo breve, topologia minimale ridotta all'essenza, una sola label con la novità.
@@ -243,8 +243,6 @@
 > - **3/4 — Agentico con tool (azione)**: stesso cerchio del 2/4, con un sub-ciclo laterale sul nodo modello (tool call → result → modello, "N volte"). Sub-ciclo in colore accento. Label: *"il modello decide cosa fare"*.
 > - **4/4 — Con codice (verifica)**: cerchio chiuso a 4 nodi (task → scrivi → esegui → verifica → back a scrivi se fail). Freccia di ritorno in colore accento con etichetta "feedback deterministico". Label: *"si corregge da solo"*.
 > Ogni riquadro riprende la grammatica visiva del suo loop originale (Slide 8, 20, 31, 44) ma semplificata al minimo. Stile monocromatico con accento coerente con il resto della lezione.
-
-- **Riga di chiusura** (corsivo, sotto il visual): *Ogni loop contiene il precedente. Il contesto cresce ad ogni livello — ed è per questo che esiste il livello finale, la disciplina.*
 
 **File SVG nuovo**: `svg/slide54-loop-recap.svg`.
 

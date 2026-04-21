@@ -251,7 +251,7 @@ I quattro pilastri: conoscenza di dominio come patrimonio differenziante · coll
 
 ## Slide 36 — Modellazione della conoscenza — 3/3: il Knowledge Graph come contesto per gli agenti
 
-**Layout:** Titolo + concetto chiave + SVG (sopra) + due colonne retrieval/learning + lista bullet vantaggi + riquadro con bordo
+**Layout:** Titolo + griglia 2 colonne (SVG a sinistra, più alto; a destra stack di testo: concetto chiave → retrieval/learning → 3 vantaggi) + riquadro con bordo full-width in fondo
 
 **Titolo:** Modellazione della conoscenza — 3/3: il Knowledge Graph come contesto per gli agenti
 
