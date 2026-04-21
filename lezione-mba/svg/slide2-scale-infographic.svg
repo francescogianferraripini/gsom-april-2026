@@ -63,7 +63,7 @@
     <text x="286" y="43" fill="#838383" font-size="10">~1 trilione</text>
   </g>
 
-  <!-- Row 4: Training LLM — ACCENT — log10(1.5e13)=13.176 → ((13.176-8.3)/5.58)*350 ≈ 306 -->
+  <!-- Row 4: Training LLM — ACCENT — log10(3.5e13)=13.544 → ((13.544-8.3)/5.58)*350 ≈ 329 (midpoint of 25-50T range) -->
   <g transform="translate(0, 240)">
     <!-- Chip/brain icon in accent -->
     <rect x="11" y="10" width="22" height="22" rx="3" fill="none" stroke="#a1245a" stroke-width="1.8"/>
@@ -90,12 +90,14 @@
     <rect x="11" y="10" width="22" height="22" rx="3" fill="none" stroke="#a1245a" stroke-width="0.5" opacity="0.3" filter="url(#none)"/>
     <!-- Label -->
     <text x="46" y="22" fill="#a1245a" font-size="11.5" font-weight="700">Training LLM frontiera (2026)</text>
-    <!-- Bar -->
-    <rect x="46" y="32" width="306" height="16" rx="3" fill="url(#accentGrad)"/>
+    <!-- Bar (solid to lower bound 25T at width 320) -->
+    <rect x="46" y="32" width="320" height="16" rx="3" fill="url(#accentGrad)"/>
+    <!-- Range extension to upper bound 50T (width 339, fades to show uncertainty) -->
+    <rect x="366" y="32" width="19" height="16" rx="0" fill="url(#accentGrad)" opacity="0.4"/>
     <!-- Accent glow line on bar -->
-    <rect x="46" y="32" width="306" height="1" rx="0.5" fill="#a1245a" opacity="0.6"/>
+    <rect x="46" y="32" width="339" height="1" rx="0.5" fill="#a1245a" opacity="0.6"/>
     <!-- Value -->
-    <text x="360" y="44" fill="#a1245a" font-size="11" font-weight="600">~15 trilioni</text>
+    <text x="393" y="44" fill="#a1245a" font-size="11" font-weight="600">~25-50 trilioni</text>
   </g>
 
   <!-- Row 5: Tutto il testo digitale — DIM — log10(7.5e13)=13.875 → ((13.875-8.3)/5.58)*350 ≈ 350 -->

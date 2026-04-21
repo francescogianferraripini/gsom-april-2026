@@ -117,7 +117,7 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 - 3 bullet:
   1. **Pre-training**: addestramento su enormi corpus di testo (web, libri, codice).
   2. **Obiettivo**: prevedere il prossimo token a partire dai precedenti.
-  3. **Scala tipica (modelli di frontiera 2026)**: ~15 trilioni di token in input, 400 miliardi – 1 trilione+ di parametri nel modello.
+  3. **Scala tipica (modelli di frontiera 2026)**: 25–50 trilioni di token in input, 400 miliardi – 1 trilione+ di parametri nel modello.
 - Nota in basso: *Alla fine del training, il modello è in grado di completare ogni frase attingendo ad ogni elemento di conoscenza, ma non necessariamente è "utile" a sostenere una conversazione o risolvere un problema.*
 
 **Visual**: infografica comparativa di scala a 5 livelli, barre su scala logaritmica.
@@ -129,7 +129,7 @@ Ogni file contiene un singolo `<section>` con tutto il contenuto della slide. Pe
 >   1. [icona persona che legge] — "Un lettore medio, nell'intera vita" — barra cortissima — "~200 milioni di parole"
 >   2. [icona enciclopedia] — "Wikipedia, tutte le lingue" — barra più lunga — "~10 miliardi di parole"
 >   3. [icona edificio biblioteca] — "Grande biblioteca universitaria (20M volumi)" — barra ancora più lunga — "~1 trilione di parole"
->   4. [icona chip/cervello, EVIDENZIATA in colore accento] — "Training di un LLM di frontiera (2026)" — barra molto più lunga — "~15 trilioni di token"
+>   4. [icona chip/cervello, EVIDENZIATA in colore accento] — "Training di un LLM di frontiera (2026)" — barra molto più lunga — "~25-50 trilioni di token"
 >   5. [icona mondo/web in grigio] — "Tutto il testo digitale di qualità sul web" — barra massima — "~50-100 trilioni di token (limite che ci stiamo avvicinando)"
 > La riga 4 è il focus visivo (colore accento); la riga 5 è disegnata in grigio con etichetta "frontiera dei dati disponibili".
 > Stile minimale, sans-serif, monocromatico con un colore accento solo sulla riga 4.
