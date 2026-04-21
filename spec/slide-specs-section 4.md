@@ -8,20 +8,7 @@
 
 ---
 
-## ✅ Slide 21 — Apertura Sezione 4
-
-**Layout**: titolo grande centrato, 2 sottotitoli sotto, nessun visual.
-
-**Testo**:
-- Titolo: *Dall'agente che parla all'agente che agisce*
-- Sottotitolo 1: *Fino a qui, un modello che genera testo. Da qui, un modello che decide quali azioni intraprendere nel mondo.*
-- Sottotitolo 2: *Distinzione fondamentale: il modello non esegue. Emette richieste strutturate di esecuzione. L'esecuzione la fa il software che lo circonda — l'harness.*
-
-**Note di design**: prima occorrenza del termine "harness" — verrà definito formalmente in Slide 45. Nessun visual.
-
----
-
-## ✅ Slide 22 — Tool calling: l'intuizione
+## ✅ Slide 21 — Tool calling: l'intuizione
 
 **Layout**: titolo in alto, mini-chat centrata nella slide (~50% dell'area), chiusura discorsiva in basso.
 
@@ -32,11 +19,11 @@
   - Assistant: *"L'ordine #A-7842 (Rossi SpA) è in spedizione dal 12 aprile, consegna prevista il 16 aprile. Tracking DHL 1234567890."*
 - Chiusura discorsiva: *Una risposta precisa, specifica, verificabile. Eppure questi dati non esistono nel training del modello — nessun ordine, nessun cliente, nessun sistema gestionale aziendale fa parte di ciò su cui è stato addestrato. Il modello non può saperlo da solo. Allora come ha fatto?*
 
-**Visual**: bolle chat semplici, stile messenger. L'icona ingranaggio accanto alla risposta dell'assistant è il seme visivo della curiosità che si scioglie in Slide 23. La domanda finale è lasciata sospesa.
+**Visual**: bolle chat semplici, stile messenger. L'icona ingranaggio accanto alla risposta dell'assistant è il seme visivo della curiosità che si scioglie in Slide 22. La domanda finale è lasciata sospesa.
 
 ---
 
-## ✅ Slide 23 — Tool calling: la meccanica
+## ✅ Slide 22 — Tool calling: la meccanica
 
 **Layout**: titolo in alto, diagramma a 4 attori (~60% della slide), testo discorsivo in basso.
 
@@ -59,6 +46,19 @@
 > 8. Harness → User: risposta in linguaggio naturale
 >
 > I badge "decide" (su Model) e "esegue" (su Harness) sono piccoli, posizionati sotto l'etichetta della colonna. Le frecce 3 e 5 sono in colore accento per evidenziare ciò che è nuovo rispetto al loop conversazionale puro. Stile minimale, font sans-serif.
+
+---
+
+## ✅ Slide 23 — Apertura Sezione 4
+
+**Layout**: titolo grande centrato, 2 sottotitoli sotto, nessun visual.
+
+**Testo**:
+- Titolo: *Dall'agente che parla all'agente che agisce*
+- Sottotitolo 1: *Fino a qui, un modello che genera testo. Da qui, un modello che decide quali azioni intraprendere nel mondo.*
+- Sottotitolo 2: *Distinzione fondamentale: il modello non esegue. Emette richieste strutturate di esecuzione. L'esecuzione la fa il software che lo circonda — l'harness.*
+
+**Note di design**: prima occorrenza del termine "harness" — verrà definito formalmente in Slide 45. Nessun visual.
 
 ---
 
@@ -215,9 +215,9 @@ Entrambi viewBox ~900×300–340, font Poppins, palette accent berry + secondary
 
 | Slide | Modifica principale |
 |---|---|
-| 21 | Titolo: "L'agente che agisce" → **"Dall'agente che parla all'agente che agisce"** |
-| 22 | Esempio meteo → **esempio CRM** (ordine #A-7842 Rossi SpA). Aggiunta **icona ingranaggio ⚙** come seme visivo |
-| 23 | Diagramma ri-ancorato all'esempio CRM (`query_crm` tool). Aggiunti **badge "decide" / "esegue"** sulle colonne Model/Harness |
+| 21 | Esempio meteo → **esempio CRM** (ordine #A-7842 Rossi SpA). Aggiunta **icona ingranaggio ⚙** come seme visivo |
+| 22 | Diagramma ri-ancorato all'esempio CRM (`query_crm` tool). Aggiunti **badge "decide" / "esegue"** sulle colonne Model/Harness |
+| 23 | Titolo: "L'agente che agisce" → **"Dall'agente che parla all'agente che agisce"**. Spostata dopo la 22 (non più apertura in testa alla sezione) |
 | 24 | Riga esempio ancorata alla narrazione CRM: **agente customer service con 3 tool (query_crm, search_kb, create_ticket)** |
 | 25 | Aggiunto **terzo take-home** (granularità: tool ben definiti vs generici). Aggiunto **ponte esplicito** alla Slide 26 in chiusura |
 | 26 | **Apertura accorciata** a una riga (il problema è già piantato da Slide 25) |

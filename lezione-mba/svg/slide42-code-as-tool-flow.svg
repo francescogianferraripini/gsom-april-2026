@@ -20,8 +20,8 @@
   <rect width="1200" height="320" fill="#ffffff"/>
 
   <!-- Dashed frame around steps 2-5: "invisibile all'utente" -->
-  <rect x="200" y="70" width="810" height="180" rx="10" fill="rgba(161,36,90,0.035)" stroke="#a1245a" stroke-width="1.4" stroke-dasharray="6,4"/>
-  <text x="605" y="62" text-anchor="middle" class="frame-label">invisibile all'utente</text>
+  <rect x="200" y="70" width="680" height="180" rx="10" fill="rgba(161,36,90,0.035)" stroke="#a1245a" stroke-width="1.4" stroke-dasharray="6,4"/>
+  <text x="540" y="62" text-anchor="middle" class="frame-label">invisibile all'utente</text>
 
   <!-- =============== STEP 1 — visible =============== -->
   <g>
@@ -75,18 +75,18 @@
     <text x="795" y="165" text-anchor="middle" class="box-sub">dell'esecuzione</text>
   </g>
 
-  <line x1="862" y1="140" x2="1008" y2="140" stroke="#1a1a1a" stroke-width="1.4" marker-end="url(#ct-arr)"/>
+  <line x1="862" y1="140" x2="918" y2="140" stroke="#1a1a1a" stroke-width="1.4" marker-end="url(#ct-arr)"/>
 
   <!-- =============== STEP 6 — visible =============== -->
   <g>
-    <text x="1080" y="95" text-anchor="middle" class="step-num-accent">STEP 6</text>
-    <text x="1080" y="55" text-anchor="middle" class="interface-label">utente</text>
-    <rect x="1010" y="105" width="155" height="70" rx="8" fill="#fafafa" stroke="#1ab197" stroke-width="1.6"/>
-    <text x="1087" y="134" text-anchor="middle" class="box-label">Risponde</text>
-    <text x="1087" y="152" text-anchor="middle" class="box-sub">in linguaggio</text>
-    <text x="1087" y="165" text-anchor="middle" class="box-sub">naturale</text>
+    <text x="998" y="95" text-anchor="middle" class="step-num-accent">STEP 6</text>
+    <text x="998" y="55" text-anchor="middle" class="interface-label">utente</text>
+    <rect x="920" y="105" width="155" height="70" rx="8" fill="#fafafa" stroke="#1ab197" stroke-width="1.6"/>
+    <text x="998" y="134" text-anchor="middle" class="box-label">Risponde</text>
+    <text x="998" y="152" text-anchor="middle" class="box-sub">in linguaggio</text>
+    <text x="998" y="165" text-anchor="middle" class="box-sub">naturale</text>
   </g>
 
   <!-- Bottom caption for the dashed frame -->
-  <text x="605" y="275" text-anchor="middle" font-family="Poppins" font-size="10.5" fill="#838383" font-style="italic">l'agente vede codice ed esecuzione · l'utente vede solo la risposta</text>
+  <text x="540" y="275" text-anchor="middle" font-family="Poppins" font-size="10.5" fill="#838383" font-style="italic">l'agente vede codice ed esecuzione · l'utente vede solo la risposta</text>
 </svg>
