@@ -18,7 +18,7 @@
 | 49 | *Memoria — demistificazione e meccanica* | SVG ciclo memoria |
 | 50 | *Memoria — fasi operative e rischi* | nessuno (2 card) |
 | 51 | *Sandbox — confini dell'esecuzione* | tabella confini |
-| 52 | *Harness landscape — chi c'è oggi* | immagine esterna |
+| 52 | *Harness landscape — chi c'è oggi* | immagine locale |
 | 53 | *Building block e composizione* | SVG strati concentrici + barra trasversale |
 | 54 | *I quattro loop in un colpo d'occhio* | SVG 4 mini-loop affiancati |
 
@@ -199,9 +199,9 @@
 **Testo**:
 - **Titolo**: *Harness landscape — chi c'è oggi*
 - **Nota introduttiva**: *Il modello è sempre più commodity. La differenziazione si sposta qui.*
-- **Immagine**: `https://pbs.twimg.com/media/HFt-18tagAABD_I?format=jpg&name=large`
+- **Immagine**: `img/harness-landscape.jpg` (copia locale; sorgente originale: `https://pbs.twimg.com/media/HFt-18tagAABD_I?format=jpg&name=large`)
 
-**Visual**: immagine esterna.
+**Visual**: immagine locale.
 
 ---
 
@@ -277,6 +277,6 @@
 | 49 | Memoria — demistificazione | SVG ciclo | `slide56-memoria-ciclo.svg` |
 | 50 | Memoria — fasi e rischi | 2 card | — |
 | 51 | Sandbox | tabella | — |
-| 52 | Harness landscape | immagine esterna | — |
+| 52 | Harness landscape | immagine locale | `img/harness-landscape.jpg` |
 | 53 | Building block | SVG strati + barra | `slide59-mattoncini.svg` |
 | 54 | Loop recap | SVG 4 mini-loop | `slide54-loop-recap.svg` (nuovo) |
