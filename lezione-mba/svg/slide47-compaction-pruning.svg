@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 270">
+  <title>Compaction e pruning: stesso contesto iniziale, due strategie per accorciarlo</title>
+  <style>
+    text { font-family: 'Poppins', sans-serif; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+  </style>
+  <defs>
+    <marker id="arr-cp" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#838383"/>
+    </marker>
+  </defs>
+
+  <!-- ============================= -->
+  <!-- TOP: shared starting context  -->
+  <!-- ============================= -->
+  <text x="108" y="14" font-size="10.5" font-weight="600" fill="#a1245a" letter-spacing="1">CONTESTO INIZIALE</text>
+
+  <!-- 8 blocks: SYS · t1 · t2 · T1 · t3 · T2 · t4 · T3 (w=96, h=30, gap=8) -->
+  <g transform="translate(108,24)">
+    <rect x="0" y="0" width="96" height="30" rx="4" fill="#f5e1ea" stroke="#a1245a" stroke-width="1"/>
+    <text x="48" y="19" text-anchor="middle" font-size="11" font-weight="600" fill="#a1245a">SYS</text>
+  </g>
+  <g transform="translate(212,24)">
+    <rect x="0" y="0" width="96" height="30" rx="4" fill="#f7f7f7" stroke="#bbbbbb" stroke-width="1"/>
+    <text x="48" y="19" text-anchor="middle" font-size="11" fill="#555555">turn 1</text>
+  </g>
+  <g transform="translate(316,24)">
+    <rect x="0" y="0" width="96" height="30" rx="4" fill="#f7f7f7" stroke="#bbbbbb" stroke-width="1"/>
+    <text x="48" y="19" text-anchor="middle" font-size="11" fill="#555555">turn 2</text>
+  </g>
+  <g transform="translate(420,24)">
+    <rect x="0" y="0" width="96" height="30" rx="4" fill="#ededed" stroke="#aaaaaa" stroke-width="1"/>
+    <text class="mono" x="48" y="19" text-anchor="middle" font-size="10" fill="#555555">tool_res 1</text>
+  </g>
+  <g transform="translate(524,24)">
+    <rect x="0" y="0" width="96" height="30" rx="4" fill="#f7f7f7" stroke="#bbbbbb" stroke-width="1"/>
+    <text x="48" y="19" text-anchor="middle" font-size="11" fill="#555555">turn 3</text>
+  </g>
+  <g transform="translate(628,24)">
+    <rect x="0" y="0" width="96" height="30" rx="4" fill="#ededed" stroke="#aaaaaa" stroke-width="1"/>
+    <text class="mono" x="48" y="19" text-anchor="middle" font-size="10" fill="#555555">tool_res 2</text>
+  </g>
+  <g transform="translate(732,24)">
+    <rect x="0" y="0" width="96" height="30" rx="4" fill="#f7f7f7" stroke="#bbbbbb" stroke-width="1"/>
+    <text x="48" y="19" text-anchor="middle" font-size="11" fill="#555555">turn 4</text>
+  </g>
+  <g transform="translate(836,24)">
+    <rect x="0" y="0" width="96" height="30" rx="4" fill="#ededed" stroke="#aaaaaa" stroke-width="1"/>
+    <text class="mono" x="48" y="19" text-anchor="middle" font-size="10" fill="#555555">tool_res 3</text>
+  </g>
+
+  <text x="520" y="72" text-anchor="middle" font-size="10" fill="#838383" font-style="italic">il contesto cresce turno dopo turno — prima o poi va accorciato</text>
+
+  <!-- ============================= -->
+  <!-- FORK ARROW                    -->
+  <!-- ============================= -->
+  <line x1="520" y1="80" x2="520" y2="96" stroke="#838383" stroke-width="1.5"/>
+  <line x1="280" y1="96" x2="760" y2="96" stroke="#838383" stroke-width="1.5"/>
+  <line x1="280" y1="96" x2="280" y2="118" stroke="#838383" stroke-width="1.5" marker-end="url(#arr-cp)"/>
+  <line x1="760" y1="96" x2="760" y2="118" stroke="#838383" stroke-width="1.5" marker-end="url(#arr-cp)"/>
+
+  <!-- column separator -->
+  <line x1="520" y1="128" x2="520" y2="250" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- ============================= -->
+  <!-- LEFT: PRUNING                 -->
+  <!-- ============================= -->
+  <text x="280" y="142" text-anchor="middle" font-size="13" font-weight="700" fill="#a1245a" letter-spacing="0.5">PRUNING</text>
+  <text x="280" y="156" text-anchor="middle" font-size="10" fill="#555555">taglia e dimentica</text>
+
+  <!-- 8 small blocks (w=52, h=28, gap=4) centered at x=280 -->
+  <!-- SYS -->
+  <g transform="translate(58,170)">
+    <rect x="0" y="0" width="52" height="28" rx="3" fill="#f5e1ea" stroke="#a1245a" stroke-width="1"/>
+    <text x="26" y="18" text-anchor="middle" font-size="9.5" font-weight="600" fill="#a1245a">SYS</text>
+  </g>
+  <!-- t1 PRUNED -->
+  <g transform="translate(114,170)">
+    <rect x="0" y="0" width="52" height="28" rx="3" fill="none" stroke="#cccccc" stroke-width="1" stroke-dasharray="3,2"/>
+    <text x="26" y="18" text-anchor="middle" font-size="9" fill="#bbbbbb">turn 1</text>
+    <line x1="4" y1="4" x2="48" y2="24" stroke="#a1245a" stroke-width="1.5"/>
+    <line x1="48" y1="4" x2="4" y2="24" stroke="#a1245a" stroke-width="1.5"/>
+  </g>
+  <!-- t2 kept -->
+  <g transform="translate(170,170)">
+    <rect x="0" y="0" width="52" height="28" rx="3" fill="#f7f7f7" stroke="#bbbbbb" stroke-width="1"/>
+    <text x="26" y="18" text-anchor="middle" font-size="9" fill="#555555">turn 2</text>
+  </g>
+  <!-- T1 PRUNED -->
+  <g transform="translate(226,170)">
+    <rect x="0" y="0" width="52" height="28" rx="3" fill="none" stroke="#cccccc" stroke-width="1" stroke-dasharray="3,2"/>
+    <text class="mono" x="26" y="18" text-anchor="middle" font-size="8" fill="#bbbbbb">tool_res 1</text>
+    <line x1="4" y1="4" x2="48" y2="24" stroke="#a1245a" stroke-width="1.5"/>
+    <line x1="48" y1="4" x2="4" y2="24" stroke="#a1245a" stroke-width="1.5"/>
+  </g>
+  <!-- t3 kept -->
+  <g transform="translate(282,170)">
+    <rect x="0" y="0" width="52" height="28" rx="3" fill="#f7f7f7" stroke="#bbbbbb" stroke-width="1"/>
+    <text x="26" y="18" text-anchor="middle" font-size="9" fill="#555555">turn 3</text>
+  </g>
+  <!-- T2 PRUNED -->
+  <g transform="translate(338,170)">
+    <rect x="0" y="0" width="52" height="28" rx="3" fill="none" stroke="#cccccc" stroke-width="1" stroke-dasharray="3,2"/>
+    <text class="mono" x="26" y="18" text-anchor="middle" font-size="8" fill="#bbbbbb">tool_res 2</text>
+    <line x1="4" y1="4" x2="48" y2="24" stroke="#a1245a" stroke-width="1.5"/>
+    <line x1="48" y1="4" x2="4" y2="24" stroke="#a1245a" stroke-width="1.5"/>
+  </g>
+  <!-- t4 kept -->
+  <g transform="translate(394,170)">
+    <rect x="0" y="0" width="52" height="28" rx="3" fill="#f7f7f7" stroke="#bbbbbb" stroke-width="1"/>
+    <text x="26" y="18" text-anchor="middle" font-size="9" fill="#555555">turn 4</text>
+  </g>
+  <!-- T3 kept -->
+  <g transform="translate(450,170)">
+    <rect x="0" y="0" width="52" height="28" rx="3" fill="#ededed" stroke="#aaaaaa" stroke-width="1"/>
+    <text class="mono" x="26" y="18" text-anchor="middle" font-size="8" fill="#555555">tool_res 3</text>
+  </g>
+
+  <text x="280" y="220" text-anchor="middle" font-size="10" fill="#555555"><tspan fill="#a1245a" font-weight="600">tool result vecchi</tspan> e turni obsoleti → eliminati</text>
+  <text x="280" y="236" text-anchor="middle" font-size="9.5" fill="#838383" font-style="italic">rischio: buttare qualcosa che serviva ancora</text>
+
+  <!-- ============================= -->
+  <!-- RIGHT: COMPACTION             -->
+  <!-- ============================= -->
+  <text x="760" y="142" text-anchor="middle" font-size="13" font-weight="700" fill="#a1245a" letter-spacing="0.5">COMPACTION</text>
+  <text x="760" y="156" text-anchor="middle" font-size="10" fill="#555555">sostituisci con sintesi</text>
+
+  <!-- SYS + t1 + Σ(t2,T1,t3,T2) + t4 + T3 -->
+  <!-- widths: 52 + 4 + 52 + 4 + 220 + 4 + 52 + 4 + 52 = 444, centered at 760 -->
+  <!-- start x = 760 - 222 = 538 -->
+  <g transform="translate(538,170)">
+    <rect x="0" y="0" width="52" height="28" rx="3" fill="#f5e1ea" stroke="#a1245a" stroke-width="1"/>
+    <text x="26" y="18" text-anchor="middle" font-size="9.5" font-weight="600" fill="#a1245a">SYS</text>
+  </g>
+  <g transform="translate(594,170)">
+    <rect x="0" y="0" width="52" height="28" rx="3" fill="#f7f7f7" stroke="#bbbbbb" stroke-width="1"/>
+    <text x="26" y="18" text-anchor="middle" font-size="9" fill="#555555">turn 1</text>
+  </g>
+  <!-- Σ block replaces 4 consecutive items -->
+  <g transform="translate(650,170)">
+    <rect x="0" y="0" width="220" height="28" rx="3" fill="#f5e1ea" stroke="#a1245a" stroke-width="1.5"/>
+    <text x="110" y="18" text-anchor="middle" font-size="10.5" font-weight="600" fill="#a1245a">Σ  sintesi degli ultimi N turni</text>
+  </g>
+  <g transform="translate(874,170)">
+    <rect x="0" y="0" width="52" height="28" rx="3" fill="#f7f7f7" stroke="#bbbbbb" stroke-width="1"/>
+    <text x="26" y="18" text-anchor="middle" font-size="9" fill="#555555">turn 4</text>
+  </g>
+  <g transform="translate(930,170)">
+    <rect x="0" y="0" width="52" height="28" rx="3" fill="#ededed" stroke="#aaaaaa" stroke-width="1"/>
+    <text class="mono" x="26" y="18" text-anchor="middle" font-size="8" fill="#555555">tool_res 3</text>
+  </g>
+
+  <text x="760" y="220" text-anchor="middle" font-size="10" fill="#555555"><tspan fill="#a1245a" font-weight="600">un sub-agent riassume</tspan> → la sintesi rimpiazza gli originali</text>
+  <text x="760" y="236" text-anchor="middle" font-size="9.5" fill="#838383" font-style="italic">rischio: dettagli persi che torneranno importanti</text>
+</svg>

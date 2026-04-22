@@ -25,55 +25,60 @@
       <text class="mono" x="24" y="10" font-size="12" fill="#1a1a1a">skills/</text>
     </g>
 
-    <!-- sub-folder prodotti-pricing -->
-    <line x1="48" y1="68" x2="48" y2="86" stroke="#c8a0b0" stroke-width="0.8"/>
-    <line x1="48" y1="86" x2="62" y2="86" stroke="#c8a0b0" stroke-width="0.8"/>
-    <g transform="translate(62,80)">
+    <!-- sub-folder pdf-processing -->
+    <line x1="48" y1="68" x2="48" y2="82" stroke="#c8a0b0" stroke-width="0.8"/>
+    <line x1="48" y1="82" x2="62" y2="82" stroke="#c8a0b0" stroke-width="0.8"/>
+    <g transform="translate(62,76)">
       <rect x="0" y="0" width="16" height="12" rx="1.5" fill="#f5e1ea" stroke="#a1245a" stroke-width="1"/>
-      <text class="mono" x="24" y="10" font-size="12" fill="#1a1a1a">prodotti-pricing/</text>
+      <text class="mono" x="24" y="10" font-size="12" fill="#1a1a1a">pdf-processing/</text>
     </g>
 
+    <!-- trunk for all pdf-processing children -->
+    <line x1="70" y1="94" x2="70" y2="238" stroke="#c8a0b0" stroke-width="0.8"/>
+
     <!-- SKILL.md (accent) -->
-    <line x1="70" y1="98" x2="70" y2="120" stroke="#c8a0b0" stroke-width="0.8"/>
-    <line x1="70" y1="120" x2="84" y2="120" stroke="#c8a0b0" stroke-width="0.8"/>
-    <g transform="translate(84,114)">
+    <line x1="70" y1="112" x2="84" y2="112" stroke="#c8a0b0" stroke-width="0.8"/>
+    <g transform="translate(84,106)">
       <rect x="0" y="0" width="14" height="13" rx="1.5" fill="#a1245a" stroke="#a1245a" stroke-width="1"/>
       <text x="7" y="10" font-size="8.5" text-anchor="middle" fill="#ffffff" font-weight="600">MD</text>
       <text class="mono" x="22" y="10" font-size="12" fill="#a1245a" font-weight="600">SKILL.md</text>
     </g>
     <!-- annotation on SKILL.md -->
-    <line x1="195" y1="122" x2="230" y2="122" stroke="#a1245a" stroke-width="0.8"/>
-    <text x="236" y="119" font-size="10" fill="#a1245a" font-weight="500">sempre visibile al modello</text>
-    <text x="236" y="131" font-size="9.5" fill="#838383" font-style="italic">1 riga di descrizione</text>
+    <line x1="195" y1="114" x2="228" y2="114" stroke="#a1245a" stroke-width="0.8"/>
+    <text x="234" y="111" font-size="10" fill="#a1245a" font-weight="500">sempre visibile</text>
+    <text x="234" y="123" font-size="9.5" fill="#838383" font-style="italic">1 riga di descrizione</text>
 
-    <!-- listino/ -->
-    <line x1="70" y1="134" x2="70" y2="154" stroke="#c8a0b0" stroke-width="0.8"/>
-    <line x1="70" y1="154" x2="84" y2="154" stroke="#c8a0b0" stroke-width="0.8"/>
-    <g transform="translate(84,148)">
+    <!-- scripts/ -->
+    <line x1="70" y1="140" x2="84" y2="140" stroke="#c8a0b0" stroke-width="0.8"/>
+    <g transform="translate(84,134)">
       <rect x="0" y="0" width="14" height="11" rx="1.5" fill="#ededed" stroke="#bbbbbb" stroke-width="0.8"/>
-      <text class="mono" x="22" y="10" font-size="12" fill="#555555">listino/</text>
+      <text class="mono" x="22" y="10" font-size="12" fill="#555555">scripts/</text>
     </g>
+    <text class="mono" x="124" y="156" font-size="9.5" fill="#888888">├ extract.py</text>
+    <text class="mono" x="124" y="169" font-size="9.5" fill="#888888">└ fill_form.py</text>
 
-    <!-- regole/ -->
-    <line x1="70" y1="160" x2="70" y2="180" stroke="#c8a0b0" stroke-width="0.8"/>
-    <line x1="70" y1="180" x2="84" y2="180" stroke="#c8a0b0" stroke-width="0.8"/>
-    <g transform="translate(84,174)">
+    <!-- references/ -->
+    <line x1="70" y1="185" x2="84" y2="185" stroke="#c8a0b0" stroke-width="0.8"/>
+    <g transform="translate(84,179)">
       <rect x="0" y="0" width="14" height="11" rx="1.5" fill="#ededed" stroke="#bbbbbb" stroke-width="0.8"/>
-      <text class="mono" x="22" y="10" font-size="12" fill="#555555">regole/</text>
+      <text class="mono" x="22" y="10" font-size="12" fill="#555555">references/</text>
     </g>
+    <text class="mono" x="124" y="201" font-size="9.5" fill="#888888">├ REFERENCE.md</text>
+    <text class="mono" x="124" y="214" font-size="9.5" fill="#888888">└ FORMS.md</text>
 
-    <!-- esempi/ -->
-    <line x1="70" y1="186" x2="70" y2="206" stroke="#c8a0b0" stroke-width="0.8"/>
-    <line x1="70" y1="206" x2="84" y2="206" stroke="#c8a0b0" stroke-width="0.8"/>
-    <g transform="translate(84,200)">
+    <!-- assets/ -->
+    <line x1="70" y1="234" x2="84" y2="234" stroke="#c8a0b0" stroke-width="0.8"/>
+    <g transform="translate(84,228)">
       <rect x="0" y="0" width="14" height="11" rx="1.5" fill="#ededed" stroke="#bbbbbb" stroke-width="0.8"/>
-      <text class="mono" x="22" y="10" font-size="12" fill="#555555">esempi/</text>
+      <text class="mono" x="22" y="10" font-size="12" fill="#555555">assets/</text>
     </g>
+    <text class="mono" x="124" y="250" font-size="9.5" fill="#888888">└ templates/</text>
 
-    <!-- annotation on rest of directory -->
-    <path d="M 200 175 L 240 175" stroke="#838383" stroke-width="0.8" stroke-dasharray="3,2"/>
-    <text x="246" y="172" font-size="10" fill="#555555" font-weight="500">caricato on-demand</text>
-    <text x="246" y="184" font-size="9.5" fill="#838383" font-style="italic">solo se la skill serve</text>
+    <!-- bracket + annotation for on-demand siblings -->
+    <path d="M 244 134 L 252 134 L 252 252 L 244 252" fill="none" stroke="#838383" stroke-width="0.8"/>
+    <line x1="252" y1="190" x2="262" y2="190" stroke="#838383" stroke-width="0.8"/>
+    <text x="268" y="187" font-size="10" fill="#555555" font-weight="500">caricato on-demand</text>
+    <text x="268" y="199" font-size="9.5" fill="#838383" font-style="italic">solo se la skill viene attivata</text>
   </g>
 
   <!-- separator -->

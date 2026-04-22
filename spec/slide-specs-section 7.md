@@ -13,7 +13,7 @@
 | 44 | *Context engineering* (opener) | SVG convergenza 4 pratiche → banner CE, dentro frame harness |
 | 45 | *Harness — chi fa davvero le cose* | nessuno |
 | 46 | *Context engineering come disciplina* | griglia 4 leve |
-| 47 | *Compaction e pruning* | nessuno (2 card contrast) |
+| 47 | *Compaction e pruning* | 2 card contrast + SVG "stesso contesto, due strategie" |
 | 48 | *Progressive disclosure — il pattern skill* | tabella MCP vs Skill + SVG directory |
 | 49 | *Memoria — demistificazione e meccanica* | SVG ciclo memoria |
 | 50 | *Memoria — fasi operative e rischi* | nessuno (2 card) |
@@ -81,7 +81,7 @@
 
 ## Slide 47 — Compaction e pruning — gestire il contesto che cresce
 
-**Layout**: titolo + 2 colonne simmetriche (card) + riquadro.
+**Layout**: titolo + 2 colonne simmetriche (card, font compresso) + SVG confronto + riquadro.
 
 **Testo**:
 - **Titolo**: *Compaction e pruning — gestire il contesto che cresce*
@@ -95,7 +95,15 @@
   - **Rischio** — la sintesi perde dettagli che emergeranno come importanti più avanti
 - **Riquadro**: *Entrambe sono lossy — si perde informazione in cambio di spazio. La scelta di cosa comprimere o buttare è una delle decisioni più delicate di un agente in produzione. Non esiste policy universale — dipende dal task.*
 
-**Visual**: le due card affiancate.
+**Visual SVG**: `svg/slide47-compaction-pruning.svg`
+
+*Prompt SVG*:
+> Confronto visivo con un "prima" condiviso e due "dopo" paralleli. In alto, una fascia etichettata **CONTESTO INIZIALE** con 8 blocchetti in riga: `SYS · turn 1 · turn 2 · tool_res 1 · turn 3 · tool_res 2 · turn 4 · tool_res 3` (SYS in tinta accent chiara; turni in grigio chiaro; tool_result in grigio leggermente più scuro con font mono). Sotto, una freccia che si biforca verso due colonne.
+> - **Colonna sinistra — PRUNING** (header accent): stessa sequenza di 8 blocchetti (dimensione ridotta). Tre di essi (`turn 1`, `tool_res 1`, `tool_res 2`) appaiono con bordo tratteggiato, testo sbiadito e una X accent che li attraversa. Annotazione sotto: *tool result vecchi e turni obsoleti → eliminati · rischio: buttare qualcosa che serviva ancora*.
+> - **Colonna destra — COMPACTION** (header accent): stessa sequenza ma i 4 blocchetti centrali (`turn 2 · tool_res 1 · turn 3 · tool_res 2`) sono sostituiti da un unico rettangolo accent-bordered con sfondo light accent, etichettato **Σ sintesi degli ultimi N turni**. SYS, turn 1, turn 4 e tool_res 3 restano intatti. Annotazione sotto: *un sub-agent riassume → la sintesi rimpiazza gli originali · rischio: dettagli persi che torneranno importanti*.
+> Stile minimale, monocromatico con accent `#a1245a`. L'intero messaggio — due strategie diverse sullo stesso contesto — si legge senza testo aggiuntivo.
+
+**Rationale**: la slide originale era solo testuale (due card). L'SVG rende chirurgica la differenza fra "tagliare" e "riassumere" mostrando le due operazioni *sullo stesso input*, cosa che le card affiancate non facevano.
 
 ---
 
@@ -115,13 +123,13 @@
   | Efficienza | Inefficiente se pochi tool servono davvero | Carica solo il necessario |
 
 - **Definizione skill**: *Una directory con documentazione, istruzioni, esempi, eventuali script. Un file principale (`SKILL.md`) spiega al modello cosa la skill offre e come usarla.*
-- **Micro-card 1 — Esempio**: *Skill "prodotti e pricing" → directory con SKILL.md (istruzioni di navigazione), listino strutturato, regole di sconto, riferimenti a tool specifici.*
+- **Micro-card 1 — Esempio**: *Skill `pdf-processing` → directory con `SKILL.md` (istruzioni di navigazione) + tre sotto-cartelle canoniche: `scripts/` (codice eseguibile: `extract.py`, `fill_form.py`), `references/` (doc on-demand: `REFERENCE.md`, `FORMS.md`), `assets/` (template e risorse statiche).*
 - **Micro-card 2 — Meccanica**: *In Claude Code il meccanismo è il tool bash: il modello esplora la directory e legge i file. Altri harness usano meccanismi proprietari equivalenti.*
 
 **Visual SVG**: struttura directory + meccanica in 3 passi (già prodotto come `svg/slide50-skill-pattern.svg`).
 
 *Prompt SVG originale*:
-> Schema diviso in due aree affiancate. Area sinistra: struttura directory a forma di albero. Cartella radice `skills/`, sotto-cartella `prodotti-pricing/`, file interni: `SKILL.md` (evidenziato con colore accento), `listino/`, `regole/`, `esempi/`. Annotazione accanto a SKILL.md: "sempre visibile al modello (1 riga di descrizione)". Annotazione sul resto della directory: "caricato on-demand". Area destra: meccanica in 3 passi con frecce verticali numerate: (1) "modello vede solo descrizione minima della skill" → (2) "decide che serve, richiede caricamento" → (3) "harness carica contenuto SKILL.md nel contesto". Stile minimale, monocromatico con un colore accento.
+> Schema diviso in due aree affiancate. Area sinistra: struttura directory a forma di albero basata sulla spec Agent Skills. Cartella radice `skills/`, sotto-cartella `pdf-processing/`, contenuto: `SKILL.md` (evidenziato con colore accento), `scripts/` (con `extract.py`, `fill_form.py`), `references/` (con `REFERENCE.md`, `FORMS.md`), `assets/` (con `templates/`). Annotazione accanto a SKILL.md: "sempre visibile — 1 riga di descrizione". Bracket a destra sulle tre sotto-cartelle: "caricato on-demand, solo se la skill viene attivata". Area destra: meccanica in 3 passi con frecce verticali numerate: (1) "modello vede solo descrizione minima della skill" → (2) "decide che serve, richiede caricamento" → (3) "harness carica contenuto SKILL.md nel contesto". Stile minimale, monocromatico con un colore accento.
 
 **Rationale**: fusione di ex Slide 47 (tabella sottile) + ex Slide 48 (skill pattern). La tabella da sola era troppo sottile; la meccanica skill da sola perdeva il confronto con MCP che motiva il pattern. Insieme la slide ha densità normale.
 
@@ -272,7 +280,7 @@
 | 44 | Context engineering | SVG convergenza | `slide46-ce-opener.svg` |
 | 45 | Harness | nessuno | — |
 | 46 | CE come disciplina | griglia 4 leve | — |
-| 47 | Compaction e pruning | 2 card contrast | — |
+| 47 | Compaction e pruning | 2 card + SVG | `slide47-compaction-pruning.svg` |
 | 48 | Progressive disclosure — skill | tabella + SVG | `slide50-skill-pattern.svg` |
 | 49 | Memoria — demistificazione | SVG ciclo | `slide56-memoria-ciclo.svg` |
 | 50 | Memoria — fasi e rischi | 2 card | — |
