@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 430">
+  <title>Conversation mechanics - Turn 3</title>
+
+  <!-- Background -->
+  <rect width="1140" height="430" fill="#f2f2f2" rx="4"/>
+
+  <!-- Column headers -->
+  <text x="265" y="30" text-anchor="middle" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="13" fill="#838383" letter-spacing="1.5" font-weight="600">WHAT THE USER SEES</text>
+  <text x="870" y="30" text-anchor="middle" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="13" fill="#838383" letter-spacing="1.5" font-weight="600">WHAT THE API RECEIVES THIS TURN</text>
+
+  <!-- Vertical divider -->
+  <line x1="565" y1="12" x2="565" y2="418" stroke="#dddddd" stroke-width="1.5"/>
+
+  <!-- Arrow: left to right -->
+  <g transform="translate(530, 210)">
+    <line x1="0" y1="0" x2="50" y2="0" stroke="#838383" stroke-width="1" stroke-dasharray="3,2"/>
+    <polygon points="50,-4 58,0 50,4" fill="#838383"/>
+    <text x="29" y="-8" text-anchor="middle" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="10" fill="#838383" font-style="italic">hidden</text>
+    <text x="29" y="14" text-anchor="middle" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="10" fill="#838383" font-style="italic">transformation</text>
+  </g>
+
+  <!-- ==================== LEFT COLUMN: Chat UI ==================== -->
+  <g id="chat-ui">
+    <!-- User bubble 1 -->
+    <g transform="translate(0, 52)">
+      <rect x="280" y="0" width="230" height="34" rx="12" fill="#f0f0f0"/>
+      <text x="295" y="14" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="10" fill="#838383">User</text>
+      <text x="295" y="27" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="12" fill="#1a1a1a">Hi, who are you?</text>
+    </g>
+
+    <!-- Assistant bubble 1 -->
+    <g transform="translate(0, 96)">
+      <rect x="30" y="0" width="380" height="34" rx="12" fill="#f5f5f5"/>
+      <line x1="30" y1="4" x2="30" y2="30" stroke="#a1245a" stroke-width="3" stroke-linecap="round"/>
+      <text x="45" y="14" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="10" fill="#838383">AI</text>
+      <text x="45" y="27" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="12" fill="#1a1a1a">I'm an AI assistant. How can I help you?</text>
+    </g>
+
+    <!-- User bubble 2 -->
+    <g transform="translate(0, 144)">
+      <rect x="180" y="0" width="330" height="34" rx="12" fill="#f0f0f0"/>
+      <text x="195" y="14" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="10" fill="#838383">User</text>
+      <text x="195" y="27" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="12" fill="#1a1a1a">Explain what transformers are</text>
+    </g>
+
+    <!-- Assistant bubble 2 -->
+    <g transform="translate(0, 190)">
+      <rect x="30" y="0" width="440" height="46" rx="12" fill="#f5f5f5"/>
+      <line x1="30" y1="4" x2="30" y2="42" stroke="#a1245a" stroke-width="3" stroke-linecap="round"/>
+      <text x="45" y="14" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="10" fill="#838383">AI</text>
+      <text x="45" y="28" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="12" fill="#1a1a1a">Transformers are an architecture</text>
+      <text x="45" y="41" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="12" fill="#1a1a1a">introduced in 2017...</text>
+    </g>
+
+    <!-- User bubble 3 -->
+    <g transform="translate(0, 250)">
+      <rect x="200" y="0" width="310" height="34" rx="12" fill="#f0f0f0"/>
+      <text x="215" y="14" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="10" fill="#838383">User</text>
+      <text x="215" y="27" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="12" fill="#1a1a1a">And how does attention work?</text>
+    </g>
+
+    <!-- Assistant bubble 3 -->
+    <g transform="translate(0, 296)">
+      <rect x="30" y="0" width="460" height="46" rx="12" fill="#f5f5f5"/>
+      <line x1="30" y1="4" x2="30" y2="42" stroke="#a1245a" stroke-width="3" stroke-linecap="round"/>
+      <text x="45" y="14" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="10" fill="#838383">AI</text>
+      <text x="45" y="28" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="12" fill="#1a1a1a">Attention is the mechanism by which the model</text>
+      <text x="45" y="41" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="12" fill="#1a1a1a">weighs the relationships between tokens...</text>
+    </g>
+
+    <!-- Input field -->
+    <g transform="translate(0, 370)">
+      <rect x="30" y="0" width="490" height="36" rx="18" fill="none" stroke="#dddddd" stroke-width="1.5"/>
+      <text x="52" y="22" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="12" fill="#838383" font-style="italic">Write a message...</text>
+      <line x1="46" y1="12" x2="46" y2="26" stroke="#a1245a" stroke-width="1.5" opacity="0.7"/>
+    </g>
+  </g>
+
+  <!-- ==================== RIGHT COLUMN: API Block ==================== -->
+  <g id="api-block">
+    <!-- Dashed border -->
+    <rect x="615" y="50" width="490" height="230" rx="6" fill="none" stroke="#a1245a" stroke-width="1.2" stroke-dasharray="6,3"/>
+
+    <!-- Vertical label on right edge -->
+    <text transform="translate(1120, 220) rotate(-90)" text-anchor="middle" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="11" fill="#a1245a" font-style="italic">resent in full every turn</text>
+
+    <!-- API lines -->
+    <g font-family="'Courier New', monospace" font-size="13">
+      <!-- Line 1: system -->
+      <text x="630" y="78">
+        <tspan fill="#838383">[system]</tspan>
+        <tspan fill="#a8d8ea"> You are a helpful assistant...</tspan>
+      </text>
+      <!-- Line 2: user -->
+      <text x="630" y="103">
+        <tspan fill="#1a1a1a">[user]</tspan>
+        <tspan fill="#a8d8ea"> Hi, who are you?</tspan>
+      </text>
+      <!-- Line 3: assistant -->
+      <text x="630" y="128">
+        <tspan fill="#a1245a">[assistant]</tspan>
+        <tspan fill="#a8d8ea"> I'm an AI assistant. How can I help you?</tspan>
+      </text>
+      <!-- Line 4: user -->
+      <text x="630" y="153">
+        <tspan fill="#1a1a1a">[user]</tspan>
+        <tspan fill="#a8d8ea"> Explain what transformers are</tspan>
+      </text>
+      <!-- Line 5: assistant -->
+      <text x="630" y="178">
+        <tspan fill="#a1245a">[assistant]</tspan>
+        <tspan fill="#a8d8ea"> Transformers are an architecture...</tspan>
+      </text>
+
+      <!-- Highlighted lines 6-7 -->
+      <rect x="618" y="190" width="484" height="50" rx="3" fill="#f5f5f5"/>
+      <!-- Line 6: user (highlighted) -->
+      <text x="630" y="208">
+        <tspan fill="#1a1a1a">[user]</tspan>
+        <tspan fill="#a8d8ea"> And how does attention work?</tspan>
+      </text>
+      <!-- Line 7: assistant (highlighted) -->
+      <text x="630" y="233">
+        <tspan fill="#a1245a">[assistant]</tspan>
+        <tspan fill="#a8d8ea"> Attention is the mechanism...</tspan>
+      </text>
+    </g>
+
+    <!-- Badge below dashed block -->
+    <text x="860" y="300" text-anchor="middle" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="11" fill="#a1245a" font-style="italic">context at turn 3 = everything said so far</text>
+  </g>
+</svg>

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 380">
+  <title>Cost per conversation turn: user billing vs theoretical cost vs real cost with KV cache</title>
+
+  <rect width="540" height="380" fill="#f2f2f2"/>
+
+  <defs>
+    <clipPath id="plot-area">
+      <rect x="60" y="20" width="440" height="280"/>
+    </clipPath>
+  </defs>
+
+  <!-- Grid lines -->
+  <g id="grid" stroke="#dddddd" stroke-width="1">
+    <line x1="60" y1="100" x2="500" y2="100"/>
+    <line x1="60" y1="200" x2="500" y2="200"/>
+  </g>
+
+  <!-- Axes -->
+  <g id="axes" stroke="#838383" stroke-width="1.5">
+    <line x1="60" y1="300" x2="500" y2="300"/>
+    <line x1="60" y1="300" x2="60" y2="20"/>
+  </g>
+
+  <!-- X-axis label -->
+  <text x="280" y="335" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#838383">Turn number</text>
+
+  <!-- Y-axis label -->
+  <text x="20" y="160" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#838383" transform="rotate(-90, 20, 160)">Cost per turn</text>
+
+  <!-- Curve 1: Costo in fattura (utente) — linear, medium slope -->
+  <polyline
+    points="60,295 500,160"
+    fill="none" stroke="#838383" stroke-width="2" stroke-linecap="round"
+    clip-path="url(#plot-area)"/>
+
+  <!-- Curve 2: Costo teorico provider (senza cache) — quadratic/steep, dashed -->
+  <path
+    d="M60,295 C160,280 300,230 500,30"
+    fill="none" stroke="#1ab197" stroke-width="2" stroke-dasharray="8,4" stroke-linecap="round"
+    clip-path="url(#plot-area)"/>
+
+  <!-- Curve 3: Costo reale provider (KV cache) — linear, flattest -->
+  <polyline
+    points="60,295 500,220"
+    fill="none" stroke="#a1245a" stroke-width="2.5" stroke-linecap="round"
+    clip-path="url(#plot-area)"/>
+
+  <!-- Legend -->
+  <g id="legend" font-family="sans-serif" font-size="11" fill="#1a1a1a">
+    <!-- Entry 1 -->
+    <line x1="280" y1="44" x2="300" y2="44" stroke="#838383" stroke-width="2"/>
+    <text x="306" y="48">Billed cost (user)</text>
+
+    <!-- Entry 2 -->
+    <line x1="280" y1="64" x2="300" y2="64" stroke="#1ab197" stroke-width="2" stroke-dasharray="8,4"/>
+    <text x="306" y="68">Theoretical provider cost</text>
+
+    <!-- Entry 3 -->
+    <line x1="280" y1="84" x2="300" y2="84" stroke="#a1245a" stroke-width="2.5"/>
+    <text x="306" y="88">Real cost with KV cache</text>
+  </g>
+</svg>

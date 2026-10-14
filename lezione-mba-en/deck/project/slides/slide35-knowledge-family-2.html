@@ -1,0 +1,37 @@
+<section id="slide35-knowledge-family-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Three patterns, compared</h2>
+</div>
+<div style="flex:1;display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#f6f6f6;border-radius:16px;padding:40px">
+<p style="font-size:24px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:#838383">Architectural pattern</p>
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#161719">RAG</h3>
+<ul style="font-size:26px;line-height:1.45;padding-left:32px">
+<li>A retriever extracts the relevant chunks <b>before</b> generation</li>
+<li>The chunks are injected into the context; the answer is grounded in proprietary knowledge</li>
+<li>The model does not decide <i>whether</i> to search — the search always happens</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#f6f6f6;border-radius:16px;padding:40px">
+<p style="font-size:24px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:#838383">Tool</p>
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#161719">Search-as-a-tool</h3>
+<ul style="font-size:26px;line-height:1.45;padding-left:32px">
+<li>Search becomes a tool call: the model decides <b>when, what and how</b> to search</li>
+<li>Enables iteration: search, read, refine, search again</li>
+<li>Solves the knowledge cutoff dynamically</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#ffffff;border:2px solid #a1245a;border-radius:16px;padding:40px">
+<p style="font-size:24px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:#a1245a">Agentic system</p>
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">Deep Research</h3>
+<ul style="font-size:26px;line-height:1.45;padding-left:32px">
+<li>Planning, parallel sub-agents, steering loop, final synthesis with citations</li>
+<li>Combines RAG and search, orchestrated over multiple phases</li>
+<li><i>Details on the next slide</i></li>
+</ul>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="/_blob/4db88be4bc518ab3e99e5945d8f22a0a" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>

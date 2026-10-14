@@ -1,0 +1,19 @@
+<section id="slide26-contesto-tool" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">04 · Acting</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">What ends up in the context when tools are used</h2>
+</div>
+<table style="font-size:26px;color:#212529">
+<tr style="background:#161719"><th style="width:22%;color:#ffffff">Component</th><th style="width:22%;color:#ffffff">When</th><th style="width:32%;color:#ffffff">Typical size</th><th style="width:24%;color:#ffffff">Persistence</th></tr>
+<tr><td style="font-weight:600">Tool definition</td><td>Once, at the top</td><td>100–300 tokens × no. of tools</td><td>Whole conversation</td></tr>
+<tr style="background:#f6f6f6"><td style="font-weight:600">Tool call</td><td>At every invocation</td><td>Small (name + arguments)</td><td>Whole conversation</td></tr>
+<tr><td style="font-weight:600">Tool result</td><td>At every invocation</td><td>Variable — from tens to tens of thousands of tokens</td><td>Whole conversation</td></tr>
+<tr style="background:#f6f6f6"><td style="font-weight:600">User/assistant turns</td><td>As before</td><td>Small</td><td>Whole conversation</td></tr>
+</table>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:26px;line-height:1.45;color:#212529"><b>Example:</b> a customer-service agent with 3 tools (query_crm, search_kb, create_ticket) — ~600 tokens (definitions) + ~200 (call) + ~12k (result) = <b>~13k tokens of overhead</b> before the answer.</p>
+</div>
+<p style="font-size:26px;line-height:1.45;color:#212529">The context doesn't only hold the exchange between user and agent. It also holds everything the tools fetched from the outside world — every result, every returned document, every API response. And nothing is ever cleaned up automatically.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="/_blob/4db88be4bc518ab3e99e5945d8f22a0a" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>

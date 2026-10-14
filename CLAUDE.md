@@ -13,7 +13,7 @@ cd lezione-mba
 python server.py   # serves on http://localhost:8000/presentation.html
 ```
 
-`server.py` is a no-cache HTTP server — always serves fresh files. Open `presentation.html` in a browser. The repo-root `index.html` is just a meta-refresh redirect to `lezione-mba/presentation.html`; it is not an alternate entry point.
+`server.py` is a no-cache HTTP server — always serves fresh files. Open `presentation.html` in a browser. The repo-root `index.html` is the GitHub Pages landing page: a Quantyca-styled language chooser linking to the Italian deck (`lezione-mba/presentation.html`) and the English deck (`lezione-mba-en/agents-in-action-en.html`, a standalone build from `lezione-mba-en/build.py`).
 
 ## Architecture
 

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 380">
+  <title>Base model vs RLHF model</title>
+  <defs>
+    <filter id="shadow" x="-2%" y="-2%" width="104%" height="104%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Shared prompt box -->
+  <text x="570" y="18" text-anchor="middle" fill="#838383" font-family="Arial, sans-serif" font-size="13">User prompt</text>
+  <rect x="350" y="26" width="440" height="42" rx="8" fill="#f5f5f5" stroke="#dddddd" stroke-width="1.5"/>
+  <text x="570" y="52" text-anchor="middle" fill="#1a1a1a" font-family="Arial, sans-serif" font-size="16">How can I increase sales?</text>
+
+  <!-- Arrow left (to base model) -->
+  <path d="M460,68 L460,82 Q460,92 450,92 L310,92 L310,108" fill="none" stroke="#dddddd" stroke-width="1.5" stroke-linecap="round"/>
+  <polygon points="305,106 310,116 315,106" fill="#e5e5e5"/>
+
+  <!-- Arrow right (to RLHF) -->
+  <path d="M680,68 L680,82 Q680,92 690,92 L830,92 L830,108" fill="none" stroke="#a1245a" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/>
+  <polygon points="825,106 830,116 835,106" fill="#a1245a" opacity="0.6"/>
+
+  <!-- Vertical divider -->
+  <line x1="570" y1="110" x2="570" y2="370" stroke="#dddddd" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- LEFT COLUMN — Base model -->
+  <g id="base-model">
+    <!-- Header -->
+    <circle cx="100" cy="128" r="8" fill="none" stroke="#aaaaaa" stroke-width="1.5"/>
+    <text x="100" y="132" text-anchor="middle" fill="#888888" font-family="Arial, sans-serif" font-size="9" font-weight="bold">B</text>
+    <text x="116" y="132" fill="#838383" font-family="Arial, sans-serif" font-size="13">Base model (pre-training only)</text>
+
+    <!-- Response box -->
+    <rect x="40" y="148" width="490" height="140" rx="6" fill="#f7f7f7" stroke="#dddddd" stroke-width="1"/>
+
+    <!-- Monospace response text -->
+    <text fill="#888888" font-family="'Courier New', monospace" font-size="12">
+      <tspan x="56" y="172">How can I increase sales?</tspan>
+      <tspan x="56" y="192">And how many people work at your</tspan>
+      <tspan x="56" y="212">company? Is the sector B2B or B2C? Which</tspan>
+      <tspan x="56" y="232">geographic market do you serve? In recent</tspan>
+      <tspan x="56" y="252">years has demand grown or...</tspan>
+    </text>
+    <!-- Blinking cursor effect -->
+    <rect x="305" y="242" width="7" height="14" rx="1" fill="#888888" opacity="0.5"/>
+
+    <!-- Italic explanation -->
+    <text x="40" y="310" fill="#838383" font-family="Arial, sans-serif" font-size="11" font-style="italic">
+      <tspan x="40" dy="0">The model continues the sentence like text on the web</tspan>
+      <tspan x="40" dy="16">— with more questions, not with an answer.</tspan>
+    </text>
+  </g>
+
+  <!-- RIGHT COLUMN — RLHF model -->
+  <g id="rlhf-model">
+    <!-- Header -->
+    <circle cx="620" cy="128" r="8" fill="none" stroke="#a1245a" stroke-width="1.5"/>
+    <text x="620" y="132" text-anchor="middle" fill="#a1245a" font-family="Arial, sans-serif" font-size="9" font-weight="bold">R</text>
+    <text x="636" y="132" fill="#1a1a1a" font-family="Arial, sans-serif" font-size="13">RLHF model</text>
+
+    <!-- Response box with accent border -->
+    <rect x="610" y="148" width="490" height="140" rx="6" fill="#f5f5f5" stroke="#a1245a" stroke-width="1" stroke-opacity="0.4"/>
+
+    <!-- Sans-serif response text -->
+    <text fill="#1a1a1a" font-family="Arial, sans-serif" font-size="12">
+      <tspan x="626" y="172">To increase sales you can pull three</tspan>
+      <tspan x="626" y="192">levers: 1) acquire new customers (marketing,</tspan>
+      <tspan x="626" y="212">partnerships); 2) increase the average value</tspan>
+      <tspan x="626" y="232">per customer (upselling, bundles); 3) improve</tspan>
+      <tspan x="626" y="252">retention (CRM, customer success).</tspan>
+      <tspan x="626" y="272">Want to dig into one of these?</tspan>
+    </text>
+
+    <!-- Italic explanation -->
+    <text x="610" y="310" fill="#838383" font-family="Arial, sans-serif" font-size="11" font-style="italic">
+      <tspan x="610" dy="0">The model recognises a question and gives a useful,</tspan>
+      <tspan x="610" dy="16">structured, action-oriented answer.</tspan>
+    </text>
+  </g>
+</svg>

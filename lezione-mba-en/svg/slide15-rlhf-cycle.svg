@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 200">
+  <title>RLHF cycle — Reinforcement Learning from Human Feedback</title>
+  <defs>
+    <marker id="arrow-right" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#f0f0f0"/>
+    </marker>
+    <marker id="arrow-left-accent" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <!-- Step 1: Prompt -->
+  <g id="step1">
+    <rect x="30" y="25" width="200" height="110" rx="8" fill="#f5f5f5" stroke="#dddddd" stroke-width="1.5"/>
+    <text x="130" y="16" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#838383">&#9312; Prompt</text>
+    <text x="130" y="68" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#1a1a1a" font-style="italic">&quot;How can I</text>
+    <text x="130" y="84" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#1a1a1a" font-style="italic">increase</text>
+    <text x="130" y="100" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#1a1a1a" font-style="italic">sales?&quot;</text>
+  </g>
+
+  <!-- Arrow 1→2 -->
+  <line x1="235" y1="80" x2="275" y2="80" stroke="#dddddd" stroke-width="2" marker-end="url(#arrow-right)"/>
+
+  <!-- Step 2: 2 risposte candidate -->
+  <g id="step2">
+    <rect x="280" y="25" width="200" height="110" rx="8" fill="#f5f5f5" stroke="#dddddd" stroke-width="1.5"/>
+    <text x="380" y="16" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#838383">&#9313; 2 candidate answers</text>
+    <text x="380" y="48" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#838383">Model</text>
+    <!-- Risposta A -->
+    <rect x="300" y="56" width="160" height="28" rx="4" fill="#f2f2f2" stroke="#dddddd" stroke-width="1"/>
+    <text x="380" y="74" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1a1a1a">Answer A</text>
+    <!-- Risposta B -->
+    <rect x="300" y="90" width="160" height="28" rx="4" fill="#f2f2f2" stroke="#dddddd" stroke-width="1"/>
+    <text x="380" y="108" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#1a1a1a">Answer B</text>
+  </g>
+
+  <!-- Arrow 2→3 -->
+  <line x1="485" y1="80" x2="595" y2="80" stroke="#dddddd" stroke-width="2" marker-end="url(#arrow-right)"/>
+
+  <!-- Step 3: Giudice sceglie -->
+  <g id="step3">
+    <rect x="600" y="25" width="200" height="110" rx="8" fill="#f5f5f5" stroke="#dddddd" stroke-width="1.5"/>
+    <text x="700" y="16" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#838383">&#9314; A judge picks one</text>
+    <!-- Checkmark / thumbs up -->
+    <text x="665" y="72" text-anchor="middle" font-family="sans-serif" font-size="22" fill="#a1245a">&#10003;</text>
+    <text x="720" y="72" text-anchor="start" font-family="sans-serif" font-size="12" fill="#1a1a1a">Answer A</text>
+    <!-- Dimmed B -->
+    <text x="665" y="96" text-anchor="middle" font-family="sans-serif" font-size="16" fill="#f0f0f0">&#10005;</text>
+    <text x="720" y="96" text-anchor="start" font-family="sans-serif" font-size="12" fill="#838383">Answer B</text>
+    <text x="700" y="124" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#838383">human, AI, or principles</text>
+  </g>
+
+  <!-- Arrow 3→4 -->
+  <line x1="805" y1="80" x2="905" y2="80" stroke="#dddddd" stroke-width="2" marker-end="url(#arrow-right)"/>
+
+  <!-- Step 4: Modello aggiornato -->
+  <g id="step4">
+    <rect x="910" y="25" width="200" height="110" rx="8" fill="#f5f5f5" stroke="#dddddd" stroke-width="1.5"/>
+    <text x="1010" y="16" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#838383">&#9315; Updated model</text>
+    <text x="1010" y="52" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1a1a1a">LLM</text>
+    <!-- 4x3 dot grid -->
+    <g transform="translate(975, 62)">
+      <!-- Row 1 -->
+      <circle cx="0" cy="0" r="3" fill="#838383"/>
+      <circle cx="18" cy="0" r="3" fill="#a1245a"/>
+      <circle cx="36" cy="0" r="3" fill="#838383"/>
+      <circle cx="54" cy="0" r="3" fill="#838383"/>
+      <!-- Row 2 -->
+      <circle cx="0" cy="14" r="3" fill="#838383"/>
+      <circle cx="18" cy="14" r="3" fill="#838383"/>
+      <circle cx="36" cy="14" r="3" fill="#a1245a"/>
+      <circle cx="54" cy="14" r="3" fill="#838383"/>
+      <!-- Row 3 -->
+      <circle cx="0" cy="28" r="3" fill="#a1245a"/>
+      <circle cx="18" cy="28" r="3" fill="#838383"/>
+      <circle cx="36" cy="28" r="3" fill="#838383"/>
+      <circle cx="54" cy="28" r="3" fill="#a1245a"/>
+    </g>
+    <text x="1010" y="124" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#838383">reinforces the preferred behaviour</text>
+  </g>
+
+  <!-- Return arrow: step 4 back to step 1 -->
+  <g id="return-arrow">
+    <path d="M1010,140 L1010,170 L130,170 L130,145" fill="none" stroke="#a1245a" stroke-width="1.5" stroke-dasharray="6,3" marker-end="url(#arrow-left-accent)"/>
+    <text x="570" y="188" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#a1245a">repeated over millions of examples</text>
+  </g>
+</svg>

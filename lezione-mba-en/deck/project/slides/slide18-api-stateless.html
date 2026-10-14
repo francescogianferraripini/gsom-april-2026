@@ -1,0 +1,24 @@
+<section id="slide18-api-stateless" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">02 · Conversing</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The API is stateless: what it really means</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px;align-items:center">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<ul style="font-size:28px;line-height:1.4;padding-left:40px;color:#212529">
+<li>The API keeps no state between calls.</li>
+<li>On every new turn, the full context (system + history + new input) is sent to the model from scratch.</li>
+<li>The context grows linearly with the conversation.</li>
+</ul>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:20px 32px">
+<p style="font-size:24px;line-height:1.45;color:#212529"><b>KV cache</b>: an engineering trick that stores the representations (key/value) of tokens already processed. On every turn the provider reuses the work already done and processes only the new tokens. Without a KV cache, costs would grow quadratically.</p>
+</div>
+</div>
+<img src="/_blob/18d57424df6235a5efd73ef8de0009ab" alt="Chart: cost per turn — 3 curves: user, theoretical provider, provider with KV cache" style="width:700px;height:493px;object-fit:contain">
+</div>
+<div style="background:#a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:28px;font-weight:500;line-height:1.4;color:#ffffff">Cost per turn and answer quality depend on the cumulative size of the context, not on the single question.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="/_blob/4db88be4bc518ab3e99e5945d8f22a0a" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>

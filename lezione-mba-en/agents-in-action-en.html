@@ -1,0 +1,1659 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agents in Action</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+  html,body{margin:0;height:100%;background:#2a2b2e;overflow:hidden}
+  #stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;transform-origin:0 0}
+  section{position:absolute;inset:0;width:1920px;height:1080px;box-sizing:border-box;overflow:hidden}
+  section:not(.on){display:none!important}
+  section *{box-sizing:border-box}
+  h1,h2,h3,p,ul,ol{margin:0}
+  ul,ol{padding-left:1.1em}
+  li+li{margin-top:.35em}
+  img{display:block}
+  aside{display:none}
+  table{border-collapse:collapse}
+  th,td{padding:.35em .6em;text-align:left;vertical-align:top}
+  th{font-weight:600}
+  td{border-bottom:1px solid #dee2e6}
+  a{color:inherit}
+  #hud{position:fixed;right:12px;bottom:8px;font:12px system-ui;color:#999}
+  body.all{overflow:auto;background:#555}
+  body.all #stage{position:static;transform:none!important;width:1920px;height:auto}
+  body.all #stage section{display:flex!important;position:relative;margin:0 0 24px}
+  body.all #stage section[style*="display:grid"]{display:grid!important}
+  @media print{@page{size:1920px 1080px;margin:0}body{overflow:visible;background:none}#hud{display:none}
+    #stage{position:static;transform:none!important}#stage section{display:flex!important;position:relative;break-after:page}
+    #stage section[style*="display:grid"]{display:grid!important}}
+</style></head><body>
+<div id="stage">
+<section id="slide1-title" style="background:#a1245a;color:#ffffff;font-family:'Poppins', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:32px">
+<img src="assets/blueprint-white.svg" alt="" style="position:absolute;left:0px;bottom:0px;width:1920px;height:485px;object-fit:contain;opacity:0.25">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#ecd3de">MBA lecture · Politecnico di Milano GSoM</p>
+<h1 style="font-size:144px;font-weight:600;line-height:1.05;color:#ffffff">Agents in action</h1>
+<p style="font-size:36px;font-weight:400;color:#ffffff">Francesco Gianferrari Pini — Quantyca</p>
+<div style="display:grid;grid-template-columns:repeat(7, 1fr);gap:24px;padding:48px 0px 0px 0px">
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #ecd3de;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#ffffff">01</p><p style="font-size:24px;line-height:1.3;color:#ffffff">Understanding the LLM</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #ecd3de;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#ffffff">02</p><p style="font-size:24px;line-height:1.3;color:#ffffff">Conversing</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #ecd3de;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#ffffff">03</p><p style="font-size:24px;line-height:1.3;color:#ffffff">Choosing the model</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #ecd3de;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#ffffff">04</p><p style="font-size:24px;line-height:1.3;color:#ffffff">Acting</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #ecd3de;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#ffffff">05</p><p style="font-size:24px;line-height:1.3;color:#ffffff">Extending the agent</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #ecd3de;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#ffffff">06</p><p style="font-size:24px;line-height:1.3;color:#ffffff">Coding</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #ecd3de;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#ffffff">07</p><p style="font-size:24px;line-height:1.3;color:#ffffff">Designing the context</p></div>
+</div>
+<img src="assets/logo-white.png" alt="Quantyca" style="position:absolute;left:128px;top:96px;width:212px;height:50px;object-fit:contain">
+</section>
+<section id="slide-div-sec1" style="background:#161719;color:#ffffff;font-family:'Poppins', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:24px">
+<img src="assets/blueprint-white.svg" alt="" style="position:absolute;left:0px;bottom:0px;width:1920px;height:485px;object-fit:contain;opacity:0.18">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#d092ad">Section 1 of 7</p>
+<h1 style="font-size:120px;font-weight:600;line-height:1.05;color:#ffffff">Understanding the LLM</h1>
+<p style="font-size:40px;font-weight:400;color:#cac9ca">The engine inside every agent</p>
+<div style="display:grid;grid-template-columns:repeat(7, 1fr);gap:24px;padding:64px 0px 0px 0px">
+<div style="display:flex;flex-direction:column;gap:8px;border-top:4px solid #a1245a;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#ffffff">01</p><p style="font-size:24px;font-weight:600;line-height:1.3;color:#ffffff">Understanding the LLM</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">02</p><p style="font-size:24px;line-height:1.3;color:#838383">Conversing</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">03</p><p style="font-size:24px;line-height:1.3;color:#838383">Choosing the model</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">04</p><p style="font-size:24px;line-height:1.3;color:#838383">Acting</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">05</p><p style="font-size:24px;line-height:1.3;color:#838383">Extending the agent</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">06</p><p style="font-size:24px;line-height:1.3;color:#838383">Coding</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">07</p><p style="font-size:24px;line-height:1.3;color:#838383">Designing the context</p></div>
+</div>
+<img src="assets/logo-white.png" alt="Quantyca" style="position:absolute;left:128px;top:96px;width:212px;height:50px;object-fit:contain">
+</section>
+<section id="slide2-llm-cuore" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">01 · Understanding the LLM</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">LLM: the heart of agents</h2>
+</div>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:32px;line-height:1.45;color:#212529">An LLM is a mathematical function that, given a sequence of tokens, produces a probability distribution over the next token.</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px;align-items:center;flex:1">
+<ul style="flex:1;font-size:28px;line-height:1.45;padding-left:40px;color:#212529">
+<li><b>Input</b>: a sequence of tokens — the units in which the LLM "sees" text, roughly words or word fragments.</li>
+<li><b>Output</b>: a probability distribution assigning a value to every token in the vocabulary (tens of thousands of possibilities).</li>
+<li><b>No concept of "conversation"</b>: at this level the LLM doesn't know it is talking to anyone. It is a function that completes plausible text.</li>
+</ul>
+<img src="svg/slide1-llm-function.svg" alt="The LLM as a function: input → LLM → probability distribution" style="width:578px;height:420px;object-fit:contain">
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide3-training-loop" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">01 · Understanding the LLM</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">How an LLM is trained</h2>
+</div>
+<img src="svg/slide2bis-training-loop.svg" alt="Training loop: sentence, mask, prediction, comparison, parameter update" style="width:1664px;height:500px;object-fit:contain">
+<p style="font-size:28px;line-height:1.45;color:#838383;text-align:center">Billions of parameters start out random. Trillions of micro-adjustments bring them to predict the next token ever more accurately.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide4-pretraining" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">01 · Understanding the LLM</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Pre-training an LLM</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px;align-items:center;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<p style="font-size:28px;line-height:1.45;color:#838383">How this function comes to be</p>
+<ul style="font-size:30px;line-height:1.45;padding-left:40px;color:#212529">
+<li><b>Pre-training</b>: training on huge text corpora (web, books, code).</li>
+<li><b>Objective</b>: predict the next token from the previous ones.</li>
+<li><b>Typical scale (2026)</b>: 25–50 trillion input tokens, 400 billion to 1 trillion+ parameters.</li>
+</ul>
+</div>
+<img src="svg/slide2-scale-infographic.svg" alt="Scale infographic: from human reading to LLM training" style="width:600px;height:436px;object-fit:contain">
+</div>
+<div style="background:#a1245a;border-radius:8px;padding:28px 40px">
+<p style="font-size:30px;font-weight:500;line-height:1.4;color:#ffffff">At the end of training, the model can complete any sentence by drawing on every piece of knowledge — but it isn't necessarily "useful" for holding a conversation or solving a problem.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide5-compression" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">01 · Understanding the LLM</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">LLM: compression through abstraction</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px;align-items:center;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:28px;line-height:1.45;color:#212529">To fit trillions of tokens into billions of parameters, the model is forced to build abstract representations — it doesn't memorise, it models.</p>
+</div>
+<ul style="font-size:26px;line-height:1.45;padding-left:40px;color:#212529">
+<li>There is no room to memorise the training set literally.</li>
+<li>The model "learns" concepts, relationships and regularities of the world.</li>
+<li>Emergent abilities (reasoning, analogy, transfer) are a by-product of compression, not programmed features.</li>
+</ul>
+<div style="border-left:6px solid #1ab197;padding:4px 0px 4px 32px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:28px;font-style:italic;line-height:1.4;color:#161719">"ChatGPT is a blurry JPEG of the web" — and to compress it, it had to understand.</p>
+<p style="font-size:24px;color:#838383">— Ted Chiang, The New Yorker</p>
+</div>
+</div>
+<img src="svg/slide4-compression-funnel.svg" alt="Compression funnel: from trillions of tokens to abstract representations" style="width:560px;height:560px;object-fit:contain">
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide6-conoscenza" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">01 · Understanding the LLM</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The reach of knowledge</h2>
+<p style="font-size:30px;line-height:1.45;color:#838383">A consequence of training at scale</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#838383">Breadth</h3>
+<p style="font-size:30px;line-height:1.45;color:#212529">The LLM has "read" orders of magnitude more text than any single human being.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#ffffff;border:2px solid #a1245a;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">Implication</h3>
+<p style="font-size:30px;line-height:1.45;color:#212529">In any domain of public knowledge (medicine, law, code, marketing, engineering) its informational baseline exceeds that of an average graduate in the field.</p>
+</div>
+</div>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:28px;line-height:1.45;color:#212529">Whatever the use case, a modern model draws on an enormous mass of information (not always of the highest quality or accuracy) to answer. It is already a "superhuman" capability — and it stems from the ability to compress through abstraction.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide7-conseguenze" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">01 · Understanding the LLM</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Consequences of compression</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#ffffff;border:2px solid #a1245a;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">Where it is strong</h3>
+<ul style="font-size:28px;line-height:1.45;padding-left:40px;color:#212529">
+<li>Conceptual framing in any domain</li>
+<li>Reasoning and analogy</li>
+<li>Transforming text (translation, summarisation, reformatting)</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#838383">Where caution is needed</h3>
+<ul style="font-size:28px;line-height:1.45;padding-left:40px;color:#212529">
+<li>Specific facts (dates, numbers, verbatim quotes)</li>
+<li>Knowledge after the cutoff</li>
+<li>Technical details in under-represented niches</li>
+<li>Proprietary data not in the training set</li>
+<li>Precise numerical calculations and long chains of steps</li>
+</ul>
+</div>
+</div>
+<div style="background:#a1245a;border-radius:8px;padding:28px 40px">
+<p style="font-size:30px;font-weight:500;line-height:1.4;color:#ffffff"><b>Trust the framing, verify the facts.</b> Hallucinations aren't a moral bug — they are the structural behaviour of a lossy compressor asked to reconstruct what it didn't store well.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide8-genera-testo" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">01 · Understanding the LLM</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Loop 1/4: how the LLM generates text</h2>
+</div>
+<img src="svg/slide7-token-generation.svg" alt="Token-by-token generation: the context grows at every step" style="width:1664px;height:480px;object-fit:contain">
+<p style="font-size:28px;line-height:1.45;color:#838383;text-align:center">The model doesn't plan an answer. It produces one token at a time. Each new token is appended to the context, and the whole context is re-evaluated to produce the next one.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide9-pratica" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">01 · Understanding the LLM</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">What does this mean in practice?</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:28px;flex:1;justify-content:center">
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline">
+<p style="font-size:32px;font-weight:600;color:#a1245a;width:64px">01</p>
+<p style="flex:1;font-size:32px;line-height:1.45;color:#212529"><b>Same prompt ≠ same answer</b>: sampling is probabilistic. Non-determinism is structural, not a bug.</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline">
+<p style="font-size:32px;font-weight:600;color:#a1245a;width:64px">02</p>
+<p style="flex:1;font-size:32px;line-height:1.45;color:#212529"><b>Streaming isn't just UX</b>: words appearing one by one reflect the real mechanics. The model generates while the user reads.</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px;align-items:baseline">
+<p style="font-size:32px;font-weight:600;color:#a1245a;width:64px">03</p>
+<p style="flex:1;font-size:32px;line-height:1.45;color:#212529"><b>There is no global plan</b>: the model doesn't "know where it's going" before it starts. Every token is local.</p>
+</div>
+</div>
+<div style="background:#a1245a;border-radius:8px;padding:28px 40px">
+<p style="font-size:30px;font-weight:500;line-height:1.4;color:#ffffff">This is the first building block. The next three loops — conversation, tools, code — wrap around it one on top of the other.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide10-context-window" style="background:#161719;color:#ffffff;font-family:'Poppins', Arial, sans-serif;padding:96px 128px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px">
+<img src="assets/memento-poster.jpg" alt="Memento (2000) film poster — Guy Pearce" style="width:540px;height:794px;object-fit:contain;border-radius:8px">
+<p style="position:absolute;left:128px;bottom:64px;width:400px;font-size:24px;color:#838383">Memento (2000)</p>
+</section>
+<section id="slide10-context-window-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">01 · Understanding the LLM</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The limit of the context window</h2>
+</div>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:24px 40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:26px;line-height:1.45;color:#212529"><span style="color:#a1245a"><b>The protagonist of Memento.</b></span> A man with anterograde amnesia — he remembers his life before the accident, but every new memory fades within minutes. He survives by writing everything on Polaroids and tattoos: whatever he needs to know <i>now</i> must be physically in front of his eyes, <i>now</i>.</p>
+<p style="font-size:26px;line-height:1.45;color:#212529">An LLM works the same way. Training is the "life before": vast knowledge, but frozen. Everything else — the ongoing conversation, uploaded documents, tool results — exists for the model only if it is inside the context window <i>at this exact moment</i>. Nothing is automatically remembered between one call and the next.</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">Cost</h3>
+<p style="font-size:26px;line-height:1.45;color:#212529">The attention mechanism is O(n²) in context length. Doubling the context more than doubles the compute cost.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">Quality</h3>
+<p style="font-size:26px;line-height:1.45;color:#212529">Even when it "fits", the model doesn't use the whole context well. It tends to remember the beginning and end better, the middle worse — <i>lost in the middle</i>.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide-div-sec2" style="background:#161719;color:#ffffff;font-family:'Poppins', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:24px">
+<img src="assets/blueprint-white.svg" alt="" style="position:absolute;left:0px;bottom:0px;width:1920px;height:485px;object-fit:contain;opacity:0.18">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#d092ad">Section 2 of 7</p>
+<h1 style="font-size:120px;font-weight:600;line-height:1.05;color:#ffffff">Conversing</h1>
+<p style="font-size:40px;font-weight:400;color:#cac9ca">How a model learns to hold a dialogue</p>
+<div style="display:grid;grid-template-columns:repeat(7, 1fr);gap:24px;padding:64px 0px 0px 0px">
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">01</p><p style="font-size:24px;line-height:1.3;color:#838383">Understanding the LLM</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:4px solid #a1245a;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#ffffff">02</p><p style="font-size:24px;font-weight:600;line-height:1.3;color:#ffffff">Conversing</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">03</p><p style="font-size:24px;line-height:1.3;color:#838383">Choosing the model</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">04</p><p style="font-size:24px;line-height:1.3;color:#838383">Acting</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">05</p><p style="font-size:24px;line-height:1.3;color:#838383">Extending the agent</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">06</p><p style="font-size:24px;line-height:1.3;color:#838383">Coding</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">07</p><p style="font-size:24px;line-height:1.3;color:#838383">Designing the context</p></div>
+</div>
+<img src="assets/logo-white.png" alt="Quantyca" style="position:absolute;left:128px;top:96px;width:212px;height:50px;object-fit:contain">
+</section>
+<section id="slide11-primo-agente" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">02 · Conversing</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The first agent: the chat</h2>
+</div>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:20px 40px">
+<p style="font-size:30px;line-height:1.45;color:#212529">From <i>next token prediction</i> to conversation</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#838383">Before — base model</h3>
+<p style="font-size:28px;line-height:1.4;color:#212529">Completes plausible text. Given a sequence, it produces the statistically most likely continuation. It doesn't know it is talking to someone, can't tell a question from an article fragment, and doesn't follow instructions.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#ffffff;border:2px solid #a1245a;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">After — conversational agent</h3>
+<p style="font-size:28px;line-height:1.4;color:#212529">Answers an interlocutor, follows instructions, keeps a role, respects constraints on tone and behaviour.</p>
+</div>
+</div>
+<p style="font-size:28px;line-height:1.4;color:#212529"><b>How it's done:</b> a second round of training on top of pre-training — <i>instruction tuning</i> and <i>RLHF</i> — that teaches the model not <i>what is likely</i>, but <i>what is useful</i> to answer. Plus an interface that structures the exchange into turns.</p>
+<p style="font-size:24px;line-height:1.4;color:#838383">November 2022, ChatGPT. Not a new model — GPT-3 had existed since 2020. A new way of training it to converse.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide12-meccanica-conversazione" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">02 · Conversing</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The mechanics of conversation</h2>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center"><img src="svg/slide12-conversation-step1.svg" alt="Conversation mechanics — after turn 1" style="width:1273px;height:480px;object-fit:contain"></div>
+<p style="font-size:24px;line-height:1.4;color:#838383">The conversation is an artefact of the interface. To the model it is a single structured text with role tags, re-sent in full on every turn. The API is stateless — no memory between calls.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide12-meccanica-conversazione-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">02 · Conversing</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The mechanics of conversation</h2>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center"><img src="svg/slide12-conversation-step2.svg" alt="Conversation mechanics — after turn 2" style="width:1273px;height:480px;object-fit:contain"></div>
+<p style="font-size:24px;line-height:1.4;color:#838383">The conversation is an artefact of the interface. To the model it is a single structured text with role tags, re-sent in full on every turn. The API is stateless — no memory between calls.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide12-meccanica-conversazione-3" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">02 · Conversing</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The mechanics of conversation</h2>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center"><img src="svg/slide12-conversation-step3.svg" alt="Conversation mechanics — after turn 3" style="width:1273px;height:480px;object-fit:contain"></div>
+<p style="font-size:24px;line-height:1.4;color:#838383">The conversation is an artefact of the interface. To the model it is a single structured text with role tags, re-sent in full on every turn. The API is stateless — no memory between calls.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide14-secondo-addestramento" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">02 · Conversing</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Why a second round of training is needed</h2>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center"><img src="svg/slide14-rlhf-comparison.svg" alt="Base model vs RLHF: same prompt, different answers" style="width:1320px;height:440px;object-fit:contain"></div>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:32px;line-height:1.45;color:#212529;text-align:center">From <i>“what is likely”</i> to <i>“what is worth answering”</i>.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide15-rlhf" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">02 · Conversing</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The second round of training: RLHF</h2>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center"><img src="svg/slide15-rlhf-cycle.svg" alt="RLHF cycle: prompt → 2 answers → judge → model update" style="width:1140px;height:200px;object-fit:contain"></div>
+<p style="font-size:24px;line-height:1.4;color:#838383;font-style:italic">Variants: RLHF (human feedback), RLAIF (AI feedback), Constitutional AI (Anthropic), DPO. The principle — reward desirable answers, penalise the others — is the same.</p>
+<ul style="font-size:28px;line-height:1.4;padding-left:40px;color:#212529">
+<li>The personality of different models (Claude, GPT, Gemini) is not emergent — it is <b>sculpted in post-training</b> with different values.</li>
+<li>Behavioural limits are almost never capability limits — they are the provider's <b>policy choices</b>.</li>
+<li>Whoever provides the feedback shapes the AI. Ethical, geopolitical and business implications.</li>
+</ul>
+<div style="background:#a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:30px;font-weight:500;line-height:1.4;color:#ffffff">The model you use is not “the AI”. It is a particular AI, trained with particular values, by particular people.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide13-system-prompt" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">02 · Conversing</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Turn zero: the system prompt</h2>
+</div>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:20px 40px">
+<p style="font-size:28px;line-height:1.4;color:#212529">An invisible turn zero, placed at the top of the context by the provider or the developer. It defines the assistant's role, tone, constraints and capabilities.</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px;align-items:center">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<ul style="font-size:26px;line-height:1.4;padding-left:40px;color:#212529">
+<li>The model tends to follow it but is not bound to — it can erode over long conversations, be overridden by strong instructions, or be bypassed (<i>prompt injection</i>).</li>
+<li>Every LLM application has a system prompt. ChatGPT, Claude.ai and Gemini are <i>different system prompts</i> as well as different models.</li>
+<li>Much of an AI product's personality lives here.</li>
+</ul>
+<div style="background:#a1245a;border-radius:8px;padding:24px 32px">
+<p style="font-size:26px;font-weight:500;line-height:1.4;color:#ffffff">The model is the same for everyone. The system prompt is the main lever for steering and customising agents.</p>
+</div>
+</div>
+<img src="svg/slide13-system-prompt.svg" alt="Same model, 2 different system prompts → 2 different personalities" style="width:560px;height:440px;object-fit:contain">
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide16-task-map" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">02 · Conversing</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Task map: strengths and weaknesses</h2>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center"><img src="svg/slide16-task-map.svg" alt="2D grid: context breadth vs verifiability of the result — 8 tasks placed" style="width:1260px;height:420px;object-fit:contain"></div>
+<div style="background:#a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:30px;font-weight:500;line-height:1.4;color:#ffffff">From here on, every technique we'll see (tools, RAG, code, sub-agents) is a way of reinforcing a task where the model alone is fragile.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide17-valore-conversazioni" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">02 · Conversing</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The value of conversations</h2>
+</div>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:20px 40px">
+<p style="font-size:28px;line-height:1.4;color:#212529"><b>Trajectory</b> — a complete conversation seen as a sequence of moves: user prompt → model answer → rephrasing → correction → approval. Every conversation leaves a trail rich in signals about what works and what doesn't.</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#838383">For the user</h3>
+<ul style="font-size:28px;line-height:1.4;padding-left:36px;color:#212529">
+<li>Each conversation is a means to solve a problem today</li>
+<li>Stateless: forgotten by the system tomorrow</li>
+</ul>
+</div>
+<div style="flex:2;display:flex;flex-direction:column;gap:12px;background:#ffffff;border:2px solid #a1245a;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">For the provider</h3>
+<ul style="font-size:28px;line-height:1.4;padding-left:36px;color:#212529">
+<li>Each conversation is a trajectory with a real prompt, answers, corrections, feedback</li>
+<li>Billions of trajectories = fuel for the next training run</li>
+<li>Usage patterns emerge that no artificial test produces</li>
+</ul>
+</div>
+</div>
+<div style="background:#a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:30px;font-weight:500;line-height:1.4;color:#ffffff">The moat is not the model — the model becomes a commodity. The moat is real-usage trajectories, which nobody can replicate.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide17-valore-conversazioni-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">02 · Conversing</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The value of conversations: three questions</h2>
+</div>
+<div style="flex:1"></div>
+<div style="display:flex;flex-direction:row;gap:40px;align-items:stretch">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#f6f6f6;border-radius:16px;padding:48px 40px"><p style="font-size:72px;font-weight:600;color:#a1245a">01</p><p style="font-size:40px;line-height:1.35;color:#212529">Does my data go into the next training run?</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#f6f6f6;border-radius:16px;padding:48px 40px"><p style="font-size:72px;font-weight:600;color:#a1245a">02</p><p style="font-size:40px;line-height:1.35;color:#212529">Where do I accumulate my own trajectory flywheel?</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#f6f6f6;border-radius:16px;padding:48px 40px"><p style="font-size:72px;font-weight:600;color:#a1245a">03</p><p style="font-size:40px;line-height:1.35;color:#212529">Value will shift to proprietary usage data.</p></div>
+</div>
+<div style="flex:1"></div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide18-api-stateless" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">02 · Conversing</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The API is stateless: what it really means</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px;align-items:center">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<ul style="font-size:28px;line-height:1.4;padding-left:40px;color:#212529">
+<li>The API keeps no state between calls.</li>
+<li>On every new turn, the full context (system + history + new input) is sent to the model from scratch.</li>
+<li>The context grows linearly with the conversation.</li>
+</ul>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:20px 32px">
+<p style="font-size:24px;line-height:1.45;color:#212529"><b>KV cache</b>: an engineering trick that stores the representations (key/value) of tokens already processed. On every turn the provider reuses the work already done and processes only the new tokens. Without a KV cache, costs would grow quadratically.</p>
+</div>
+</div>
+<img src="svg/slide18-cost-curves.svg" alt="Chart: cost per turn — 3 curves: user, theoretical provider, provider with KV cache" style="width:700px;height:493px;object-fit:contain">
+</div>
+<div style="background:#a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:28px;font-weight:500;line-height:1.4;color:#ffffff">Cost per turn and answer quality depend on the cumulative size of the context, not on the single question.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide19-contesto-qualita" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">02 · Conversing</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">More context ≠ more quality</h2>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center"><img src="svg/slide19-quality-context.svg" alt="Chart: effective quality vs context size — sweet spot and degradation zone" style="width:1350px;height:379px;object-fit:contain"></div>
+<p style="font-size:26px;line-height:1.4;color:#838383;font-style:italic;text-align:center">Cost goes up, latency goes up, quality goes down. Context is never free.</p>
+<ul style="font-size:28px;line-height:1.4;padding-left:40px;color:#212529">
+<li><b>New task, new chat.</b> Don't “carry on” for efficiency — you're making things worse, not better.</li>
+<li><b>Context is a scarce resource</b>, not a bottomless drawer.</li>
+<li>Sub-agents, context engineering, compaction, memory: all answers to this problem.</li>
+</ul>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide20-loop-conversazione" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">02 · Conversing</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Loop 2/4: the conversation</h2>
+</div>
+<div style="display:flex;flex-direction:column;align-items:center"><img src="svg/slide20-conversation-loop.svg" alt="Five-step conversational loop with outcome trajectory" style="width:1520px;height:560px;object-fit:contain"></div>
+<p style="font-size:24px;line-height:1.4;color:#838383">The turn-by-turn loop. On every round the context grows. The problem to solve is managing that growth.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide-div-sec3" style="background:#161719;color:#ffffff;font-family:'Poppins', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:24px">
+<img src="assets/blueprint-white.svg" alt="" style="position:absolute;left:0px;bottom:0px;width:1920px;height:485px;object-fit:contain;opacity:0.18">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#d092ad">Section 3 of 7</p>
+<h1 style="font-size:120px;font-weight:600;line-height:1.05;color:#ffffff">Choosing the model</h1>
+<p style="font-size:40px;font-weight:400;color:#cac9ca">Closed vs open: two paths</p>
+<div style="display:grid;grid-template-columns:repeat(7, 1fr);gap:24px;padding:64px 0px 0px 0px">
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">01</p><p style="font-size:24px;line-height:1.3;color:#838383">Understanding the LLM</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">02</p><p style="font-size:24px;line-height:1.3;color:#838383">Conversing</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:4px solid #a1245a;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#ffffff">03</p><p style="font-size:24px;font-weight:600;line-height:1.3;color:#ffffff">Choosing the model</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">04</p><p style="font-size:24px;line-height:1.3;color:#838383">Acting</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">05</p><p style="font-size:24px;line-height:1.3;color:#838383">Extending the agent</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">06</p><p style="font-size:24px;line-height:1.3;color:#838383">Coding</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">07</p><p style="font-size:24px;line-height:1.3;color:#838383">Designing the context</p></div>
+</div>
+<img src="assets/logo-white.png" alt="Quantyca" style="position:absolute;left:128px;top:96px;width:212px;height:50px;object-fit:contain">
+</section>
+<section id="slide21-closed-vs-open" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">03 · Choosing the model</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Closed model vs open weights vs open source</h2>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:40px">
+<table style="font-size:30px;color:#212529">
+<tr style="background:#161719"><th style="width:24%;color:#ffffff">Category</th><th style="width:42%;color:#ffffff">What is open</th><th style="width:34%;color:#ffffff">Examples</th></tr>
+<tr><td style="font-weight:600">Closed / API-only</td><td>Nothing. Access only through the provider's API</td><td>GPT, Claude, Gemini</td></tr>
+<tr style="background:#f6f6f6"><td style="font-weight:600">Open weight</td><td>Downloadable weights. Training code and dataset usually not</td><td>Llama (Meta), Mistral, DeepSeek, Qwen, Gemma</td></tr>
+<tr><td style="font-weight:600">“True” open source</td><td>Weights + training code + dataset</td><td>OLMo (AllenAI) — typically behind the frontier</td></tr>
+</table>
+<div style="background:#a1245a;border-radius:8px;padding:28px 40px">
+<p style="font-size:30px;font-weight:500;line-height:1.4;color:#ffffff">“Open” almost always means open weight. The weights can be downloaded, but training data and code stay closed.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide22-tradeoff" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">03 · Choosing the model</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The trade-off: when closed, when open</h2>
+</div>
+<table style="font-size:26px;color:#212529">
+<tr style="background:#161719"><th style="width:28%;color:#ffffff">Dimension</th><th style="width:36%;color:#ffffff">Closed</th><th style="width:36%;color:#ffffff">Open</th></tr>
+<tr><td style="font-weight:600">Frontier quality</td><td>Leading today</td><td>6–12 months behind, but the gap is closing</td></tr>
+<tr style="background:#f6f6f6"><td style="font-weight:600">Cost at scale</td><td>Pay-per-token, linear with usage</td><td>Fixed infrastructure, marginal cost ~zero</td></tr>
+<tr><td style="font-weight:600">Privacy / data residency</td><td>Data goes to the provider (except enterprise)</td><td>Fully in-house, sovereign</td></tr>
+<tr style="background:#f6f6f6"><td style="font-weight:600">Customization</td><td>Limited fine-tuning, no access to weights</td><td>Full fine-tuning, quantization, RAG</td></tr>
+<tr><td style="font-weight:600">Adoption effort</td><td>Zero infrastructure</td><td>Requires GPUs, MLOps, skills</td></tr>
+<tr style="background:#f6f6f6"><td style="font-weight:600">Geopolitics / compliance</td><td>Dependence on US or Chinese vendors</td><td>Sovereignty, EU AI Act compatibility</td></tr>
+</table>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide22-tradeoff-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">03 · Choosing the model</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The trade-off: who keeps the trajectories</h2>
+</div>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:30px;line-height:1.45;color:#212529">With closed: you pay for the token <b>and</b> give away the trajectories. With open: you pay for the infrastructure, and the trajectories stay yours.</p>
+</div>
+<div style="background:#d1efea;border-left:6px solid #1ab197;border-radius:8px;padding:28px 40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#106a5b">2026 update</p>
+<p style="font-size:30px;line-height:1.45;color:#212529">Open-weight models of ~30B parameters (e.g. Gemma 4) reach quality comparable to closed Sonnet 4.5-class models on many tasks, and run on a single consumer GPU. The lag behind the frontier is still real: ~6 months.</p>
+</div>
+<div style="background:#a1245a;border-radius:8px;padding:28px 40px">
+<p style="font-size:30px;font-weight:500;line-height:1.4;color:#ffffff">Closed to experiment fast; open to scale volumes, privacy and customization. The choice is per use case, not ideological.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide-div-sec4" style="background:#161719;color:#ffffff;font-family:'Poppins', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:24px">
+<img src="assets/blueprint-white.svg" alt="" style="position:absolute;left:0px;bottom:0px;width:1920px;height:485px;object-fit:contain;opacity:0.18">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#d092ad">Section 4 of 7</p>
+<h1 style="font-size:120px;font-weight:600;line-height:1.05;color:#ffffff">Acting</h1>
+<p style="font-size:40px;font-weight:400;color:#cac9ca">From the agent that talks to the one that does</p>
+<div style="display:grid;grid-template-columns:repeat(7, 1fr);gap:24px;padding:64px 0px 0px 0px">
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">01</p><p style="font-size:24px;line-height:1.3;color:#838383">Understanding the LLM</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">02</p><p style="font-size:24px;line-height:1.3;color:#838383">Conversing</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">03</p><p style="font-size:24px;line-height:1.3;color:#838383">Choosing the model</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:4px solid #a1245a;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#ffffff">04</p><p style="font-size:24px;font-weight:600;line-height:1.3;color:#ffffff">Acting</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">05</p><p style="font-size:24px;line-height:1.3;color:#838383">Extending the agent</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">06</p><p style="font-size:24px;line-height:1.3;color:#838383">Coding</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">07</p><p style="font-size:24px;line-height:1.3;color:#838383">Designing the context</p></div>
+</div>
+<img src="assets/logo-white.png" alt="Quantyca" style="position:absolute;left:128px;top:96px;width:212px;height:50px;object-fit:contain">
+</section>
+<section id="slide24-tool-intuizione" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">04 · Acting</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">An example</h2>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;background:#f6f6f6;border-radius:16px;padding:32px 48px">
+<div style="display:flex;flex-direction:row;justify-content:end"><div style="display:flex;flex-direction:column;gap:8px;max-width:1100px"><p style="font-size:24px;font-weight:500;color:#838383;text-align:right">User</p><p style="font-size:30px;line-height:1.45;color:#212529;background:#ecd3de;border-radius:24px 24px 6px 24px;padding:20px 32px">What is the status of order <b>#A-7842</b> for customer <b>Rossi SpA</b>?</p></div></div>
+<div style="display:flex;flex-direction:row;justify-content:start"><div style="display:flex;flex-direction:column;gap:8px;max-width:1300px"><p style="font-size:24px;font-weight:500;color:#a1245a">Agent</p><p style="font-size:30px;line-height:1.45;color:#212529;background:#ffffff;border:1px solid #dee2e6;border-radius:24px 24px 24px 6px;padding:20px 32px">Order #A-7842 (Rossi SpA) has been <b>in shipping</b> since April 12, expected delivery <b>April 16</b>. DHL tracking 1234567890.</p></div></div>
+</div>
+<p style="font-size:30px;line-height:1.5;color:#212529;text-align:center">A precise, specific, verifiable answer. Yet this data <b>does not exist in the model's training</b> — no order, no company ERP is part of what it was trained on.</p>
+<p style="font-size:40px;font-weight:600;color:#a1245a;text-align:center">So how did it do it?</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide25-tool-meccanica" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">04 · Acting</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The mechanics of a tool call</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px;align-items:center">
+<img src="svg/slide25-tool-call.svg" alt="Diagram: User → Harness → Model → CRM with 8 numbered arrows" style="width:1240px;height:564px;object-fit:contain">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:26px;line-height:1.45;color:#212529">The model executed nothing — it emitted a structured request, and the <b>harness</b> did the work.</p>
+<p style="font-size:26px;line-height:1.45;color:#212529">Each tool call adds at least <b>two round-trips</b>. On complex tasks, latency and cost multiply.</p>
+<p style="font-size:26px;line-height:1.45;color:#212529">The model picks the tool by reading the <b>descriptions in the system prompt</b>. Ambiguous description = wrong choice.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide23-apertura-tool" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">04 · Acting</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">From the agent that talks to the agent that acts</h2>
+</div>
+<p style="font-size:30px;line-height:1.45;color:#212529">Until now, a model that generates text. From here on, a model that decides which actions to take in the world.</p>
+<img src="svg/slide23-harness.svg" alt="Diagram: User → Harness (orchestrator) → LLM model + external world" style="width:1664px;height:340px;object-fit:contain">
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:28px;line-height:1.45;color:#212529">Fundamental distinction: the model does not execute. It emits structured requests for execution. Execution is done by the software around it — the <b>harness</b>.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide26-contesto-tool" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">04 · Acting</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">What ends up in the context when tools are used</h2>
+</div>
+<table style="font-size:26px;color:#212529">
+<tr style="background:#161719"><th style="width:22%;color:#ffffff">Component</th><th style="width:22%;color:#ffffff">When</th><th style="width:32%;color:#ffffff">Typical size</th><th style="width:24%;color:#ffffff">Persistence</th></tr>
+<tr><td style="font-weight:600">Tool definition</td><td>Once, at the top</td><td>100–300 tokens × no. of tools</td><td>Whole conversation</td></tr>
+<tr style="background:#f6f6f6"><td style="font-weight:600">Tool call</td><td>At every invocation</td><td>Small (name + arguments)</td><td>Whole conversation</td></tr>
+<tr><td style="font-weight:600">Tool result</td><td>At every invocation</td><td>Variable — from tens to tens of thousands of tokens</td><td>Whole conversation</td></tr>
+<tr style="background:#f6f6f6"><td style="font-weight:600">User/assistant turns</td><td>As before</td><td>Small</td><td>Whole conversation</td></tr>
+</table>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:26px;line-height:1.45;color:#212529"><b>Example:</b> a customer-service agent with 3 tools (query_crm, search_kb, create_ticket) — ~600 tokens (definitions) + ~200 (call) + ~12k (result) = <b>~13k tokens of overhead</b> before the answer.</p>
+</div>
+<p style="font-size:26px;line-height:1.45;color:#212529">The context doesn't only hold the exchange between user and agent. It also holds everything the tools fetched from the outside world — every result, every returned document, every API response. And nothing is ever cleaned up automatically.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide27-context-rot" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">04 · Acting</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Tools accelerate context rot</h2>
+</div>
+<img src="svg/slide27-context-rot.svg" alt="Two charts: pure conversation (linear growth) vs with tools (step growth)" style="width:1664px;height:466px;object-fit:contain">
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:28px;line-height:1.45;color:#212529">Tools answer the model's most obvious limit on its own: it doesn't know what it doesn't know, and it can't act in the world. But every tool call deposits its result in the context — and there it stays for the whole session.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide27-context-rot-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">04 · Acting</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Keeping tool overhead under control</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#838383">01 · Only the tools you need</h3>
+<p style="font-size:28px;line-height:1.45;color:#212529">Every definition pays a fixed cost even if the tool is never called.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#838383">02 · Size the tool results</h3>
+<p style="font-size:28px;line-height:1.45;color:#212529">A tool that returns 50k raw tokens isn't a well-designed tool — it's a burden.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#838383">03 · Specific over generic</h3>
+<p style="font-size:28px;line-height:1.45;color:#212529">A tool that does one thing only gets chosen more precisely.</p>
+</div>
+</div>
+<div style="flex:1"></div>
+<p style="font-size:28px;line-height:1.45;color:#838383">The next technique — sub-agents — is a way to avoid paying this cost.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide28-subagent-problema" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">04 · Acting</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Sub-agents: delegating to manage context better</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:64px;align-items:center">
+<div style="flex:1;display:flex;flex-direction:column;gap:24px">
+<p style="font-size:30px;line-height:1.45;color:#212529"><b>The problem:</b> every tool result stays in the context for the whole session — and saturates it.</p>
+<p style="font-size:26px;line-height:1.5;color:#212529"><b>The analogy:</b> the project manager doesn't personally read the 200 due-diligence documents. They ask a colleague to do it — and to come back with a two-page executive summary. The manager keeps their strategic context clean. The colleague gets their hands dirty.</p>
+<p style="font-size:26px;line-height:1.5;color:#212529"><b>The pattern:</b> a child agent receives a delegated task, works in its own isolated context, and returns only the synthesized result to the parent. The parent's context is never contaminated by the process.</p>
+</div>
+<img src="svg/slide28-subagent.svg" alt="Parent/child diagram: delegates task, returns summary" style="width:400px;height:560px;object-fit:contain">
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide29-subagent-meccanica" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">04 · Acting</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">How the sub-agent pattern works</h2>
+</div>
+<img src="svg/slide29-subagent-tree.svg" alt="Hierarchical diagram: parent agent with 3 sub-agents" style="width:1664px;height:592px;object-fit:contain">
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide29-subagent-meccanica-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">04 · Acting</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Sub-agents: benefits and real examples</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#ffffff;border:2px solid #a1245a;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">Benefits</h3>
+<ul style="font-size:28px;line-height:1.45;padding-left:40px;color:#212529">
+<li><b>Token savings</b> — the parent doesn't re-iterate over the children's context</li>
+<li><b>Isolation</b> — the parent sees only the result</li>
+<li><b>Parallelization</b> — several children at once</li>
+<li><b>Specialization</b> — their own prompts and tools</li>
+<li><b>Error containment</b> — a child's failure doesn't affect the parent</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#838383">Real examples</h3>
+<ul style="font-size:28px;line-height:1.45;padding-left:40px;color:#212529">
+<li><b>Claude Code</b> — codebase exploration</li>
+<li><b>Deep Research</b> — parallel sources</li>
+<li><b>OpenClaw</b> — generalist multi-sub-agent agent</li>
+</ul>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide30-subagent-effetti" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">04 · Acting</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Sub-agents aren't free</h2>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:32px;font-weight:600;line-height:1.2;color:#161719"><span style="color:#a1245a">01</span>&#160; Information loss</h3>
+<p style="font-size:26px;line-height:1.45;color:#212529">The parent sees only what the child chooses to report. Details dropped in the summary are unrecoverable.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:32px;font-weight:600;line-height:1.2;color:#161719"><span style="color:#a1245a">02</span>&#160; Complex debugging</h3>
+<p style="font-size:26px;line-height:1.45;color:#212529">Traces become trees, often not fully persisted. Errors are hard to reproduce.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:32px;font-weight:600;line-height:1.2;color:#161719"><span style="color:#a1245a">03</span>&#160; Silent compound errors</h3>
+<p style="font-size:26px;line-height:1.45;color:#212529">A child that gets it wrong produces a “reasonable” summary that the parent uses as a basis. The error hides in the handoffs.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:32px;font-weight:600;line-height:1.2;color:#161719"><span style="color:#a1245a">04</span>&#160; Prompt injection</h3>
+<p style="font-size:26px;line-height:1.45;color:#212529">A sub-agent with web access can be manipulated by external content and contaminate the summary.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide30-subagent-effetti-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">04 · Acting</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">When sub-agents win — and when they lose</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#ffffff;border:2px solid #a1245a;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">Where they win</h3>
+<p style="font-size:28px;line-height:1.45;color:#212529">Sub-agents win on exploratory, parallelizable tasks, or tasks with specialized contexts. They lose where traceability is critical.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#838383">Traceability</h3>
+<p style="font-size:28px;line-height:1.45;color:#212529">If you need to explain what the agent did step by step — audit, compliance, debugging — the sub-agent pattern makes everything harder.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#838383">Cost</h3>
+<p style="font-size:28px;line-height:1.45;color:#212529">Measure, don't assume. Sometimes a sub-agent costs less because the parent doesn't pay for the raw result.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide31-loop-agentico" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">04 · Acting</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Loop 3/4: the agent with tools</h2>
+</div>
+<p style="font-size:30px;line-height:1.45;color:#838383">Same conversational loop, with a tool sub-cycle inside the model's turn</p>
+<img src="svg/slide31-loop-agentico.svg" alt="Conversational pentagon with a tool sub-cycle inside the Model node" style="width:1664px;height:540px;object-fit:contain">
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide31-loop-agentico-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">04 · Acting</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Loop 3/4: what changes inside the turn</h2>
+</div>
+<p style="font-size:32px;line-height:1.5;color:#212529">The outer loop is identical to before. Only the <b>Model</b> node changes: instead of answering immediately, it can emit a tool call, wait for the result, and iterate N times before closing the turn. The number of inner cycles is not predetermined — the model decides it at runtime.</p>
+<div style="flex:1"></div>
+<div style="background:#a1245a;border-radius:8px;padding:28px 40px">
+<p style="font-size:30px;font-weight:500;line-height:1.4;color:#ffffff">Mandatory limits in production: a cap on the number of tool calls per turn, a timeout for each execution, a token budget per session. Without them, the agent can enter infinite loops.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide32-eval" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">04 · Acting</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Evals: measuring the quality of an agentic system</h2>
+</div>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:30px;line-height:1.45;color:#212529">Test suites for agentic systems. Similar to automated software tests, with three relevant differences.</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#838383">Non-binary outputs</h3>
+<p style="font-size:28px;line-height:1.45;color:#212529">An answer can be correct, partial, or right in content but not in tone. Other models are often used as judges (LLM-as-judge).</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#838383">Non-deterministic</h3>
+<p style="font-size:28px;line-height:1.45;color:#212529">The same input doesn't always produce the same output. Each test is run N times and a distribution is observed.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#838383">Datasets to curate</h3>
+<p style="font-size:28px;line-height:1.45;color:#212529">Not generated automatically: you need to collect real cases, edge cases and adversarial examples. It is an artifact that grows over time.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide32-eval-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">04 · Acting</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Evals: the handcrafted version</h2>
+</div>
+<img src="svg/slide32-eval-loop-1.svg" alt="Handcrafted eval: a human creates the test set, a human evaluates the output" style="width:1664px;height:555px;object-fit:contain">
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide32-eval-3" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">04 · Acting</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Evals: the scaled version</h2>
+</div>
+<img src="svg/slide32-eval-loop-2.svg" alt="Scaled eval: human for seed and validation, an LLM expands, an optimized judge agent scores" style="width:1100px;height:416px;object-fit:contain">
+<ul style="font-size:26px;line-height:1.45;padding-left:40px;color:#212529">
+<li>Useful to validate changes to the system prompt, new tools or sub-agent reconfigurations.</li>
+<li>On agentic projects, building the eval takes a significant share of the work.</li>
+<li>When someone talks about an “improved prompt”, ask on which eval suite the difference was measured.</li>
+</ul>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide-div-sec5" style="background:#161719;color:#ffffff;font-family:'Poppins', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:24px">
+<img src="assets/blueprint-white.svg" alt="" style="position:absolute;left:0px;bottom:0px;width:1920px;height:485px;object-fit:contain;opacity:0.18">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#d092ad">Section 5 of 7</p>
+<h1 style="font-size:120px;font-weight:600;line-height:1.05;color:#ffffff">Extending the agent</h1>
+<p style="font-size:40px;font-weight:400;color:#cac9ca">The five families of tools</p>
+<div style="display:grid;grid-template-columns:repeat(7, 1fr);gap:24px;padding:64px 0px 0px 0px">
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">01</p><p style="font-size:24px;line-height:1.3;color:#838383">Understanding the LLM</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">02</p><p style="font-size:24px;line-height:1.3;color:#838383">Conversing</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">03</p><p style="font-size:24px;line-height:1.3;color:#838383">Choosing the model</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">04</p><p style="font-size:24px;line-height:1.3;color:#838383">Acting</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:4px solid #a1245a;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#ffffff">05</p><p style="font-size:24px;font-weight:600;line-height:1.3;color:#ffffff">Extending the agent</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">06</p><p style="font-size:24px;line-height:1.3;color:#838383">Coding</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">07</p><p style="font-size:24px;line-height:1.3;color:#838383">Designing the context</p></div>
+</div>
+<img src="assets/logo-white.png" alt="Quantyca" style="position:absolute;left:128px;top:96px;width:212px;height:50px;object-fit:contain">
+</section>
+<section id="slide33-apertura-tipi-tool" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Tool types — the catalogue</h2>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:32px">
+<p style="font-size:36px;line-height:1.45;color:#212529">So far: <b>the mechanics</b> of the tool call. From here: <b>which tools</b> actually exist.</p>
+<p style="font-size:28px;line-height:1.45;color:#838383">5 categories that cover almost all agents in production today.</p>
+<div style="display:grid;grid-template-columns:repeat(5, 1fr);gap:24px;background:#f6f6f6;border-radius:16px;padding:48px 40px">
+<div style="display:flex;flex-direction:column;gap:12px;border-top:4px solid #a1245a;padding:20px 0px 0px 0px"><p style="font-size:44px;font-weight:600;color:#a1245a">01</p><p style="font-size:30px;font-weight:600;line-height:1.3;color:#161719">API tools</p></div>
+<div style="display:flex;flex-direction:column;gap:12px;border-top:4px solid #a1245a;padding:20px 0px 0px 0px"><p style="font-size:44px;font-weight:600;color:#a1245a">02</p><p style="font-size:30px;font-weight:600;line-height:1.3;color:#161719">Knowledge access</p></div>
+<div style="display:flex;flex-direction:column;gap:12px;border-top:4px solid #a1245a;padding:20px 0px 0px 0px"><p style="font-size:44px;font-weight:600;color:#a1245a">03</p><p style="font-size:30px;font-weight:600;line-height:1.3;color:#161719">MCP</p></div>
+<div style="display:flex;flex-direction:column;gap:12px;border-top:4px solid #a1245a;padding:20px 0px 0px 0px"><p style="font-size:44px;font-weight:600;color:#a1245a">04</p><p style="font-size:30px;font-weight:600;line-height:1.3;color:#161719">Browser use</p></div>
+<div style="display:flex;flex-direction:column;gap:12px;border-top:4px solid #a1245a;padding:20px 0px 0px 0px"><p style="font-size:44px;font-weight:600;color:#a1245a">05</p><p style="font-size:30px;font-weight:600;line-height:1.3;color:#161719">Code execution</p></div>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide34-api-tools" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">API tools — the archetype</h2>
+</div>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:20px 40px">
+<p style="font-size:28px;line-height:1.45;color:#212529">Any <b>HTTP endpoint</b> becomes an agent capability once you define its API schema: name, description, parameters, authentication.</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:48px;align-items:start">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:32px;font-weight:600;line-height:1.2;color:#161719">Enterprise examples</h3>
+<table style="font-size:24px;color:#212529">
+<tr style="background:#161719"><th style="width:42%;color:#ffffff">System</th><th style="width:58%;color:#ffffff">Typical operation</th></tr>
+<tr><td><b>CRM</b></td><td>Customer lookup, record update</td></tr>
+<tr style="background:#f6f6f6"><td><b>Relational DB</b></td><td>Queries on operational data</td></tr>
+<tr><td><b>Ticketing</b></td><td>Open ticket, check status</td></tr>
+<tr style="background:#f6f6f6"><td><b>Transactional email</b></td><td>Notifications, communications</td></tr>
+<tr><td><b>ERP</b></td><td>Orders, inventory</td></tr>
+<tr style="background:#f6f6f6"><td><b>Payments (Stripe)</b></td><td>Charge, refund, subscription</td></tr>
+</table>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px">
+<h3 style="font-size:32px;font-weight:600;line-height:1.2;color:#161719">Anatomy of a tool definition</h3>
+<img src="svg/slide34-tool-definition.svg" alt="JSON snippet of a tool definition with side annotations on name, description and input_schema" style="width:808px;height:400px;object-fit:contain">
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide34-api-tools-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">API tools — the principle of least privilege</h2>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:40px">
+<p style="font-size:44px;font-weight:500;line-height:1.35;color:#161719">A read-only tool on the CRM is <span style="color:#a1245a">not the same</span> as a tool that moves money.</p>
+<div style="background:#a1245a;border-radius:8px;padding:32px 40px">
+<p style="font-size:32px;font-weight:500;line-height:1.45;color:#ffffff">Expose to the agent <b>only</b> the tools strictly needed for the task, with the narrowest possible scope.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide35-knowledge-family" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The knowledge family — 3 patterns</h2>
+</div>
+<p style="font-size:32px;line-height:1.45;color:#212529">Three ways to access knowledge that is not in the training data.</p>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center">
+<img src="svg/slide35-knowledge-scale.svg" alt="Three-step staircase: RAG, Search-as-a-tool, Deep Research in increasing order of sophistication" style="width:1664px;height:296px;object-fit:contain">
+</div>
+<div style="background:#a1245a;border-radius:8px;padding:28px 40px">
+<p style="font-size:30px;font-weight:500;line-height:1.45;color:#ffffff">When a vendor pitches an AI product to the company: <b>how does it know our data?</b> RAG over which base, kept up to date how, with which access policies?</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide35-knowledge-family-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Three patterns, compared</h2>
+</div>
+<div style="flex:1;display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#f6f6f6;border-radius:16px;padding:40px">
+<p style="font-size:24px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:#838383">Architectural pattern</p>
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#161719">RAG</h3>
+<ul style="font-size:26px;line-height:1.45;padding-left:32px">
+<li>A retriever extracts the relevant chunks <b>before</b> generation</li>
+<li>The chunks are injected into the context; the answer is grounded in proprietary knowledge</li>
+<li>The model does not decide <i>whether</i> to search — the search always happens</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#f6f6f6;border-radius:16px;padding:40px">
+<p style="font-size:24px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:#838383">Tool</p>
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#161719">Search-as-a-tool</h3>
+<ul style="font-size:26px;line-height:1.45;padding-left:32px">
+<li>Search becomes a tool call: the model decides <b>when, what and how</b> to search</li>
+<li>Enables iteration: search, read, refine, search again</li>
+<li>Solves the knowledge cutoff dynamically</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#ffffff;border:2px solid #a1245a;border-radius:16px;padding:40px">
+<p style="font-size:24px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:#a1245a">Agentic system</p>
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">Deep Research</h3>
+<ul style="font-size:26px;line-height:1.45;padding-left:32px">
+<li>Planning, parallel sub-agents, steering loop, final synthesis with citations</li>
+<li>Combines RAG and search, orchestrated over multiple phases</li>
+<li><i>Details on the next slide</i></li>
+</ul>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide36-deep-research" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Anatomy of Deep Research</h2>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
+<img src="svg/slide36-deep-research.svg" alt="Four-phase Deep Research diagram: plan elicitation, parallel retrieval, steering loop returning from phase 3 to phase 2, final synthesis" style="width:1040px;height:384px;object-fit:contain">
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px 48px;background:#f6f6f6;border-radius:16px;padding:28px 40px">
+<p style="font-size:24px;line-height:1.45;color:#212529"><span style="color:#a1245a"><b>F1 — Plan elicitation</b></span> · the lead agent analyses the request and produces a structured plan.</p>
+<p style="font-size:24px;line-height:1.45;color:#212529"><span style="color:#a1245a"><b>F2 — Parallel retrieval</b></span> · sub-agents with isolated context explore different sources simultaneously.</p>
+<p style="font-size:24px;line-height:1.45;color:#212529"><span style="color:#a1245a"><b>F3 — Steering loop</b></span> · the lead agent compares results with the plan and spawns new sub-agents on the gaps.</p>
+<p style="font-size:24px;line-height:1.45;color:#212529"><span style="color:#a1245a"><b>F4 — Final synthesis</b></span> · integration into a structured document with citations — the user only sees this.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide51-conoscenza-problema" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Knowledge modelling <span style="color:#838383">1/3</span></h2>
+<p style="font-size:32px;line-height:1.3;color:#838383">From data to information architecture</p>
+</div>
+<p style="font-size:28px;line-height:1.45;color:#212529">Raw data is not enough. To be reusable — by users and by agents — it must be enriched with <b>context</b> and <b>domain semantics</b>: technically the information is there, practically it is not actionable.</p>
+<div style="flex:1;display:flex;flex-direction:row;gap:48px;align-items:center">
+<img src="svg/slide49-piramide-ia.svg" alt="DIKW pyramid — from data to intelligence" style="width:640px;height:300px;object-fit:contain">
+<ul style="flex:1;font-size:26px;line-height:1.45;padding-left:32px;color:#212529">
+<li><b>Data</b> — raw physical assets (tables, files, topics, buckets, unstructured content)</li>
+<li><b>+ Metadata → Information</b> — basic understandability</li>
+<li><b>+ Relationships → Knowledge</b> — domain semantics: concepts, attributes, explicit relationships</li>
+<li><b>+ Algorithms → Intelligence</b> — insights turned into business decisions and actions</li>
+</ul>
+</div>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:20px 40px">
+<p style="font-size:26px;line-height:1.45;color:#212529">Information architecture logically comes before AI adoption — even if in practice the two happen <b>in parallel</b>, because AI is the opportunity to finally do it.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide52-conoscenza-elementi" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Knowledge modelling <span style="color:#838383">2/3</span></h2>
+<p style="font-size:32px;line-height:1.3;color:#838383">The Enterprise Knowledge Graph</p>
+</div>
+<p style="font-size:28px;line-height:1.45;color:#212529">A virtual <b>Enterprise Knowledge Graph</b> connects domain semantic knowledge to platform data and context metadata: a shared context for multiple AI agents.</p>
+<div style="flex:1;display:flex;flex-direction:row;gap:48px;align-items:center">
+<img src="svg/slide50-ekg-trapezoid.svg" alt="Three-layer structure of the Enterprise Knowledge Graph" style="width:520px;height:372px;object-fit:contain">
+<ul style="flex:1;font-size:24px;line-height:1.45;padding-left:32px;color:#212529">
+<li><b>Enterprise ontology</b> — graph model: <i>concepts</i> (Customer, Product, Order), <i>attributes</i>, <i>relationships</i> (Product "bought by" Customer). More expressive than a Business Glossary.</li>
+<li><b>Data Products</b> — the unit of modularisation, ownership and deployment. Owner, lifecycle, data contract. Registered in the Data Product Catalog, accessible via a Marketplace.</li>
+<li><b>Physical assets + Semantic Linking</b> — tables, topics, buckets, unstructured content. Metadata tracks the vertical link between each asset and the ontology concepts.</li>
+</ul>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide52-conoscenza-elementi-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Enterprise Knowledge Graph — four pillars</h2>
+</div>
+<div style="flex:1;display:grid;grid-template-columns:repeat(4, 1fr);gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px;border-top:4px solid #a1245a;padding:24px 0px 0px 0px"><p style="font-size:44px;font-weight:600;color:#a1245a">01</p><p style="font-size:30px;line-height:1.4;color:#212529"><b>Domain knowledge</b> as a differentiating asset</p></div>
+<div style="display:flex;flex-direction:column;gap:16px;border-top:4px solid #a1245a;padding:24px 0px 0px 0px"><p style="font-size:44px;font-weight:600;color:#a1245a">02</p><p style="font-size:30px;line-height:1.4;color:#212529">An explicit link <b>semantics ↔ data</b></p></div>
+<div style="display:flex;flex-direction:column;gap:16px;border-top:4px solid #a1245a;padding:24px 0px 0px 0px"><p style="font-size:44px;font-weight:600;color:#a1245a">03</p><p style="font-size:30px;line-height:1.4;color:#212529"><b>Interoperability</b> between structured and unstructured</p></div>
+<div style="display:flex;flex-direction:column;gap:16px;border-top:4px solid #a1245a;padding:24px 0px 0px 0px"><p style="font-size:44px;font-weight:600;color:#a1245a">04</p><p style="font-size:30px;line-height:1.4;color:#212529">A <b>strategic, value-driven</b> approach</p></div>
+</div>
+<div style="background:#a1245a;border-radius:8px;padding:32px 40px">
+<p style="font-size:32px;font-weight:500;line-height:1.45;color:#ffffff">Building an EKG is <b>data &amp; information architecture</b>, not AI.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide53-conoscenza-skill" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Knowledge modelling <span style="color:#838383">3/3</span></h2>
+<p style="font-size:32px;line-height:1.3;color:#838383">Context for agents</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:row;gap:48px;align-items:center">
+<img src="svg/slide51-ekg-agenti.svg" alt="Retrieval and learning cycle between AI agents and the Enterprise Knowledge Graph" style="width:900px;height:425px;object-fit:contain">
+<div style="flex:1;display:flex;flex-direction:column;gap:28px">
+<p style="font-size:28px;line-height:1.45;color:#212529"><b>The EKG is the common context</b> that multiple AI agents share to improve search, data querying and support for users extracting insights.</p>
+<p style="font-size:26px;line-height:1.45;color:#212529"><span style="color:#a1245a"><b>Retrieval</b></span> — agents query the graph to retrieve reliable domain context and ground their answers in real data.</p>
+<p style="font-size:26px;line-height:1.45;color:#212529"><span style="color:#a1245a"><b>Learning</b></span> — agents help extend the graph, persisting new knowledge learned from experts or from unstructured content.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide53-conoscenza-skill-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The EKG as the enterprise skill</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#161719">Data reuse</h3>
+<p style="font-size:28px;line-height:1.45;color:#212529">Modular Data Products, recomposable for multiple use cases</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#161719">Shared semantics</h3>
+<p style="font-size:28px;line-height:1.45;color:#212529">Less ambiguity between business units</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#161719">Business ↔ IT gap</h3>
+<p style="font-size:28px;line-height:1.45;color:#212529">Languages brought closer, a widespread data culture</p>
+</div>
+</div>
+<div style="flex:1"></div>
+<div style="background:#a1245a;border-radius:8px;padding:32px 40px">
+<p style="font-size:30px;font-weight:500;line-height:1.45;color:#ffffff">The EKG is the enterprise form of the <b>skill</b>: a navigable map to the knowledge domains, linked to real data and governed. If your next AI project starts with <i>"let's take the PDFs and put them in a vector store"</i>, <b>stop</b> — start from the domains, the ontology, and the data products that expose them.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide37-mcp" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">MCP — the standard protocol for tools</h2>
+</div>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:32px;line-height:1.45;color:#212529"><i>MCP is to tools what <b>USB</b> is to devices. A standard connector, not a new device.</i></p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center">
+<img src="svg/slide37-mcp.svg" alt="MCP in 3 steps: discovery via list_tools, schema returned, tool definitions injected into the system prompt" style="width:1664px;height:360px;object-fit:contain">
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide37-mcp-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">MCP — what it is, and why it matters</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:32px;font-weight:600;line-height:1.2;color:#161719">What it is (and isn't)</h3>
+<ul style="font-size:24px;line-height:1.45;padding-left:32px">
+<li>It is <b>not</b> a new kind of tool, nor does it change the mechanics of the tool call</li>
+<li>It <b>is</b> a protocol that standardises <i>discovery</i> ("which tools do you offer?") and <i>invocation</i> (a uniform format)</li>
+<li>After discovery, the tool definitions land in the <b>system prompt</b> and stay there for the whole session</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:32px;font-weight:600;line-height:1.2;color:#161719">Why it matters</h3>
+<ul style="font-size:24px;line-height:1.45;padding-left:32px">
+<li>Reduces vendor lock-in: the same integration works with any compatible agent</li>
+<li>Hundreds of public servers: GitHub, Linear, Notion, Gmail, DBs — the <b>app-store layer for agents</b></li>
+<li><i>If a proprietary AI integration doesn't expose MCP, that's vendor lock-in.</i></li>
+</ul>
+</div>
+</div>
+<div style="background:#ffffff;border:2px solid #a1245a;border-radius:8px;padding:24px 40px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#a1245a">The catch</p>
+<p style="font-size:24px;line-height:1.45;color:#212529">Every connected MCP server costs tokens in the context: tool definitions are <b>always</b> in the system prompt. Connecting 10 "just in case" can fill half the context before the agent starts working. When a product claims "supports 50 MCPs", ask which ones are active <i>by default</i>.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide38-browser-use" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Browser use — the agent drives a browser</h2>
+</div>
+<p style="font-size:28px;line-height:1.45;color:#212529">The agent receives <b>screenshots</b> of the page and produces <b>actions</b>: clicks, scrolling, typing into forms, navigation.</p>
+<div style="display:flex;flex-direction:row;gap:16px">
+<p style="font-size:24px;background:#f6f6f6;padding:6px 20px;border-radius:24px;color:#212529">Claude Computer Use <span style="color:#838383">(Anthropic)</span></p>
+<p style="font-size:24px;background:#f6f6f6;padding:6px 20px;border-radius:24px;color:#212529">Browser Use <span style="color:#838383">(open source)</span></p>
+<p style="font-size:24px;background:#f6f6f6;padding:6px 20px;border-radius:24px;color:#212529">OpenAI Operator</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px;align-items:start">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<table style="font-size:24px;color:#212529">
+<tr style="background:#161719"><th style="width:45%;color:#ffffff">When you need it</th><th style="width:55%;color:#ffffff">Caveats</th></tr>
+<tr><td>Legacy SaaS with no API</td><td><b>Slow</b> — every action is a round-trip with a screenshot</td></tr>
+<tr style="background:#f6f6f6"><td>Internal systems with no programmatic interface</td><td><b>Expensive</b> — screenshots as input consume many tokens</td></tr>
+<tr><td>Web automation on sites without endpoints</td><td><b>Opaque</b> — actions are seen, not structured, hard to audit</td></tr>
+</table>
+<p style="font-size:26px;line-height:1.45;color:#212529"><i>A <b>last-resort</b> choice, not a first one — it unlocks the long tail of enterprise automation.</i></p>
+</div>
+<img src="svg/slide38-browser-form.svg" alt="Partially filled 'New ticket' form with 4 annotations of the agent's actions: click, type, click dropdown, select High" style="width:720px;height:417px;object-fit:contain">
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide39-code-execution" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Bash / code execution — the universal tool</h2>
+</div>
+<p style="font-size:30px;line-height:1.45;color:#212529">The agent can run shell commands or code in a <b>sandboxed environment</b>. Access to the filesystem, libraries, scripts.</p>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#ffffff;border:2px solid #a1245a;border-radius:16px;padding:32px 36px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#a1245a">Universal</p>
+<p style="font-size:26px;line-height:1.45;color:#212529">It doesn't unlock one specific capability. It unlocks <b>the space of capabilities</b>: if there's bash, there's access to the whole software universe.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#ffffff;border:2px solid #a1245a;border-radius:16px;padding:32px 36px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#a1245a">Generative</p>
+<p style="font-size:26px;line-height:1.45;color:#212529">Instead of 20 predefined tools, the agent <b>writes a script</b> that solves the specific task. It is the heart of coding agents.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#ffffff;border:2px solid #a1245a;border-radius:16px;padding:32px 36px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#a1245a">Composable</p>
+<p style="font-size:26px;line-height:1.45;color:#212529">Lets you compose capability packages — <b>skills</b>: folders of files, instructions and scripts the agent opens and runs when needed. No bash, no skills.</p>
+</div>
+</div>
+<div style="background:#a1245a;border-radius:8px;padding:24px 40px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#ecd3de">Most powerful tool = most dangerous tool</p>
+<p style="font-size:28px;font-weight:500;line-height:1.45;color:#ffffff">Always sandboxed: isolated container, no access to private networks, no sensitive credentials in the environment, explicit resource limits.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide-div-sec6" style="background:#161719;color:#ffffff;font-family:'Poppins', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:24px">
+<img src="assets/blueprint-white.svg" alt="" style="position:absolute;left:0px;bottom:0px;width:1920px;height:485px;object-fit:contain;opacity:0.18">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#d092ad">Section 6 of 7</p>
+<h1 style="font-size:120px;font-weight:600;line-height:1.05;color:#ffffff">Coding</h1>
+<p style="font-size:40px;font-weight:400;color:#cac9ca">When the agent writes and runs code</p>
+<div style="display:grid;grid-template-columns:repeat(7, 1fr);gap:24px;padding:64px 0px 0px 0px">
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">01</p><p style="font-size:24px;line-height:1.3;color:#838383">Understanding the LLM</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">02</p><p style="font-size:24px;line-height:1.3;color:#838383">Conversing</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">03</p><p style="font-size:24px;line-height:1.3;color:#838383">Choosing the model</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">04</p><p style="font-size:24px;line-height:1.3;color:#838383">Acting</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">05</p><p style="font-size:24px;line-height:1.3;color:#838383">Extending the agent</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:4px solid #a1245a;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#ffffff">06</p><p style="font-size:24px;font-weight:600;line-height:1.3;color:#ffffff">Coding</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">07</p><p style="font-size:24px;line-height:1.3;color:#838383">Designing the context</p></div>
+</div>
+<img src="assets/logo-white.png" alt="Quantyca" style="position:absolute;left:128px;top:96px;width:212px;height:50px;object-fit:contain">
+</section>
+<section id="slide40-apertura-sec6" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">06 · Coding</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The agent that writes and runs code</h2>
+</div>
+<div style="flex:1"></div>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:48px 56px">
+<p style="font-size:44px;font-weight:500;line-height:1.35;color:#161719">Code is the <span style="color:#a1245a">tool of last resort</span>. It doesn't unlock one specific capability — it unlocks <span style="color:#a1245a">arbitrary capabilities</span> without having to define them in advance.</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px">
+<div style="flex:1;display:flex;flex-direction:row;gap:24px;align-items:baseline;border-top:2px solid #a1245a;padding:24px 0px 0px 0px">
+<p style="font-size:36px;font-weight:600;color:#a1245a">01</p>
+<p style="font-size:32px;line-height:1.4;color:#212529"><b>Code as tool</b> — internal to the agent</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:row;gap:24px;align-items:baseline;border-top:2px solid #a1245a;padding:24px 0px 0px 0px">
+<p style="font-size:36px;font-weight:600;color:#a1245a">02</p>
+<p style="font-size:32px;line-height:1.4;color:#212529"><b>Code as product</b> — the final deliverable</p>
+</div>
+</div>
+<p style="font-size:28px;line-height:1.45;color:#838383">Two ways of using code in an agent. They shape everything else.</p>
+<div style="flex:1"></div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide41-code-tool-vs-product" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">06 · Coding</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Code as tool vs code as product</h2>
+</div>
+<table style="font-size:28px;color:#212529">
+<tr style="background:#161719"><th style="width:20%;color:#ffffff"></th><th style="width:40%;color:#ffffff">Code as tool</th><th style="width:40%;color:#ffffff">Code as product</th></tr>
+<tr><td><b>What it does</b></td><td>Writes code to solve a task internally; the code is <b>not the deliverable</b></td><td>Writes software <b>as the deliverable</b>: it is the result of the work</td></tr>
+<tr style="background:#f6f6f6"><td><b>Code lifecycle</b></td><td><b>Throwaway</b>: run once, often invisible to the user, not saved</td><td><b>Persistent</b>: versioned, committed, maintained over time</td></tr>
+</table>
+<div style="display:flex;flex-direction:row;gap:40px">
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#f6f6f6;border-radius:16px;padding:24px 40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#a1245a">Example · code as tool</p>
+<p style="font-size:30px;line-height:1.45;color:#212529">Claude for PowerPoint</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:8px;background:#f6f6f6;border-radius:16px;padding:24px 40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#a1245a">Example · code as product</p>
+<p style="font-size:30px;line-height:1.45;color:#212529">Claude Code, Cursor, GitHub Copilot</p>
+</div>
+</div>
+<div style="background:#a1245a;border-radius:8px;padding:28px 40px">
+<p style="font-size:30px;font-weight:500;line-height:1.4;color:#ffffff">When a vendor says <i>"our AI writes code"</i>, ask <b>which of the two</b>. They are two worlds with different beneficiaries, risks and value metrics.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide42-code-as-tool-pattern" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">06 · Coding</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Code as tool — the operating pattern</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:baseline;background:#f6f6f6;border-left:6px solid #1ab197;border-radius:8px;padding:16px 40px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#106a5b">User</p>
+<p style="font-size:30px;line-height:1.4;color:#212529"><i>"What was the average revenue per quarter in 2023?"</i></p>
+</div>
+<div style="display:flex;flex-direction:row;justify-content:center">
+<img src="svg/slide42-code-as-tool-flow.svg" alt="Six-step flow: receives the task, decides, writes a script, runs it, reads the output, answers; steps 2 to 5 sit in a dashed box marked invisible to the user" style="width:1440px;height:384px;object-fit:contain">
+</div>
+<div style="display:flex;flex-direction:row;gap:40px">
+<div style="flex:1;background:#f6f6f6;border-radius:16px;padding:24px 40px">
+<p style="font-size:28px;line-height:1.45;color:#212529">The user sees the <b>answer</b>, not the code. The code is <b>internal plumbing</b>.</p>
+</div>
+<div style="flex:1;background:#f6f6f6;border-radius:16px;padding:24px 40px">
+<p style="font-size:28px;line-height:1.45;color:#212529">An LLM "by hand" gets the average of 50 numbers wrong. With <b>Python</b> it computes it exactly.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide43-code-as-product" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">06 · Coding</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Code as product — coding agents and reliability</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:16px">
+<p style="font-size:26px;background:#ecd3de;color:#611636;padding:8px 24px;border-radius:999px">Claude Code</p>
+<p style="font-size:26px;background:#ecd3de;color:#611636;padding:8px 24px;border-radius:999px">Cursor</p>
+<p style="font-size:26px;background:#ecd3de;color:#611636;padding:8px 24px;border-radius:999px">GitHub Copilot</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#838383">Scale</h3>
+<p style="font-size:28px;line-height:1.45;color:#212529">The same pattern as code as tool (<i>write–run–verify</i>), multiplied across a real project: <b>many files, dependencies, test suites, git, pull requests</b>. <b>Sub-agents</b> (exploring the codebase) and <b>skills</b> (encoding project conventions) come back into play.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#ffffff;border:2px solid #a1245a;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">TDD as a reliability mechanism</h3>
+<ul style="font-size:28px;line-height:1.45;padding-left:40px;color:#212529">
+<li>Expected behaviour is specified as a test <i>before</i> the code is generated.</li>
+<li>The test is a <b>contract</b>: the agent knows when it's done.</li>
+<li>The test is a <b>deterministic feedback loop</b>: the agent knows whether it's on the right track.</li>
+</ul>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide43-code-as-product-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">06 · Coding</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Code as product — who does what</h2>
+</div>
+<div style="flex:1;display:flex;flex-direction:row;justify-content:center;align-items:center">
+<img src="svg/slide43-code-as-product.svg" alt="Three zones: the human defines tests and spec, the agent writes the code, the test runner verifies, with a fail loop back to the agent" style="width:1664px;height:496px;object-fit:contain">
+</div>
+<div style="background:#a1245a;border-radius:8px;padding:28px 40px">
+<p style="font-size:30px;font-weight:500;line-height:1.4;color:#ffffff">The human role shifts to <b>defining the contract</b> and <b>supervision</b>.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide44-quarto-loop" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">06 · Coding</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Loop 4/4: with deterministic verification</h2>
+</div>
+<p style="font-size:28px;line-height:1.45;color:#838383">1st <b>atomic</b> (token) · 2nd <b>conversational</b> (turn) · 3rd <b>with tools</b> (action) · 4th <span style="color:#a1245a"><b>with code</b> (verification)</span></p>
+<div style="flex:1;display:flex;flex-direction:row;justify-content:center;align-items:center">
+<img src="svg/slide44-quarto-loop.svg" alt="Four-node loop: task, write code, run in sandbox, verify; deterministic feedback returns to write code on fail, and pass leads to done" style="width:1480px;height:545px;object-fit:contain">
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide44-quarto-loop-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">06 · Coding</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Loop 4/4: the same signal, twice</h2>
+</div>
+<div style="flex:1;display:flex;flex-direction:row;gap:40px;align-items:center">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#f6f6f6;border-radius:16px;padding:48px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#a1245a">At runtime</p>
+<p style="font-size:32px;line-height:1.45;color:#212529">The agent <b>corrects itself</b>. The test output comes back into the context as a <b>clear signal</b>: more attempts, converging on code that works.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#ffffff;border:2px solid #a1245a;border-radius:16px;padding:48px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#a1245a">In training</p>
+<p style="font-size:32px;line-height:1.45;color:#212529">The same loop is the heart of <b>RL on code</b>: pass/fail as the <b>reward</b>. Clear signal = effective retraining. LLMs improve at code faster than in domains with ambiguous feedback.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide45-verificabilita-automazione" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">06 · Coding</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Verifiability as a predictor of automation</h2>
+</div>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:28px;line-height:1.45;color:#212529">If a knowledge profession has <b>immediately and binarily verifiable output</b>, it faces <b>high automation pressure</b>. If success requires <b>qualitative judgement, negotiation, social context</b>, the pressure is lower — at least for now.</p>
+</div>
+<table style="font-size:26px;color:#212529">
+<tr style="background:#161719"><th style="width:50%;color:#ffffff">High verifiability → high pressure</th><th style="width:50%;color:#ffffff">Low verifiability → low pressure</th></tr>
+<tr><td>Writing code with tests</td><td>Business strategy</td></tr>
+<tr style="background:#f6f6f6"><td>Debugging</td><td>Negotiation</td></tr>
+<tr><td>Logistics optimisation (routing, scheduling)</td><td>Leadership</td></tr>
+<tr style="background:#f6f6f6"><td>Mathematical proof in a formal system</td><td>Complex consultative selling</td></tr>
+<tr><td>Structural calculation and physical simulation</td><td>Medical diagnosis in ambiguous cases</td></tr>
+<tr style="background:#f6f6f6"><td>Accounting reconciliation</td><td>Ethical decisions</td></tr>
+</table>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide45-verificabilita-automazione-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">06 · Coding</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Caveat: verifiable is not fully replaceable</h2>
+</div>
+<p style="font-size:30px;line-height:1.45;color:#838383">We saw that <b>in code</b> AI improves quickly because the feedback is clear. Generalising, a human role remains:</p>
+<div style="display:flex;flex-direction:row;gap:40px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;border-top:2px solid #a1245a;padding:24px 0px 0px 0px"><p style="font-size:36px;font-weight:600;color:#a1245a">01</p><p style="font-size:32px;line-height:1.4;color:#212529">Defining the contract</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;border-top:2px solid #a1245a;padding:24px 0px 0px 0px"><p style="font-size:36px;font-weight:600;color:#a1245a">02</p><p style="font-size:32px;line-height:1.4;color:#212529">Handling out-of-pattern cases</p></div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;border-top:2px solid #a1245a;padding:24px 0px 0px 0px"><p style="font-size:36px;font-weight:600;color:#a1245a">03</p><p style="font-size:32px;line-height:1.4;color:#212529">Answering for the consequences</p></div>
+</div>
+<div style="flex:1"></div>
+<div style="background:#a1245a;border-radius:8px;padding:28px 40px">
+<p style="font-size:30px;font-weight:500;line-height:1.4;color:#ffffff">The pattern shifts the work; it doesn't always eliminate it.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide-div-sec7" style="background:#161719;color:#ffffff;font-family:'Poppins', Arial, sans-serif;padding:128px;display:flex;flex-direction:column;justify-content:center;gap:24px">
+<img src="assets/blueprint-white.svg" alt="" style="position:absolute;left:0px;bottom:0px;width:1920px;height:485px;object-fit:contain;opacity:0.18">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#d092ad">Section 7 of 7</p>
+<h1 style="font-size:120px;font-weight:600;line-height:1.05;color:#ffffff">Designing the context</h1>
+<p style="font-size:40px;font-weight:400;color:#cac9ca">What surrounds the model</p>
+<div style="display:grid;grid-template-columns:repeat(7, 1fr);gap:24px;padding:64px 0px 0px 0px">
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">01</p><p style="font-size:24px;line-height:1.3;color:#838383">Understanding the LLM</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">02</p><p style="font-size:24px;line-height:1.3;color:#838383">Conversing</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">03</p><p style="font-size:24px;line-height:1.3;color:#838383">Choosing the model</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">04</p><p style="font-size:24px;line-height:1.3;color:#838383">Acting</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">05</p><p style="font-size:24px;line-height:1.3;color:#838383">Extending the agent</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:2px solid #4a4b4f;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#838383">06</p><p style="font-size:24px;line-height:1.3;color:#838383">Coding</p></div>
+<div style="display:flex;flex-direction:column;gap:8px;border-top:4px solid #a1245a;padding:16px 0px 0px 0px"><p style="font-size:28px;font-weight:600;color:#ffffff">07</p><p style="font-size:24px;font-weight:600;line-height:1.3;color:#ffffff">Designing the context</p></div>
+</div>
+<img src="assets/logo-white.png" alt="Quantyca" style="position:absolute;left:128px;top:96px;width:212px;height:50px;object-fit:contain">
+</section>
+<section id="slide46-context-engineering" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">07 · Designing the context</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Context engineering</h2>
+</div>
+<img src="svg/slide46-ce-opener.svg" alt="Four practices — system prompt, tools, sub-agents, skills — converge under the CONTEXT ENGINEERING banner, all inside the harness frame, which also holds the context and exchanges with the model in both directions" style="width:1664px;height:620px;object-fit:contain">
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide47-harness" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">07 · Designing the context</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The harness — who actually does things</h2>
+</div>
+<p style="font-size:30px;line-height:1.45;color:#212529">The <b>software that surrounds the model</b> and handles everything that isn't pure text generation.</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px 48px">
+<div style="display:flex;flex-direction:row;gap:20px"><p style="font-size:28px;font-weight:600;color:#a1245a">01</p><p style="font-size:24px;line-height:1.4;color:#212529"><b>Builds and maintains the context</b> — assembles system prompt, turn history, tool definitions and tool results on every API call</p></div>
+<div style="display:flex;flex-direction:row;gap:20px"><p style="font-size:28px;font-weight:600;color:#a1245a">02</p><p style="font-size:24px;line-height:1.4;color:#212529"><b>Runs the tools when the model calls them</b> — intercepts the structured request and turns it into a real call</p></div>
+<div style="display:flex;flex-direction:row;gap:20px"><p style="font-size:28px;font-weight:600;color:#a1245a">03</p><p style="font-size:24px;line-height:1.4;color:#212529"><b>Enforces security and authorization policies</b> — decides which actions are allowed based on context and user</p></div>
+<div style="display:flex;flex-direction:row;gap:20px"><p style="font-size:28px;font-weight:600;color:#a1245a">04</p><p style="font-size:24px;line-height:1.4;color:#212529"><b>Orchestrates sub-agents</b> — launches child agents, collects their summaries, hands them back to the parent</p></div>
+<div style="display:flex;flex-direction:row;gap:20px"><p style="font-size:28px;font-weight:600;color:#a1245a">05</p><p style="font-size:24px;line-height:1.4;color:#212529"><b>Manages persistent state</b> — memory, sessions, contexts across different conversations</p></div>
+<div style="display:flex;flex-direction:row;gap:20px"><p style="font-size:28px;font-weight:600;color:#a1245a">06</p><p style="font-size:24px;line-height:1.4;color:#212529"><b>Provides observability</b> — logs, traces and metrics for debugging and monitoring in production</p></div>
+</div>
+<div style="background:#a1245a;border-radius:8px;padding:28px 40px">
+<p style="font-size:28px;font-weight:500;line-height:1.4;color:#ffffff">When we say <i>"Claude did X"</i>, Claude <b>decided</b> X and the harness <b>executed</b> X. The line is thin but crucial — almost all of an agent's security, reliability and quality in production lives in the harness.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide60-ce-disciplina" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">07 · Designing the context</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Context engineering as a discipline</h2>
+</div>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:30px;line-height:1.45;color:#212529">Designing <b>what lives in the model's context</b> on every call — include what's needed, leave out what isn't, decide how long it stays. It is the harness's main job.</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px;background:#ffffff;border:2px solid #a1245a;border-radius:16px;padding:24px 40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">Compaction and pruning</h3>
+<p style="font-size:28px;line-height:1.45;color:#212529">Shrinking a context that keeps growing.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#ffffff;border:2px solid #a1245a;border-radius:16px;padding:24px 40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">Progressive disclosure</h3>
+<p style="font-size:28px;line-height:1.45;color:#212529">Loading only what's needed, on demand.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#ffffff;border:2px solid #a1245a;border-radius:16px;padding:24px 40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">Memory</h3>
+<p style="font-size:28px;line-height:1.45;color:#212529">Persistence beyond a single session.</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:24px 40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#838383">Sandbox</h3>
+<p style="font-size:28px;line-height:1.45;color:#212529">Execution boundaries <span style="color:#838383">— adjacent: not context, but handled by the same actor.</span></p>
+</div>
+</div>
+<p style="font-size:24px;font-style:italic;line-height:1.45;color:#838383">One lever per slide, in the blocks that follow.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide48-compaction-pruning" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">07 · Designing the context</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Compaction and pruning — managing a growing context</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">Pruning</h3>
+<ul style="font-size:28px;line-height:1.45;padding-left:40px;color:#212529">
+<li><b>Definition</b> — cut parts of the context that are no longer relevant (old tool results, stale turns)</li>
+<li><b>Policy</b> — which information is safe to forget?</li>
+<li><b>Risk</b> — forgetting something that was needed</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">Compaction</h3>
+<ul style="font-size:28px;line-height:1.45;padding-left:40px;color:#212529">
+<li><b>Definition</b> — replace parts of the context with a summary of them</li>
+<li><b>Policy</b> — typically a sub-agent summarizes the last N turns and the summary replaces the originals</li>
+<li><b>Risk</b> — the summary loses details that turn out to matter later</li>
+</ul>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide48-compaction-pruning-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">07 · Designing the context</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Pruning vs compaction, side by side</h2>
+</div>
+<img src="svg/slide47-compaction-pruning.svg" alt="The same initial context with 8 items; on the left, pruning removes old turns and tool results; on the right, compaction replaces 4 consecutive items with a single summary block" style="width:1664px;height:430px;object-fit:contain">
+<div style="background:#a1245a;border-radius:8px;padding:28px 40px">
+<p style="font-size:28px;font-weight:500;line-height:1.4;color:#ffffff">Both are <b>lossy</b>: information is traded for space. Choosing what to compress or throw away is one of the most delicate decisions for an agent in production. <b>There is no universal policy</b> — it depends on the task.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide61-progressive-disclosure-skill" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">07 · Designing the context</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Progressive disclosure — the skill pattern</h2>
+</div>
+<table style="font-size:28px;color:#212529">
+<tr style="background:#161719"><th style="width:24%;color:#ffffff"></th><th style="width:38%;color:#ffffff">MCP</th><th style="width:38%;color:#ffffff">Skill</th></tr>
+<tr><td><b>Tool definition</b></td><td><b>Always</b> in context</td><td><b>Minimal description</b> in context</td></tr>
+<tr style="background:#f6f6f6"><td><b>Cost</b></td><td>Fixed, at the start of the session</td><td>Paid <b>only if</b> the skill is loaded</td></tr>
+<tr><td><b>Efficiency</b></td><td>Wasteful if only a few tools are really needed</td><td>Loads <b>only what's needed</b></td></tr>
+</table>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:30px;line-height:1.45;color:#212529"><b>Skill</b>: a <b>directory</b> of documentation, instructions, examples and optional scripts. <span style="color:#a1245a">SKILL.md</span> tells the model what the skill offers and how to use it.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide61-progressive-disclosure-skill-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">07 · Designing the context</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Inside a skill: structure and mechanics</h2>
+</div>
+<img src="svg/slide50-skill-pattern.svg" alt="A skill's directory structure on the left, the three-step loading mechanics on the right" style="width:1664px;height:400px;object-fit:contain">
+<div style="display:flex;flex-direction:row;gap:40px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:32px 40px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">Example</p>
+<p style="font-size:26px;line-height:1.45;color:#212529">The <i>pdf-processing</i> skill: SKILL.md + scripts/ (code), references/ (docs), assets/ (templates).</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:32px 40px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">Mechanics</p>
+<p style="font-size:26px;line-height:1.45;color:#212529">In Claude Code the mechanism is the bash tool: the model explores the directory and reads the files.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide55-memoria-demistificazione" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">07 · Designing the context</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Memory — demystified</h2>
+</div>
+<p style="font-size:32px;font-style:italic;line-height:1.45;color:#212529">"Memory" is an overused term. It suggests the model <b>remembers</b> in the human sense. It doesn't.</p>
+<img src="svg/slide56-memoria-ciclo.svg" alt="Two sessions over time with a persistent store in the middle: facts are extracted from session 1 and injected into the context of session 2" style="width:1664px;height:500px;object-fit:contain">
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide55-memoria-demistificazione-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">07 · Designing the context</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Memory — how it really works</h2>
+</div>
+<ul style="font-size:30px;line-height:1.45;padding-left:40px;color:#212529">
+<li>The model is <b>stateless</b> — no memory between calls (recall the stateless API)</li>
+<li>"Memory" is an <b>external system</b> managed by the harness</li>
+<li>The harness decides <b>what to save</b> outside the current context (facts about the user, preferences, summaries)</li>
+<li>It stores them in a <b>persistent store</b> (DB, vector store, files) and, on the next turn, <b>retrieves the relevant facts</b> and injects them into the context</li>
+</ul>
+<div style="background:#a1245a;border-radius:8px;padding:28px 40px">
+<p style="font-size:30px;font-weight:500;line-height:1.4;color:#ffffff">Agent memory = <b>RAG over its own past conversations</b>. The model doesn't <i>"remember you"</i> — the harness has stored facts about you and re-injects them into the context when you talk again.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide56-memoria-meccanica" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">07 · Designing the context</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Memory — operating phases and risks</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px;background:#f6f6f6;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#161719">3 operating phases</h3>
+<ul style="font-size:26px;line-height:1.45;padding-left:40px;color:#212529">
+<li><b>Extraction</b> — a sub-agent scans the conversation and extracts facts worth remembering (<i>"the user prefers short answers"</i>)</li>
+<li><b>Management</b> — facts are organized, deduplicated and updated when they change</li>
+<li><b>Retrieval</b> — on the next turn, the relevant facts are injected into the context</li>
+</ul>
+</div>
+<div style="flex:1.2;display:flex;flex-direction:column;gap:20px;background:#ffffff;border:2px solid #a1245a;border-radius:16px;padding:40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">4 risks</h3>
+<ul style="font-size:26px;line-height:1.45;padding-left:40px;color:#212529">
+<li><b>Stale memory</b> — it saves a fact that changes over time and doesn't update itself</li>
+<li><b>Privacy</b> — what is saved, for how long, with what consent (GDPR)</li>
+<li><b>Cross-contamination</b> — memory from one conversation leaks into another where it shouldn't</li>
+<li><b>Memory gaslighting</b> — the agent <i>"remembers"</i> false things injected in the past by a user or an attacker</li>
+</ul>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide54-sandboxes" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">07 · Designing the context</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Sandboxes — explicit boundaries for execution</h2>
+</div>
+<p style="font-size:28px;line-height:1.45;color:#212529">An isolated environment where the agent runs code, bash and tools that act on the world — with <b>verifiable technical boundaries</b>.</p>
+<table style="font-size:26px;color:#212529">
+<tr style="background:#161719"><th style="width:30%;color:#ffffff">Boundary</th><th style="width:70%;color:#ffffff">Why it matters</th></tr>
+<tr><td><b>Limited filesystem</b></td><td>The agent only accesses the designated working folders</td></tr>
+<tr style="background:#f6f6f6"><td><b>Limited network</b></td><td>Authorized endpoints only — no exfiltration, no lateral movement</td></tr>
+<tr><td><b>Limited credentials</b></td><td>Least privilege — the agent has no more access than it needs</td></tr>
+<tr style="background:#f6f6f6"><td><b>Limited time</b></td><td>Every run expires — prevents infinite loops and silent consumption</td></tr>
+<tr><td><b>Limited resources</b></td><td>Explicit CPU, memory and disk — prevents accidental denial of service</td></tr>
+</table>
+<div style="background:#a1245a;border-radius:8px;padding:28px 40px">
+<p style="font-size:28px;font-weight:500;line-height:1.4;color:#ffffff">A sandbox is to agent security what the <b>container</b> is to software deployment. <b>No serious agent runs without one.</b></p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide57-harness-landscape" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">07 · Designing the context</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The harness landscape today</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:64px;align-items:center">
+<div style="flex:1;display:flex;flex-direction:column;gap:32px">
+<p style="font-size:44px;font-weight:500;line-height:1.3;color:#161719">The model is increasingly a <span style="color:#a1245a">commodity</span>.</p>
+<p style="font-size:32px;line-height:1.45;color:#838383">Differentiation is moving here — to the harness.</p>
+</div>
+<div style="background:#f6f6f6;border-radius:16px;padding:16px">
+<img src="assets/harness-landscape.jpg" alt="Overview of the agentic harnesses available today" style="width:540px;height:571px;object-fit:contain">
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide59-mattoncini" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">07 · Designing the context</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Building blocks and composition</h2>
+</div>
+<img src="svg/slide59-mattoncini.svg" alt="Concentric layers of the four loops — atomic, conversational, with tools, with code — crossed by the transverse bar of context engineering" style="width:1664px;height:420px;object-fit:contain">
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:24px 40px">
+<p style="font-size:30px;line-height:1.45;color:#212529">From tomorrow, whenever agentic AI comes up, you'll hear these concepts ring a bell. <b>Those are the building blocks.</b></p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+<section id="slide62-loop-recap" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:40px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">07 · Designing the context</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The four loops at a glance</h2>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;justify-content:center;background:#f6f6f6;border-radius:16px;padding:32px">
+<img src="svg/slide62-loop-recap.svg" alt="The four loops at a glance: atomic (token by token), conversational (turn by turn), with tools (decide, act, observe), with code (write, run, verify)" style="width:1600px;height:457px;object-fit:contain">
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="assets/logo.png" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
+</div>
+<div id="hud"></div>
+<script>
+const S=[...document.querySelectorAll('#stage>section')];let i=0;
+function fit(){const st=document.getElementById('stage');const k=Math.min(innerWidth/1920,innerHeight/1080);
+  st.style.transform=`translate(${-960*k}px,${-540*k}px) scale(${k})`;}
+function show(n){i=Math.max(0,Math.min(S.length-1,n));S.forEach((s,j)=>s.classList.toggle('on',j===i));
+  history.replaceState(null,'','#'+S[i].id);document.getElementById('hud').textContent=(i+1)+' / '+S.length;}
+addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key))show(i+1);
+  if(['ArrowLeft','PageUp'].includes(e.key))show(i-1);if(e.key==='Home')show(0);if(e.key==='End')show(S.length-1);});
+addEventListener('click',e=>show(e.clientX>innerWidth/3?i+1:i-1));
+addEventListener('resize',fit);
+if(location.search==='?all'){document.body.classList.add('all');}
+else{fit();const h=decodeURIComponent(location.hash.slice(1));const k=S.findIndex(s=>s.id===h);show(k<0?0:k);}
+</script></body></html>
