@@ -1,10 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0; url=lezione-mba/presentation.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agents in Action</title>
+  <meta name="description" content="Agents in action — MBA lecture by Francesco Gianferrari Pini (Quantyca). Choose a language.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --q-burgundy: #a1245a;
+      --q-burgundy-dark: #811d48;
+      --q-burgundy-tint: #ecd3de;
+      --q-black: #161719;
+      --q-white: #ffffff;
+      --q-line: rgba(255, 255, 255, 0.28);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; }
+    body {
+      min-height: 100vh;
+      background: var(--q-burgundy);
+      color: var(--q-white);
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .motif {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      width: 100%; height: auto; opacity: 0.22; pointer-events: none;
+    }
+    header, main, footer { position: relative; width: 100%; max-width: 1130px; margin: 0 auto; padding: 0 32px; }
+    header { padding-top: 40px; }
+    header img { height: 40px; width: auto; display: block; }
+    main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-top: 64px; padding-bottom: 96px; }
+    .eyebrow {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--q-burgundy-tint); margin: 0 0 16px;
+    }
+    h1 { font-size: clamp(2.5rem, 7vw, 5.5rem); font-weight: 600; line-height: 1.05; margin: 0 0 16px; }
+    .byline { font-size: clamp(1rem, 2vw, 1.375rem); margin: 0 0 56px; }
+    .choose { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.25em; text-transform: uppercase; color: var(--q-burgundy-tint); margin: 0 0 16px; }
+    .langs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .lang {
+      display: flex; flex-direction: column; gap: 8px;
+      padding: 32px; border-radius: 16px;
+      background: var(--q-black); color: var(--q-white); text-decoration: none;
+      border: 1px solid transparent;
+      transition: background-color 180ms ease-in-out, box-shadow 180ms ease-in-out;
+    }
+    .lang:hover, .lang:focus-visible { box-shadow: 0 0 0 1px var(--q-line); background: #1f2023; outline: none; }
+    .lang .code { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.25em; color: var(--q-burgundy-tint); }
+    .lang .name { font-size: clamp(1.5rem, 3vw, 2.125rem); font-weight: 600; line-height: 1.2; }
+    .lang .desc { font-size: 0.95rem; color: #cac9ca; line-height: 1.5; }
+    .lang .cta {
+      margin-top: 16px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 10px;
+    }
+    .lang .cta i { transition: transform 180ms ease-in-out; }
+    .lang:hover .cta i, .lang:focus-visible .cta i { transform: translateX(4px); }
+    footer { padding-bottom: 32px; font-size: 0.8rem; color: var(--q-burgundy-tint); }
+    @media (max-width: 640px) {
+      header, main, footer { padding-left: 16px; padding-right: 16px; }
+      .langs { grid-template-columns: 1fr; }
+      .lang { padding: 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .lang, .lang .cta i { transition: none; }
+    }
+  </style>
 </head>
 <body>
-  <a href="lezione-mba/presentation.html">Go to presentation</a>
+  <img class="motif" src="lezione-mba-en/assets/blueprint-white.svg" alt="">
+  <header>
+    <img src="lezione-mba-en/assets/logo-white.png" alt="Quantyca — Data at core">
+  </header>
+  <main>
+    <p class="eyebrow">MBA lecture · Politecnico di Milano GSoM</p>
+    <h1>Agents in action</h1>
+    <p class="byline">Francesco Gianferrari Pini — Quantyca</p>
+
+    <p class="choose">Choose a language · Scegli la lingua</p>
+    <div class="langs">
+      <a class="lang" href="lezione-mba/presentation.html" lang="it">
+        <span class="code">IT</span>
+        <span class="name">Italiano</span>
+        <span class="desc">La presentazione originale della lezione.</span>
+        <span class="cta">Apri la presentazione <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i></span>
+      </a>
+      <a class="lang" href="lezione-mba-en/agents-in-action-en.html" lang="en">
+        <span class="code">EN</span>
+        <span class="name">English</span>
+        <span class="desc">The English edition of the lecture, text and diagrams translated.</span>
+        <span class="cta">Open the presentation <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i></span>
+      </a>
+    </div>
+  </main>
+  <footer>Use the arrow keys to move through the slides · Usa le frecce per scorrere le slide</footer>
 </body>
 </html>
