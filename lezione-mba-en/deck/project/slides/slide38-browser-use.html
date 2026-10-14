@@ -1,0 +1,26 @@
+<section id="slide38-browser-use" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Browser use — the agent drives a browser</h2>
+</div>
+<p style="font-size:28px;line-height:1.45;color:#212529">The agent receives <b>screenshots</b> of the page and produces <b>actions</b>: clicks, scrolling, typing into forms, navigation.</p>
+<div style="display:flex;flex-direction:row;gap:16px">
+<p style="font-size:24px;background:#f6f6f6;padding:6px 20px;border-radius:24px;color:#212529">Claude Computer Use <span style="color:#838383">(Anthropic)</span></p>
+<p style="font-size:24px;background:#f6f6f6;padding:6px 20px;border-radius:24px;color:#212529">Browser Use <span style="color:#838383">(open source)</span></p>
+<p style="font-size:24px;background:#f6f6f6;padding:6px 20px;border-radius:24px;color:#212529">OpenAI Operator</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px;align-items:start">
+<div style="flex:1;display:flex;flex-direction:column;gap:20px">
+<table style="font-size:24px;color:#212529">
+<tr style="background:#161719"><th style="width:45%;color:#ffffff">When you need it</th><th style="width:55%;color:#ffffff">Caveats</th></tr>
+<tr><td>Legacy SaaS with no API</td><td><b>Slow</b> — every action is a round-trip with a screenshot</td></tr>
+<tr style="background:#f6f6f6"><td>Internal systems with no programmatic interface</td><td><b>Expensive</b> — screenshots as input consume many tokens</td></tr>
+<tr><td>Web automation on sites without endpoints</td><td><b>Opaque</b> — actions are seen, not structured, hard to audit</td></tr>
+</table>
+<p style="font-size:26px;line-height:1.45;color:#212529"><i>A <b>last-resort</b> choice, not a first one — it unlocks the long tail of enterprise automation.</i></p>
+</div>
+<img src="/_blob/fd5d2bc1261dc49d190e925cd69a6708" alt="Partially filled 'New ticket' form with 4 annotations of the agent's actions: click, type, click dropdown, select High" style="width:720px;height:417px;object-fit:contain">
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="/_blob/4db88be4bc518ab3e99e5945d8f22a0a" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>

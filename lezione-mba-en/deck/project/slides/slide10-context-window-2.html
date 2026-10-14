@@ -1,0 +1,22 @@
+<section id="slide10-context-window-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">01 · Understanding the LLM</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">The limit of the context window</h2>
+</div>
+<div style="background:#f6f6f6;border-left:6px solid #a1245a;border-radius:8px;padding:24px 40px;display:flex;flex-direction:column;gap:12px">
+<p style="font-size:26px;line-height:1.45;color:#212529"><span style="color:#a1245a"><b>The protagonist of Memento.</b></span> A man with anterograde amnesia — he remembers his life before the accident, but every new memory fades within minutes. He survives by writing everything on Polaroids and tattoos: whatever he needs to know <i>now</i> must be physically in front of his eyes, <i>now</i>.</p>
+<p style="font-size:26px;line-height:1.45;color:#212529">An LLM works the same way. Training is the "life before": vast knowledge, but frozen. Everything else — the ongoing conversation, uploaded documents, tool results — exists for the model only if it is inside the context window <i>at this exact moment</i>. Nothing is automatically remembered between one call and the next.</p>
+</div>
+<div style="display:flex;flex-direction:row;gap:40px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">Cost</h3>
+<p style="font-size:26px;line-height:1.45;color:#212529">The attention mechanism is O(n²) in context length. Doubling the context more than doubles the compute cost.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:36px;font-weight:600;line-height:1.2;color:#a1245a">Quality</h3>
+<p style="font-size:26px;line-height:1.45;color:#212529">Even when it "fits", the model doesn't use the whole context well. It tends to remember the beginning and end better, the middle worse — <i>lost in the middle</i>.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="/_blob/4db88be4bc518ab3e99e5945d8f22a0a" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>

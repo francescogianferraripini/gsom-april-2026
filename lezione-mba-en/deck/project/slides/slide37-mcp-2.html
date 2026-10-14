@@ -1,0 +1,30 @@
+<section id="slide37-mcp-2" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">05 · Extending the agent</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">MCP — what it is, and why it matters</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:32px;font-weight:600;line-height:1.2;color:#161719">What it is (and isn't)</h3>
+<ul style="font-size:24px;line-height:1.45;padding-left:32px">
+<li>It is <b>not</b> a new kind of tool, nor does it change the mechanics of the tool call</li>
+<li>It <b>is</b> a protocol that standardises <i>discovery</i> ("which tools do you offer?") and <i>invocation</i> (a uniform format)</li>
+<li>After discovery, the tool definitions land in the <b>system prompt</b> and stay there for the whole session</li>
+</ul>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#f6f6f6;border-radius:16px;padding:32px 40px">
+<h3 style="font-size:32px;font-weight:600;line-height:1.2;color:#161719">Why it matters</h3>
+<ul style="font-size:24px;line-height:1.45;padding-left:32px">
+<li>Reduces vendor lock-in: the same integration works with any compatible agent</li>
+<li>Hundreds of public servers: GitHub, Linear, Notion, Gmail, DBs — the <b>app-store layer for agents</b></li>
+<li><i>If a proprietary AI integration doesn't expose MCP, that's vendor lock-in.</i></li>
+</ul>
+</div>
+</div>
+<div style="background:#ffffff;border:2px solid #a1245a;border-radius:8px;padding:24px 40px;display:flex;flex-direction:column;gap:8px">
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#a1245a">The catch</p>
+<p style="font-size:24px;line-height:1.45;color:#212529">Every connected MCP server costs tokens in the context: tool definitions are <b>always</b> in the system prompt. Connecting 10 "just in case" can fill half the context before the agent starts working. When a product claims "supports 50 MCPs", ask which ones are active <i>by default</i>.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="/_blob/4db88be4bc518ab3e99e5945d8f22a0a" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>

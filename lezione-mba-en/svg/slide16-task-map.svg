@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 380">
+  <title>AI task map: context breadth vs verifiability of the result</title>
+
+  <defs>
+    <marker id="arrowX" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#dddddd" stroke-width="1.5"/>
+    </marker>
+    <marker id="arrowY" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="none" stroke="#dddddd" stroke-width="1.5"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1140" height="380" fill="#f2f2f2" rx="4"/>
+
+  <!-- Axes -->
+  <line x1="80" y1="340" x2="1060" y2="340" stroke="#dddddd" stroke-width="1.5" marker-end="url(#arrowX)"/>
+  <line x1="80" y1="340" x2="80" y2="30" stroke="#dddddd" stroke-width="1.5" marker-end="url(#arrowY)"/>
+
+  <!-- X-axis label -->
+  <text x="570" y="372" text-anchor="middle" fill="#1a1a1a" font-family="sans-serif" font-size="13" font-weight="600">Context breadth required</text>
+  <text x="90" y="358" text-anchor="start" fill="#838383" font-family="sans-serif" font-size="11">Low</text>
+  <text x="1050" y="358" text-anchor="end" fill="#838383" font-family="sans-serif" font-size="11">High</text>
+
+  <!-- Y-axis label -->
+  <text transform="rotate(-90, 20, 185)" x="20" y="189" text-anchor="middle" fill="#1a1a1a" font-family="sans-serif" font-size="13" font-weight="600">Verifiability of the result</text>
+  <text x="68" y="338" text-anchor="end" fill="#838383" font-family="sans-serif" font-size="11">Low</text>
+  <text x="68" y="42" text-anchor="end" fill="#838383" font-family="sans-serif" font-size="11">High</text>
+
+  <!-- 1. Q&A / recupero conoscenza — x=15, y=85 -->
+  <circle cx="227" cy="76" r="8" fill="#838383"/>
+  <text x="227" y="98" text-anchor="middle" fill="#1a1a1a" font-family="sans-serif" font-size="12">Q&amp;A / knowledge retrieval</text>
+
+  <!-- 2. Classificazione / giudizio — x=20, y=88 -->
+  <circle cx="276" cy="67" r="8" fill="#838383"/>
+  <text x="290" y="59" fill="#1a1a1a" font-family="sans-serif" font-size="12">Classification / judgement</text>
+
+  <!-- 3. Ragionamento — x=50, y=80 -->
+  <circle cx="570" cy="92" r="8" fill="#838383"/>
+  <text x="570" y="78" text-anchor="middle" fill="#1a1a1a" font-family="sans-serif" font-size="12">Reasoning</text>
+
+  <!-- 4. Coding (STAR) — x=85, y=90 -->
+  <circle cx="913" cy="61" r="12" fill="#a1245a"/>
+  <text x="913" y="44" text-anchor="middle" fill="#1a1a1a" font-family="sans-serif" font-size="14" font-weight="700">Coding</text>
+
+  <!-- 5. Trasformazione — x=25, y=55 -->
+  <circle cx="325" cy="169" r="8" fill="#838383"/>
+  <text x="339" y="173" fill="#1a1a1a" font-family="sans-serif" font-size="12">Transformation</text>
+
+  <!-- 6. Multi-step / agentic — x=80, y=50 -->
+  <circle cx="864" cy="185" r="8" fill="#838383"/>
+  <text x="864" y="203" text-anchor="middle" fill="#1a1a1a" font-family="sans-serif" font-size="12">Multi-step / agentic</text>
+
+  <!-- 7. Generazione creativa — x=40, y=25 -->
+  <circle cx="472" cy="262" r="8" fill="#838383"/>
+  <text x="472" y="282" text-anchor="middle" fill="#1a1a1a" font-family="sans-serif" font-size="12">Creative generation</text>
+
+  <!-- 8. Conversazione stateful — x=85, y=15 -->
+  <circle cx="913" cy="294" r="8" fill="#1ab19720" stroke="#1ab197" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="913" y="314" text-anchor="middle" fill="#1ab197" font-family="sans-serif" font-size="12">Stateful conversation</text>
+
+</svg>

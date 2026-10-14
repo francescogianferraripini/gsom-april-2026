@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1140 420">
+  <title>Fourth loop: task → write code → run in sandbox → verify; fail goes back to writing code, pass exits</title>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#838383"/>
+    </marker>
+    <marker id="arrow-accent" markerWidth="12" markerHeight="8" refX="11" refY="4" orient="auto">
+      <path d="M0,0 L12,4 L0,8 Z" fill="#a1245a"/>
+    </marker>
+    <marker id="arrow-secondary" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <path d="M0,0 L10,3.5 L0,7 Z" fill="#1ab197"/>
+    </marker>
+  </defs>
+
+  <!-- ============================================ -->
+  <!-- 4-NODE LOOP (diamond, centered at 570,210)   -->
+  <!--   1: top     (570, 70)  — Task / intenzione  -->
+  <!--   2: right   (790, 210) — Scrivi codice      -->
+  <!--   3: bottom  (570, 350) — Esegui in sandbox  -->
+  <!--   4: left    (350, 210) — Verifica (ACCENT)  -->
+  <!-- ============================================ -->
+
+  <!-- Node 1: Task / intenzione — top -->
+  <g id="node1">
+    <rect x="470" y="42" width="200" height="56" rx="8" fill="#f7f7f7" stroke="#dddddd" stroke-width="1.5"/>
+    <text x="570" y="65" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1a1a1a">Task / intent</text>
+    <text x="570" y="83" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" fill="#838383">what it wants to achieve</text>
+  </g>
+
+  <!-- Node 2: Scrivi codice — right -->
+  <g id="node2">
+    <rect x="690" y="182" width="200" height="56" rx="8" fill="#f7f7f7" stroke="#dddddd" stroke-width="1.5"/>
+    <text x="790" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1a1a1a">Write code</text>
+    <text x="790" y="223" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" fill="#838383">Python, SQL, shell…</text>
+  </g>
+
+  <!-- Node 3: Esegui in sandbox — bottom -->
+  <g id="node3">
+    <rect x="470" y="322" width="200" height="56" rx="8" fill="#f7f7f7" stroke="#dddddd" stroke-width="1.5"/>
+    <text x="570" y="345" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1a1a1a">Run in sandbox</text>
+    <text x="570" y="363" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" fill="#838383">isolated environment</text>
+  </g>
+
+  <!-- Node 4: Verifica — left (ACCENT) -->
+  <g id="node4">
+    <rect x="250" y="182" width="200" height="56" rx="8" fill="#f5f5f5" stroke="#a1245a" stroke-width="2"/>
+    <text x="350" y="205" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="600" fill="#1a1a1a">Verify</text>
+    <text x="350" y="223" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" fill="#a1245a" opacity="0.75">tests passed?</text>
+  </g>
+
+  <!-- ============================================ -->
+  <!-- FORWARD ARROWS (clockwise)                   -->
+  <!-- ============================================ -->
+
+  <!-- 1→2: top to right -->
+  <line x1="660" y1="98" x2="710" y2="182" stroke="#838383" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- 2→3: right to bottom -->
+  <line x1="720" y1="238" x2="660" y2="322" stroke="#838383" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- 3→4: bottom to left -->
+  <line x1="480" y1="322" x2="420" y2="238" stroke="#838383" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- ============================================ -->
+  <!-- FAIL FEEDBACK: node4 → node2 across middle   -->
+  <!-- Thick, accent, with label — the "close the   -->
+  <!-- loop" arrow, analogous to slide20 5→1        -->
+  <!-- ============================================ -->
+  <line x1="450" y1="205" x2="690" y2="205" stroke="#a1245a" stroke-width="3" marker-end="url(#arrow-accent)"/>
+  <text x="570" y="198" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11.5" fill="#a1245a" font-style="italic">deterministic feedback</text>
+  <text x="570" y="223" text-anchor="middle" font-family="system-ui, sans-serif" font-size="10.5" fill="#a1245a" opacity="0.75">fail → the agent iterates</text>
+
+  <!-- ============================================ -->
+  <!-- PASS EXIT: node4 → off-left                  -->
+  <!-- ============================================ -->
+  <line x1="250" y1="210" x2="110" y2="210" stroke="#1ab197" stroke-width="2.5" marker-end="url(#arrow-secondary)"/>
+  <text x="180" y="200" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11.5" fill="#1ab197" font-weight="600">pass → done</text>
+</svg>

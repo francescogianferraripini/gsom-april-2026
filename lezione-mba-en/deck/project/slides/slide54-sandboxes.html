@@ -1,0 +1,20 @@
+<section id="slide54-sandboxes" style="background:#ffffff;color:#212529;font-family:'Poppins', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:28px">
+<div style="display:flex;flex-direction:column;gap:12px">
+<p style="font-size:24px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:#a1245a">07 · Designing the context</p>
+<h2 style="font-size:64px;font-weight:600;line-height:1.15;color:#161719">Sandboxes — explicit boundaries for execution</h2>
+</div>
+<p style="font-size:28px;line-height:1.45;color:#212529">An isolated environment where the agent runs code, bash and tools that act on the world — with <b>verifiable technical boundaries</b>.</p>
+<table style="font-size:26px;color:#212529">
+<tr style="background:#161719"><th style="width:30%;color:#ffffff">Boundary</th><th style="width:70%;color:#ffffff">Why it matters</th></tr>
+<tr><td><b>Limited filesystem</b></td><td>The agent only accesses the designated working folders</td></tr>
+<tr style="background:#f6f6f6"><td><b>Limited network</b></td><td>Authorized endpoints only — no exfiltration, no lateral movement</td></tr>
+<tr><td><b>Limited credentials</b></td><td>Least privilege — the agent has no more access than it needs</td></tr>
+<tr style="background:#f6f6f6"><td><b>Limited time</b></td><td>Every run expires — prevents infinite loops and silent consumption</td></tr>
+<tr><td><b>Limited resources</b></td><td>Explicit CPU, memory and disk — prevents accidental denial of service</td></tr>
+</table>
+<div style="background:#a1245a;border-radius:8px;padding:28px 40px">
+<p style="font-size:28px;font-weight:500;line-height:1.4;color:#ffffff">A sandbox is to agent security what the <b>container</b> is to software deployment. <b>No serious agent runs without one.</b></p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1200px;font-size:24px;color:#838383">Agents in action — Quantyca</p>
+<img src="/_blob/4db88be4bc518ab3e99e5945d8f22a0a" alt="Quantyca" style="position:absolute;right:128px;bottom:60px;width:136px;height:32px;object-fit:contain">
+</section>
