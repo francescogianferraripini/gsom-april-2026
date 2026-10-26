@@ -61,6 +61,13 @@
     }
     .lang .cta i { transition: transform 180ms ease-in-out; }
     .lang:hover .cta i, .lang:focus-visible .cta i { transform: translateX(4px); }
+    .downloads { margin: 24px 0 0; font-size: 0.9rem; }
+    .downloads a {
+      color: var(--q-white); text-decoration: none; font-weight: 500;
+      display: inline-flex; align-items: center; gap: 10px;
+      border-bottom: 1px solid var(--q-line); padding-bottom: 2px;
+    }
+    .downloads a:hover, .downloads a:focus-visible { border-bottom-color: var(--q-white); outline: none; }
     footer { padding-bottom: 32px; font-size: 0.8rem; color: var(--q-burgundy-tint); }
     @media (max-width: 640px) {
       header, main, footer { padding-left: 16px; padding-right: 16px; }
@@ -97,6 +104,9 @@
         <span class="cta">Open the presentation <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i></span>
       </a>
     </div>
+    <p class="downloads">
+      <a href="lezione-mba/presentation.pdf" download="agents-in-action-it.pdf" lang="it"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i> Scarica le slide in PDF (italiano)</a>
+    </p>
   </main>
   <footer>Use the arrow keys to move through the slides · Usa le frecce per scorrere le slide</footer>
 </body>
