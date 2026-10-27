@@ -13,10 +13,13 @@
 |---|---|---|---|
 | — | Divider *Proteggere* | `slide-div-sec8.html` | barra 8 icone (`fa-shield-halved`) |
 | 55 | *Ogni capacità è una superficie d'attacco* (opener) | `slide63-apertura-sec8.html` | SVG perimetro + 3 flussi |
+| — | Sotto-divider *Fronte 1 · Usare l'AI* | `slide-div-sec8-f1.html` | barra 3 icone |
 | 56 | *Ogni prompt è un trasferimento di dati* | `slide64-prompt-trasferimento.html` | tabella canali |
 | 57 | *Il rischio è il canale e il contratto* | `slide65-canale-contratto.html` | 2 card (Samsung, IBM) |
+| — | Sotto-divider *Fronte 2 · Agenti che esfiltrano* | `slide-div-sec8-f2.html` | barra 3 icone |
 | 58 | *La lethal trifecta* | `slide66-lethal-trifecta.html` | SVG Venn a 3 cerchi |
 | 59 | *Prompt injection e fuga "per zelo"* | `slide67-injection-zelo.html` | 2 card contrast |
+| — | Sotto-divider *Fronte 3 · Coding agent* | `slide-div-sec8-f3.html` | barra 3 icone |
 | 60 | *Si abbassa il costo dell'attacco* | `slide68-costo-attacco.html` | 2 card con numeri |
 | 61 | *Stessa capacità, usata per primi da noi* | `slide69-difesa.html` | card principale + 3 card |
 | 62 | *Tre fronti, tre domande* (chiusura) | `slide70-tre-domande.html` | tabella + riquadro take-home |
@@ -29,6 +32,20 @@
 - **Titolo**: *Proteggere*
 - **Sottotitolo**: *L'AI come rischio e come arma*
 - **Barra icone**: 8 icone; l'ottava (`fa-shield-halved`, *Proteggere*) è attiva. Tutti i divider precedenti sono stati aggiornati a "di 8" con l'ottava icona attenuata.
+
+---
+
+## Sotto-divider dei tre fronti
+
+Slide di separazione tra i tre fronti, con classe `subsection-divider` (in `styles.css`): sfondo chiaro, per distinguerle dai divider di sezione scuri. Struttura: etichetta *Sezione 8 · Fronte N di 3*, titolo accent, sottotitolo muted, barra di 3 icone con il fronte corrente attivo e gli altri attenuati.
+
+| File | Titolo | Sottotitolo | Icona |
+|---|---|---|---|
+| `slide-div-sec8-f1.html` | *Usare l'AI* | *I dati escono con il prompt* | `fa-cloud-arrow-up` |
+| `slide-div-sec8-f2.html` | *Agenti che esfiltrano* | *Quando l'agente porta fuori i dati* | `fa-user-secret` |
+| `slide-div-sec8-f3.html` | *Coding agent* | *L'AI come arma e come scudo* | `fa-code` |
+
+Posizione: rispettivamente prima delle slide 56, 58 e 60.
 
 ---
 

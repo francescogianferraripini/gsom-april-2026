@@ -180,6 +180,26 @@
   color: rgba(255, 255, 255, 0.55);
 }
 
+/* Sub-section dividers (within a section, light background) */
+.reveal .slides section.subsection-divider {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center;
+}
+
+.reveal .slides section.subsection-divider h1 {
+  font-size: 44pt;
+  text-align: center;
+  margin: 0 0 10px 0;
+}
+
+.reveal .slides section.subsection-divider p {
+  font-size: 18pt;
+  color: var(--muted-color);
+}
+
 /* ===========================================
    TEXT UTILITIES
    =========================================== */
