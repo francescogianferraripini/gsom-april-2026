@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 460" preserveAspectRatio="xMidYMid meet">
+  <title>Lethal trifecta: dati privati, contenuti non fidati e canale verso l'esterno; il rischio di esfiltrazione nasce nell'intersezione dei tre</title>
+
+  <defs>
+    <clipPath id="clip-a"><circle cx="200" cy="170" r="125"/></clipPath>
+    <clipPath id="clip-b"><circle cx="360" cy="170" r="125"/></clipPath>
+  </defs>
+
+  <style>
+    .lbl { font-family: 'Poppins', sans-serif; font-size: 15px; fill: #1a1a1a; font-weight: 600; }
+    .sub { font-family: system-ui, sans-serif; font-size: 11px; fill: #838383; }
+    .ctr { font-family: 'Poppins', sans-serif; font-size: 9.5px; fill: #ffffff; font-weight: 700; letter-spacing: 1px; }
+    .cap { font-family: system-ui, sans-serif; font-size: 12px; fill: #a1245a; font-style: italic; }
+  </style>
+
+  <!-- tre cerchi -->
+  <circle cx="200" cy="170" r="125" fill="#838383" fill-opacity="0.07" stroke="#838383" stroke-width="1.4"/>
+  <circle cx="360" cy="170" r="125" fill="#838383" fill-opacity="0.07" stroke="#838383" stroke-width="1.4"/>
+  <circle cx="280" cy="310" r="125" fill="#838383" fill-opacity="0.07" stroke="#838383" stroke-width="1.4"/>
+
+  <!-- intersezione tripla in accent -->
+  <g clip-path="url(#clip-a)">
+    <g clip-path="url(#clip-b)">
+      <circle cx="280" cy="310" r="125" fill="#a1245a"/>
+    </g>
+  </g>
+  <text x="280" y="222" text-anchor="middle" class="ctr">RISCHIO</text>
+
+  <!-- etichette -->
+  <text x="150" y="130" text-anchor="middle" class="lbl">Dati privati</text>
+  <text x="150" y="148" text-anchor="middle" class="sub">email, documenti,</text>
+  <text x="150" y="162" text-anchor="middle" class="sub">database interni</text>
+
+  <text x="410" y="130" text-anchor="middle" class="lbl">Contenuti</text>
+  <text x="410" y="148" text-anchor="middle" class="lbl">non fidati</text>
+  <text x="410" y="166" text-anchor="middle" class="sub">web, email in arrivo, issue</text>
+
+  <text x="280" y="355" text-anchor="middle" class="lbl">Canale verso l'esterno</text>
+  <text x="280" y="373" text-anchor="middle" class="sub">inviare email, chiamate HTTP,</text>
+  <text x="280" y="387" text-anchor="middle" class="sub">scrivere su repo pubblici</text>
+
+  <text x="280" y="452" text-anchor="middle" class="cap">chi controlla il contenuto controlla l'agente</text>
+</svg>

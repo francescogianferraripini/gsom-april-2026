@@ -1,0 +1,41 @@
+<!-- SLIDE 56 — Ogni prompt è un trasferimento di dati -->
+<section id="slide-prompt-trasferimento">
+  <h2>Ogni prompt è un trasferimento di dati</h2>
+  <div class="content" style="gap: 14px; padding-top: 10px;">
+
+    <p style="font-size: 13pt; margin: 0; line-height: 1.5;">Quando chiamo un LLM, <strong>tutto il contesto</strong> — system prompt, documenti, storico, tool result — esce dal perimetro. Quattro domande: <strong>dove finisce</strong>, <strong>per quanto resta</strong>, <strong>se addestra il modello</strong>, <strong>sotto quale giurisdizione</strong>.</p>
+
+    <table style="width: 100%; border-collapse: collapse; font-size: 11.5pt;">
+      <thead>
+        <tr>
+          <th style="text-align: left; padding: 8px 12px; border-bottom: 2px solid var(--primary-color); font-weight: 600; color: var(--primary-color); width: 28%;">Canale</th>
+          <th style="text-align: left; padding: 8px 12px; border-bottom: 2px solid var(--primary-color); font-weight: 600; color: var(--primary-color); width: 30%;">Usato per il training?</th>
+          <th style="text-align: left; padding: 8px 12px; border-bottom: 2px solid var(--primary-color); font-weight: 600; color: var(--primary-color);">Retention tipica</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-size: 13pt; padding: 8px 12px; border-bottom: 1px solid var(--line-color); font-weight: 600;">API a pagamento · enterprise</td>
+          <td style="font-size: 13pt; padding: 8px 12px; border-bottom: 1px solid var(--line-color);">No, di default</td>
+          <td style="font-size: 13pt; padding: 8px 12px; border-bottom: 1px solid var(--line-color);">~30 giorni per abuse monitoring · <strong>zero-data-retention</strong> su accordo</td>
+        </tr>
+        <tr>
+          <td style="font-size: 13pt; padding: 8px 12px; border-bottom: 1px solid var(--line-color); font-weight: 600;">API tier gratuito</td>
+          <td style="font-size: 13pt; padding: 8px 12px; border-bottom: 1px solid var(--line-color);">Possibile, con revisione umana</td>
+          <td style="font-size: 13pt; padding: 8px 12px; border-bottom: 1px solid var(--line-color);">Il provider stesso avverte: <em>non inviare dati riservati</em></td>
+        </tr>
+        <tr>
+          <td style="font-size: 13pt; padding: 8px 12px; font-weight: 600;">App consumer personale</td>
+          <td style="font-size: 13pt; padding: 8px 12px;">Spesso sì, o a scelta dell'utente</td>
+          <td style="font-size: 13pt; padding: 8px 12px;">Da mesi ad anni — fino a <strong>5 anni</strong> se si accetta il training</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="highlight-box" style="padding: 10px 16px; margin: 0;">
+      <p style="font-size: 11.5pt; margin: 0; line-height: 1.45;"><strong>NYT vs OpenAI (2025)</strong> — un giudice ordina di conservare tutti i log, <strong>chat cancellate comprese</strong>, per mesi. "Cancellato" dipende dal contratto e dalla giurisdizione, non dal pulsante.</p>
+    </div>
+
+  </div>
+  <p class="footnote" style="right: 150px; font-size: 8.5pt; line-height: 1.35;">Fonti: policy dati OpenAI API, Anthropic, Google Gemini API (consultate ott. 2026) · Anthropic, <em>Updates to our consumer terms</em>, 28/08/2025 · In re OpenAI Copyright Litig., ordini 13/05/2025 e 09/10/2025. Le policy cambiano spesso: fa fede il contratto in vigore.</p>
+</section>

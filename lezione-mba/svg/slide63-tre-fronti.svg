@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 440" preserveAspectRatio="xMidYMid meet">
+  <title>I tre fronti della sicurezza AI: dati che escono verso il provider LLM, agente che manda dati a terze parti, attaccante con coding agent contrastato da un coding agent difensivo</title>
+
+  <defs>
+    <marker id="ar-g" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <path d="M0,0 L9,3.5 L0,7 Z" fill="#838383"/>
+    </marker>
+    <marker id="ar-a" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L11,4 L0,8 Z" fill="#a1245a"/>
+    </marker>
+  </defs>
+
+  <style>
+    .lbl  { font-family: 'Poppins', sans-serif; font-size: 13px; fill: #1a1a1a; font-weight: 600; }
+    .sub  { font-family: system-ui, sans-serif; font-size: 10.5px; fill: #838383; }
+    .cap  { font-family: system-ui, sans-serif; font-size: 11.5px; fill: #a1245a; font-style: italic; }
+    .tag  { font-family: 'Poppins', sans-serif; font-size: 10.5px; fill: #a1245a; font-weight: 700; letter-spacing: 1.8px; }
+    .num  { font-family: 'Poppins', sans-serif; font-size: 12px; fill: #ffffff; font-weight: 700; }
+    .mut  { font-family: system-ui, sans-serif; font-size: 11px; fill: #838383; font-style: italic; }
+  </style>
+
+  <!-- ===================== PERIMETRO ===================== -->
+  <rect x="300" y="30" width="500" height="360" rx="14" fill="#fafafa" stroke="#a1245a" stroke-width="1.6" stroke-dasharray="6,4"/>
+  <rect x="320" y="16" width="230" height="28" rx="6" fill="#ffffff" stroke="#a1245a" stroke-width="1.4"/>
+  <text x="335" y="35" class="tag">LA TUA ORGANIZZAZIONE</text>
+
+  <!-- Dati riservati (centro) -->
+  <rect x="580" y="187" width="180" height="50" rx="8" fill="#f6e9ef" stroke="#a1245a" stroke-width="1.6"/>
+  <text x="670" y="209" text-anchor="middle" class="lbl">Dati riservati</text>
+  <text x="670" y="226" text-anchor="middle" class="sub">clienti · codice · contratti</text>
+
+  <!-- Dipendenti -->
+  <rect x="580" y="75" width="180" height="50" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1.3"/>
+  <text x="670" y="97" text-anchor="middle" class="lbl">Persone</text>
+  <text x="670" y="114" text-anchor="middle" class="sub">chat, copilot, API</text>
+
+  <!-- Agente -->
+  <rect x="580" y="299" width="180" height="50" rx="8" fill="#ffffff" stroke="#cccccc" stroke-width="1.3"/>
+  <text x="670" y="321" text-anchor="middle" class="lbl">Agente AI</text>
+  <text x="670" y="338" text-anchor="middle" class="sub">tool · email · web · MCP</text>
+
+  <!-- accesso ai dati -->
+  <line x1="670" y1="185" x2="670" y2="128" stroke="#bbbbbb" stroke-width="1.3" stroke-dasharray="4,3"/>
+  <line x1="670" y1="239" x2="670" y2="296" stroke="#bbbbbb" stroke-width="1.3" stroke-dasharray="4,3"/>
+
+  <!-- Coding agent difensivo -->
+  <rect x="330" y="187" width="170" height="50" rx="8" fill="#ffffff" stroke="#a1245a" stroke-width="1.6"/>
+  <text x="415" y="209" text-anchor="middle" class="lbl">Coding agent</text>
+  <text x="415" y="226" text-anchor="middle" class="sub">review · ricerca vulnerabilità</text>
+  <text x="415" y="262" text-anchor="middle" class="cap">… e come scudo</text>
+  <line x1="500" y1="212" x2="577" y2="212" stroke="#bbbbbb" stroke-width="1.3" stroke-dasharray="4,3"/>
+
+  <!-- ===================== ESTERNO ===================== -->
+  <!-- Provider LLM -->
+  <rect x="880" y="75" width="190" height="50" rx="8" fill="#f5f5f5" stroke="#838383" stroke-width="1.3"/>
+  <text x="975" y="97" text-anchor="middle" class="lbl">Provider LLM</text>
+  <text x="975" y="114" text-anchor="middle" class="sub">API · app consumer</text>
+  <text x="975" y="148" text-anchor="middle" class="cap">i dati escono con il prompt</text>
+
+  <!-- Terze parti -->
+  <rect x="880" y="299" width="190" height="50" rx="8" fill="#f5f5f5" stroke="#838383" stroke-width="1.3"/>
+  <text x="975" y="321" text-anchor="middle" class="lbl">Terze parti</text>
+  <text x="975" y="338" text-anchor="middle" class="sub">attaccanti · web · repo pubblici</text>
+  <text x="975" y="372" text-anchor="middle" class="cap">l'agente li manda fuori</text>
+
+  <!-- Attaccante -->
+  <rect x="30" y="187" width="190" height="50" rx="8" fill="#f5f5f5" stroke="#838383" stroke-width="1.3"/>
+  <text x="125" y="209" text-anchor="middle" class="lbl">Attaccante</text>
+  <text x="125" y="226" text-anchor="middle" class="sub">+ coding agent</text>
+  <text x="125" y="262" text-anchor="middle" class="cap">l'AI come arma …</text>
+
+  <!-- ===================== FLUSSI ===================== -->
+  <!-- 1: persone -> provider -->
+  <line x1="762" y1="100" x2="876" y2="100" stroke="#a1245a" stroke-width="2.2" marker-end="url(#ar-a)"/>
+  <circle cx="820" cy="100" r="12" fill="#a1245a"/>
+  <text x="820" y="104.5" text-anchor="middle" class="num">1</text>
+
+  <!-- 2: agente -> terze parti -->
+  <line x1="762" y1="324" x2="876" y2="324" stroke="#a1245a" stroke-width="2.2" marker-end="url(#ar-a)"/>
+  <circle cx="820" cy="324" r="12" fill="#a1245a"/>
+  <text x="820" y="328.5" text-anchor="middle" class="num">2</text>
+
+  <!-- 3: attaccante -> organizzazione, intercettato dal coding agent -->
+  <line x1="222" y1="212" x2="326" y2="212" stroke="#a1245a" stroke-width="2.2" marker-end="url(#ar-a)"/>
+  <circle cx="260" cy="212" r="12" fill="#a1245a"/>
+  <text x="260" y="216.5" text-anchor="middle" class="num">3</text>
+
+  <text x="550" y="425" text-anchor="middle" class="mut">1 e 2 sono dati in uscita · 3 è capacità: in entrata per chi attacca, interna per chi difende</text>
+</svg>

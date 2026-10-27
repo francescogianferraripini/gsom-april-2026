@@ -1,0 +1,43 @@
+<!-- SLIDE 59 — Prompt injection e fuga "per zelo" -->
+<section id="slide-injection-zelo">
+  <h2>Prompt injection e fuga "per zelo"</h2>
+  <div class="content" style="gap: 18px; padding-top: 12px;">
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+
+      <div class="contrast-card" style="padding: 14px 18px;">
+        <h3 style="font-size: 17pt; margin: 0 0 2px 0; color: var(--primary-color);">Prompt injection</h3>
+        <p style="font-size: 12pt; color: var(--muted-color); margin: 0 0 8px 0; font-style: italic;">qualcuno scrive istruzioni dentro i dati</p>
+        <ol style="font-size: 12.5pt; margin: 0 0 8px 0; padding-left: 20px;">
+          <li style="font-size: 12.5pt; margin-bottom: 6px; line-height: 1.35;">Arriva un'email con istruzioni nascoste</li>
+          <li style="font-size: 12.5pt; margin-bottom: 6px; line-height: 1.35;">L'assistente la legge: entra nel contesto</li>
+          <li style="font-size: 12.5pt; margin-bottom: 6px; line-height: 1.35;">Esegue le istruzioni: raccoglie dati interni</li>
+          <li style="font-size: 12.5pt; margin-bottom: 6px; line-height: 1.35;">Li codifica in un link verso un server esterno</li>
+        </ol>
+        <p style="font-size: 12pt; margin: 0 0 4px 0; line-height: 1.4;"><strong>EchoLeak</strong> — Microsoft 365 Copilot, giu. 2025, gravità 9.3/10: <strong>zero click</strong>.</p>
+        <p style="font-size: 12pt; margin: 0; line-height: 1.4; color: var(--muted-color);">Anche: GitHub MCP (mag. 2025) — un issue pubblico porta l'agente a copiare dati privati in una pull request pubblica.</p>
+      </div>
+
+      <div class="contrast-card" style="padding: 14px 18px;">
+        <h3 style="font-size: 17pt; margin: 0 0 2px 0; color: var(--primary-color);">Fuga "per zelo"</h3>
+        <p style="font-size: 12pt; color: var(--muted-color); margin: 0 0 8px 0; font-style: italic;">nessun attaccante: l'agente fa il suo lavoro, troppo</p>
+        <ul style="margin: 0 0 8px 0;">
+          <li style="font-size: 12.5pt; margin-bottom: 6px; line-height: 1.35;">Cerca sul web con nomi e numeri del cliente nella query</li>
+          <li style="font-size: 12.5pt; margin-bottom: 6px; line-height: 1.35;">Allega il documento sbagliato a un'email</li>
+          <li style="font-size: 12.5pt; margin-bottom: 6px; line-height: 1.35;">Pubblica una credenziale in un repo o in un issue</li>
+          <li style="font-size: 12.5pt; margin-bottom: 6px; line-height: 1.35;">Passa dati a un server MCP di terze parti</li>
+        </ul>
+        <p style="font-size: 12pt; margin: 0; line-height: 1.4; color: var(--muted-color);">E non solo riservatezza: <strong style="color: var(--text-color);">Replit</strong> (lug. 2025) — l'agente cancella il database durante un code freeze.</p>
+      </div>
+
+    </div>
+
+    <p style="font-size: 12.5pt; color: var(--muted-color); margin: 0; line-height: 1.45;">Perché funziona: per il modello <strong style="color: var(--text-color);">istruzioni e dati sono lo stesso testo</strong> nel contesto (Sezione 2).</p>
+
+    <div class="highlight-box" style="padding: 10px 16px; margin: 0;">
+      <p style="font-size: 13pt; margin: 0; line-height: 1.45;"><strong>Mitigazioni</strong> — minimo privilegio · sandbox e rete limitata (Sezione 7) · approvazione umana per ogni azione verso l'esterno.</p>
+    </div>
+
+  </div>
+  <p class="footnote" style="right: 150px; font-size: 8.5pt;">Fonti: Aim Security / MSRC, CVE-2025-32711, giu. 2025 · Invariant Labs, <em>GitHub MCP exploited</em>, 26/05/2025 · OECD AI Incidents, Replit, 19/07/2025.</p>
+</section>
